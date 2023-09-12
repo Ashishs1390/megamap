@@ -1,0 +1,100 @@
+<div id="navigation">
+   <div ng-include="'views/Shared/Navigation/profileArea.html'"/>
+    <ul side-navigation class="nav c-nav-sidebar" id="side-menu">
+        <li ui-sref-active="active">
+          <a ng-controller="JourneyCtrl" ng-click="$root.go('dashboard.'+journey.workshop_type)">
+            <i class="fa arrow pull-left u-pt10 u-pr10"></i>
+            Return to<br>Dashboard
+          </a>
+        </li>
+        <li><a ng-controller="JourneyCtrl" ui-sref="workshop.graphs({id: journey.uuid})">View Graph</a></li>
+        <li><a ng-show="journey.workshop_type === 'horizon'" ng-controller="JourneyCtrl" ui-sref="workshop.horizon_graphs({id: journey.uuid})">View Horizon Graph</a></li>
+        <li><a ng-controller="JourneyCtrl" ng-click="ViewReport(journey.uuid, journey.workshop_type, isGroup)">Generate Report</a></li>
+        <li><a ng-controller="JourneyCtrl" ng-click="EAReport( journey.uuid )" ng-if="journey.show_connections">EA Report</a></li>
+        <li ng-show="['tenant'].includes($root.Person.role)">
+          <a ng-controller="JourneyCtrl" ng-click="UsageReport( journey.uuid )">
+            Usage Report
+          </a>
+        </li>
+        <li ng-show="['admin', 'tenant'].includes($root.Person.role)">
+          <a ng-controller="JourneyCtrl" ng-click="ExportCsv( journey.uuid )">
+            Export CSV
+          </a>
+        </li>
+        <li ng-show="['admin', 'tenant'].includes($root.Person.role)">
+          <a ng-controller="JourneyCtrl" ng-click="uploadCsvModal( journey.uuid )">
+            Import CSV
+          </a>
+        </li>
+        <li ng-show="['admin', 'tenant'].includes($root.Person.role)">
+          <a ng-controller="JourneyCtrl" ng-click="ExportCsv( journey.uuid, 'template' )">
+            CSV Template
+          </a>
+        </li>
+        <li ng-show="['tenant'].includes($root.Person.role)">
+          <a ng-click="CreateTemplate(journey)">
+            Create Template
+          </a>
+        </li>
+        <!-- <li ng-show="['tenant'].includes($root.Person.role) && isGroup">
+          <a ng-click="FlattenGroup(journey)">
+            Create Flat Copy
+          </a>
+        </li> -->
+        <li><a ng-if='PopQuickReportModal' ng-click="PopQuickReportModal(journey_uuid)">View Summary</a></li>
+        <li><a href="#" ng-if="PopAttendeeModal" ng-click="PopAttendeeModal(journey_uuid)" ><span class="nav-label">Manage Attendees</span></a></li>
+        <li ng-if="journey.live_mode">
+
+          <a>My Vote Counts</a>
+          <div class="workshop-voting-table">
+            <table class="table table-condensed">
+              <thead>
+                <tr>
+                  <th scope="col"></th>
+                  <th scope="col" title="All up for stage">Total</th>
+                  <th scope="col" ng-repeat="p in journey.personas | orderBy: 'order'" title="{{p.title}}">
+                    {{p.title | limitTo: 3}}...
+                  </th>
+                </tr>
+              </thead>
+              <tbody ng-repeat="i in votingTable[currentStage.uuid].interactions | orderBy: 'order'">
+                <tr>
+                  <th scope="row" class="{{i.color}} no-border text-center" title="{{i.title}}: Important">
+                    <i class="fa fa-exclamation-circle text-success"></i>
+                  </th>
+                  <td>
+                    <strong>{{i.total.vote}} / {{(journey.vote_limit_per_stage || 3) * journey.personas.length}}</strong>
+                  </td>
+                  <td ng-repeat="p in journey.personas | orderBy: 'order'">
+                    {{matchVoteType(p.uuid, i.personas, 'vote').count}} / {{journey.vote_limit_per_stage || 3}}
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row" class="{{i.color}} no-border text-center" title="{{i.title}}: Painful">
+                    <i class="fas fa5-angry text-danger"></i>
+                  </th>
+                  <td>
+                    <strong>{{i.total.pain}} / {{(journey.vote_limit_per_stage || 3) * journey.personas.length}}</strong>
+                  </td>
+                  <td ng-repeat="p in journey.personas | orderBy: 'order'">
+                    {{matchVoteType(p.uuid, i.personas, 'pain').count}} / {{journey.vote_limit_per_stage || 3}}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </li>
+    </ul>
+    <ul class="nav side-bottom-nav">
+      <li>
+        <a class="text-muted" href="mailto:ruptivefeedback@indigoslate.com?subject=Provide Feedback">
+          <u>Provide Feedback</u>
+        </a>
+      </li>
+      <li>
+        <a ng-click="$root.logout()" class="text-muted">
+          <i class="fa fa-sign-out"></i> Logout
+        </a>
+      </li>
+    </ul>
+</div>

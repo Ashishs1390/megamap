@@ -1,0 +1,59 @@
+<div class="color-line">
+</div>
+<div id="logo" class="light-version">
+    <span>
+            {{SelectedProfile.properties.title}}
+        </span>
+</div>
+<nav role="navigation">
+    <minimaliza-menu></minimaliza-menu>
+    <div class="small-logo">
+        <span class="text-primary"> {{SelectedProfile.properties.title}}</span>
+    </div>
+    <div class="mobile-menu">
+        <button type="button" class="navbar-toggle mobile-menu-toggle" data-toggle="collapse" data-target="#mobile-collapse">
+
+            <i class="fa fa-chevron-down"></i>
+        </button>
+
+        <div class="collapse mobile-navbar" id="mobile-collapse">
+            <ul class="nav navbar-nav">
+
+                <li ng-click="open_note_creator()" class='green lighten-5'>
+                    <a>Post new note to: {{SelectedProfile.properties.title}}  <i class="fa fa-plus"></i></a>
+                </li>
+
+                <li ng-if='!user.signedIn'>
+                    <a ui-sref="login">
+                    <i class="pe-7s-user"></i>
+                </a>
+                </li>
+                <li ng-if='user.signedIn'>
+                    <a ng-click="$root.logout()">
+                    Logout: {{$root.Person.properties.title}}
+                    <i class="fa fa-sign-out"></i>
+                </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+     
+    <div class="navbar-right" ng-if='selected_profile'>
+        <ul class="nav navbar-nav no-borders">
+           
+           
+
+            <li ng-if='!user.signedIn'>
+                <a ui-sref="login">
+                    <i class="pe-7s-user"></i>
+                </a>
+            </li>
+            <li ng-if='user.signedIn'>
+                <a ng-click="$root.logout()">
+                    <h3>Logout: {{$root.Person.properties.title}}</h3>
+                    <i class="fa fa-sign-out"></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>

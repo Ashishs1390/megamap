@@ -1,0 +1,81 @@
+<div class='wrapper c-modal c-modal--report c-modal--report--profile' style="{{Getting ? 'height: 100%' : ''}}">
+    <!-- Fix a bug that report can't be 100% tall in css for different reports and causing white color background appear at bottom. -->
+    <style type="text/css">
+        body, html {
+            background-color: #eaebf9;
+        }
+    </style>
+
+    <div class='row u-print-hidden'>
+        <div class="col-sm-6 u-mb5">
+            <div ng-hide="EditMode" ng-click="gotoPrevState()" class="btn btn-default btn--back"> <span class="fa fa-chevron-left"></span> Go back </div>
+        </div>
+        <div class="col-sm-6 u-mb5 u-print-hidden">
+            <div class="c-profile-editBtns" contenteditable="false">
+                <!-- <label for="edit" class="btn {{EditMode ? 'btn-primary' : 'btn--back'}}">Edit Mode</label> -->
+                <input type='checkbox' id="edit" ng-change='ToggleDesignMode(EditMode)' ng-model='EditMode' class="u-access-hidden" />
+                <span class="btn btn--back" for="edit" ng-click="PrintPersonaReport()" title="Please adjust 'Scale' option to 60 in print settings and enable background graphic for best printing result. You can also save the file as PDF.">Print report</span>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div ng-if='Getting' class="c-abs-loading"><img src="/build/images/loading.gif"></div>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="c-report-profile" ng-if='!Getting'>
+                <div class="col-xs-12 col-sm-4 col-md-4" ng-include='"views/Reports/ProfileReport/left-column.html"'></div>
+
+                <div class="col-xs-12 col-sm-8 col-md-8">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-12 col-lg-9 c-media c-media--profileIconList">
+                            <div class="c-flex c-flex--6 c-flex--wrap c-flex--stretch c-flex--flex-start">
+                                <div class="c-flex__col notetype" ng-repeat="interaction in journey.interactions | orderBy: 'order'" ng-click="toggleInteraction(interaction);" ng-class = "{'selected':UnSelectedInteractions.indexOf(interaction.uuid) > -1}">
+                                    <div class="c-media-block">
+                                        <div class="c-media-block__left"><h2>{{usedInteractions[interaction.uuid] || 0}}</h2></div>
+                                        <div class="c-media-block__right"><img src="{{ InteractionIcons[$index] || '/build/images/icon--key-message.svg'}}" alt=""></div>
+                                    </div>
+                                    <p>{{interaction.title}}</p>
+                                </div>
+                                <div class="c-flex__col pain" ng-class="{'selected':!showPainLists}" ng-show="journey.painpoints > 0" ng-click="togglePainLists()">
+                                    <div class="c-media-block">
+                                        <div class="c-media-block__left"><h2>{{journey.painpoints}}</h2></div>
+                                        <div class="c-media-block__right"><img src="/build/images/icon--pain-points.svg" alt=""></div>
+                                    </div>
+                                    <p>Pain Points</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- BullsEye -->
+                        <div class="col-sm-12 col-lg-3 c-profile-bullseye">
+                            <img class="u-img-reponsive" src="https://ruptivefiles.blob.core.windows.net/images/bullseye.png" alt="bullseye-sample">
+                        </div>
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col-sm-12 col-lg-1"></div>
+
+                        <div class="col-sm-12 col-lg-10 c-report-profile__mainReportCol">
+                            <div class="row">
+                                <div class="col-sm-12 col-lg-8">
+                                    <div class="c-quote-container">
+                                        <p>{{journey.description}}</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- report grids -->
+                            <div ng-init="EditMode = false" class="c-flex c-flex--2 c-flex--wrap c-flex--stretch hpanel" ng-model="reportGrids">
+                                <div ng-repeat="stage in journey.stages | orderBy: 'order'" class="c-flex__col c-profile-card-col {{EditMode ? 'c-profile-card-col--editMode': ''}} ">
+                                    <profile-report-card index='$index' editing='EditMode' stage='stage' ></profile-report-card>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

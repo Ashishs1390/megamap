@@ -1,0 +1,20 @@
+<div class='node-card panel u-mb0'>
+    <div class="label pull-right {{ node.properties.color || ' u-color-normal ' }}" />
+    <div class="panel-body hpanel text-center u-mb0">
+        <div class="c-card-profile u-bg-cover clear" style="background-image: url( {{ node.properties.image_url || '/build/images/placeholder-1.png' }} )">
+        </div>
+        <h2 class="node-card__title">{{node.properties.title}}</h2>
+        <small>{{node.properties.description }}</small>
+    </div>
+    <div class="panel-footer">
+        <div class="row">
+            <div class="col-md-6 border-left">
+                <div class="contact-stat"><span>Author: </span> <strong>{{library.nodes[library.rels[library.outgoing.author[node.properties.uuid][0]].to_id].properties.title}}</strong></div>
+            </div>
+            <div class="col-md-6 border-left">
+                <div class="contact-stat"><span>Maturity Level: </span> <strong>{{node.properties.maturity_level}}</strong></div>
+            </div>
+
+        </div>
+    </div>
+</div>

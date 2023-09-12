@@ -1,0 +1,199 @@
+// Trevor quick fixes
+
+.user-profile--email {
+  word-wrap: break-word;
+  color: $gold1;
+}
+
+// Overriding UI Theme
+h1 {
+  color: $navyBlue1;
+}
+
+h2 {
+  color: $navyBlue1;
+}
+
+h4 {
+  color: $gold1;
+}
+
+strong {
+  color: $navyBlue1;
+}
+
+label {
+  color: $gold1;
+}
+
+small {
+  color: $grey1;
+}
+
+
+.panel-body  {
+
+  .form-inline {
+    color: $navyBlue1;
+  }
+
+  .form-group {
+    color: $navyBlue1;
+  }
+
+}
+
+.panel-footer {
+
+  .contact-stat {
+    color: $navyBlue1;
+
+    span {
+      color: $gold1;
+    }
+
+  }
+
+}
+
+
+#header {
+
+  .fa {
+    color: $gold1;
+  }
+
+}
+
+.dropdown-menu>li>a {
+  color: $navyBlue1;
+}
+
+.ladda-button {
+  margin-bottom: 5px;
+}
+
+.nav>li>a:focus, .nav>li>a:hover {
+  background-color: #f1f3f6;
+}
+
+.border--gold {
+  border: 1px solid $gold1;
+  border-radius: 4px;
+}
+
+.gold {
+  background-color: $gold1;
+
+  &--with-margin {
+    margin: 10px 15px;
+  }
+
+}
+
+.btn--back {
+  background-color: transparent;
+  border: none;
+  color: $navyBlue1;
+  text-transform: uppercase;
+  font-weight: 600;
+  text-decoration: underline;
+
+  &:hover {
+    text-decoration: underline;
+    background-color: transparent;
+    color: $gold1;
+  }
+
+  &:active {
+    background-color: #fff;
+  }
+
+}
+
+.is-blue {
+  color: $navyBlue1;
+}
+
+
+// Disabled since they are not used anywhere right now
+// .flex-container {
+//   display: -ms-flexbox;
+//     display: flex;
+//     -ms-flex-wrap: wrap;
+//       flex-wrap: wrap;
+
+//   .flex--1 {
+//     -ms-flex: 0 0 8.333333%;
+//         flex: 0 0 8.333333%;
+//     max-width: 8.333333%;
+//     padding: 0px 15px;
+//   }
+//   .flex--2 {
+//     -ms-flex: 0 0 16.666667%;
+//         flex: 0 0 16.666667%;
+//     max-width: 16.666667%;
+//     padding: 0px 15px;
+//   }
+//   .flex--3 {
+//     -ms-flex: 0 0 25%;
+//         flex: 0 0 25%;
+//     max-width: 25%;
+//     padding: 0px 15px;
+//   }
+//   .flex--4 {
+//     -ms-flex: 0 0 33.333333%;
+//         flex: 0 0 33.333333%;
+//     max-width: 33.333333%;
+//     padding: 0px 15px;
+//   }
+//   .flex--5 {
+//     -ms-flex: 0 0 41.666667%;
+//         flex: 0 0 41.666667%;
+//     max-width: 41.666667%;
+//     padding: 0px 15px;
+//   }
+//   .flex--6 {
+//     -ms-flex: 0 0 50%;
+//         flex: 0 0 50%;
+//     max-width: 50%;
+//     padding: 0px 15px;
+//   }
+//   .flex--7 {
+//     -ms-flex: 0 0 58.333333%;
+//         flex: 0 0 58.333333%;
+//     max-width: 58.333333%;
+//     padding: 0px 15px;
+//   }
+//   .flex--8 {
+//     -ms-flex: 0 0 66.666667%;
+//         flex: 0 0 66.666667%;
+//     max-width: 66.666667%;
+//     padding: 0px 15px;
+//   }
+//   .flex--9 {
+//     -ms-flex: 0 0 75%;
+//         flex: 0 0 75%;
+//     max-width: 75%;
+//     padding: 0px 15px;
+//   }
+//   .flex--10 {
+//     -ms-flex: 0 0 83.333333%;
+//         flex: 0 0 83.333333%;
+//     max-width: 83.333333%;
+//     padding: 0px 15px;
+//   }
+//   .flex--11 {
+//     -ms-flex: 0 0 91.666667%;
+//         flex: 0 0 91.666667%;
+//     max-width: 91.666667%;
+//     padding: 0px 15px;
+//   }
+//   .flex--12 {
+//     -ms-flex: 0 0 100%;
+//         flex: 0 0 100%;
+//     max-width: 100%;
+//     padding: 0px 15px;
+//   }
+
+// }

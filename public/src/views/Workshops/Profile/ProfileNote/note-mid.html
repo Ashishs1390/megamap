@@ -1,0 +1,23 @@
+<div class="panel-body posted--copy {{profileSubGraph.nodes[profileSubGraph.rels[profileSubGraph.outgoing.note_interaction[note.properties.uuid][0]].to_id].properties.color}} lighten-5 ">
+   
+    <h3>{{note.properties.description}}</h3>
+    <div ng-if='note.properties.external_url.length' class="external-url-icon">
+        <a href="{{note.properties.external_url}}" target="_blank" title="Go to external link"> <i class="fa fa-external-link"></i> </a>
+    </div>
+
+    <!-- Voting buttons -->
+    <div class="posted--votes">
+        <div class='posted--votes__up {{CrossReference(profileSubGraph.incoming.vote[note.properties.uuid],profileSubGraph.outgoing.vote[$root.Person.properties.uuid]) ? "green lighten-4" : ""}} ? "green lighten-4":""}}'
+            ng-click='vote("vote")' title="importance">
+            <p class="posted--votes__icon"> <i class="fa fa-chevron-up"></i> </p>
+            <p class="posted--votes__counter">{{profileSubGraph.incoming.vote[note.properties.uuid].length ||0}}</p>
+        </div>
+        <div class='posted--votes__down {{CrossReference(profileSubGraph.incoming.pain[note.properties.uuid],profileSubGraph.outgoing.pain[$root.Person.properties.uuid]) ? "red lighten-4" : ""}}'
+            ng-click='vote("pain")' title="pain point">
+            <p class="posted--votes__icon"> <i class="fa fa-chevron-down"></i> </p>
+            <p class="posted--votes__counter">
+                {{profileSubGraph.incoming.pain[note.properties.uuid].length || 0}}
+            </p>
+        </div>
+    </div>
+</div>

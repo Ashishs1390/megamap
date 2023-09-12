@@ -1,0 +1,430 @@
+div.modal-header {
+  background: #fff;
+  padding: 0;
+  border-bottom: 0;
+
+  &.row {
+    margin: 0;
+    padding-bottom: 15px;
+  }
+
+  div h3 {
+    text-align: left;
+    background: #fff;
+    margin: 0 0 20px 0;
+    padding: 15px;
+    border-bottom: 1px solid #ccc;
+  }
+}
+
+
+.note-creator {
+
+  &--flex {
+    display: flex;
+    flex-flow: row wrap;
+
+    @include breakpoint(small only) {
+      flex-flow: column;
+    }
+
+    * {
+      text-align: left;
+    }
+
+    > div {
+      flex: 1 0 50%;
+      padding: 0 25px;
+
+      @include breakpoint(small only) {
+        flex-flow: column;
+        flex: 1 0 auto;
+        margin-top: 15px;
+      }
+    }
+
+    > div.interaction {
+      padding: 0!important;
+    }
+  }
+
+  .note-creator--flex {
+    overflow:hidden;
+  }
+
+  & .interaction-group {
+    width: 50%;
+  }
+
+  .note-creator--step-option {
+    white-space: nowrap;
+    height: 25px;
+    border: 1px solid #fff;
+    margin-bottom: 5px;
+
+    & .grey {
+      background: #555!important;
+      border-color: #555!important;
+      &.lighten-5 {
+        background: #fff!important;
+      }
+    }
+
+    & span {
+      user-select: none;
+    }
+
+    &:hover {
+      border: 1px dashed #eee;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    div {
+      width: 25px;
+      height: 25px;
+      border-radius: 4px;
+      display: inline-block;
+      float: left;
+      border: 1px solid #bbb;
+    }
+
+    span {
+      height: 25px;
+      display: inline-block;
+      padding-top: 2px;
+      padding-left: 5px;
+      font-size: 14px;
+    }
+  }
+}
+
+.note-creator--singleSelect{
+  border-radius: 14px !important;
+}
+
+.modal-body .row .p-m {
+  border-radius: 3px;
+  padding-top: 0px !important;
+
+  > .col-xs-12 {
+    margin: 0;
+    padding: 0 0 0 0;
+    text-align: right;
+    float: none;
+
+    .label {
+      font-size: 12px;
+      font-weight: 400;
+      padding: 5px 10px;
+      margin-left: 5px;
+      border-radius: 3px;
+      margin-bottom: 0;
+    }
+  }
+
+  .charcount {
+    text-align: right;
+    padding: 5px 5px;
+    color: #000;
+    opacity: .3;
+    font-size: 14px;
+  }
+
+  textarea {
+    padding: 9px 9px 9px 10px;
+    font-size: 16px;
+    border: 1px solid rgba(0, 0, 0, 0.36);
+    border-radius: 3px;
+    background-color: #fff !important;
+    margin-bottom: 10px;
+    min-height: 150px;
+  }
+
+  // accordion drawing box thing
+  div[role="tablist"]{
+    background: none !important;
+
+    canvas {
+      background: $bg-grey;
+    }
+
+    .panel {
+      background: none !important;
+      border: 0;
+
+      .panel-heading {
+        background: none;
+        border: 0;
+        display: block;
+        width: auto;
+        padding: 0px;
+
+        .panel-title {
+
+          a {
+            border: 1px dashed rgba(0,0,0,.2);
+            display: block;
+            border-radius: 3px;
+
+            span {
+              color: rgba(0,0,0,.5);
+            }
+          }
+
+          a:active,
+          a:focus,
+          a:hover {
+            outline: none;
+            border: 0;
+            border: 1px dashed rgba(0,0,0,.5);
+            color: rgba(0,0,0,.7);
+            outline: none;
+
+            span {
+              color: rgba(0,0,0,.7);
+            }
+          }
+
+          span {
+            font-size: 14px;
+            text-transform: capitalize;
+            padding: 0;
+            opacity: .7;
+            font-weight: 600;
+            color: rgba(0,0,0,.5);
+
+            padding: 10px;
+
+            display: block;
+
+            &:before {
+              content: "+";
+              font-size: 24px;
+              display: inline-block;
+              margin: 0;
+              padding: 0;
+              height: 0;
+              line-height: 0;
+              padding-top: 7px;
+              float: left;
+              margin-right: 5px;
+              font-weight: 400;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.modal-body .row .p-m div[role=tablist] .white-border.signature {
+  border: 0 !important;
+  background-color: #fff !important;
+  margin-bottom: 15px;
+
+  @include breakpoint(small only) {
+    max-height: 200px !important;
+
+  }
+}
+
+body .text-right.m-t-xs {
+
+  .ladda-button.btn {
+    margin-bottom: 0;
+    margin-left: 5px;
+    border: 1px solid #a5bda5;
+  }
+
+  .ladda-button[data-style=expand-left] .ladda-spinner {
+    position: relative;
+    width: 20px;
+    height: 20px;
+    opacity: 1;
+    display: block;
+    float: left;
+    margin-right: 5px;
+    top: 9px;
+    left: 5px;
+  }
+
+  .ladda-button[data-style=expand-left][data-loading] {
+    padding-left: 16px;
+  }
+}
+
+
+
+.comments {
+
+  &--text {
+    font-size: 13px;
+  }
+
+  .panel {
+    border-top: 0;
+    margin-top: 0;
+  }
+
+  .panel-default {
+    margin-top: 0 !important;
+  }
+
+  .panel-heading {
+    padding: 15px 20px;
+  }
+
+  .panel-body {
+    padding: 20px;
+    color: $color-normal;
+    background-color: $bg-grey;
+    border-top: 0 !important;
+
+    textarea {
+      font-size: 12px;
+      padding: 4px;
+      border-radius: 2px;
+      min-height: 100px;
+      margin-bottom: 5px;
+    }
+
+    button {
+      float: right;
+    }
+
+  }
+
+  .input-group {
+    width: 100%;
+  }
+
+  .social-content {
+    color: $color-normal;
+  }
+}
+
+.social-content {
+  & .voc {
+    color:#62cb31!important;
+  }
+}
+
+
+.tabs {
+  display: flex;
+  align-items: stretch;
+
+  @include breakpoint(small only) {
+    flex-flow: column;
+    margin: 0 !important;
+  }
+
+  &--tab {
+    flex: 1 1 auto;
+    position: relative;
+    padding: 15px;
+
+    border: 1px solid #ddd;
+    border-bottom: 0;
+    background: #eee;
+    margin-right: 3px;
+
+    @include breakpoint(small only) {
+      margin-bottom: 5px;
+      border: 1px solid #ddd;
+    }
+
+    &__title {
+      font-size: 18px;
+      color: $color-normal;
+    }
+
+    &.lighten-5 {
+      background: #fff;
+      border: 1px solid $border-grey;
+      border-bottom: 0;
+      font-weight: 700;
+
+      @include breakpoint(small only) {
+        border-bottom: 1px solid #aaa;
+      }
+    }
+
+    &:hover {
+      &.lighten-2 {
+        cursor: pointer;
+        border: 1px solid $border-grey-dark;
+        border-bottom: 0;
+      }
+    }
+
+  }
+}
+
+@include breakpoint(small only) {
+  .mob-button {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+}
+
+.modal-footer {
+  margin: 0;
+  background: #fff;
+  border: 0;
+  padding: 0 30px 15px;
+}
+
+.modal-body {
+  padding: 20px 30px 0;
+}
+
+
+.filters {
+  display: block;
+  margin: 15px 0;
+  width: auto;
+
+  label {
+    font-size: 14px;
+    flex: 1 0 auto;
+    margin-right: 3px;
+    color: #aaa;
+    font-weight: 500;
+    position: relative;
+    min-width: 180px;
+    display: block;
+
+    span {
+      display: block;
+      font-size: 12px;
+      font-style: italic;
+    }
+  }
+
+  &--item {
+    flex: 1 0 auto;
+    font-size: 11px;
+    font-weight: $font-weight__bold;
+    padding: 3px 10px;
+    margin: 0 1px;
+    color: #fff;
+    background: $bg-grey;
+    &:hover {
+      color: #fff;
+    }
+
+    @include breakpoint(small only) {
+      flex: 1 1 auto;
+      margin: 3px;
+    }
+
+    &.btn-primary {
+      background: #208824;
+      color: #fff;
+      border: 1px solid #276d1d;
+    }
+  }
+
+}

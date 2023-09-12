@@ -1,0 +1,36 @@
+<div class="color-line"></div>
+
+<div class="self-service-container">
+  <div ng-hide="selfService">
+    <h1>Self Service</h1>
+    <h3>
+      This section is intended for self-registration of users who are not already joined to an organization account.
+    </h3>
+    <br>
+    <hr/>
+    <h3>Getting Started</h3>
+    <p>
+      To self-register, you will need to be authenticated with your organization's Microsoft account. Once succesfully authenticated, you will be registered in our system and can proceed to the login page.
+    </p>
+    <p>
+      Clicking the button below will redirect you to Microsoft then back to Ruptive. Upon account approval, you will receive the role of a "Power User" by default (For "Admin" or "Tenant" level access, you would need to email our helpdesk: <a href="mailto:helpdesk@ruptive.cx">helpdesk@ruptive.cx</a>)
+    </p>
+    <div class="self-auth">
+      <p><strong>Click here to begin:</strong></p>
+      <a class="btn btn-azure" ng-click="authenticateSelfService()">
+        <i class="fa fa-windows" aria-hidden="true"></i>&nbsp;&nbsp;Authenticate with your Organization AD
+      </a>
+    </div>
+  </div>
+
+  <div ng-show="selfService">
+    <h1>Account Activated!</h1>
+    <h3>
+      Click <u><a class="cursor" ng-click="navigateToLogin()">here</a></u> to navigate to the login page
+    </h3>
+    <br>
+    <p>
+      Note: You will need to click on "sso options" and login with Azure
+    </p>
+  </div>
+</div>

@@ -1,0 +1,115 @@
+<table class="table" ng-controller='multiSubscriberCtrl'>
+    <thead
+        class='{{((!subgraph.node_label_index || !subgraph.node_label_index[label] || subgraph.node_label_index[label].length == 0)) ? "red" : "green"}} lighten-3'>
+        <tr>
+            <td colspan="2">
+                {{label}}
+            </td>
+        </tr>
+    </thead>
+    <tbody ui-sortable="sortableOptions" ui-sortable-update="$parent.$parent.getOrders(subgraph.node_label_index[label], label)" ng-model='subgraph.node_label_index[label]' class='green lighten-5'>
+        <tr ng-repeat='item in subgraph.node_label_index[label] track by $index'>
+            <td colspan="2" class='font-bold'>{{subgraph.nodes[item].properties.title}}
+                <i ng-click="RemoveFromLocal(subgraph.nodes[item])" class='fa fa-minus pull-right'></i></td>
+        </tr>
+    </tbody>
+    <tbody>
+        <tr class='grey lighten-3'>
+          <td ng-show="label !='Person'">
+            <input placeholder="Search here" autocomplete="off" ng-model="searchComponent" ng-keyup="fetchComponent()" class="form-control">
+          </td>
+          <!-- <td>
+              <input placeholder="sample" ng-model="sample" ng-keyup="fetchComponent()" >
+          </td> -->
+           <td ng-show="label =='Person'">
+                <input placeholder="Search here for attendee" autocomplete="off" ng-model="obj.searchAttendee" ng-keyup="fetchdata()"  class="form-control">
+            </td>
+          <td width="120px" ng-hide ="type == 'facilitator'"> 
+            <button class="btn btn-default btn-block" ng-click="PopCreateModal(label , searchComponent)">Create New</button>
+          </td>
+       
+        </tr>
+        <tr ng-if='Getting'>
+            <td colspan="2">Loading ...</td>
+        </tr>
+        <tr ng-if='!Getting && !isMostUsedVisible && (!subgraph.node_label_index[label] || subgraph.node_label_index[label].indexOf(item)==-1)' ng-model='pool.node_label_index[label]' ng-repeat="item in removedComponents.node_label_index[label]"
+            ng-show="!subgraph.nodes[item]"
+            title="just removed"
+            class='green lighten-5' ng-click="AddToLocal(removedComponents.nodes[item])">
+            <td colspan="2">{{removedComponents.nodes[item].properties.title}} <i class='fa fa-plus pull-right'></i></td>
+        </tr>
+        <tr ng-if='!Getting && !isMostUsedVisible && (!subgraph.node_label_index[label] || subgraph.node_label_index[label].indexOf(item)==-1)' ui-sortable ng-model='pool.node_label_index[label]' ng-repeat="item in componentNew.node_label_index[label]"
+            ng-show="!subgraph.nodes[item]"
+            class='grey lighten-5' ng-click="AddToLocal(componentNew.nodes[item])">
+        
+            <td colspan="2">{{componentNew.nodes[item].properties.title}} <i class='fa fa-plus pull-right'></i></td>
+        </tr>
+            <!-- ng-show="!search || pool.nodes[item].properties.description.toLowerCase().indexOf(search.toLowerCase()) >= 0 && !subgraph.nodes[item] || pool.nodes[item].properties.title.toLowerCase().indexOf(search.toLowerCase()) >= 0 && !subgraph.nodes[item]" -->
+        
+        <tr ng-if='!Getting && isMostUsedVisible' ui-sortable ng-model='mostUsed.node_label_index[label]' ng-repeat="item in getFilteredComponents(label) | limitTo : 5"
+            class='grey lighten-5' ng-click="AddToLocal(mostUsed.nodes[item])">
+            <td title="You have used this {{mostUsed.nodes[item].count}} times" colspan="2">{{mostUsed.nodes[item].properties.title}} <span style="font-weight: bold;padding-left: 50px"></span> <i class='fa fa-plus pull-right'></i></td>
+        </tr>
+        <tr ng-if="label =='Person'" ui-sortable ng-model='subPersonPool.node_label_index[label]' ng-repeat="item in subPersonPool.node_label_index[label]"
+            ng-show="!search || subPersonPool.nodes[item].properties.description.toLowerCase().indexOf(search.toLowerCase()) >= 0 && !subgraph.nodes[item] || subPersonPool.nodes[item].properties.title.toLowerCase().indexOf(search.toLowerCase()) >= 0 && !subgraph.nodes[item]"
+            class='grey lighten-5' ng-click="AddToLocal(subPersonPool.nodes[item])">
+            <td title="You have used this {{subPersonPool.nodes[item].count}} times" colspan="2">{{subPersonPool.nodes[item].properties.title}} <span style="font-weight: bold;padding-left: 50px"></span> <i class='fa fa-plus pull-right'></i></td>
+        </tr>
+        <tr ng-if="label =='Person' && !mostAddedVisible" ui-sortable ng-model='attendeePool.node_label_index[label]' ng-repeat="item in attendeePool.node_label_index[label]"
+            ng-show="!search || attendeePool.nodes[item].properties.description.toLowerCase().indexOf(search.toLowerCase()) >= 0 && !subgraph.nodes[item] || attendeePool.nodes[item].properties.title.toLowerCase().indexOf(search.toLowerCase()) >= 0 && !subgraph.nodes[item]"
+            class='grey lighten-5' ng-click="AddToLocal(attendeePool.nodes[item])">
+            <td title="You have used this {{attendeePool.nodes[item].count}} times" colspan="2">{{attendeePool.nodes[item].properties.title}} <span style="font-weight: bold;padding-left: 50px"></span> <i class='fa fa-plus pull-right'></i></td>
+        </tr> 
+        <tr ng-if="label =='Person' && facilitatorMostedUsed" ui-sortable ng-model='mostAddedAttendee.node_label_index[label]' ng-repeat="item in mostAddedAttendee.node_label_index[label] track by $index"
+            ng-show="!search || mostAddedAttendee.nodes[item].properties.description.toLowerCase().indexOf(search.toLowerCase()) >= 0 && !subgraph.nodes[item] || mostAddedAttendee.nodes[item].properties.title.toLowerCase().indexOf(search.toLowerCase()) >= 0 && !subgraph.nodes[item]"
+            class='grey lighten-5' ng-click="AddToLocal(mostAddedAttendee.nodes[item])">
+            <td title="You have used this {{mostAddedAttendee.nodes[item].count}} times" colspan="2">{{mostAddedAttendee.nodes[item].properties.title}} <span style="font-weight: bold;padding-left: 50px"></span> <i class='fa fa-plus pull-right'></i></td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <div class="row pagination-container" ng-if="label !='Person'">
+                    <div class="most-used col-xs-4" >
+                        <span ng-class="{activePage : isMostUsedVisible}" ng-click="showMostUsed()">My Top Used</span>  | 
+                    </div>
+                    <div class="pagination col-xs-8" id="{{'pagination'+label}}"  >
+                        <p ng-class="{activePage : !isMostUsedVisible}" ng-click="isMostUsedVisible && showAllComponents()">Show search result</p>
+                    </div>
+                    <!-- <div class="col-xs-8 pagination" id="{{'pagination'+label}}" ng-class="{activePage : !isMostUsedVisible}" ng-click="isMostUsedVisible"> 
+                        <uib-pagination
+                            total-items="allComponents.node_label_index[label].length"
+                            ng-model="paginationAll.currentPage"
+                            max-size="paginationAll.maxSize"
+                            ng-change="changePage()"
+                            previous-text="&lsaquo;" 
+                            next-text="&rsaquo;"
+                            >
+                        </uib-pagination>
+                    </div> -->
+                </div>
+                <div ng-if="label =='Person'" class="pagination-container attendee-paginationcontainer">
+                    <div class="most-used most-used-attendee" ng-class="{activePage : mostAddedVisible}" ng-if="facilitatorMostedUsedToggle">
+                        <!-- ng-click="showMostedUsed()" -->
+                        <!-- <span  title="top used admins and tenants only">My Top Used</span>  |  -->
+                    </div>
+                            <!-- ng-change="changePageAttendee()" -->
+
+                    <!-- <div class="pagination attendee-pagination" id="paginationPerson" ng-class="{activePage : !mostAddedVisible}" ng-click="mostAddedVisible && showAllComponentAttendee()">  
+                        <uib-pagination
+                            total-items="pagination.attendeeSize"
+                            ng-model="pagination.currentPageAttendee"
+                            max-size="pagination.maxSizeAttendee"
+                            boundary-links="true"
+                            previous-text="&lsaquo;" 
+                            next-text="&rsaquo;"
+                            first-text="&laquo;" 
+                            last-text="&raquo;"
+                            ng-disabled="isReadonly"
+                            >
+                        </uib-pagination>
+                    </div> -->
+                </div>
+            </td>
+        </tr>
+
+    </tbody>
+</table>

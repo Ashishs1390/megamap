@@ -1,0 +1,56 @@
+<uib-accordion close-others="oneAtATime" class="comments">
+        
+    <!-- Drawing -->
+    <uib-accordion-group ng-if="note.properties.image_url">
+        <uib-accordion-heading>
+            <div class='row'>
+                <div class='col-xs-10'>
+                    Drawing
+                    <i class="fa fa-chevron-down"></i>
+                </div>
+            </div>
+        </uib-accordion-heading>
+        <div class="row">
+            <div class="col-xs-10">
+                <img ng-src='{{::note.properties.image_url}}' style='width:100%;' />
+            </div>
+        </div>
+    </uib-accordion-group>
+    
+    <uib-accordion-group>
+        <uib-accordion-heading>
+            <div class='row'>
+                <div class='col-xs-7 comments--text'>
+                    Comments ({{profileSubGraph.incoming.comment[note.properties.uuid].length || 0}})
+                    <i class="fa fa-chevron-down"></i>
+                </div>
+            </div>
+        </uib-accordion-heading>
+        <div class="row">
+            <div class="social-talk col-xs-12" ng-repeat='comment_rel in profileSubGraph.incoming.comment[note.properties.uuid]'>
+                <div class="media social-profile clearfix">
+                    <a class="pull-left"><img ng-src="{{profileSubGraph.nodes[profileSubGraph.rels[comment_rel].from_id].properties.image_url}}" alt="profile-picture"/></a>
+                    <div class="media-body">
+                        <span>{{profileSubGraph.nodes[profileSubGraph.rels[comment_rel].from_id].properties.title}}</span>
+                        <small class="text-muted">{{profileSubGraph.rels[comment_rel].properties.created_at | date}}</small>
+            
+                        <div class="social-content">
+                            {{profileSubGraph.rels[comment_rel].properties.comment}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="input-group comments--form">
+            <textarea ng-model='$parent.$parent.$parent.$parent.reply' placeholder="Your comment..." type="text" class="form-control" />
+            <span class="checkbox u-float-left">
+            <label><input type="checkbox" value="" ng-model="$parent.$parent.$parent.$parent.voice_of_customer"><b>Add voice of customer label</b></label>
+            </span>
+            <button ng-click="$parent.$parent.post_reply();" 
+                    class="btn btn-primary btn-sm"
+                    data-style="expand-left">
+                    <span class="ladda-label">Reply!</span>
+            </button>
+        </div>
+    </uib-accordion-group>
+</uib-accordion>

@@ -1,0 +1,39 @@
+<div class="post-container u-bg-white clearfix" ng-if="!Getting">
+    <div class="hpanel">
+        <div class="filters clearfix">
+            <div class='col-xs-12'>
+                Unselect interactions:
+                <a class="filters--item btn {{interaction.properties.color ? interaction.properties.color : 'orange'}} {{ UnSelectedInteractions.indexOf(interaction.properties.uuid) >= 0 ? 'lighten-3' : ''}} "
+                    ng-click="ToggleVisibleInteraction(interaction.properties);" ng-repeat='interaction in ProfileInteractions'>{{interaction.properties.title | titleCase}}
+                </a>
+                || Votes Allowed Per Attribute Per Type Per Author: {{SelectedProfile.properties.vote_limit_per_attribute || 3}}
+            </div>
+        </div>
+
+        <div class="col-xs-12">
+            <div class="form-inline">
+                Sorted by:
+                <select class="form-control" ng-model="sortValue" ng-change="sortBy(sortValue)" ng-options='option as option.display for option in SortOrders'>
+                </select>
+            </div>
+        </div>
+
+
+
+        <div class="c-flex c-flex--4 c-flex--wrap c-flex--stretch c-workshop-cards">
+            <div ng-hide="InteractionFromNote( profileSubGraph.nodes[profileSubGraph.rels[relationship].from_id] )" animate-panel effect="bounceInRight" child="element" ng-repeat="relationship in profileSubGraph.incoming.note_attribute[SelectedAttribute.properties.uuid]"
+            class="c-flex__col post-item">
+
+                <div class="c-note-icons">
+                    <i class="fa fa-gear u-color-white" ng-if='$root.Person.role == "admin" || $root.Person.role == "tenant" || profileSubGraph.nodes[profileSubGraph.rels[profileSubGraph.outgoing.note_author[profileSubGraph.nodes[profileSubGraph.rels[relationship].from_id].properties.uuid][0]].to_id].properties.uuid == $root.Person.properties.uuid'
+                    ng-click='open_edit_note(profileSubGraph.nodes[profileSubGraph.rels[relationship].from_id].properties.uuid)'> </i>
+                </div>
+
+                <span class='pull-right' ng-if='profileSubGraph.nodes[profileSubGraph.rels[relationship].from_id].properties[sorted_property]'>{{sorted_property}} : {{profileSubGraph.nodes[profileSubGraph.rels[relationship].from_id].properties[sorted_property]}}</span>
+                <profile-note-card class="hpanel element" profile-sub-graph='profileSubGraph' note="profileSubGraph.nodes   [profileSubGraph.rels[relationship].from_id]"></profile-note-card>
+            </div>
+            <div class="c-flex__col"></div>
+            <div class="c-flex__col"></div>
+        </div>
+    </div>
+</div>

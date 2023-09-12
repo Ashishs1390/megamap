@@ -1,0 +1,63 @@
+<div class='grey lighten-3' ng-controller='profileSummaryCtrl'>
+    <!--<div id="header" ng-include="'views/ProfileWorkshop/header.html'"></div>
+    <aside id="menu" ng-include="'views/ProfileWorkshop/navigation.html'"></aside>-->
+    <div class='hpanel'>
+        <div class='panel-heading'>
+            <div class='panel-body grey lighten-4'>
+                <h2> {{focusedProfile.properties.title}}</h2>
+
+            </div>
+        </div>
+    </div>
+    <div class="content row ">
+        <div class='col-xs-12 grey-border white lighten-5' style='border:1px solid; margin-bottom:25px' ng-repeat='attribute in focusedProfile.label_index.attribute'>
+            <div class='panel-heading'>
+                <div class='panel-body'>
+                    <h2>{{focusedProfile.nodes[attribute].properties.title | titleCase}} ({{focusedProfile.nodes[attribute].label_index.note.length
+                        || 0}})</h2>
+                </div>
+            </div>
+
+            <div ng-repeat='(key, val) in focusedProfile.nodes[attribute].interactions'  class='panel-body col-xs-4'>
+                <div class='panel-heading {{focusedProfile.nodes[key].properties.color}} lighten-5'>
+                    <h3>{{focusedProfile.nodes[key].properties.title}}</h3>
+                </div>
+                <div class='panel-body table-responsive'>
+                    <table cellpadding="0" cellspacing="0" class="table">
+                        <thead class='green lighten-5'>
+                            <tr>
+                                <th>Top Rated</th>
+                                <th></th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat='note in val.rating | limitTo: 3'>
+                                <td>{{focusedProfile.nodes[note].properties.title}}</td>
+                                <td>{{focusedProfile.nodes[note].rating || 0}}</td>
+
+                            </tr>
+                        </tbody>
+                        <thead class='red lighten-5'>
+                            <tr>
+                                <th>Painful</th>
+                                <th></th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat='note in val.pain_rating | limitTo: 1'>
+                                <td>{{focusedProfile.nodes[note].properties.title}}</td>
+                                <td>{{focusedProfile.nodes[note].pain_rating || 0}}</td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+</div>

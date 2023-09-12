@@ -1,0 +1,42 @@
+ <div class="hpanel Info">
+    <div class="panel-body">
+
+        <div class="row">
+            <div class="col-sm-12 col-lg-6">
+                <h2 class="c-section-title">My Profile Maps</h2>
+            </div>
+            <div class="col-sm-12 col-lg-6 u-mt10">
+                <div class="row">
+                    <div class="col-xs-8">
+                        <input type="" value="" id="" class="form-control" ng-model="search" placeholder="search">
+                    </div>
+                    <div class="col-xs-4">
+                        <button class="btn btn-primary btn-block" ng-if='PopCreateModal' ng-click="PopCreateModal('Profile');">Create</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div ng-if='Getting' class="c-abs-loading"><img src="../../../../build/images/loading.gif" /></div>
+<div class="c-flex c-flex--3 c-flex--stretch c-flex--wrap c-dashboard-cards">
+    <div class="c-flex__col" ng-repeat='item in library.node_label_index.Profile' ng-if="library.nodes[item].properties.title.toLowerCase().indexOf(search.toLowerCase()) >= 0 || library.nodes[item].properties.description.toLowerCase().indexOf(search.toLowerCase()) >= 0 ">
+        <div class='library_card_wrapper'>
+            <profile-card-large node='library.nodes[item]' library='library'></profile-card-large>
+            <div class='u-table library-card-groupBtns u-bg-grey'>
+                <a ui-sref='workshop.profile({id:item})' class="u-table-cell">View Profile</a>
+                <a ng-click='PopOverviewModal(item)' ng-if='PopOverviewModal' class="u-table-cell">Overview</a>
+                <a ng-click='PopEditModal(item)' ng-if='PopEditModal' class=" u-table-cell ">Edit</a>
+                <a ng-click="PopConnectModal(item)" ng-if='PopConnectModal' class="u-table-cell">Components</a>
+            </div>
+            <div class='u-table library-card-groupBtns u-bg-grey'>
+                <a ng-click="PopAttendeeModal(item)" ng-if='PopAttendeeModal' class="u-table-cell">Attendees</a>
+                <a ng-click="PopQuickReportModal(item)" ng-if='PopQuickReportModal' class="u-table-cell">Quick Review</a>
+                <a ng-click="ViewReport(item)" ng-if='ViewReport' class="u-table-cell">Report</a>
+            </div>
+        </div>
+    </div>
+    <!-- to fix flex alignement issue -->
+    <div class="c-flex__col"></div>
+    <div class="c-flex__col"></div>
+</div>

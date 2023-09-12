@@ -1,0 +1,28 @@
+<div ng-controller='personaProfileCtrl'>
+    <div id="header" ng-include="'views/Workshops/Profile/header.html'"></div>
+    <aside id="menu" ng-include="'views/Workshops/Profile/navigation.html'"></aside>
+    <div id="wrapper" class="profile-details">
+        <div class="content">
+            
+            <div ng-if='Getting' class="c-abs-loading"><img src="../../../../build/images/loading.gif"></div>
+            
+            <div class='tabs'>
+                <div ng-repeat='attribute in ProfileAttributes' ng-click='$parent.SetSelectedAttribute(attribute)' class='tabs--tab  {{(SelectedAttribute.properties.uuid == attribute.properties.uuid) ? "lighten-5":"lighten-2"}}'>
+                    
+                    <div class="c-flex">
+                        <div class='c-flex__col tabs--tab__title'>{{attribute.properties.title | titleCase}} : ({{profileSubGraph.incoming.note_attribute[attribute.properties.uuid].length || 0}}) 
+                        </div>                    
+                        
+                        <div class="c-flex__col">
+                            <div class='btn btn-primary btn-sm' ng-if='SelectedAttribute.properties.uuid == attribute.properties.uuid' ng-click="open_note_creator();">
+                                <i class="fa fa-plus "></i> Add note
+                            </div>
+                        </div>
+                    </div>
+                        
+                </div>
+            </div>
+            <persona-profile></persona-profile>
+        </div>
+    </div>
+</div>

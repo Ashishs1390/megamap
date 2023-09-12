@@ -1,0 +1,42 @@
+<div class="inmodal">
+  <div class="modal-header">
+    <div class="note-creator">
+      <h3 class="row">
+        <div class="col-sm-12">
+          {{ template.name }} overview
+        </div>
+      </h3>
+    </div>
+  </div>
+
+  <div class="modal-body" ng-click="cancel()" >
+    <div>
+      <h4>Stages</h4>
+    </div>
+    <div class="c-flex c-flex--2 c-flex--stretch c-flex--wrap c-subscriber-grids">
+      <small-card class="c-flex__col" ng-repeat='stage in template.stages' subgraph="subgraph" node="{ properties: stage }" hide="'js-hide'"></small-card>
+    </div>
+
+    <div>
+      <h4>Personas</h4>
+    </div>
+    <div class="c-flex c-flex--2 c-flex--stretch c-flex--wrap c-subscriber-grids">
+      <small-card class="c-flex__col" ng-repeat='persona in template.personas' subgraph="subgraph" node="{ properties: persona }" hide="'js-hide'"></small-card>
+    </div>
+
+    <div>
+      <h4>Note Types</h4>
+    </div>
+    <div class="c-flex c-flex--2 c-flex--stretch c-flex--wrap c-subscriber-grids">
+      <small-card class="c-flex__col" ng-repeat='noteType in template.noteTypes' subgraph="subgraph" node="{ properties: noteType }" hide="'js-hide'"></small-card>
+    </div>
+  </div>
+  <br/>
+
+  <div class="modal-footer row">
+    <button class="btn btn-secondary" ng-click="cancel()">
+      Cancel
+    </button>
+  </div>
+  <br/>
+</div>

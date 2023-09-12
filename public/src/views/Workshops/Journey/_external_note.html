@@ -1,0 +1,165 @@
+  <div class="hpanel" id="note_{{note.uuid}}" ng-init="initializeLimits(note, stage.uuid)"
+       ng-class="{
+         'mergeMode': mergeMode && mergeObject.primary !== note.uuid && mergeObject.others.indexOf(note.uuid) < 0
+       }"
+       ng-click="mergeMode && mergeObject.primary !== note.uuid ? select_for_merge(note) : ''">
+
+    <div class="panel-heading {{note.rels.interaction.color || 'orange'}} lighten-2 note-header">
+      <div class="media social-profile clearfix" title="{{note.rels.author.email}}">
+        <img src="{{note.rels.author.image_url || '/build/images/user-default.png'}}" alt="note author" onerror="this.onerror=null;this.src='/build/images/user-default.png';">
+        <span class="note-author">{{note.rels.author.firstname}}</span>
+      </div>
+      <div class="note-order" title="Order in Sequence">{{sortedCount(note)}}</div>
+      {{note.rels.interaction.title}}
+      <div class="icons" ng-hide="mergeMode">
+        <i class="fa fa-gear" ng-click='open_edit_note(note, $index + 1)'
+           ng-show="$root.Person.properties.uuid === note.rels.author.uuid"></i>
+      </div>
+    </div>
+    <div class="note panel-body {{note.rels.interaction.color || 'orange'}} lighten-5 clearfix" ng-class="{'video-background': showVideo}">
+      <div ng-show="mergeMode" class="mergeNoteOverlay"
+        ng-class="{
+          parentNoteForMerge: mergeMode && mergeObject.primary === note.uuid,
+          childNoteForMerge: mergeMode && mergeObject.primary !== note.uuid
+        }">
+        <div ng-show="mergeMode && mergeObject.primary === note.uuid" class="mergeNoteInner">
+          <a class="btn btn-warning btn-xs pull-right" ng-click="finish_merge()">Merge</a>
+          <a class="btn btn-secondary btn-xs pull-right" ng-click="cancel_merge()">Cancel</a>
+          <p>PRIMARY [KEEP NOTE]</p>
+          <small>click other notes to be merged</small>
+          <!-- <a class="btn btn-secondary btn-sm" ng-click="cancel_merge()">Cancel Merge</a> -->
+        </div>
+        <div ng-show="mergeMode && mergeObject.others.indexOf(note.uuid) > -1 && mergeObject.primary !== note.uuid" class="mergeNoteInner orange lighten-1">
+          <a class="btn btn-indigo btn-xs pull-right" ng-click="switch_primary_for_merge(note)">Make Primary</a>
+          <p>CLICK TO DESELECT</p>
+        </div>
+      </div>
+
+      <!-- video display -->
+      <div class="video-container" ng-show="showVideo">
+        <div class="close-video" ng-show="showVideo" ng-click="showVideo = !showVideo">
+          [x]
+        </div>
+        <video controls>
+          <source ng-src="{{note.video_url | trustUrl}}">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+
+      <!-- touchpoint image -->
+      <div class="media social-profile clearfix"></div>
+      <div class="note-date" ng-hide="showVideo">
+        <span>ID: {{note.uuid.substring(0, note.uuid.length - 32)}}</span><br>
+        {{note.updated_at | date}}
+        <i class="fa fa-play pull-right" aria-hidden="true" ng-show="note.video_url" ng-click="showVideo = true"></i>
+      </div>
+      <textarea autofocus class="note-content edit-description" ng-model="note.description" ng-show="editDescription">
+      </textarea>
+      <div class="note-content social-content m-t-md" ng-class="{'has-touchpoint-image': note.touch_point_icon, 'small-text': note.description.length > 140}"
+        ng-hide="editDescription" ng-click="editDescription = (($root.Person.role === 'admin' || $root.Person.properties.uuid === note.rels.author.uuid) && !mergeMode)">
+        {{note.description}}
+      </div>
+      <div class="touchpoint-image" >
+        <img ng-if="note.touch_point_icon" ng-src="{{note.touch_point_icon}}" />
+
+        <a class="external-image" ng-if="note.external_url" ng-href="{{note.external_url}}" target="_blank">
+          <i class="fa fa-external-link"></i>
+        </a>
+
+      </div>
+      <div class="clearfix"></div>
+      <!-- persona title -->
+      <div class="note-persona" ng-hide="showVideo">
+        Persona: {{note.rels.persona.title}}
+      </div>
+      <!-- exit inline edit -->
+      <a class="pull-right inline-edit-close" ng-show="editDescription" ng-click="editDescription = false; updateNote(note)">save</a>
+    </div>
+    <div class="panel-footer contact-footer">
+      <div class="row noselect">
+
+        <div class="col-xs-4">
+          <div class="contact-stat votes" title="Importance" >
+            <span ng-click='vote("vote", note, stage.uuid, $event)'>
+              <!-- <strong ng-show="journey.show_votes || $root.Person.role != 'attendee'">{{note.rels.votes_count || 0}}</strong> -->
+              <i class="fa {{note.rels.user_vote ? 'fa-thumbs-up' : 'fa-thumbs-o-up'}}"></i>
+              <span class="text">Important</span>
+            </span>
+          </div>
+        </div>
+        <div class="col-xs-4"
+          ng-click="showComments = !showComments; focusCommentInput('#note_'+note.uuid)">
+          <div class="contact-stat comments" title="Click to comment">
+            <!-- <strong>{{note.rels.comments_count || 0}}</strong> -->
+            <i class="fa {{note.rels.commenter ? 'fa-comment' : 'fa-comment-o'}}"></i>
+            <span class="text">Comments</span>
+          </div>
+        </div>
+        <div class="col-xs-4">
+          <div class="contact-stat pains" title="Pain Point">
+            <span ng-click='vote("pain", note, stage.uuid, $event)'>
+              <!-- <strong ng-show="journey.show_votes || $root.Person.role != 'attendee'">{{note.rels.pains_count || 0}}</strong> -->
+              <i class="fa {{note.rels.user_pain ? 'fa-thumbs-up' : 'fa-thumbs-o-up'}}"></i>
+              <span class="text">Painful</span>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div ng-show="showComments" class="comments-panel">
+      <div class="social-talk">
+        <!-- beginning -->
+        <div class="media social-profile clearfix" id="comment_{{comment.uuid}}" ng-if="comment.author.uuid === $root.Person.properties.uuid" ng-repeat="comment in note.rels.comments | orderBy: 'created_at'">
+          <a class="pull-left">
+            <img ng-src="{{comment.author.image_url || '/build/images/user-default.png'}}" alt="comment author" onerror="this.onerror=null;this.src='/build/images/user-default.png';">
+          </a>
+          <div class="media-body">
+            <span class="font-bold">{{comment.author.firstname}}</span>
+            <small class="text-muted">{{comment.created_at | date}}</small>
+            <i class="fa fa-trash pull-right" ng-click="deleteComment(note, comment)" title="delete comment (*when deleting multiple new comments, please refresh page before delete action)" style="cursor:pointer;"
+              ng-show="$root.Person.role === 'admin' || $root.Person.role === 'tenant' || $root.Person.properties.uuid === comment.author.uuid">
+            </i>
+            <div class="social-content" title="{{comment.author.email}}">
+              <span ng-show="comment.voc" class="voc">[ VoC ]</span>
+              <span ng-show="comment.merged_in_at" class="voc">
+                [ Merged {{comment.merged_in_at | date}} ]
+                <span ng-show="comment.merged_from_note">[ {{comment.votes_count}}, {{comment.pains_count}} ] *</span>
+              </span>
+              <br>
+              {{comment.comment}}
+            </div>
+          </div>
+        </div>
+        <div class="media social-profile clearfix" id="comment_{{comment.uuid}}" ng-if="comment.author.uuid === $root.Person.properties.uuid" ng-repeat="comment in newComments[note.uuid]">
+          <a class="pull-left">
+            <img ng-src="{{comment.author.image_url || '/build/images/user-default.png'}}" alt="comment author" onerror="this.onerror=null;this.src='/build/images/user-default.png';">
+          </a>
+          <div class="media-body">
+            <span class="font-bold">{{comment.author.firstname}}</span>
+            <small class="text-muted">{{comment.created_at | date}}</small>
+            <i class="fa fa-trash pull-right" ng-click="deleteComment(note, comment)" title="delete comment (*when deleting multiple new comments, please refresh page before delete action)" style="cursor:pointer;"
+              ng-show="$root.Person.role === 'admin' || $root.Person.role === 'tenant' || $root.Person.properties.uuid === comment.author.uuid">
+            </i>
+            <div class="social-content">
+              <span ng-show="comment.voc" class="voc">[ VoC ]</span> {{comment.comment}}
+            </div>
+          </div>
+        </div>
+        <!-- end -->
+      </div>
+      <!-- post comment -->
+      <form class="social-form noselect row">
+        <input class="form-control" ng-focus="true" ng-model="newComment" placeholder="Type comment here">
+        <br>
+        <div class="col-xs-6 nopadding">
+          <label class="checkbox-inline">
+            <input type="checkbox" class="iCheck-helper" ng-model="vocComment" value="option1" id="inlineCheckbox1">
+            Voice of Customer Feedback [VoC]
+          </label>
+        </div>
+        <div class="col-xs-6 nopadding text-right">
+          <input type="button" class="btn btn-primary" value="Post" ng-click="postComment(note, newComment, vocComment); newComment = ''; vocComment = false"/>
+        </div>
+      </form>
+    </div>
+    </div>
+  </div>

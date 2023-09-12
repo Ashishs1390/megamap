@@ -1,0 +1,41 @@
+/**
+ * Note
+ * 
+ * => Placeholder should have multiple properties, otherwise create .utilities class instead.
+ * => Placeholder can not have "Operator" such as &--nested_class in it. It won't be inherited correctly.
+ * => Placeholder itself can't have @extend property.
+ * Feel free to create placeholder if it can be often used, it'll actually reduce file size.
+ * 
+ * => TODO: consider to convert c-flex as placeholder?
+ */
+
+
+
+/* Background
+-------------------------------------------------------- */
+%u-bg-cover {
+  background-size: cover;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+}
+
+/* Image
+-------------------------------------------------------- */
+// Responsive and stretch to fullsize image
+%u-img-full {
+  width: 100%;
+  display: block;
+}
+
+// Responsive image but not full size
+%u-child-img-responsive img,
+%u-img-responsive {
+   display: block;
+   margin: 0;
+   max-width: 100%;
+   height: auto;
+}
+
+/* Absolute center
+-------------------------------------------------------- */
+%u-abs-center           { @include absolute-center; }

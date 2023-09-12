@@ -1,0 +1,86 @@
+[
+ {
+   "email": "ricky@ruptive.cx ",
+   "firstname": "Ricky",
+   "lastname": "Brown",
+   "password": "password "
+ },
+ {
+   "email": "GENNIES@microsoft.com",
+   "firstname": "GENNIE",
+   "lastname": "BENEDICT",
+   "password": "password"
+ },
+ {
+   "email": "BMCGRAW@microsoft.com",
+   "firstname": "BRADLEY",
+   "lastname": "MCGRAW",
+   "password": "password"
+ },
+ {
+   "email": "V-CHBROC@microsoft.com",
+   "firstname": "CHRISTOPHER",
+   "lastname": "BROCK",
+   "password": "password"
+ },
+ {
+   "email": "DIANAPO@microsoft.com",
+   "firstname": "DIANA",
+   "lastname": "POPOVSKA",
+   "password": "password"
+ },
+ {
+   "email": "KABYSTRO@microsoft.com",
+   "firstname": "KATHLEEN",
+   "lastname": "BYSTROM",
+   "password": "password"
+ },
+ {
+   "email": "MABUAN@microsoft.com",
+   "firstname": "MARIA",
+   "lastname": "BUAN",
+   "password": "password"
+ },
+ {
+   "email": "BMJ@microsoft.com",
+   "firstname": "BRIAN MICHAEL",
+   "lastname": "JONES",
+   "password": "password"
+ },
+ {
+   "email": "DAWILMO@microsoft.com",
+   "firstname": "DAN",
+   "lastname": "WILMOT",
+   "password": "password"
+ },
+ {
+   "email": "V-PHOBY@microsoft.com",
+   "firstname": "LUNDY",
+   "lastname": "by",
+   "password": "password"
+ },
+ {
+   "email": "LLPREE@microsoft.com",
+   "firstname": "LLEWELLYN",
+   "lastname": "PREECE",
+   "password": "password"
+ },
+ {
+   "email": "MNAIR@microsoft.com",
+   "firstname": "MADHU",
+   "lastname": "NAIR",
+   "password": "password"
+ },
+ {
+   "email": "JALLEN@microsoft.com",
+   "firstname": "John",
+   "lastname": "Allen",
+   "password": "password"
+ },
+ {
+   "email": "V-KESHAP@microsoft.com",
+   "firstname": "KESHAV",
+   "lastname": "POLEPALLE",
+   "password": "password"
+ }
+]

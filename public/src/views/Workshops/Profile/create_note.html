@@ -1,0 +1,106 @@
+<div class="inmodal">
+    <div class="modal-header text-center row">
+        <div class="note-creator note-creator-interaction">
+
+            <h3>Note Creator</h3>
+
+            <div class="note-creator--flex">
+                <div class='note-creator--step note-creator--step-interaction'>
+                    <h4 class="is-blue">1. Choose attribute</h4>
+
+                    <div class='note-creator--step-option'
+                         ng-click='eventScope.SelectedAttribute = attribute'
+                         ng-repeat='attribute in eventScope.ProfileAttributes'>
+
+                        <div class='grey {{(eventScope.SelectedAttribute.properties.uuid == attribute.properties.uuid) ? "lighten-1" :  "lighten-5"}}'>
+                        </div>
+
+                         <span>{{attribute.properties.title}}</span>
+                    </div>
+                </div>
+                <div class='note-creator--step note-creator--step-interaction'>
+                    <h4 class="is-blue">2. Choose interaction</h4>
+
+                    <div class='note-creator--step-option'
+                         ng-click='eventScope.SelectedInteraction = interaction'
+                         ng-repeat='interaction in eventScope.ProfileInteractions'>
+
+                         <div class='{{(eventScope.SelectedInteraction.properties.uuid == interaction.properties.uuid) ? "lighten-3" :  "lighten-5"}}
+                                     {{interaction.properties.color || "orange"}} '>
+
+                        </div>
+
+                         <span>{{interaction.properties.title}}</span>
+                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal-body">
+        <h4 class="is-blue">
+            3. Add text to your note
+            <span class="{{note.properties.description.length ? 'green-text' : 'red-text'}}"> * </span>
+        </h4>
+        <div class="row">
+            <div class="col-lg-12">
+                <form name="simpleForm" novalidate id="simpleForm">
+                    <div class="p-m {{eventScope.SelectedInteraction.properties.color || 'orange'}} lighten-3">
+                        <div class='row '>
+                            <div class='col-xs-12'>
+                                <div class="charcount"> {{note.properties.description.length || 0}} / 140 MAX characters</div>
+                                <textarea placeholder="Add text to your note" type='text' class='col-xs-12' ng-model='note.properties.description' />
+                            </div>
+                        </div>
+                        <uib-accordion>
+                            <uib-accordion-group ng-if='note.properties.image_url' is-open='note.drawing_panel_open' heading="Current Drawing">
+                                <div class='{{eventScope.SelectedInteraction.properties.color || "grey"}} lighten-3 row'>
+                                    <img ng-src="{{note.properties.image_url}}">
+                                </div>
+                            </uib-accordion-group>
+                            <uib-accordion-group heading="Add drawing to note">
+                                <div class='{{eventScope.SelectedInteraction.properties.color || "grey"}} lighten-3 row'>
+                                    <signature-pad accept="accept" class='{{eventScope.SelectedInteraction.properties.color}} lighten-5 white-border' style='border:5px solid'
+                                        clear="clear" style='width:100%' height="500" width="500" disabled="false"></signature-pad>
+                                    <button type="button" class="mob-button btn btn-default red lighten-5 pull-left" ng-click="clear()">Clear Drawing</button>
+                                    <button type="button" class="mob-button btn btn-default pull-right green lighten-4" ng-click="note.properties.image_url = accept().dataUrl; clear();note.drawing_panel_open=true;">Set Note Image</button>
+                                </div>
+                            </uib-accordion-group>
+                        </uib-accordion>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <h4 class="is-blue">4. Add URL link</h4>
+        <div class="row">
+            <div class="col-lg-12">
+                <form name="simpleForm" novalidate id="simpleForm">
+                    <div class="col-lg-12">
+                        <div class="row u-pt10 u-pb15">
+                            <div class="form-group col-lg-12">
+                                <input type="url" id="" name="" class="form-control" value="" placeholder="Add URL with http:// or https:// to your note" ng-model="note.properties.external_url">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="modal-footer row">
+        <div class="text-right m-t-xs">
+            <button ng-if='!posting' type="button" class="btn btn-default" ng-click="cancel()">Cancel</button>
+
+            <button ladda="posting"
+                    ng-click="submit()"
+                    ng-if='eventScope.SelectedAttribute && eventScope.SelectedInteraction && note.properties.description.length >0 && note.properties.description.length < 140'
+                    class="btn green lighten-4"
+                    data-style="expand-left">
+                <span class="ladda-label">Add note!</span>
+            </button>
+        </div>
+    </div>
+</div>

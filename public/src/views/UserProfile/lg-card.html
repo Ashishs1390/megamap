@@ -1,0 +1,12 @@
+<div class='node-card panel u-mb0'>
+    <div class="label pull-right {{ node.properties.color || ' u-color-normal ' }}"/>
+    <div class="panel-body hpanel text-center u-mb0">
+         <!-- <div ng-if='node.properties.tenant' class="c-card-profile u-bg-cover clear" style="background-image: url('http://3.bp.blogspot.com/-R72VFwz4BvQ/UJpYIrUf_KI/AAAAAAAAEZo/nMTCbLAYsTY/s1600/Crown.jpg')">
+            <h1 class='gold'>TENANT</h1>
+        </div> -->
+        <div class="c-card-profile u-bg-cover clear" style="background-image: url( {{ node.properties.image_url || '/build/images/placeholder-1.png' }} )">
+        </div>
+        <h2 class="node-card__title">{{node.properties.title}}</h2>
+        <small>{{node.properties.description }}</small>
+    </div>
+</div>

@@ -1,0 +1,116 @@
+/* Fix header that exceeds width of browser
+-------------------------------------------------------- */
+.navbar-right {
+  margin-right: 0;
+}
+
+// ricky's temp styles - sam can move this wherever
+.hpurple {
+  border-top:2px solid purple;
+}
+.project-image {
+  height: 300px;
+  background-size:cover;
+  background-position: 50% 50%;
+  cursor:pointer;
+  background-color:#ddd;
+}
+.project-type {
+  width: 120px;
+  position: absolute;
+  top: 0;
+  right: 15px;
+  text-align: center;
+  padding: 3px 7px;
+  color:white;
+  &.cx-improvement {
+    background:#4caf50;
+  }
+  &.idea {
+    background:#2196f3;
+  }
+  &.blocker {
+    background:#ef5350;
+  }
+}
+
+.btn {
+  &.cx-improvement {
+    background:#4caf50;
+  }
+  &.idea {
+    background:#2196f3;
+  }
+  &.blocker {
+    background: #ef5350;
+  }
+}
+
+.project-progress {
+  float: right;
+  // background: $yellow1;
+  padding: 5px 10px;
+  border-radius: 2px;
+  // color: $grey1;
+  color:black;
+  text-align: center;
+}
+
+.c-subscriber-grids {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.comments.list-group {
+  padding: 0;
+  border-width: 0!important;
+  border-radius: 0!important;
+}
+.ec_dev {
+  border: 1px solid aliceblue
+}
+
+.filters--item.dark-blue {
+  color:#25263d;
+  background:#fff;
+  border-color:#25263d;
+  // opacity:0.8;
+}
+
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+
+.commenter-bg {
+  background:#e5e5e5!important;
+}
+
+// .social-board .social-profile img {
+//   border:1px solid #555;
+// }
+
+#load_journey {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgb(155,155,155);
+  z-index: 10000;
+  display:none;
+  > .content {
+    position:relative;
+    top:40%;
+    text-align:center;
+    > p {
+      font-size:24px;
+      color:black;
+    }
+  }
+}

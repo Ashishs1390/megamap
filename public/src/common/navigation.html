@@ -1,0 +1,59 @@
+<div id="navigation">
+    <div class="profile-picture">
+        <a href="index.html">
+            <img src="{{$root.Person.properties.image_url}}" style='max-height:100px' class="img-circle m-b" alt="logo" title="Click to edit profile"
+              onerror="this.onerror=null;this.src='/build/images/user-default.png';">
+        </a>
+        <div class="stats-label text-color">
+            <span class="u-font-bold user-profile--email" title="{{$root.Person.properties.firstname}}">{{$root.Person.properties.firstname}}</span>
+
+            <div class="dropdown" uib-dropdown>
+                <a uib-dropdown-toggle href>
+                    <p class="c-role-label"><span>{{$root.Person.role}}</span> <b class="caret"></b></p>
+                </a>
+                <ul class="animated flipInX m-t-xs" uib-dropdown-menu>
+                    <li>Choose Role</li>
+                    <li class="divider"></li>
+                    <li ng-click='$root.Person.role = "tenant"' ng-init='$root.Person.role="tenant"'ng-if='$root.Person.properties.tenant'><a>Tenant</a></li>
+                    <li class="divider"></li>
+                    <li ng-click='$root.Person.role = "admin"' ng-if='$root.Person.properties.admin'><a>Admin</a></li>
+                    <li class="divider"></li>
+                    <li ng-click='$root.Person.role = "attendee"'><a>Attendee</a></li>
+                    <li class="divider"></li>
+                    <li ng-click="$root.logout()"><a>Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <ul side-navigation class="nav c-nav-sidebar" id="side-menu">
+
+        <li class=''> <a href="#"><span class="nav-label">Attendee Options</span><span class="fa arrow"></span> </a>
+            <ul class="nav nav-second-level">
+                <li ui-sref-active="active"> <a ui-sref="dashboard.journey" ui-sref-opts="{inherit: false}"> <span class="nav-label">Explore Journeys</span></a></li>
+            </ul>
+        </li>
+
+        <li ng-show='$root.Person.properties.admin' class=''> <a href="#"><span class="nav-label">Admin Options</span><span class="fa arrow"></span> </a>
+            <ul class="nav nav-second-level">
+                <li ui-sref-active="active">
+                    <a ui-sref="model.label({'label':'strategy'})"><span class="nav-label">Strategy</span></a>
+                </li>
+                <li ui-sref-active="active">
+                    <a ui-sref="model.label({'label':'product'})"><span class="nav-label">Product</span></a>
+                </li>
+                <li ui-sref-active="active">
+                    <a ui-sref="model.label({'label':'persona'})"><span class="nav-label">Persona</span></a>
+                </li>
+                <li ui-sref-active="active">
+                    <a ui-sref="model.label({'label':'stage'})"><span class="nav-label">Stage</span></a>
+                </li>
+                <li ui-sref-active="active">
+                    <a ui-sref="model.label({'label':'interaction'})"><span class="nav-label">Note Types</span></a>
+                </li>
+                <li ui-sref-active="active">
+                    <a ui-sref="model.label({'label':'idea'})"><span class="nav-label">Idea notes</span></a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>

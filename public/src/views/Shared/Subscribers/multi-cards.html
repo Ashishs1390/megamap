@@ -1,0 +1,275 @@
+<div ng-controller='multiSubscriberCtrl' class="c-subscriber-invite">
+
+    <table class="table" ng-show="label == 'Person'">
+        <thead>
+          <tr>
+              <td class="error" style="color:red">
+                 {{error}}
+                 {{inviteResponse}}
+              </td>
+          </tr>
+            <tr>
+                <td>
+                    <b>Invite new (or existing) user through email: {{whereKey}}</b>
+                </td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class='grey lighten-3'>
+                <td>
+                    <div class="input-group">
+                        <input ng-model="emailToInvite" class="form-control" type="email" value="" id="" class="form-control" placeholder="Type user's email">
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-default" ng-click="sendInvite(emailToInvite, journey, $root.subdomain)">Send invitation</button>
+                        </span>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table class="table u-mb0">
+        <thead>
+            <tr>
+                <td>
+                    <b ng-if="!mostAddedVisible && label == 'Note' && !isConnectionOpen">Added existing {{label}} from list:</b>
+                    <p ng-if="!mostAddedVisible && label == 'Note' && !isConnectionOpen">Selected Journey : {{selectedJourney.properties.title}}</p>
+                    <b ng-if="isConnectionOpen">Added existing Component from list:</b>
+                    <p ng-if="!mostAddedVisible && label != 'Note' && isConnectionOpen">Selected Component : {{selectedCompnent}}</p>
+                </td>
+            </tr>
+        </thead>
+        <tbody ui-sortable ng-model='subgraph.node_label_index[label]' class='green lighten-5'>
+
+            <tr ng-repeat='item in subgraph.node_label_index[label] track by $index' ng-if="type != 'journey_attendee' && (pool.nodes[item].properties.title || pool.nodes[item].properties.description)">
+                <td class='font-bold'>
+                  {{pool.nodes[item].properties.title||pool.nodes[item].properties.description}}
+                  <!-- <span ng-if="label == 'Note'">&nbsp;[{{pool.nodes[item].journey.title}}]</span> -->
+                  <span ng-if="pool.nodes[item].properties.activited == false">&nbsp;<i>invite sent</i></span>
+                  <i ng-click="RemoveFromLocal(pool.nodes[item])" class='fa fa-minus pull-right'></i>
+                </td>
+            </tr>
+            <tr ng-if="isNoteAssignee">
+                <td class='font-bold'>
+                  {{projectAssignee.title || projectAssignee.description}}
+                  <!-- <span ng-if="label == 'Note'">&nbsp;[{{pool.nodes[item].journey.title}}]</span> -->
+                  <span ng-if="subgraph.nodes[item].properties.activited == false">&nbsp;<i>invite sent</i></span>
+                  <!-- <i ng-click="RemoveFromLocal(subgraph.nodes[item])" class='fa fa-minus pull-right'></i> -->
+                </td>
+            </tr>
+            <tr ng-repeat='item in subgraph.node_label_index[label] track by $index' ng-if="type == 'journey_attendee'" ng-hide="hideElements(item, subGraphPersonPool) || hideElements(item,subPersonPool)">
+                <td class='font-bold'>
+                  {{subgraph.nodes[item].properties.title||subgraph.nodes[item].properties.description}}
+                  <!-- <span ng-if="label == 'Note'">&nbsp;[{{pool.nodes[item].journey.title}}]</span> -->
+                  <span ng-if="subgraph.nodes[item].properties.activited == false">&nbsp;<i>invite sent</i></span>
+                  <i ng-click="RemoveFromLocal(subgraph.nodes[item])" class='fa fa-minus pull-right'></i>
+                </td>
+            </tr>
+            <tr ng-repeat='item in subGraphPersonPool.node_label_index[label] track by $index' ng-if="type == 'journey_attendee'" class="poolData" ng-hide="subGraphPersonPool.nodes[item].hide">
+                <td class='font-bold'>
+                  {{subGraphPersonPool.nodes[item].properties.title||subGraphPersonPool.nodes[item].properties.description}}
+                  <!-- <span ng-if="label == 'Note'">&nbsp;[{{pool.nodes[item].journey.title}}]</span> -->
+                  <span ng-if="subGraphPersonPool.nodes[item].properties.activited == false">&nbsp;<i>invite sent</i></span>
+                  <i ng-click="RemoveFromLocal(subGraphPersonPool.nodes[item])" class='fa fa-minus pull-right'></i>
+                </td>
+            </tr>
+            <tr ng-repeat='item in subgraph.node_label_index[label] track by $index' ng-if="type == 'bullseye_attendee'">
+                <td class='font-bold'>
+                  {{subgraph.nodes[item].properties.title||subgraph.nodes[item].properties.description}}
+                  <!-- <span ng-if="label == 'Note'">&nbsp;[{{pool.nodes[item].journey.title}}]</span> -->
+                  <span ng-if="subgraph.nodes[item].properties.activited == false">&nbsp;<i>invite sent</i></span>
+                  <i ng-click="RemoveFromLocal(subgraph.nodes[item])" class='fa fa-minus pull-right'></i>
+                </td>
+            </tr>
+            <tr ng-repeat='item in subgraph.node_label_index[label] track by $index' ng-if="type == 'project_attendee' && !isNoteAssignee">
+                <td class='font-bold'>
+                  {{subgraph.nodes[item].properties.title||subgraph.nodes[item].properties.description}}
+                  <!-- <span ng-if="label == 'Note'">&nbsp;[{{pool.nodes[item].journey.title}}]</span> -->
+                  <span ng-if="subgraph.nodes[item].properties.activited == false">&nbsp;<i>invite sent</i></span>
+                  <i ng-click="RemoveFromLocal(subgraph.nodes[item])" class='fa fa-minus pull-right'></i>
+                </td>
+            </tr>
+
+            <tr ng-repeat='item in connectionNotes track by $index' ng-if="isConnectionOpen">
+                <td class='font-bold'>
+                  {{item.title || item.description}} ({{item.component_type}})&nbsp;&nbsp;<small>({{item.rels.connected_note_count || 0}} Active Connections)</small>
+                  <i ng-click="removeConnection(item , $index)" class='fa fa-minus pull-right'></i>
+                </td>
+            </tr>
+
+
+        </tbody>
+
+      <tbody>
+            <tr class='grey lighten-3' ng-if="type == 'journey_attendee'">
+                <td>
+                    <div class="pagination-container attendee-paginationcontaineradded">
+                        <div class="pagination attendee-pagination">
+                            <uib-pagination total-items="paginationAddedAttendee.totalItems"
+                                ng-model="paginationAddedAttendee.currentPage"
+                                items-per-page="paginationAddedAttendee.itemPerPage"
+                                max-size="5"
+                                ng-change="changeUsersAddedAttendee()"
+                                boundary-links="true"
+                                previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"
+                                ng-disabled="isReadonlyAttendee"
+                                ></uib-pagination>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr ng-if='Getting'>
+                <td>Loading ...</td>
+            </tr>
+        </tbody>
+        <tbody>
+            <tr class='grey lighten-3'>
+                <td>
+                    <div class="input-group">
+                        <input class="form-control" type="text" placeholder="Search by title/name" ng-model="obj.searchAttendee" ng-keyup="fetchdata()">
+                        <div class="input-group-btn">
+                            <button class="btn btn-default"><i class="fa fa-search"></i> Search</button>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr ng-if='Getting'>
+                <td>Loading ...</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="c-flex c-flex--2 c-flex--stretch c-flex--wrap c-subscriber-grids c-subscriber-grids--clickable" ng-if='!Getting && (!subgraph.node_label_index[label] || subgraph.node_label_index[label].indexOf(item)==-1)'>
+        <!-- <pre>{{pool.nodes[pool.node_label_index[label][0]] | json}}</pre> -->
+        <!-- {{mostAddedVisible}} -->
+
+        <small-card
+          ng-if="label != 'Note'"
+          class="c-flex__col green lighten-5"
+          ng-click="AddToLocal(subPersonPool.nodes[item])"
+          ng-repeat='item in subPersonPool.node_label_index[label] track by $index'
+          node='subPersonPool.nodes[item]'
+          icon="'fa-plus'"
+          badge="label == 'Note' ? subPersonPool.nodes[item].journey.title : false"
+          recent="'(just removed)'">
+        </small-card>
+        <small-card
+        ng-if="isNoteAssignee"
+            class="c-flex__col"
+
+            ng-click="AddToLocal(attendeePool.nodes[item])"
+            ng-repeat='item in attendeePool.node_label_index[label] track by $index'
+            node='attendeePool.nodes[item]'
+            icon="'fa-plus'"
+            badge="label == 'Note' ? attendeePool.nodes[item].journey.title : false">
+        </small-card>
+        <small-card
+          ng-if="!mostAddedVisible && label != 'Note' && !isNoteAssignee"
+          class="c-flex__col"
+          ng-hide="hideElements(item,subGraphPersonPool)"
+          ng-show="!subgraph.nodes[item]"
+          ng-click="AddToLocal(attendeePool.nodes[item])"
+          ng-repeat='item in attendeePool.node_label_index[label] track by $index'
+          node='attendeePool.nodes[item]'
+          icon="'fa-plus'"
+          badge="label == 'Note' ? attendeePool.nodes[item].journey.title : false">
+        </small-card>
+        <small-card
+          ng-if="mostAddedVisible && label != 'Note'"
+          class="c-flex__col"
+          ng-show="!obj.searchAttendee || mostAddedAttendee.nodes[item].properties.description.toLowerCase().indexOf(obj.searchAttendee.toLowerCase()) >= 0 && !subgraph.nodes[item] || mostAddedAttendee.nodes[item].properties.title.toLowerCase().indexOf(obj.searchAttendee.toLowerCase()) >= 0 && !subgraph.nodes[item]"
+          ng-click="AddToLocal(mostAddedAttendee.nodes[item])"
+          ng-repeat='item in mostAddedAttendee.node_label_index[label] track by $index'
+          node='mostAddedAttendee.nodes[item]'
+          icon="'fa-plus'"
+          badge="label == 'Note' ? mostAddedAttendee.nodes[item].journey.title : false">
+        </small-card>
+        <small-card
+            ng-if="!mostAddedVisible && label == 'Journey' && (!subgraph.node_label_index[label] || subgraph.node_label_index[label].indexOf(item)==-1)"
+            class="c-flex__col"
+            ng-show="!obj.searchAttendee || pool.nodes[item].properties.description.toLowerCase().indexOf(obj.searchAttendee.toLowerCase()) >= 0 && !subgraph.nodes[item] || pool.nodes[item].properties.title.toLowerCase().indexOf(obj.searchAttendee.toLowerCase()) >= 0 && !subgraph.nodes[item]"
+            ng-click="getNotes(pool.nodes[item])"
+            ng-repeat='item in pool.node_label_index[label] track by $index'
+            node='pool.nodes[item]'
+            icon="'fa-plus'"
+            badge="label == 'Note' ? pool.nodes[item].journey.title : false">
+        </small-card>
+
+        <small-card
+            ng-if="!mostAddedVisible && label == 'Note' && (!subgraph.node_label_index[label] || subgraph.node_label_index[label].indexOf(item)==-1)"
+            class="c-flex__col"
+            ng-show="!obj.searchAttendee || pool.nodes[item].properties.description.toLowerCase().indexOf(obj.searchAttendee.toLowerCase()) >= 0 && !subgraph.nodes[item] || pool.nodes[item].properties.title.toLowerCase().indexOf(obj.searchAttendee.toLowerCase()) >= 0 && !subgraph.nodes[item]"
+            ng-click="AddToLocal(pool.nodes[item])"
+            ng-repeat='item in filterByCXI()'
+            node='pool.nodes[item]'
+            icon="'fa-plus'"
+            badge="label == 'Note' ? pool.nodes[item].journey.title : false">
+        </small-card>
+
+
+        <small-card
+          ng-if="isConnectionOpen && !isComponentList"
+          class="c-flex__col"
+          ng-click="getComponents(component.name)"
+          ng-repeat='component in componentsPool track by $index'
+          node='component'
+          icon="'fa-plus'"
+          badge="">
+        </small-card>
+        <!-- //will check -->
+        <small-card
+            ng-if="isConnectionOpen && isComponentList && checkConnectionExists(item)"
+            class="c-flex__col"
+            ng-show="!obj.searchAttendee || pool.nodes[item].properties.description.toLowerCase().indexOf(obj.searchAttendee.toLowerCase()) >= 0 && !subgraph.nodes[item] || pool.nodes[item].properties.title.toLowerCase().indexOf(obj.searchAttendee.toLowerCase()) >= 0 && !subgraph.nodes[item]"
+            ng-click="createConnection(pool.nodes[item], pool)"
+            ng-repeat='item in pool.node_label_index[label] track by $index'
+            node='pool.nodes[item]'
+            icon="'fa-plus'"
+            badge="label == 'Note' ? pool.nodes[item].journey.title : false">
+        </small-card>
+        <div ng-if="!mostAddedVisible && label == 'Note' && ( notesAvailable   && !pool.nodes)">
+            <span>No data available </span>
+        </div>
+        <div ng-if="!Getting && isConnectionOpen && !pool.nodes">
+            <span>No data available </span>
+        </div>
+    </div>
+    <div style="display: flex;" class="pagination-container cxi-filter" ng-if="!mostAddedVisible && label == 'Note' &&  notesAvailable">
+        <div style="margin-right: 20px;">
+            <input type="checkbox" ng-model="cxiFilter.one" ng-change="filterByCXI(1)" name="vehicle1" value="Bike"> CXI P1
+        </div>
+        <div style="margin-right: 20px;">
+            <input type="checkbox" ng-model="cxiFilter.two" ng-change="filterByCXI(2)" name="vehicle1" value="Bike"> CXI P2
+        </div>
+        <div style="margin-right: 20px;">
+            <input type="checkbox" ng-model="cxiFilter.three" ng-change="filterByCXI(3)" name="vehicle1" value="Bike"> CXI P3
+        </div>
+    </div>
+    <div class="pagination-container cancel-button" ng-if="!mostAddedVisible && label == 'Note' && ( notesAvailable && !pool.length)">
+        <button class="btn btn-default" ng-click="GoBackToJourneys()">Back to Journeys </button>
+    </div>
+    <div class="pagination-container" ng-if="isConnectionOpen && label != 'Note'">
+        <br>
+        <button class="btn btn-primary" ng-click="CreateNew(selectedCompnent)">Create {{selectedCompnent}}</button>
+        <button class="btn btn-default go-back" ng-click="GoBackToComponents()">Go Back </button>
+    </div>
+    <div ng-if="label != 'Note' && label != 'Journey' && !isConnectionOpen" class="pagination-container attendee-paginationcontainer">
+        <div class="most-used most-used-attendee" ng-class="{activePage : mostAddedVisible}" ng-if ="showMostAddedTitle">
+            <!-- ng-click="showMostedUsed()" -->
+            <!-- <span >My Top Used</span>  | -->
+        </div>
+        <div class="pagination attendee-pagination" id="paginationPerson" ng-class="{activePage : !mostAddedVisible}" ng-click="mostAddedVisible && showAllComponentAttendee()">
+            <!-- ng-change="changePageAttendee()" -->
+
+            <!-- <uib-pagination
+                total-items="pagination.attendeeSize"
+                ng-model="pagination.currentPageAttendee"
+                max-size="pagination.maxSizeAttendee"
+                boundary-links="true"
+                previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"
+                ng-disabled="isReadonly"
+                >
+            </uib-pagination> -->
+        </div>
+    </div>
+</div>

@@ -1,0 +1,37 @@
+<div class="hpanel Info">
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-sm-12 col-lg-6">
+                <h2 class="c-section-title">Ideas</h2>
+            </div>
+            <div class="col-sm-12 col-lg-6 u-mt10">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <input type="" value="" id="" class="form-control" ng-model="search" placeholder="search">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div ng-if='Getting' class="c-abs-loading"><img src="/build/images/loading.gif" /></div>
+<div class="c-flex c-flex--3 c-flex--stretch c-flex--wrap c-dashboard-cards">
+    <div class="c-flex__col" ng-repeat='(index,item) in library.nodes' ng-if="item.labels == 'Note'" ng-show="item.properties.title.toLowerCase().indexOf(search.toLowerCase()) >= 0 || item.properties.description.toLowerCase().indexOf(search.toLowerCase()) >= 0 ">
+        <div class='library_card_wrapper'>
+          <div ng-if="library.rels[library.outgoing.note_author[item.properties.uuid][0]].to_id == $root.Person.properties.uuid" class="label gold gold--with-margin pull-right">Author</div>
+            <ideas-card-large node='item' library='library' index="index"></ideas-card-large>
+            <div class='u-table library-card-groupBtns u-bg-grey'>
+                <a ui-sref='workshop.journey({
+                  id:library.rels[library.outgoing.note_journey[item.properties.uuid][0]].to_id,
+                  stage:library.nodes[library.node_label_index.Stage[0]].properties.uuid,
+                  tab:library.outgoing_nodes.note_stage[index][0]
+                })' ng-if="library.rels[library.outgoing.note_journey[item.properties.uuid][0]].to_id" class="u-table-cell">View Workshop</a>
+                <a ng-click="PopOverviewModal(item.properties.uuid)" ng-if='PopOverviewModal' class="u-table-cell">Overview</a>
+        </div>
+        </div>
+    </div>
+    <!-- to fix flex alignement issue -->
+    <div class="c-flex__col"></div>
+    <div class="c-flex__col"></div>
+</div>

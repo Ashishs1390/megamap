@@ -1,0 +1,95 @@
+<div class="content user-library" ng-controller="AdminCtrl">
+
+    <div class="hpanel Info">
+      <div class="panel-body">
+        <div class="pull-right">
+          <!-- <a class="btn btn-primary pull-right" ui-sref="register">Register New User</a> -->
+          <a class="btn btn-primary pull-right" ng-click="addUsers()">Add Users</a>
+          <div class="clearfix"></div>
+          <br>
+          <input type="text" class="form-control pull-left" ng-model="newPasswordByEmail" placeholder="User Email to Reset" />&nbsp;&nbsp;
+          <a class="btn btn-primary" ng-click="resetPassword(newPasswordByEmail, 'password')">Reset Password</a>
+        </div>
+        <h2 class="c-section-title">User Library</h2>
+        <div class="form-inline">
+            Search {{label}}: <input type="" value="" id="" class="form-control" ng-model="search" placeholder="Search" ng-keyup="fetchUsersOnSearch()">
+        </div>
+      </div>
+    </div>
+
+    <table class="table table-striped">
+      <table class="table table-striped">
+        <thead>
+          <tr style="user-select:none;">
+            <th>Role</th>
+            <th>Block</th>
+            <th ng-click="loadUsers($event, 'firstname')">First Name</th>
+            <th ng-click="loadUsers($event, 'lastname')">Last Name</th>
+            <th ng-click="loadUsers($event, 'email')">Email Address</th>
+            <th ng-click="loadUsers($event, 'alias')">Email Address 2</th>
+            <th ng-click="loadUsers($event, 'last_login')">Last Login</th>
+            <th>Image URL</th>
+            <th>Reset Password</th>
+            <!-- <th>Edit</th> -->
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="user in users">
+            <th scope="row">
+
+              <div class="btn-group">
+                <button data-toggle="dropdown" style="width:100px" class="btn btn-default btn-sm dropdown-toggle">{{getRole(user)}} <span class="caret"></span></button>
+                <ul class="dropdown-menu">
+                    <li><a ng-click="setRole(user, 0)">External</a></li>
+                    <li><a ng-click="setRole(user, 1)">Attendee</a></li>
+                    <li><a ng-click="setRole(user, 4)">Power User</a></li>
+                    <li><a ng-click="setRole(user, 2)">Admin</a></li>
+                    <li><a ng-click="setRole(user, 3)">Tenant</a></li>
+                </ul>
+              </div>
+            </th>
+            <td>
+              <a class="btn {{user.blocked ? 'btn-danger' : 'btn-secondary'}}"
+                ng-click="user.blocked = !user.blocked; updateProperty(user.uuid, 'blocked', user.blocked)">
+                <i class="fa fa-ban" title="block"></i>
+              </a>
+            </td>
+            <td ng-repeat="attribute in ['firstname', 'lastname', 'email', 'alias']">
+              <span ng-click="editMode = !editMode" ng-hide="editMode">{{user[attribute] || '_'}}</span>
+              <input class="form-control" ng-show="editMode" ng-model="user[attribute]">
+              <span class="save" ng-show="editMode" ng-click="editMode=false; updateProperty(user.uuid, attribute, user[attribute])">save</span>
+            </td>
+            <td>{{user.last_login | date}}</td>
+            <td>
+              <div class="thumb">
+                <a ng-href="{{user.image_url}}" target="_blank">
+                  <img ng-src="{{user.image_url}}" ng-show="user.image_url" onerror="this.src='/build/images/user-default.png'" />
+                  <img src="/build/images/user-default.png" ng-hide="user.image_url"/>
+                </a>
+              </div>
+              <div class="actions">
+                <i class="fa fa-pencil" title="edit image url" ng-click="editMode = !editMode"></i>
+                <i class="fa fa-trash" title="delete image url" ng-click="updateProperty(user.uuid, 'image_url', ''); user.image_url = null"></i>
+              </div>
+              <div style="clear:both"></div>
+              <input class="form-control" ng-show="editMode" ng-model="user.image_url">
+              <span class="save" ng-show="editMode" ng-click="editMode=false; updateProperty(user.uuid, 'image_url', user.image_url)">save</span>
+            </td>
+            <td class="password-reset">
+              <input type="text" class="form-control pull-left" ng-model="newPassword" placeholder="password" />
+              <a class="btn btn-primary btn-sm" ng-click="resetPassword(user.email, newPassword)">Reset Password</a>
+            </td>
+            <!-- <td>
+              <a class="btn btn-primary btn-sm">Edit</a>
+            </td> -->
+          </tr>
+        </tbody>
+      </table>
+    </table>
+    <uib-pagination total-items="totalItems"
+      ng-model="currentPage"
+      items-per-page="itemPerPage"
+      max-size="10"
+      ng-change="changeUsers()"
+      ></uib-pagination>
+</div>

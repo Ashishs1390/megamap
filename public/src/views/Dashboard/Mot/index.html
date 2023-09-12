@@ -1,0 +1,7 @@
+<div class="Mot-dashboard">
+    <div class="content">
+        
+        <div ng-if='$root.Person.role == "tenant"' ng-controller='motTenantCtrl' ng-include="'views/Dashboard/Mot/library.html'"></div>
+        <div ng-if='$root.Person.role == "admin"' ng-controller='motAdminCtrl' ng-include="'views/Dashboard/Mot/library.html'"></div>
+    </div>
+</div>

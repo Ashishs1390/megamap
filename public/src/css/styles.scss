@@ -1,0 +1,394 @@
+// Global
+@import "partials/__fonts";
+@import "partials/__icons";
+@import 'partials/__variables';
+@import 'partials/__animation';
+@import 'partials/__mixins';
+@import 'partials/__breakpoint';
+@import 'partials/__placeholder';
+@import 'partials/__spacing.scss';
+@import 'partials/__material-colors';
+@import 'partials/__utilities.scss';
+@import 'partials/__quantity-query';
+// Custom
+@import "partials/__journey-report";
+@import 'partials/__trevor-was-here.scss';
+@import 'partials/__matt-was-here';
+@import 'partials/__components';
+@import "partials/__persona-report";
+@import "partials/__print";
+@import "partials/__misc";
+@import "partials/__page-loader";
+@import "partials/__auth";
+
+@import "partials/__rebuild";
+@import "partials/_graphs";
+@import "partials/bullseye";
+@import "partials/timeline";
+@import "partials/_survey";
+@import "partials/_notes";
+@import "partials/_groups";
+@import "partials/__multiselect";
+
+textarea[autogrow] {
+	resize: none;
+	box-sizing: content-box;
+}
+
+#footer {
+  height: 50px;
+  line-height: 50px;
+  padding: 0 30px;
+  background: transparent;
+  // font-weight: bold;
+}
+
+.switch {
+  position: absolute;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+  left : 150px;
+}
+
+.switch .toggleInput {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.toggleInput:checked + .slider {
+  background-color: #2196F3;
+}
+
+.toggleInput:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+.toggleInput:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+.note-progress-graph{
+  position: relative;
+  bottom: 30px;
+}
+
+.project-name{
+  cursor: pointer;
+}
+
+.accordion{
+  text-align: center;
+}
+
+.puch-comment-btn{
+  margin-top: 20px;
+}
+
+.accordion a::after {
+  content: '-';
+  font-size: 30px;
+}
+.accordion a.collapsed::after {
+  content: '+';
+}
+
+.pagination-container{
+  padding-top: 25px;
+  cursor: pointer;
+}
+
+.most-used{
+  // margin:25px 0;
+}
+
+.pagination{
+  margin: 0px;
+  display: inline;
+  ul li a {
+    color : gray;
+  }
+}
+
+
+.activePage{
+  color: #1a8cff !important;
+  ul li a {
+    color: #1a8cff !important;
+  }
+
+  .active{
+    a {
+      color : white !important;
+    }
+  }
+}
+
+.attendee-paginationcontainer{
+  position: absolute;
+  bottom: 14px;
+}
+
+.cancel-button{
+  position: absolute;
+  bottom: 15px;
+  right : 150px;
+}
+button.go-back {
+  float: right;
+}
+
+.cxi-filter{
+  margin-right: 20px;
+  position: absolute;
+  bottom:25px;
+}
+
+.most-used-attendee,.attendee-pagination{
+  display: inline-block;
+}
+.most-used-attendee {
+  margin-right: 25px;
+}
+
+.attendee-pagination{
+  vertical-align: middle;
+}
+.attendee-paginationcontainer,.attendee-paginationcontaineradded {
+  .pagination>li>a{
+    padding: 6px 6px;
+  }
+}
+
+.milestone_comments{
+  padding: 20px 0;
+  max-height: 500px;
+  overflow: auto;
+}
+
+.milestone_comment_heading{
+  text-align: center;
+}
+
+.milestone_note{
+  cursor: pointer;
+}
+
+.milestone_comment{
+  margin : 20px 50px;
+}
+
+.milestone_comment h6{
+  text-align: right;
+}
+
+.connection {
+  padding-bottom: 35px;
+}
+
+.sorting { color: #CDA09C; text-decoration: none}
+.sorting:hover { color: #DC4436 }
+.sorting.sortDir.active {
+  color: #DC4436;
+  cursor: default;
+}
+
+.project-progress-filter{
+  display: flex;
+}
+
+.project-table-head{
+  vertical-align: middle !important;
+}
+
+.note_cone_icon{
+  cursor: pointer;
+}
+
+.navbar-btn {
+  outline: 0!important;
+  box-shadow: none!important;
+}
+
+#leaderboard {
+  width: 100%;
+
+  & .top-contributor-stat, & .top-contributor-stat strong {
+    color: #444;
+    font-size: 12px;
+    line-height: 21px;
+    cursor: default;
+  }
+  & .avatar {
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    overflow: hidden;
+    margin-right: 7px;
+
+    & img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  & .popover, & .popover-inner, & .popover-content {
+    // padding: 0;
+    max-width: 100%;
+    width: 470px;
+
+    & ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    & h5 {
+      color: black!important;
+    }
+
+    & .avatar {
+      width: 40px;
+      height: 40px;
+      margin-right: 20px;
+    }
+  }
+}
+
+.text-red {
+  color: red!important;
+}
+
+.nav-stopwatch {
+  margin: 0 0 0 10px;
+}
+
+.stopwatch {
+  text-align: center;
+  min-width: 80px;
+  position: relative;
+
+  & h4 {
+    background: #eee;
+    border-radius: 3px;
+    padding: 7px 0;
+    color: black;
+    margin: 8px 0 0 0;
+  }
+  & .stopwatch-actions {
+    position: relative;
+    // top: -5px;
+    z-index: 1;
+  }
+
+  & .minute-tick {
+    position: absolute;
+    z-index: 1;
+    right: 1px;
+    top: 2px;
+
+    & a {
+      display: block;
+      background: #ccc;
+      border-radius: 2px;
+      margin-bottom: 1px;
+      font-size: 14px;
+      padding: 0 2px;
+
+      & i {
+        width: 10px;
+      }
+    }
+  }
+}
+
+.header-nav {
+  width: calc(100% - 520px);
+}
+
+.side-bottom-nav {
+  position: fixed;
+  bottom: 20px;
+  width: 100%;
+}
+
+
+// TEMPORARY TO FIX BROKEN STYLE
+// .workshop\.journey.modal-open {
+//   & .modal-content {
+//     // height: 100%;
+//     margin-bottom: 50px!important;
+//   }
+//   & .inmodal {
+//     background: white;
+//   }
+// }
+
+
+.no-gutter {
+  margin-right: 0!important;
+  margin-left: 0!important;
+}
+
+.no-gutter > [class*="col-"] {
+  padding-right: 0!important;
+  padding-left: 0!important;
+}
+
+.selectedFace {
+	position:absolute;
+	z-index: 10;
+	top: -19px;
+	left: -2px;
+	background: white;
+	opacity: 0.5;
+	border: 2px solid blue;
+	width: 36px;
+	height: 60px;
+	display: inline-block;
+}
+
+.unselectedFace {
+	display: none;
+}
+
+#texteditor_wrapper {
+	width: 100%!important;
+	height: 150px!important;
+}

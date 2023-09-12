@@ -1,0 +1,16 @@
+<div class="c-subscriber-invite">
+  <div class="c-flex c-flex--2 c-flex--stretch c-flex--wrap c-subscriber-grids c-subscriber-grids--clickable">
+    <h2>Journeys Linked to Milestone</h2>
+    <div class="pull-right" style="padding-top:20px;">
+      <button ng-click="PopJourneysModal(uuid)" class="btn btn-primary btn-xs">Link Journeys</button>
+    </div>
+    <div class="c-flex__col" ng-repeat='rel in subgraph.outgoing["milestone_journey"][uuid]'>
+        <img alt="logo" class="img-circle img-small" ng-if="node.properties.image_url.length" src="{{node.properties.image_url}}">
+        <div class="m-t-sm">
+            <strong>{{subgraph.nodes[subgraph.rels[rel].to_id].properties.title}}</strong>
+            <br>
+            {{subgraph.nodes[subgraph.rels[rel].to_id].properties.description}}
+        </div>
+    </div>
+  </div>
+</div>

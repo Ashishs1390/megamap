@@ -1,0 +1,79 @@
+<div>
+    <div id="header" ng-include="'views/Workshops/Journey/header.html'"></div>
+    <aside id="menu" ng-include="'views/Workshops/Journey/navigation.html'"></aside>
+    <div id="wrapper" class="journey-details">
+        <div class="content">
+            <!-- <uib-progressbar ng-if='progress' value="progress" type="success" class="progress-small full progress-striped active red"></uib-progressbar> -->
+
+            <!-- <div ng-show='Getting' class="c-abs-loading"><img src="/build/images/loading.gif"></div> -->
+
+            <div class='tabs'>
+                <div ng-repeat='stage in journey.stages | orderBy:"order"' ng-click='setStage(stage, false)' ng-model="currentStage" class='tabs--tab {{(currentStage.uuid == stage.uuid) ? "lighten-5":"lighten-2"}}'>
+                    <div ng-show="false" ng-init="stage.order == 0 ? setStage(stage, true) : ''"></div>
+                    <!-- col-xs-{{12/journey.stages_count}} -->
+                    <div class="c-flex " id="{{stage.uuid}}">
+                        <div class='c-flex__col tabs--tab__title'>{{stage.title | titleCase}} (<span class="note-count">0</span>)
+                        </div>
+
+                        <div class="c-flex__col">
+                            <div class='btn btn-primary btn-sm' ng-show='currentStage.uuid == stage.uuid' ng-click="open_note_creator();">
+                                <i class="fa fa-plus "></i> Add Note
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- product journey -->
+            <div class="post-container u-bg-white clearfix">
+                <div class="hpanel" >
+                    <div class="filters clearfix">
+                        <div class='col-xs-12'>
+                            Unselect interactions:
+                            <a ng-repeat="interaction in journey.interactions | orderBy:'order'" ng-class
+                               class="filters--item btn {{interaction.color ? interaction.color : 'orange'}} {{UnSelectedInteractions.indexOf(interaction.uuid) > -1 ? 'lighten-3': ''}}"
+                               ng-click="toggleInteraction(interaction);" >{{interaction.title | titleCase}}
+                            </a> |
+                            <a class="filters--item btn dark-blue" ng-click="deselectAll(journey.interactions)">Deselect All</a>
+                            <a class="filters--item btn dark-blue" ng-click="selectAll()">Select All</a>
+                            <!-- || Votes Allowed Per Stage Per Type Per Author: {{journey.stages.vote_limit_per_stage}} -->
+                        </div>
+                    </div>
+
+
+                    <div class="col-xs-12">
+                        <div class="form-inline">
+                            Sorted by:
+                            <select class="form-control"
+                              ng-model="selectedSortOrder"
+                              ng-change="noteCardOrder = selectedSortOrder"
+                              ng-options="o.property as o.label for o in sortOptions">
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="c-flex c-flex--4 c-flex--wrap c-flex--stretch c-workshop-cards" ng-init="totalInSequence = journey.stages.length">
+                        <!-- filtered notes -->
+                        <!-- <div ng-repeat="note in journey.notes | orderBy:noteCardOrder | filter:{Stage:{uuid:currentStage.uuid}} as stageNotes" -->
+                        <div ng-repeat="note in journey.notes | orderBy:noteCardOrder"
+                             ng-show="note.Stage.uuid == currentStage.uuid && UnSelectedInteractions.indexOf(note.Interaction.uuid) < 0"
+                             class="c-flex__col post-item" child="element">
+                             <!-- remove animate-panel effect="bounceInRight" -->
+
+                          <!-- <span class='pull-right' ng-if='journeySubGraph.nodes[journeySubGraph.rels[relationship].from_id].properties[sorted_property]'>
+                            ht{{sorted_property}} : {{journeySubGraph.nodes[journeySubGraph.rels[relationship].from_id].properties[sorted_property]}}
+                          </span> -->
+
+                          <journey-note-card class="hpanel element" note="note"></journey-note-card>
+                        </div>
+                        <!-- {{stage.noteCount = 7}} -->
+                        <!-- {{stage.noteCount = 3}} -->
+                        <div class="c-flex__col"></div>
+                        <div class="c-flex__col"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,48 @@
+<table class="table" ng-controller='multiSubscriberBullsEyeCtrl'>
+  <thead class='{{((subgraph.length == 0)) ? "red" : "green"}} lighten-3'>
+    <tr>
+      <td>
+        Audiences &amp; Strategies
+      </td>
+    </tr>
+  </thead>
+  <tbody ui-sortable ng-model='subgraph' class='green lighten-5'>
+    <tr ng-repeat='item in getSelectedAudiences()'>
+      <td>
+        <table class="table">
+          <tr style="background-color:#E4E4E4;">
+            <td class='font-bold'>{{pool.audiences.nodes[item].properties.title}} {{getSegmentTitle(item)}}
+              <i ng-click="RemoveFromLocal(pool.audiences.nodes[item])" class='fa fa-minus pull-right'></i></td>
+          </tr>
+          <tr ng-repeat='strategyItem in getSelectedStrategies(item)'>
+              <td style="padding-left:10px;" class='font-bold'>{{pool.strategies.nodes[strategyItem].properties.title}} {{getStrategyType(pool.strategies.nodes[strategyItem])}}
+                  <i ng-click="RemoveStrategyFromLocal(pool.strategies.nodes[strategyItem], pool.audiences.nodes[item])" class='fa fa-minus pull-right'></i></td>
+          </tr>
+        </table>
+      </td>
+
+    </tr>
+  </tbody>
+  <tbody>
+    <tr class='grey lighten-3'>
+      <td> <input ng-model="search" ng-change='Search()'> </td>
+    </tr>
+    <tr ng-if='Getting'>
+      <td>Loading ...</td>
+    </tr>
+    <tr ng-if='!Getting && showAudience()' ng-repeat='item in getUnSelectedAudiences()' class='grey lighten-5'>
+        <td>
+            <table class="table">
+              <tr style="background-color:#E4E4E4;">
+                <td class='font-bold'>{{pool.audiences.nodes[item].properties.title}} {{getSegmentTitle(item)}}
+                  <i ng-if="showRemoveIcon(item)" ng-click="AddToLocal(pool.audiences.nodes[item])" class='fa fa-plus pull-right'></i></td>
+              </tr>
+              <tr ng-repeat='strategyItem in getUnSelectedStrategies(item)'>
+                  <td style="padding-left:10px;" class='font-bold'>{{pool.strategies.nodes[strategyItem].properties.title}} {{getStrategyType(pool.strategies.nodes[strategyItem])}}
+                      <i ng-click="AddStrategyToLocal(pool.strategies.nodes[strategyItem], item)" class='fa fa-plus pull-right'></i></td>
+              </tr>
+            </table>
+          </td>
+    </tr>
+  </tbody>
+</table>

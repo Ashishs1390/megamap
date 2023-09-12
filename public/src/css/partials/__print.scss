@@ -1,0 +1,21 @@
+
+@media print {
+  @page  {
+    margin: 0.5cm;
+    background: #000;
+  }
+
+  body {
+    -webkit-print-color-adjust: exact !important;
+    background-color: $purple1 !important;
+  }
+
+  .c-quote-container {
+    margin-top: -40px;
+  }
+
+  img {
+    page-break-inside: avoid;
+  }
+}
+

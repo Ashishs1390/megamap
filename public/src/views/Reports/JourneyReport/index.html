@@ -1,0 +1,30 @@
+<div class='content c-modal c-modal--report c-modal--report--journey' style="{{Getting ? 'height: 100%' : ''}}" ng-controller='journeyReportCtrl'>
+    <div class='row'>
+        <div class="col-lg-12 u-mb5">
+            <div ng-click="gotoPrevState()" class="btn btn-default btn--back"> <i class="fa fa-chevron-left" aria-hidden="true"></i> Go back </div>
+            <!-- <div ng-if="$root.previousState == 'dashboard.journey'" class="btn btn-default" ui-sref="dashboard.journey"> < Go back </div> -->
+        </div>
+
+        <!-- <div ng-if='EditMode'>Admin space </div> -->
+        <div ng-if='Getting' class="c-abs-loading"><img src="/images/loading.gif"></div>
+        <div ng-if="!Getting" class="c-report-journey">
+            <div class="col-sm-12">
+                <h3>Journey Report</h3>
+
+                <div class="hpanel">
+                    <div class="panel-body">
+                        <div class="form-inline">
+                            Sorted by:
+                            <select class="form-control" ng-model="sortValue"  ng-options='option as option.display for option in SortOrders'>
+                        </select>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div ng-show='sortValue.display == "Default" ' ng-include='"views/Reports/JourneyReport/importance-tables.html"'></div>
+            <div ng-show='sortValue.display != "Default" ' ng-include='"views/Reports/JourneyReport/property-tables.html"'></div>
+
+        </div>
+    </div>

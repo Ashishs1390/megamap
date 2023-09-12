@@ -1,0 +1,17 @@
+<div class='c-report-profile__editor u-table clearfix' ng-show='EditMode'>
+    <a>
+        <div class="c-report-profile__editorText btn-primary u-print-hidden" ng-click='edit_image_url = !edit_image_url;'><span class="fa fa-magic"></span> Profile photo <b class="caret"></b></div>
+    </a>
+    <div class="u-p10 u-bg-white">
+        <input type='text' ng-show='!edit_image_url && EditMode' ng-model='journey.image_url' class="form-control" title="Update  image url for printing."/>
+    </div>
+</div>
+
+<div class="c-profile-persona">
+    <img class="c-profile-persona__photo {{EditMode ? 'c-profile-persona__photo--editMode' : ''}}" src="{{ journey.image_url || '/build/images/cmo.png'}}" alt="Persona profile">
+
+    <div class="c-profile-persona__name">
+        <h2>{{journey.personas[0].title}}</h2>
+        <p>{{journey.title}}</p>
+    </div>
+</div>

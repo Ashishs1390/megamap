@@ -1,0 +1,34 @@
+<div class='c-report-profile__editor u-table clearfix' ng-show='editing'>
+    <div class="dropdown u-table-cell btn-primary" uib-dropdown>
+        <a uib-dropdown-toggle style="cursor:default">
+            <div class="c-report-profile__editorText"><span>{{ViewMode || "Choose ViewMode"}}</span> <!--<b class="caret"></b>--></div>
+        </a>
+        <!-- <ul class="animated flipInX m-t-xs" uib-dropdown-menu>
+            <li><a>Pick ViewMode</a></li>
+            <li class="divider"></li>
+            <li ng-repeat='view_mode in ["table","chart","image","custom"]' ng-click='SetViewMode(view_mode)'><a>{{view_mode}}</a></li>
+        </ul> -->
+    </div>
+    <div ng-show='ViewMode == "table" || ViewMode == "chart"' class="dropdown u-table-cell btn-primary" uib-dropdown>
+        <a uib-dropdown-toggle href>
+            <div class="c-report-profile__editorText"><span>{{SelectedAttribute.properties.title || "Choose Attribute"}}</span> <b class="caret"></b></div>
+        </a>
+        <ul class="animated flipInX m-t-xs" uib-dropdown-menu>
+            <li><a>Pick attribute</a></li>
+            <li class="divider"></li>
+            <li ng-repeat='attribute in attributes' ng-click='SetSelectedAttribute(attribute); '><a>{{attribute.properties.title}} - {{attribute.notes.length}}</a></li>
+        </ul>
+    </div>
+    <div ng-show='ViewMode == "table"' class="dropdown u-table-cell btn-primary" uib-dropdown ng-if='SelectedAttribute'>
+        <a uib-dropdown-toggle href>
+            <div class="c-report-profile__editorText"><span>{{SelectedInteraction.properties.title || "Choose Interaction"}}</span> <b class="caret"></b></div>
+        </a>
+        <ul class="animated flipInX m-t-xs" uib-dropdown-menu>
+            <li><a>Pick Interaction</a></li>
+            <li class="divider"></li>
+            <li ng-repeat='interaction in SelectedAttribute.Interactions' ng-click='SetSelectedInteraction(interaction)'><a class='{{interaction.properties.color}} lighten-5'>{{interaction.properties.title}} - {{interaction.ImportantNotes.length}}</a></li>
+
+        </ul>
+    </div>
+    <input type='text' ng-show='ViewMode == "image"' ng-model='image_url' />
+</div>

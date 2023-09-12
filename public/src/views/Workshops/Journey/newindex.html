@@ -1,0 +1,215 @@
+<div id="header" ng-include="'views/Workshops/Journey/header.html'"></div>
+<aside id="menu" ng-include="'views/Workshops/Journey/navigation.html'"></aside>
+
+<div ng-show="savingData || loadingJourney || uploadingFile || mergingNotes" class="auth-loading">
+  <i class="fa fa-circle-o-notch fa-spin"></i>
+  <h5>{{uploadingFile || mergingNotes}}</h5>
+</div>
+
+<div id="wrapper" class="journey-details" ng-keydown="keyDown($event)" ng-keyup="keyUp($event)"
+  ng-init="journey.show_votes == false ? '' : (journey.show_votes = true)" rels="{{journey.uuid}}">
+  <div class="content">
+    <div class="hpanel Info">
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-sm-12 col-lg-6">
+            <workshop-label workshop-type="journey.workshop_type" group="isGroup" />
+            <h2 class="font-light m-b-xs"><strong>{{journey.title}}</strong></h2>
+            <small>{{journey.description}}</small>
+          </div>
+          <div class="col-sm-12 col-lg-6 u-mt10" ng-hide="missingComponents()">
+            <button class="btn btn-primary btn-lg pull-right" ng-click="open_note_creator()"
+               ng-disabled="
+                ['attendee', 'external'].includes($root.Person.role) &&
+                journey.hasOwnProperty('attendees_create_notes') && !journey.attendees_create_notes"
+               >
+              <i class="fa fa-plus"></i> Create Note
+            </button>
+            <!-- SELECT FILTERS -->
+            <select id="order" class="form-control selectFilter"
+              ng-model="noteCardOrder"
+              ng-change="selectedPersona = null; closeCommentBox()"
+              ng-options="o.property as o.label for o in sortOptions">
+            </select>
+          </div>
+          <div class="col-sm-12 col-lg-6 text-right text-danger" ng-show="missingComponents()">
+            Please add components to this workshop (Stages, Interactions, Personas)
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class='col-md-7 col-xs-12' style="z-index:10">
+            <h4 style="color:#25263d">
+              Note Types
+              &nbsp;
+              <span>
+                <a class="filters--item btn dark-blue"
+                  ng-click="toggleFilterButtons(journey.interactions, 'UnSelectedInteractions')">
+                  {{UnSelectedInteractions.length === journey.interactions.length ? 'Select' : 'Deselect'}} All
+                </a>
+              </span>
+            </h4>
+            <!-- INTERACTION FILTER BUTTONS -->
+            <a ng-repeat="interaction in journey.interactions | orderBy:'order'" ng-init="firstInt($first, interaction)"
+              class="filters--item btn large {{interaction.color ? interaction.color : 'orange'}}
+                 {{UnSelectedInteractions.indexOf(interaction.uuid) > -1 ? 'lighten-4': 'lighten-1'}}"
+              title="{{interaction.description}}"
+              ng-click="toggleInteraction(interaction);">{{interaction.title | titleCase}}
+            </a>
+            <!-- || Votes Allowed Per Stage Per Type Per Author: {{journey.stages.vote_limit_per_stage}} -->
+          </div>
+          <div class="col-md-5">
+            <!-- PERSONA FILTER BUTTONS -->
+            <div class="persona-filters">
+              <h3 style="color:#25263d">
+                Personas
+                &nbsp;
+                <span>
+                  <a class="filters--item btn dark-blue"
+                    ng-click="toggleFilterButtons(journey.personas, 'UnSelectedPersonas')">
+                    {{UnSelectedPersonas.length === journey.personas.length ? 'Select' : 'Deselect'}} All
+                  </a>
+                </span>
+              </h3>
+
+              <a ng-repeat="persona in journey.personas | orderBy:'order'" ng-init="firstPersona($first, persona)"
+                class="filters--item btn large {{persona.color ? persona.color : 'orange'}}
+                 {{UnSelectedPersonas.indexOf(persona.uuid) > -1 ? 'lighten-4': 'lighten-1'}}"
+                title="{{persona.description}}" ng-click="togglePersona(persona);">{{persona.title}}
+              </a>
+            </div>
+            <div class="col-xs-12 row">
+              <form class="col-xs-8 col-xs-offset-4 form-horizontal content-filter">
+                <input type="text" class="form-control" ng-model="searchFilter"
+                  placeholder="Search by note, author, comment, or persona">
+              </form>
+              <div class="toggle-votecounts">
+                <a ng-if="$root.Person.role !== ('attendee' || 'external')"
+                  class="filters--item btn {{showPositions ? 'red': 'green'}}"
+                  ng-class="{'lighten-3': true}" ng-click="togglePositions()">
+                  {{showPositions  ? 'Hide' : 'Show'}} note positions
+                </a>
+                <a ng-if="$root.Person.role !== ('attendee' || 'external')"
+                  class="filters--item btn {{journey.show_votes ? 'green': 'red'}}"
+                  ng-class="{'lighten-3': true}" ng-click="toggleJourneyVotes()">Vote counts
+                  {{journey.show_votes ? 'are visible' : 'are hidden'}}
+                </a>
+                <a ng-hide="journey.disable_live_updates" class="filters--item btn {{mute_updates ? 'red': 'green'}}"
+                  ng-class="{'lighten-3': true}" ng-click="mute_updates = !mute_updates">
+                  {{mute_updates ? 'Unm' : 'M'}}ute live updates
+                </a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <!-- limits -->
+        <div class="row">
+          <div class="col col-xs-12">
+            Voting limit: {{journey.vote_limit_per_stage}} votes per stage/persona/note
+            <span style="color:red"><br>{{friendlyerror}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hpanel">
+      <ul class="nav nav-tabs nav-justified" id="journey_tabs">
+        <li ng-repeat="stage in journey.stages | orderBy: 'order' as orderedStages" class="stage" id="{{stage.uuid}}" ng-class="{'active':$first}"
+          ng-style="{'max-width': (100/journey.stages.length + '%')}"
+          ng-init="stage.uuid == currentStage.uuid ? setStage(stage, true) : setStage(stage, $first)"
+          ng-click="setStage(stage, true)">
+          <!-- <pre>{{stage.limits | json}}</pre> -->
+          <a class="stage-tabs noselect" data-toggle="tab" data-target="{{'#tab-'+stage.uuid}}"
+            style="border-top-color:{{getStageColor(stage)}} !important"
+            ng-class="{'long-title': stage.title.length > 14}"
+            title="{{stage.workshop_description || stage.description}}" rels="{{journey.uuid}}_{{stage.uuid}}">
+            <span>
+              {{isBrainstormStage(stage) ? (stage.title.split('_')[1] | date) : (stage.title || titleCase) }}
+
+              ({{(getCount(stage.notes) | filter: externalFilter | filter: searchFilter).length}})
+              <u ng-if="$root.Person.properties.power_user || $root.Person.role !== ('attendee' || 'external')"
+                ng-click="editJourneyStageDescription(stage, journey.uuid)">...</u>
+            </span>
+          </a>
+        </li>
+      </ul>
+      <div class="tab-content">
+
+        <div ng-repeat="stage in journey.stages | orderBy: 'order'" id="{{'tab-'+stage.uuid}}" class="tab-pane"
+          ng-class="{'active':$first}">
+          <div class="panel-body">
+            <div ng-if="stage.workshop_whiteboard" class="row social-board">
+              <div class="whiteboard">
+                <white-board channel="journey.uuid+'_'+stage.uuid" user="$root.Person.properties"></white-board>
+              </div>
+              <!-- <iframe width="100%" height="1000" style="border:none; z-index:10000000000;" src="https://whiteboard.ruptive.cx"></iframe> -->
+            </div>
+            <div ng-if="!stage.workshop_whiteboard" class="row social-board">
+              <!-- <div ng-show="noteCardOrder === 'persona_interaction'" ng-include="'views/Workshops/Journey/_grouped_notes.html'"></div> -->
+              <div ng-include="'views/Workshops/Journey/_ordered_notes.html'"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- Following section is added for connection  -->
+<div ng-if="journey.show_connections" id="wrapper" class="journey-details" ng-keydown="keyDown($event)" ng-keyup="keyUp($event)"
+  ng-init="journey.show_votes == false ? '' : (journey.show_votes = true)" rels="{{journey.uuid}}">
+  <div class="content">
+    <div>
+      <div class="panel-body connection">
+        <div class="row">
+
+
+          <div class="col-sm-12 col-lg-6 text-right text-danger" ng-show="missingComponents()">
+            Please add components to this workshop (Stages, Interactions, Personas)
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class='col-md-7 col-xs-12' style="z-index:10">
+            <h4 style="color:#25263d">
+              {{journey.connection_header_text || 'Connections'}}
+            </h4>
+          </div>
+          <div class="col-md-5">
+            <button class="btn btn-primary btn-lg pull-right" ng-click="open_connection_creator()"
+              ng-hide="['attendee', 'external'].includes($root.Person.role)">
+              <i class="fa fa-plus"></i> Add Component
+            </button>
+          </div>
+
+        </div>
+        <!-- limits -->
+        <!-- <div class="row">
+          <div class="col col-xs-12">
+            Voting limit: {{journey.vote_limit_per_stage}} votes per stage/persona/note
+            <span style="color:red"><br>{{friendlyerror}}</span>
+          </div>
+        </div> -->
+      </div>
+    </div>
+
+    <div class="hpanel">
+
+      <div class="tab-content">
+        <div ng-repeat="stage in journey.stages | orderBy: 'order'" id="{{'tab-'+stage.uuid}}" class="tab-pane"
+          ng-class="{'active':$first}">
+          <div class="panel-body">
+            <div class="row social-board">
+              <!-- <div ng-show="noteCardOrder === 'persona_interaction'" ng-include="'views/Workshops/Journey/_grouped_notes.html'"></div> -->
+              <div ng-include="'views/Workshops/Journey/connection_notes.html'"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

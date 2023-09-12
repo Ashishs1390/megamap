@@ -1,0 +1,9 @@
+<div id="navigation">
+       <div ng-include="'views/Shared/Navigation/profileArea.html'"/>
+
+    <ul side-navigation class="nav c-nav-sidebar" id="side-menu">
+        <div ng-show='$root.Person.role == "tenant"' ng-include="'views/Configurator/Shared/tenant_navigation.html'"></div>
+        <div ng-show='$root.Person.role == "admin"' ng-include="'views/Configurator/Shared/admin_navigation.html'"></div>
+        <div ng-show='$root.Person.role == "attendee" || $root.Person.role == "external"' ng-include="'views/Configurator/Shared/attendee_navigation.html'"></div>
+    </ul>
+</div>

@@ -1,0 +1,29 @@
+<div class="hpanel Info">
+    <div class="panel-body">
+        <div class="form-inline">
+            Search {{label}}: <input type="" value="" id="" class="form-control" ng-model="search">
+        </div>
+    </div>
+    <button class="btn btn-primary col-xs-2 u-mt10 u-mb10" ng-if='PopCreateModal' ng-click="PopCreateModal('Bullseye');">Create</button>
+</div>
+<div ng-if='Getting' class="c-abs-loading"><img src="/build/images/loading.gif" /></div>
+<div class=''>
+    <div class="col-xs-12">
+        <div class="c-flex c-flex--3 c-flex--stretch c-flex--wrap">
+            <div class="element c-flex__col u-mb40" ng-repeat='item in library.node_label_index.Bullseye' ng-show="library.nodes[item].properties.title.toLowerCase().indexOf(search.toLowerCase()) >= 0 || library.nodes[item].properties.description.toLowerCase().indexOf(search.toLowerCase()) >= 0 ">
+                <div class='library_card_wrapper'>
+                    <bullseye-card-large node='library.nodes[item]' library='library'></bullseye-card-large>
+                    <div class='u-table library-card-groupBtns u-bg-grey'>
+                        <a ng-if="$root.Person.role != 'attendee'" ng-click="PopAttendeeModal(item)" class="u-table-cell">Attendees</a>
+                        <a ui-sref='workshop.bullseye({id:item, title:library.nodes[item].properties.title})' class="u-table-cell">View Bullseye</a>
+                        <a ng-if="$root.Person.role != 'attendee'" ng-click='PopEditModal(item)' ng-if='PopEditModal' class=" u-table-cell ">Edit</a>
+                        <a ng-if="$root.Person.role != 'attendee'" ng-click="PopConnectModal(item)" ng-if='PopConnectModal' class="u-table-cell">Components</a>
+                    </div>
+                </div>
+            </div>
+            <!-- to fix flex alignement issue -->
+            <div class="c-flex__col"></div>
+            <div class="c-flex__col"></div>
+        </div>
+    </div>
+</div>

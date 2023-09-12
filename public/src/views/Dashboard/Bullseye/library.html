@@ -1,0 +1,16 @@
+<div ng-if='Getting' class="c-abs-loading"><img src="/build/images/loading.gif" /></div>
+<div class="c-flex c-flex--3 c-flex--stretch c-flex--wrap c-dashboard-cards">
+    <div class="c-flex__col" ng-repeat='item in library.node_label_index.Bullseye' ng-show="library.nodes[item].properties.title.toLowerCase().indexOf(search.toLowerCase()) >= 0 || library.nodes[item].properties.description.toLowerCase().indexOf(search.toLowerCase()) >= 0 ">
+        <div class='library_card_wrapper'>
+            <bullseye-card-large node='library.nodes[item]' library='library'></bullseye-card-large>
+            <div class='u-table library-card-groupBtns u-bg-grey'>
+                <a ui-sref='dashboard.bullseyedetail' class="u-table-cell">View Bullseye</a>
+                <a ng-click='PopEditModal(item)' ng-if='PopEditModal' class=" u-table-cell ">Edit</a>
+                <a ng-click="PopConnectModal(item)" ng-if='PopConnectModal' class="u-table-cell">Components</a>
+            </div>
+        </div>
+    </div>
+    <!-- to fix flex alignement issue -->
+    <div class="c-flex__col"></div>
+    <div class="c-flex__col"></div>
+</div>

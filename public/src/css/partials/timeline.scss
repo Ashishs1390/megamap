@@ -1,0 +1,257 @@
+/* Media Queries */
+
+@mixin mq-xs {
+  @media (min-width: 320px) {
+    @content;
+  }
+}
+
+@mixin mq-sm {
+  @media (min-width: 480px) {
+    @content;
+  }
+}
+
+@mixin mq-md {
+  @media (min-width: 720px) {
+    @content;
+  }
+}
+
+@mixin mq-lg {
+  @media (min-width: 1000px) {
+    @content;
+  }
+}
+
+$timeline-background: #f7f7f7;
+$timeline-box-shadow: 0px 1px 22px 4px rgba(0, 0, 0, 0.07);
+$timeline-border: 1px solid rgba(191, 191, 191, 0.4);
+$timeline-items: 5;
+$timeline-rows: ceil($timeline-items/2);
+
+/* Card sizing */
+
+$timeline-card-height: 400px;
+$timeline-card-width: 450px;
+$timeline-inner-margin: 15px;
+$timeline-number-size: 35px;
+$timeline-stagger: 180px;
+$timeline-outer-margin: 90px;
+$timeline-marker-size: 9px;
+
+/* Colors */
+
+$timeline-steps: #46b8e9;
+$timeline-colors: #46b8e9,
+#3ee9d1,
+#ce43eb,
+#4d92eb;
+$timeline-timeline: #bdbdbd;
+
+/* Calculations */
+
+$timeline-container-height: $timeline-rows * ($timeline-card-height + $timeline-outer-margin) + $timeline-stagger;
+$timeline-container-width: $timeline-card-width*2 + $timeline-outer-margin*3;
+$timeline-head-height: $timeline-number-size + 50;
+$timeline-body-height: $timeline-card-height - $timeline-head-height;
+$timeline-marker-dist: $timeline-card-width + $timeline-outer-margin/2 - $timeline-marker-size/2;
+
+/* Placeholders */
+
+@include mq-lg {
+  %arrow {
+    position: absolute;
+    content: "";
+    width: 0;
+    height: 0;
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent;
+  }
+  %marker {
+    position: absolute;
+    content: "";
+    width: $timeline-marker-size;
+    height: $timeline-marker-size;
+    background-color: $timeline-timeline;
+    border-radius: $timeline-marker-size;
+    box-shadow: 0px 0px 2px 8px $timeline-background;
+  }
+}
+
+
+/* Some Cool Stuff */
+
+$timeline-counter: $timeline-items - $timeline-rows + 2;
+@for $timeline-i from 1 through $timeline-rows {
+  .demo-card:nth-child(#{$timeline-i*2-1})   { order: $timeline-i }
+  .demo-card:nth-child(#{$timeline-i*2})     { order: $timeline-counter }
+  $timeline-counter: $timeline-counter + 1;
+}
+
+/* Border Box */
+
+* {
+  box-sizing: border-box;
+}
+
+/* Fonts */
+
+
+#timeline {
+  padding: 100px 0;
+  background: $timeline-background;
+  border-top: $timeline-border;
+  border-bottom: $timeline-border;
+  h1 {
+    text-align: center;
+    font-size: 3rem;
+    font-weight: 200;
+    margin-bottom: 20px;
+  }
+  p.leader {
+    text-align: center;
+    max-width: 90%;
+    margin: auto;
+    margin-bottom: 45px;
+  }
+  .demo-card-wrapper {
+    position: relative;
+    margin: auto;
+    @include mq-lg {
+      display: flex;
+      flex-flow: column wrap;
+      width: $timeline-container-width;
+      height: $timeline-container-height;
+      margin: 0 auto;
+    }
+    &::after {
+      z-index: 1;
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      border-left: $timeline-border;
+      @include mq-lg {
+        border-left: 1px solid $timeline-timeline;
+      }
+    }
+  }
+  .demo-card {
+    position: relative;
+    display: block;
+    margin: 10px auto 80px;
+    max-width: 94%;
+    z-index: 2;
+    cursor:pointer;
+    @include mq-sm {
+      max-width: 60%;
+      box-shadow: $timeline-box-shadow;
+    }
+    @include mq-md {
+      max-width: 40%;
+    }
+    @include mq-lg {
+      max-width: $timeline-card-width;
+      height: $timeline-card-height;
+      margin: $timeline-outer-margin;
+      margin-top: $timeline-outer-margin/2;
+      margin-bottom: $timeline-outer-margin/2;
+      &.odd-card {
+        margin-right: $timeline-outer-margin/2;
+        .head::after {
+          @extend %arrow;
+          border-left-width: 15px;
+          border-left-style: solid;
+          left: 100%;
+        }
+        .head::before {
+          @extend %marker;
+          left: $timeline-marker-dist + 1;
+        }
+      }
+      &.even-card {
+        margin-left: $timeline-outer-margin/2;
+        .head::after {
+          @extend %arrow;
+          border-right-width: 15px;
+          border-right-style: solid;
+          right: 100%;
+        }
+        .head::before {
+          @extend %marker;
+          right: $timeline-marker-dist - 1;
+        }
+      }
+      &.second-card {
+        margin-top: $timeline-stagger;
+      }
+    }
+    .head {
+      position: relative;
+      display: flex;
+      align-items: center;
+      color: #fff;
+      font-weight: 400;
+      .number-box {
+        display: inline;
+        float: left;
+        margin: $timeline-inner-margin;
+        padding: 10px;
+        font-size: $timeline-number-size;
+        line-height: $timeline-number-size;
+        font-weight: 600;
+        background: rgba(0, 0, 0, 0.17);
+      }
+      h2 {
+        text-transform: uppercase;
+        font-size: 1.3rem;
+        font-weight: inherit;
+        letter-spacing: 2px;
+        margin: 0;
+        padding-bottom: 6px;
+        line-height: 1rem;
+        @include mq-sm {
+          font-size: 165%;
+          line-height: 1.2rem;
+        }
+        span {
+          display: block;
+          font-size: 0.6rem;
+          margin: 0;
+          @include mq-sm {
+            font-size: 0.8rem;
+          }
+        }
+      }
+    }
+    .body {
+      background: #fff;
+      border: $timeline-border;
+      border-top: 0;
+      padding: $timeline-inner-margin;
+      @include mq-lg {
+        height: $timeline-body-height;
+      }
+      p {
+        font-size: 14px;
+        line-height: 18px;
+        margin-bottom: $timeline-inner-margin;
+      }
+      img {
+        display: block;
+        width: 100%;
+      }
+    }
+    @for $timeline-i from 1 through $timeline-items {
+      &--step#{$timeline-i} {
+        $timeline-color: nth($timeline-colors, ((($timeline-i - 1) % 4) + 1));
+        background-color: $timeline-color;
+        .head::after {
+          border-color: $timeline-color;
+        }
+      }
+    }
+  }
+}

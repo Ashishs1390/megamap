@@ -1,0 +1,50 @@
+  <div class="hpanel note-hpanel" id="component_{{component.uuid}}"
+
+       ng-click="(connectMode && readyForConnect) ? select_for_connect(component) : '';">
+
+    <div class="panel-heading blue-grey lighten-2 note-header">
+      <div class="media social-profile clearfix" title="{{component.rels.author.email}}">
+        <img src="{{component.rels.author.image_url || '/build/images/user-default.png'}}" onerror="this.onerror=null;this.src='/build/images/user-default.png';">
+        <span class="note-author">{{component.rels.author.firstname}}</span>
+      </div>
+      <!-- <div class="note-order" title="Order in Sequence">{{sortedCount(component)}}</div> -->
+      <small class="text-white">{{component.labels[0]}}</small>
+      <div class="icons" ng-hide="connectMode">
+        <i class="fa fa-plug edit-note" title="Connect Components" ng-click='connect_note_component(component)'
+           ng-if="$root.Person.role !== 'attendee'"></i>
+       <i class="fa fa-gear edit-note" ng-click='OpenMOTsettings({ uuid: component.from_uuid, component: true })' ng-if="component.labels[0] === 'Mot'"></i>
+      </div>
+    </div>
+
+    <div class="note panel-body blue-grey lighten-5 clearfix" ng-click="myStyle={'background-color':'blue'}">
+      <div ng-show="connectMode" class="mergeNoteOverlay parentNoteForMerge"
+        ng-class="{
+          parentNoteForMerge: mergeMode && mergeObject.primary === component.uuid,
+          childNoteForMerge: mergeMode && mergeObject.primary !== component.uuid
+        }">
+        <div ng-show="connectMode && (connections.connection === component.uuid || connections.notes.includes(component.uuid) || connections.connections.includes(component.uuid))" class="mergeNoteInner">
+          <a class="btn btn-warning btn-xs pull-right" ng-click="finish_connect()">Finish</a>
+          <a class="btn btn-secondary btn-xs pull-right" ng-click="cancel_connect()">Cancel</a>
+          <!-- <a class="btn btn-secondary btn-xs pull-right" ng-click="reset_connections(note)" ng-if="component.connection">Reset</a> -->
+          <small>Connect note components</small>
+        </div>
+      </div>
+
+      <div style="display:inline-block" class="connections pointer" ng-click='toggle_view_connections(component.uuid)'>
+        <!-- <count>{{component.rels.connected_note_count}}</count> -->
+        <i class="fa fa-eye" title="View Connections"></i>
+      </div>
+
+      <div ng-bind="component.title || component.description"></div>
+
+      <div class="clearfix"></div>
+    </div>
+
+    <div class="panel-footer">
+      <div class="row noselect">
+        <div class="col-xs-12" style="padding:7px 0; text-align:center;">
+          Connections: <span class="connections-count">{{component.rels.connected_note_count}}</span>
+        </div>
+      </div>
+    </div>
+  </div>

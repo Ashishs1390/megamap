@@ -1,0 +1,16 @@
+<div class="c-subscriber-invite">
+  <div class="c-flex c-flex--2 c-flex--stretch c-flex--wrap c-subscriber-grids c-subscriber-grids--clickable">
+    <h2>Notes Linked to Milestone</h2>
+    <div class="pull-right" style="padding-top:20px;">
+      <button ng-click="PopNotesModal(uuid)" class="btn btn-primary btn-xs">Link Notes</button>
+    </div>
+    <div class="c-flex__col" ng-repeat='rel in subgraph.outgoing["milestone_component"][uuid]'>
+        <img alt="logo" class="img-circle img-small" ng-if="node.properties.image_url.length" src="{{node.properties.image_url}}">
+        <div class="m-t-sm"> 
+            <strong>{{subgraph.nodes[subgraph.rels[rel].to_id].properties.title || subgraph.nodes[subgraph.rels[rel].to_id].properties.description}}</strong>
+            <br>
+            Progress: {{subgraph.rels[rel].properties.progress || "N/A"}}
+        </div>
+    </div>
+  </div>
+</div>

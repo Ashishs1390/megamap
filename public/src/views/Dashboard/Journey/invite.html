@@ -1,0 +1,25 @@
+<div wizard steps='2' final-step-callback='PrepData'>
+    <div ng-if='Getting' class="c-abs-loading"><img src="/build/images/loading.gif"></div>
+    <div ng-if="!Getting" class="row">
+        <div class="col-lg-12">
+            <div class="hpanel">
+                <div class="panel-body">
+                  <h3 title="{{subgraph.nodes[uuid].properties.title}}">Workshop {{external ? 'External' : ''}} Attendees <a href="" title="close" ng-click="cancel('Workshop')" class="fa fa-times pull-right" style="color:#777"></a></h3>
+                  <br>
+                    <form name="simpleForm" novalidate id="simpleForm">
+                      <multi-subscriber-grid ng-if="external" subgraph='journey_connections' original='initial_journey_connections' journey='journey'
+                      type='"journey_external_attendee"' label='"Person"' where-key='"external"' where-val='true' where-type='"bool"'></multi-subscriber-grid>
+
+                      <multi-subscriber-grid ng-if="!external" subgraph='journey_connections' original='initial_journey_connections' journey='journey'
+                      type='"journey_attendee"' label='"Person"'></multi-subscriber-grid>
+                      <br>
+                      <div class="text-right m-t-xs">
+                          <button ng-click="cancel()" class="btn btn-default">Cancel</button>
+                          <button ng-click="submit()" class="btn btn-success" >Save</button>
+                      </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

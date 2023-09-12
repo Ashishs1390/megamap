@@ -1,0 +1,282 @@
+
+
+<div ng-show="note.mot_solution">
+  <label>Select MOT connection(s)</label><br>
+  <div class="mot-inputs">
+    <div class="mot-input">
+      <multiselect ng-model="note.mot_connection"
+        options="eventScope.MOTsolutionNotes" id-prop="uuid" display-prop="description">
+      </multiselect>
+      <!-- <pre>{{note.mot_connection | json}}</pre> -->
+    </div>
+  </div>
+</div>
+
+<div ng-show="note.mot || note.toggleFields">
+  <div class="form-group col-md-12 note-mot-score">
+    <label ng-init="eventScope.getMOTvalues(note)">MOT Scoring</label>
+    <br><br>
+    <!-- manual -->
+    <div class="row">
+      <div class="form-group col-md-10" ng-init="note.mot_score_type = 'mot_score'">
+        <span ng-repeat="i in [].constructor(10) track by $index"
+          ng-click="note.mot ? note.mot_score = $index + 1 : $event.preventDefault()" style="position:relative;">
+        <span ng-show="note.mot_score == ($index + 1)" class="selectedFace"></span>
+        <img src="/build/images/emojis/{{$index + 1}}.png" style="width:30px; cursor:pointer; margin: 0 2px;" />
+        </span>
+        <!-- <label class="for-radio">
+          <input type="radio" value="mot_score" name="scoreType" ng-model="note.mot_score_type" required>
+          Use Manual Score
+          </label> -->
+      </div>
+      <div class="form-group scoring col-md-2" data-toggle="popover" uib-popover-template="'mot_score_breakdown.html'" popover-trigger="mouseenter" popover-placement="left">
+        <div class="input-asterisk" ng-show="note.mots.averages.mot_score && note.mots.me.mot_score != note.mot_score">*</div>
+        <input type="number" disabled class="form-control text-right" ng-model="note.mots.averages.mot_score">
+      </div>
+    </div>
+  </div>
+  <div>
+    <label>MOT Description</label>
+    <br><br>
+    <textarea ng-disabled="!note.mot && !note.mot_solution" name="mot_description" class='form-control' ng-model='note.mot_description'></textarea>
+    <a href="#" ng-click="show_mot_description = !show_mot_description"><small>show history [{{note.mots.text_fields.description.length}}]</small></a>
+    <div ng-show="show_mot_description">
+      <div class="mot-text social-profile clearfix" ng-repeat="line in note.mots.text_fields.description | orderBy: 'created_at'">
+        <a class="pull-left" title="{{line.person.email}}">
+        <img ng-src="{{line.person.image_url || '/build/images/user-default.png'}}" onerror="this.onerror=null;this.src='/build/images/user-default.png';">
+        </a>
+        <div class="media-body">
+          <span class="font-bold">{{line.person.name}}</span>
+          <small class="text-muted">{{line.created_at | date}}</small>&nbsp;&nbsp;
+          <div class="social-content">
+            <span class="comment-text">{{line.text}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="form-group col-md-6">
+        <label>Negative Impact to Persona</label><br><br>
+        <div class="mot-inputs">
+          <div class="mot-average" data-toggle="popover" uib-popover-template="'mot_nitp_breakdown.html'" popover-trigger="mouseenter" popover-placement="top">
+            <div class="input-asterisk" ng-show="note.mots.averages.mot_nitp && note.mots.me.mot_nitp != note.mot_nitp">*</div>
+            <input disabled class="form-control text-right" ng-model="note.mots.averages.mot_nitp">
+          </div>
+          <div class="mot-input">
+            <select ng-disabled="!note.mot && !note.mot_solution" class="form-control" ng-model="note.mot_nitp"
+              ng-options="opt.id as opt.label for opt in [
+              { id: 1, label: 'minor inconvenience' },
+              { id: 2, label: '2' },
+              { id: 3, label: '3' },
+              { id: 4, label: '4' },
+              { id: 5, label: 'major disruption' },
+              ]">
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="form-group col-md-6">
+        <label>What is the impact to the business?</label><br><br>
+        <div class="mot-inputs">
+          <div class="mot-average" data-toggle="popover" uib-popover-template="'mot_itb_breakdown.html'" popover-trigger="mouseenter" popover-placement="top">
+            <div class="input-asterisk" ng-show="note.mots.averages.mot_itb && note.mots.me.mot_itb != note.mot_itb">*</div>
+            <input disabled class="form-control text-right" ng-model="note.mots.averages.mot_itb">
+          </div>
+          <div class="mot-input">
+            <select ng-disabled="!note.mot && !note.mot_solution" class="form-control" ng-model="note.mot_itb"
+              ng-options="opt.id as opt.label for opt in [
+              { id: 1, label: '1' },
+              { id: 2, label: '2' },
+              { id: 3, label: '3' },
+              { id: 4, label: '4' },
+              { id: 5, label: '5' },
+              ]">
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+    <label>Is there a quick win/fix for this opportunity? If so, what is it?</label>
+    <br><br>
+    <textarea ng-disabled="!note.mot && !note.mot_solution" class='form-control' ng-model='note.mot_sts'></textarea>
+    <a href="#" ng-click="show_mot_sts = !show_mot_sts"><small>show history [{{note.mots.text_fields.sts.length}}]</small></a>
+    <div ng-show="show_mot_sts">
+      <div class="mot-text social-profile clearfix" ng-repeat="line in note.mots.text_fields.sts | orderBy: 'created_at'">
+        <a class="pull-left" title="{{line.person.email}}">
+        <img ng-src="{{line.person.image_url || '/build/images/user-default.png'}}" onerror="this.onerror=null;this.src='/build/images/user-default.png';">
+        </a>
+        <div class="media-body">
+          <span class="font-bold">{{line.person.name}}</span>
+          <small class="text-muted">{{line.created_at | date}}</small>&nbsp;&nbsp;
+          <div class="social-content">
+            <span class="comment-text">{{line.text}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br><br>
+  </div>
+</div>
+
+<div ng-show="note.mot_solution || note.toggleFields">
+  <div class="row">
+    <div class="col-sm-12">
+      <h3>MOT Solution</h3>
+    </div>
+    <div class="form-group col-md-6">
+      <label>How desirable is this solution?</label><br><br>
+      <div class="mot-inputs">
+        <div class="mot-average" data-toggle="popover" uib-popover-template="'mot_hdits_breakdown.html'" popover-trigger="mouseenter" popover-placement="top">
+          <div class="input-asterisk" ng-show="note.mots.averages.mot_hdits && note.mots.me.mot_hdits != note.mot_hdits">*</div>
+          <input disabled class="form-control text-right" ng-model="note.mots.averages.mot_hdits">
+        </div>
+        <div class="mot-input">
+          <select ng-disabled="!note.mot && !note.mot_solution" class="form-control" ng-model="note.mot_hdits"
+            ng-options="opt.id as opt.label for opt in [
+            { id: 1, label: '1' },
+            { id: 2, label: '2' },
+            { id: 3, label: '3' },
+            { id: 4, label: '4' },
+            { id: 5, label: '5' },
+            ]">
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="form-group col-md-6">
+      <label>How complex is the solution?</label><br><br>
+      <div class="mot-inputs">
+        <div class="mot-average" data-toggle="popover" uib-popover-template="'mot_complexity_breakdown.html'" popover-trigger="mouseenter" popover-placement="top">
+          <div class="input-asterisk" ng-show="note.mots.averages.mot_complexity && note.mots.me.mot_complexity != note.mot_complexity">*</div>
+          <input disabled class="form-control text-right" ng-model="note.mots.averages.mot_complexity">
+        </div>
+        <div class="mot-input">
+          <select ng-disabled="!note.mot && !note.mot_solution" class="form-control" ng-model="note.mot_complexity"
+            ng-options="opt.id as opt.label for opt in [
+            { id: 1, label: '1' },
+            { id: 2, label: '2' },
+            { id: 3, label: '3' },
+            { id: 4, label: '4' },
+            { id: 5, label: '5' },
+            ]">
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="form-group col-md-12">
+      <label>What is the level of effort required to implement this solution?</label><br><br>
+      <div class="mot-inputs">
+        <div class="mot-average" data-toggle="popover" uib-popover-template="'mot_effort_breakdown.html'" popover-trigger="mouseenter" popover-placement="top">
+          <div class="input-asterisk" ng-show="note.mots.averages.mot_effort && note.mots.me.mot_effort != note.mot_effort">*</div>
+          <input disabled class="form-control" ng-model="note.mots.averages.mot_effort">
+        </div>
+        <div class="mot-input">
+          <select ng-disabled="!note.mot && !note.mot_solution" class="form-control text-right" ng-model="note.mot_effort"
+            ng-options="opt.id as opt.label for opt in [
+            { id: 1, label: '1' },
+            { id: 2, label: '2' },
+            { id: 3, label: '3' },
+            { id: 4, label: '4' },
+            { id: 5, label: '5' },
+            ]">
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <label>Ask not what recommendations others can recommend; ask what YOU can recommend as a recommendation!</label>
+    <br><br>
+    <textarea ng-disabled="!note.mot && !note.mot_solution" class='form-control' ng-model='note.mot_lts'></textarea>
+    <a href="#" ng-click="show_mot_lts = !show_mot_lts"><small>show history [{{note.mots.text_fields.lts.length}}]</small></a>
+    <div ng-show="show_mot_lts">
+      <div class="mot-text social-profile clearfix" ng-repeat="line in note.mots.text_fields.lts | orderBy: 'created_at'">
+        <a class="pull-left" title="{{line.person.email}}">
+        <img ng-src="{{line.person.image_url || '/build/images/user-default.png'}}" onerror="this.onerror=null;this.src='/build/images/user-default.png';">
+        </a>
+        <div class="media-body">
+          <span class="font-bold">{{line.person.name}}</span>
+          <small class="text-muted">{{line.created_at | date}}</small>&nbsp;&nbsp;
+          <div class="social-content">
+            <span class="comment-text">{{line.text}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+</div>
+
+
+<script type="text/ng-template" id="mot_score_breakdown.html">
+  <table class="breakdown-table table-sm no-border">
+    <tbody>
+      <tr ng-repeat="line in motAverageBreakdowns.mot_score | orderBy: 'updated'">
+        <td><small><strong>{{line.value}}</strong></small></td>
+        <td><small>{{line.person.name}}</small></td>
+        <td><small>{{line.updated | amDateFormat: 'MM/DD/YY'}}</small></td>
+      </tr>
+    </tbody>
+  </table>
+</script>
+
+<script type="text/ng-template" id="mot_nitp_breakdown.html">
+  <table class="breakdown-table table-sm no-border">
+    <tbody>
+      <tr ng-repeat="line in motAverageBreakdowns.mot_nitp | orderBy: 'updated'">
+        <td><small><strong>{{line.value}}</strong></small></td>
+        <td><small>{{line.person.name}}</small></td>
+        <td><small>{{line.updated | amDateFormat: 'MM/DD/YY'}}</small></td>
+      </tr>
+    </tbody>
+  </table>
+</script>
+
+<script type="text/ng-template" id="mot_hdits_breakdown.html">
+  <table class="breakdown-table table-sm no-border">
+    <tbody>
+      <tr ng-repeat="line in motAverageBreakdowns.mot_hdits | orderBy: 'updated'">
+        <td><small><strong>{{line.value}}</strong></small></td>
+        <td><small>{{line.person.name}}</small></td>
+        <td><small>{{line.updated | amDateFormat: 'MM/DD/YY'}}</small></td>
+      </tr>
+    </tbody>
+  </table>
+</script>
+
+<script type="text/ng-template" id="mot_itb_breakdown.html">
+  <table class="breakdown-table table-sm no-border">
+    <tbody>
+      <tr ng-repeat="line in motAverageBreakdowns.mot_itb | orderBy: 'updated'">
+        <td><small><strong>{{line.value}}</strong></small></td>
+        <td><small>{{line.person.name}}</small></td>
+        <td><small>{{line.updated | amDateFormat: 'MM/DD/YY'}}</small></td>
+      </tr>
+    </tbody>
+  </table>
+</script>
+
+<script type="text/ng-template" id="mot_complexity_breakdown.html">
+  <table class="breakdown-table table-sm no-border">
+    <tbody>
+      <tr ng-repeat="line in motAverageBreakdowns.mot_complexity | orderBy: 'updated'">
+        <td><small><strong>{{line.value}}</strong></small></td>
+        <td><small>{{line.person.name}}</small></td>
+        <td><small>{{line.updated | amDateFormat: 'MM/DD/YY'}}</small></td>
+      </tr>
+    </tbody>
+  </table>
+</script>
+
+<script type="text/ng-template" id="mot_effort_breakdown.html">
+  <table class="breakdown-table table-sm no-border">
+    <tbody>
+      <tr ng-repeat="line in motAverageBreakdowns.mot_effort | orderBy: 'updated'">
+        <td><small><strong>{{line.value}}</strong></small></td>
+        <td><small>{{line.person.name}}</small></td>
+        <td><small>{{line.updated | amDateFormat: 'MM/DD/YY'}}</small></td>
+      </tr>
+    </tbody>
+  </table>
+</script>

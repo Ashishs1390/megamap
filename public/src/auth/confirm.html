@@ -1,0 +1,53 @@
+<div class="color-line"></div>
+
+<!-- <div class="back-link">
+  <a ui-sref="dashboard" class="btn btn-primary">Back to Dashboard</a>
+</div>
+ -->
+<form name="verif" class="login-container" ng-submit="verifyCode()" ng-init="setUserNameIfExists()">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="text-center m-b-md">
+        <h3>CONFIRM YOUR EMAIL ADDRESS</h3>
+      </div>
+      <div class="hpanel">
+        <div class="panel-body">
+          <div class="error" ng-show="error.message">
+            {{error.message}}
+          </div>
+          <div>
+            <div class="form-group" ng-hide="user.exists">
+              <label class="control-label" for="email">Email</label>
+              <input type="text"
+                     name="username"
+                     id="username"
+                     ng-model="user.name"
+                     placeholder="Email"
+                     class="form-control"
+                     required/>
+            </div>
+            <div class="form-group">
+              <label class="control-label" for="password">Password</label>
+              <input type="text"
+                     name="code"
+                     id="code"
+                     ng-model="user.code"
+                     class="form-control"
+                     placeholder="Code"/>
+            </div>
+            <!-- <input type="submit" class="btn btn-success btn-block" value="Login"></a> -->
+            <button type="button"
+              ng-click="verifyCode()"
+              class="btn btn-success">Verify code
+            </button>
+            <button type="button"
+              ng-click="resendCode()"
+              class="btn btn-success">Resend code
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</form>

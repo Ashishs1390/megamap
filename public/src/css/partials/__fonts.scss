@@ -1,0 +1,39 @@
+// Open sans is loaded form index.html to avoid defer loading
+@font-face {
+  font-family: "Noe Display Bold";
+  src:  url("fonts/Noe Display Bold.woff"),
+  url("fonts/Noe Display Bold.ttf");
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: "Noe Text Book";
+  src:  url("fonts/Noe Text Book.woff"),
+  url("fonts/Noe Text Book.ttf");
+  font-weight: 400;
+}
+
+// body {
+//   font-family: aktiv-grotesk, sans-serif;
+//   font-style: normal;
+//   font-weight: 200;
+// }
+//
+// a {
+//   font-family: aktiv-grotesk, sans-serif;
+// }
+//
+// h1 {
+//   font-family: "Noe Display Bold", "Minion Pro", "Times New Roman", serif;
+//   font-weight: 900;
+// }
+//
+// h2 {
+//   font-family: "Noe Display Bold", "Minion Pro", "Times New Roman", serif;
+//   font-weight: 400;
+// }
+//
+// h3 {
+//   font-family: "Noe Display Bold", "Minion Pro", "Times New Roman", serif;
+//   font-weight: 400;
+// }

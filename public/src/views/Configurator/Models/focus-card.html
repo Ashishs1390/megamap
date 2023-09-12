@@ -1,0 +1,10 @@
+<div class='panel-body ec_dev col-xs-12 {{node.properties.color + " lighten-5"|| ""}}' title="{{node.properties.title || node.properties.description}}" >
+    <div class='col-xs-12 col-md-3 ec_dev ' ng-repeat='label in node.labels'>{{label}}</div>
+    <img alt="logo" class="img-circle img-small col-xs-4 pull-right ec_dev " style='max-height: 40px; width: auto;' ng-if="node.properties.image_url.length"
+        src="{{node.properties.image_url}}">
+    <div class="col-xs-12 ec_dev">
+        <strong>{{node.properties.title || node.properties.description}}</strong>
+    </div>
+    
+    
+</div>

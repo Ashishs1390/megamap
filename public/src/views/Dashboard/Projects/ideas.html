@@ -1,0 +1,76 @@
+<div class="content" ng-controller='projectTenantCtrl'>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="hpanel Info">
+        <div class="panel-body">
+          <h2 class="c-section-title col-sm-6" href="">
+            <span ui-sref="dashboard.projects">Projects</span> | <span ui-sref="dashboard.projects.ideas">Ideas</span>
+          </h2>
+          <div class="col-sm-6" style="padding-top:10px;">
+            <div class="col-sm-8">
+              <input type="text" class="form-control col-sm-10" ng-model="searchText" placeholder="Search" />
+            </div>
+            <div class="col-sm-4">
+              <input type='button' class='btn btn-primary btn-block' ng-if='PopCreateModal' ng-click='PopCreateModal()' value='Create New' />
+            </div>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row projects">
+    <div class="col-xs-12 col-md-6" subgraph ng-repeat="uuid in subgraph.node_label_index.Project" ng-show="subgraph.nodes[uuid].properties.idea == true" ng-init="project = subgraph.nodes[uuid]">
+      <div class="project-card hpanel h{{project.properties.color || 'blank'}}">
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-sm-8">
+              <h4><a ng-bind="project.properties.title"></a></h4>
+              <p ng-bind="project.properties.description"></p>
+              <div class="row">
+                <div class="col-sm-3">
+                  <div class="project-label">OWNER</div>
+                  <small>{{subgraph.nodes[subgraph.rels[subgraph.outgoing.author[uuid][0]].to_id].properties.title}}</small>
+                </div>
+                <div class="col-sm-3">
+                  <div class="project-label">START</div>
+                  <small>{{project.properties.start_date | date}} </small>
+                </div>
+                <div class="col-sm-3">
+                  <div class="project-label">END</div>
+                  <small>{{project.properties.end_date | date}} </small> </div>
+                  <div class="col-sm-3">
+                    <div class="project-label">PROGRESS</div>
+                    <uib-progressbar value="12" type="success" class="m-t-xs  full progress-small"></uib-progressbar>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-4 project-info">
+                <div class="project-action m-t-md">
+                  <div class="btn-group">
+                    <button class="btn btn-xs btn-default" ui-sref="dashboard.project({uuid: uuid})"> View</button>
+                    <button class="btn btn-xs btn-default" ng-click='PopAttendeeModal(uuid)'> Invite</button>
+                    <button class="btn btn-xs btn-default" ng-click='PopEditModal(uuid)'> Edit</button>
+                  </div>
+                </div>
+                <div class="project-value">
+                  <h2 class="text-success">
+                    {{project.properties.future_costs_per_month * 12 || " " | currency:undefined:0}}
+                  </h2>
+                </div>
+                <div class="project-people" ng-init="console.log(subgraph)">
+                  <img ng-repeat='rel_uuid in subgraph.outgoing.project_attendee[uuid]' alt="logo" class="img-circle"
+                    src="{{subgraph.nodes[subgraph.rels[rel_uuid].to_id].properties.image_url || '/build/images/user-default.png'}}"
+                    onerror="this.src = '/build/images/user-default.png'">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="panel-footer">
+            <!-- Additional information about project in footer -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>

@@ -1,0 +1,44 @@
+<div class="bullseye-dashboard" ng-controller="workshopsBullseyeTenantCtrl">
+  <div class="content">
+    <div class="hpanel Info">
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-sm-12 col-lg-6">
+            <h2 class="c-section-title">Bullseye Maps</h2>
+          </div>
+          <div class="col-sm-12 col-lg-6 u-mt10">
+            <div class="row">
+              <div class="col-xs-8">
+                <input type="" value="" id="" class="form-control" ng-model="search" placeholder="search">
+              </div>
+              <div class="col-xs-4">
+                <button class="btn btn-primary btn-block" ng-if='PopCreateModal && $root.Person.role != "attendee"' ng-click="PopCreateModal('Bullseye');">Create Bullseye</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div ng-if='Getting' class="c-abs-loading"><img src="/build/images/loading.gif" /></div>
+      <div class="c-flex c-flex--3 c-flex--stretch c-flex--wrap">
+        <div class="element c-flex__col u-mb40" ng-repeat='item in library.node_label_index.Bullseye' ng-show="library.nodes[item].properties.title.toLowerCase().indexOf(search.toLowerCase()) >= 0 || library.nodes[item].properties.description.toLowerCase().indexOf(search.toLowerCase()) >= 0 ">
+          <div class='library_card_wrapper'>
+            <bullseye-card-large params="{id:item, title:library.nodes[item].properties.title}" node='library.nodes[item]' library='library'></bullseye-card-large>
+            <div class='u-table library-card-groupBtns u-bg-grey'>
+              <a ng-if="$root.Person.role != 'attendee'" ng-click="PopAttendeeModal(item)" class="u-table-cell">Attendees</a>
+              <a ng-if="$root.Person.role != 'attendee'" ng-click='PopEditModal(item)' ng-if='PopEditModal' class=" u-table-cell ">Edit</a>
+              <a ng-if="$root.Person.role != 'attendee'" ng-click="PopConnectModal(item)" ng-if='PopConnectModal' class="u-table-cell">Components</a>
+            </div>
+            <div class='u-table library-card-groupBtns u-bg-grey'>
+              <a ui-sref='workshop.bullseye({id:item, title:library.nodes[item].properties.title})' class="u-table-cell">View Bullseye</a>
+              <a ng-if="$root.Person.role != 'attendee'" ng-click='selectCompanyBullseye(library.nodes[item].properties.uuid)' ng-if='PopEditModal' class=" u-table-cell ">Select as Company Bullseye</a>
+            </div>
+          </div>
+        </div>
+        <!-- to fix flex alignement issue -->
+        <div class="c-flex__col"></div>
+        <div class="c-flex__col"></div>
+      </div>
+    </div>
+  </div>
+</div>

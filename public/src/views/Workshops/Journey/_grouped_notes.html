@@ -1,0 +1,8 @@
+<div ng-repeat="(key, notes) in stage.notes | groupBy: 'rels.interaction.order'" >
+  <div ng-repeat="note in notes | orderBy: noteCardOrder | filter: searchFilter"
+    ng-show="UnSelectedInteractions.indexOf(note.rels.interaction.uuid) < 0 && (note.rels.persona.uuid == selectedPersona || !selectedPersona)">
+    <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6">
+      <div ng-include="'views/Workshops/Journey/_note.html'"></div>
+    </div>
+  </div>
+</div>

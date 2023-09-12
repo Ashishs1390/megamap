@@ -1,0 +1,7 @@
+<div class="profile-dashboard">
+    <div class="content">
+        <div ng-if='$root.Person.role == "tenant"' ng-controller='profileTenantCtrl' ng-include="'views/Dashboard/Profile/library.html'"></div>
+        <div ng-if='$root.Person.role == "admin"' ng-controller='profileAdminCtrl' ng-include="'views/Dashboard/Profile/library.html'"></div>
+        <div ng-if='$root.Person.role == "attendee"' ng-controller='profileAttendeeCtrl' ng-include="'views/Dashboard/Profile/library.html'"></div>
+    </div>
+</div>

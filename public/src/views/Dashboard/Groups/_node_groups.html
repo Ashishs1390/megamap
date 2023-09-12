@@ -1,0 +1,30 @@
+<div class="inmodal">
+  <div class="modal-header">
+    <div class="note-creator">
+      <h3 class="row">
+        <div class="col-sm-12">
+          Groups
+        </div>
+      </h3>
+    </div>
+  </div>
+
+  <div class="modal-body" ng-click="cancel()" >
+    <div ng-repeat="group in groups">
+      <div ng-click="view(group)" class="pointer">
+        <h4>{{group.name}}</h4>
+      </div>
+      <div class="c-flex c-flex--2 c-flex--stretch c-flex--wrap c-subscriber-grids">
+        <small-card ng-click="view(member, false)" class="c-flex__col" ng-repeat='member in group.members' subgraph="subgraph" node="{ properties: member }" hide="'js-hide'"></small-card>
+      </div>
+    </div>
+  </div>
+  <br/>
+
+  <div class="modal-footer row">
+    <button class="btn btn-secondary" ng-click="cancel()">
+      Close
+    </button>
+  </div>
+  <br/>
+</div>

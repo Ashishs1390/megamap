@@ -1,0 +1,58 @@
+<div id="header" ng-include="'views/Graphs/Journey/header.html'"></div>
+<aside id="menu" ng-include="'views/Graphs/Journey/navigation.html'"></aside>
+
+<div id="wrapper" class="journey-details">
+  <div class="content">
+
+    <div class="row graphs" ng-repeat="stage in journey.stages">
+
+      <div class="col-xs-12 col-lg-6" ng-repeat="graphNo in [1, 2]">
+        <div class="hpanel Info">
+          <div class="panel-body" ng-init="calculateData(stage, graphNo, journey.interactions[graphNo-1], xAxisArray[graphNo-1].property)">
+            <div class="header">
+              <h3 class="font-light graph-header">{{stage.title}} ({{journey.title}})</h3>
+            </div>
+            <div class="graph-sidebar">
+              <div class="btn-group">
+                <!-- INTERACTION FILTER -->
+                <p>Interaction</p>
+                <button data-toggle="dropdown" class="btn btn-default btn-sm dropdown-toggle"
+                  ng-init="stage[graphNo+'-'+'interaction'] = journey.interactions[graphNo-1]">
+                  {{stage[graphNo+'-'+'interaction'].title}} <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                  <li ng-repeat="interaction in journey.interactions">
+                    <a ng-click="calculateData(stage, graphNo, stage[graphNo+'-'+'interaction'], stage[graphNo+'-'+'x'].property); stage[graphNo + '-' +'interaction'] = interaction">{{interaction.title | titleCase}}</a>
+                  </li>
+                </ul>
+              </div>
+              <!-- X AXIS -->
+              <div class="btn-group">
+                <p>X Axis</p>
+                <button data-toggle="dropdown" class="btn btn-default btn-sm dropdown-toggle"
+                  ng-init="stage[graphNo+'-'+'x'] = xAxisArray[graphNo - 1]">
+                  {{stage[graphNo + '-' +'x'].label}} <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                  <li ng-repeat="x in xAxisArray">
+                    <a ng-click="calculateData(stage, graphNo, stage[graphNo+'-'+'interaction'], x.property); stage[graphNo+'-'+'x'] = x">{{x.label}}</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="graph"> {{stage[stage[graphNo+'-'+'interaction'].uuid][stage[graphNo + '-' +'x'].property].loyalty}}
+              <canvas
+                class="chart chart-scatter"
+                chart-data="data"
+                chart-dataset-override="datasetOverride"
+                chart-labels="labels"
+                chart-options="options">
+              </canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

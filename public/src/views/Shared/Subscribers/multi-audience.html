@@ -1,0 +1,28 @@
+<table class="table" ng-controller='multiSubscriberAudienceCtrl'>
+    <thead class='{{((!subgraph.node_label_index || !subgraph.node_label_index[label] || subgraph.node_label_index[label].length == 0)) ? "red" : "green"}} lighten-3'>
+        <tr>
+            <td>
+                {{label}}
+            </td>
+        </tr>
+    </thead>
+    <tbody ui-sortable ng-model='subgraph.node_label_index[label]' class='green lighten-5'>
+        <tr ng-repeat='item in subgraph.node_label_index[label]'>
+            <td class='font-bold'>{{pool.nodes[item].properties.title}} {{getSegmentTitle(item)}}
+            <i ng-click="RemoveFromLocal(pool.nodes[item])" class='fa fa-minus pull-right'></i></td>
+        </tr>
+    </tbody>
+    <tbody >
+        <tr class='grey lighten-3'>
+            <td>  <input ng-model="search" class="form-control"> </td>
+        </tr>
+        <tr ng-if='Getting'>
+            <td>Loading ...</td>
+        </tr>
+        <tr ng-if='!Getting && (!subgraph.node_label_index[label] || subgraph.node_label_index[label].indexOf(item)==-1)' ui-sortable ng-model='pool.node_label_index[label]' ng-repeat='item in pool.node_label_index[label]'
+            ng-show="!search || pool.nodes[item].properties.description.toLowerCase().indexOf(search.toLowerCase()) >= 0 && !subgraph.nodes[item] || pool.nodes[item].properties.title.toLowerCase().indexOf(search.toLowerCase()) >= 0 && !subgraph.nodes[item]"
+            class='grey lighten-5' ng-click="AddToLocal(pool.nodes[item])">
+            <td>{{pool.nodes[item].properties.title}} {{getSegmentTitle(item)}}<i class='fa fa-plus pull-right'></i></td>
+        </tr>
+    </tbody>
+</table>

@@ -1,0 +1,4316 @@
+[
+ {
+   "email": "A.Hussein@microsoft.com"
+ },
+ {
+   "email": "Aaron.Atkins@microsoft.com"
+ },
+ {
+   "email": "Aaron.Lind@microsoft.com"
+ },
+ {
+   "email": "Aaron.Rhoden@microsoft.com"
+ },
+ {
+   "email": "Aaron.Saikovski@microsoft.com"
+ },
+ {
+   "email": "aaronba@microsoft.com"
+ },
+ {
+   "email": "Abbas.Mir@microsoft.com"
+ },
+ {
+   "email": "Abhijeet.Jhala@microsoft.com"
+ },
+ {
+   "email": "Abishek.Narayan@microsoft.com"
+ },
+ {
+   "email": "adakram@microsoft.com"
+ },
+ {
+   "email": "Adam.Gallant@microsoft.com"
+ },
+ {
+   "email": "Adam.Whitlatch@microsoft.com"
+ },
+ {
+   "email": "adamhems@microsoft.com"
+ },
+ {
+   "email": "adcaline@microsoft.com"
+ },
+ {
+   "email": "adgroc@microsoft.com"
+ },
+ {
+   "email": "adpater@microsoft.com"
+ },
+ {
+   "email": "Adrian.Lavery@microsoft.com"
+ },
+ {
+   "email": "adturner@microsoft.com"
+ },
+ {
+   "email": "adworkma@microsoft.com"
+ },
+ {
+   "email": "aelayyan@microsoft.com"
+ },
+ {
+   "email": "Agraj.Mangal@microsoft.com"
+ },
+ {
+   "email": "agzimn@microsoft.com"
+ },
+ {
+   "email": "Ahmed.Kaddour@microsoft.com"
+ },
+ {
+   "email": "ahmeds@microsoft.com"
+ },
+ {
+   "email": "Ahmet.Arsan@microsoft.com"
+ },
+ {
+   "email": "Aidan.Caffrey@microsoft.com"
+ },
+ {
+   "email": "aissam@microsoft.com"
+ },
+ {
+   "email": "aiwu@microsoft.com"
+ },
+ {
+   "email": "ajaiped@microsoft.com"
+ },
+ {
+   "email": "ajgollap@microsoft.com"
+ },
+ {
+   "email": "akajiboy@microsoft.com"
+ },
+ {
+   "email": "akdoi@microsoft.com"
+ },
+ {
+   "email": "akhawaja@microsoft.com"
+ },
+ {
+   "email": "Akihiro.Nishikawa@microsoft.com"
+ },
+ {
+   "email": "akkoike@microsoft.com"
+ },
+ {
+   "email": "Akshay.Nimbalkar@microsoft.com"
+ },
+ {
+   "email": "akshmuel@microsoft.com"
+ },
+ {
+   "email": "Alaa.Shehebar@microsoft.com"
+ },
+ {
+   "email": "Alain.Joseph@microsoft.com"
+ },
+ {
+   "email": "alarrigh@microsoft.com"
+ },
+ {
+   "email": "Alastair.Dick@microsoft.com"
+ },
+ {
+   "email": "albitenc@microsoft.com"
+ },
+ {
+   "email": "alecheve@microsoft.com"
+ },
+ {
+   "email": "Alejandra.Guillen@microsoft.com"
+ },
+ {
+   "email": "aleki@microsoft.com"
+ },
+ {
+   "email": "alessrec@microsoft.com"
+ },
+ {
+   "email": "Alex.Starykh@microsoft.com"
+ },
+ {
+   "email": "Alexander.Beck@microsoft.com"
+ },
+ {
+   "email": "Alexander.Thiede@microsoft.com"
+ },
+ {
+   "email": "Alexander.Todorovic@microsoft.com"
+ },
+ {
+   "email": "Alexander.Young@microsoft.com"
+ },
+ {
+   "email": "Alexandre.Menezes@microsoft.com"
+ },
+ {
+   "email": "Alexandre.Vieira@microsoft.com"
+ },
+ {
+   "email": "alezhao@microsoft.com"
+ },
+ {
+   "email": "alfernan@microsoft.com"
+ },
+ {
+   "email": "Alfred.Suwarnapati@microsoft.com"
+ },
+ {
+   "email": "Ali.Malik@microsoft.com"
+ },
+ {
+   "email": "Ali.Sanjabi@microsoft.com"
+ },
+ {
+   "email": "Alistair.Hunter@microsoft.com"
+ },
+ {
+   "email": "Allan.Lewis@microsoft.com"
+ },
+ {
+   "email": "Alonso.Verdugo@microsoft.com"
+ },
+ {
+   "email": "Alp.Kaya@microsoft.com"
+ },
+ {
+   "email": "alpolko@microsoft.com"
+ },
+ {
+   "email": "alvilcek@microsoft.com"
+ },
+ {
+   "email": "Amanda.Rosemark@microsoft.com"
+ },
+ {
+   "email": "Amanda.Tan@microsoft.com"
+ },
+ {
+   "email": "Amanjeet.Singh@microsoft.com"
+ },
+ {
+   "email": "Amanulla.Shaik@microsoft.com"
+ },
+ {
+   "email": "Ambar.Kumar@microsoft.com"
+ },
+ {
+   "email": "amchapla@microsoft.com"
+ },
+ {
+   "email": "ameetk@microsoft.com"
+ },
+ {
+   "email": "Amit.Agrawal@microsoft.com"
+ },
+ {
+   "email": "Amy.Feltheimer@microsoft.com"
+ },
+ {
+   "email": "anand.kumar@microsoft.com"
+ },
+ {
+   "email": "Anand.Raman@microsoft.com"
+ },
+ {
+   "email": "Ananth.Jayakumar@microsoft.com"
+ },
+ {
+   "email": "anazieh@microsoft.com"
+ },
+ {
+   "email": "anbitar@microsoft.com"
+ },
+ {
+   "email": "anchopr@microsoft.com"
+ },
+ {
+   "email": "andelosk@microsoft.com"
+ },
+ {
+   "email": "andf@microsoft.com"
+ },
+ {
+   "email": "Andrea.Gagliardi@microsoft.com"
+ },
+ {
+   "email": "Andreas.Mock@microsoft.com"
+ },
+ {
+   "email": "andreasg@microsoft.com"
+ },
+ {
+   "email": "Andrej.Kyselica@microsoft.com"
+ },
+ {
+   "email": "Andres.Romero@microsoft.com"
+ },
+ {
+   "email": "Andres.Urrutia@microsoft.com"
+ },
+ {
+   "email": "Andrew.Stahlecker@microsoft.com"
+ },
+ {
+   "email": "andy.dean@microsoft.com"
+ },
+ {
+   "email": "Andy.Jenkins@microsoft.com"
+ },
+ {
+   "email": "Andy.Thomas@microsoft.com"
+ },
+ {
+   "email": "Andy.Wahrenberger@microsoft.com"
+ },
+ {
+   "email": "andyxie@microsoft.com"
+ },
+ {
+   "email": "anevjes@microsoft.com"
+ },
+ {
+   "email": "anfrogne@microsoft.com"
+ },
+ {
+   "email": "Angela.But@microsoft.com"
+ },
+ {
+   "email": "Angela.Cibiras@microsoft.com"
+ },
+ {
+   "email": "Anil.Varma@microsoft.com"
+ },
+ {
+   "email": "anildwa@microsoft.com"
+ },
+ {
+   "email": "ankhanol@microsoft.com"
+ },
+ {
+   "email": "anmills@microsoft.com"
+ },
+ {
+   "email": "anmittal@microsoft.com"
+ },
+ {
+   "email": "Anna.McNally@microsoft.com"
+ },
+ {
+   "email": "anthma@microsoft.com"
+ },
+ {
+   "email": "Antoine.Richardson@microsoft.com"
+ },
+ {
+   "email": "Anton.Staykov@microsoft.com"
+ },
+ {
+   "email": "apurva.mody@microsoft.com"
+ },
+ {
+   "email": "aqasrawi@microsoft.com"
+ },
+ {
+   "email": "araramin@microsoft.com"
+ },
+ {
+   "email": "Arash.Nezami@microsoft.com"
+ },
+ {
+   "email": "Arash.Rassoulpour@microsoft.com"
+ },
+ {
+   "email": "Arcangelo.DiBalsamo@microsoft.com"
+ },
+ {
+   "email": "Arief.Bavan@microsoft.com"
+ },
+ {
+   "email": "armeht@microsoft.com"
+ },
+ {
+   "email": "Art.Sedighi@microsoft.com"
+ },
+ {
+   "email": "Artem.Mitrokhin@microsoft.com"
+ },
+ {
+   "email": "Arunansu.Pattanayak@microsoft.com"
+ },
+ {
+   "email": "Asa.John@microsoft.com"
+ },
+ {
+   "email": "Ashwani.Mishra@microsoft.com"
+ },
+ {
+   "email": "asusturg@microsoft.com"
+ },
+ {
+   "email": "Aurora.Mirea@microsoft.com"
+ },
+ {
+   "email": "Avery.Spates@microsoft.com"
+ },
+ {
+   "email": "ayelghaz@microsoft.com"
+ },
+ {
+   "email": "ayumu.inaba@microsoft.com"
+ },
+ {
+   "email": "ayyousef@microsoft.com"
+ },
+ {
+   "email": "azaraya@microsoft.com"
+ },
+ {
+   "email": "babal@microsoft.com"
+ },
+ {
+   "email": "babeltra@microsoft.com"
+ },
+ {
+   "email": "Barkha.Herman@microsoft.com"
+ },
+ {
+   "email": "Barry.Newman@microsoft.com"
+ },
+ {
+   "email": "Bartosz.Jarkowski@microsoft.com"
+ },
+ {
+   "email": "Bartosz.Muszynski@microsoft.com"
+ },
+ {
+   "email": "bartvagh@microsoft.com"
+ },
+ {
+   "email": "Basim.Majeed@microsoft.com"
+ },
+ {
+   "email": "bbasto@microsoft.com"
+ },
+ {
+   "email": "beholcom@microsoft.com"
+ },
+ {
+   "email": "Ben.Coleman@microsoft.com"
+ },
+ {
+   "email": "Benjamin.Leroux@microsoft.com"
+ },
+ {
+   "email": "benoit.touze@microsoft.com"
+ },
+ {
+   "email": "Bertil.Syamken@microsoft.com"
+ },
+ {
+   "email": "bhdoshi@microsoft.com"
+ },
+ {
+   "email": "bibar@microsoft.com"
+ },
+ {
+   "email": "Bilal.Hashmi@microsoft.com"
+ },
+ {
+   "email": "Bill.Hall@microsoft.com"
+ },
+ {
+   "email": "binhcao@microsoft.com"
+ },
+ {
+   "email": "bleavitt@microsoft.com"
+ },
+ {
+   "email": "blessonj@microsoft.com"
+ },
+ {
+   "email": "bobjac@microsoft.com"
+ },
+ {
+   "email": "Bowen.Li@microsoft.com"
+ },
+ {
+   "email": "Boyang.Zhou@microsoft.com"
+ },
+ {
+   "email": "Brad.Moore@microsoft.com"
+ },
+ {
+   "email": "Brad.Schacht@microsoft.com"
+ },
+ {
+   "email": "Bram.Kleverlaan@microsoft.com"
+ },
+ {
+   "email": "Brandon.Rohrer@microsoft.com"
+ },
+ {
+   "email": "brandonl@microsoft.com"
+ },
+ {
+   "email": "brcomsto@microsoft.com"
+ },
+ {
+   "email": "brcosden@microsoft.com"
+ },
+ {
+   "email": "brdenico@microsoft.com"
+ },
+ {
+   "email": "Brendan.Bailey@microsoft.com"
+ },
+ {
+   "email": "Brendan.Stone@microsoft.com"
+ },
+ {
+   "email": "Brent.Funk@microsoft.com"
+ },
+ {
+   "email": "Brent.McConnell@microsoft.com"
+ },
+ {
+   "email": "Bret.Swedeen@microsoft.com"
+ },
+ {
+   "email": "Brett.Cooper@microsoft.com"
+ },
+ {
+   "email": "Brett.Hacker@microsoft.com"
+ },
+ {
+   "email": "brettwil@microsoft.com"
+ },
+ {
+   "email": "brian.loeffler@microsoft.com"
+ },
+ {
+   "email": "Brian.Marten@microsoft.com"
+ },
+ {
+   "email": "Brian.Swiger@microsoft.com"
+ },
+ {
+   "email": "Brian.Tsai@microsoft.com"
+ },
+ {
+   "email": "Brig.Lamoreaux@microsoft.com"
+ },
+ {
+   "email": "brnelson@microsoft.com"
+ },
+ {
+   "email": "Brown.John@microsoft.com"
+ },
+ {
+   "email": "brvuong@microsoft.com"
+ },
+ {
+   "email": "bseymour@microsoft.com"
+ },
+ {
+   "email": "Bunty.Ranu@microsoft.com"
+ },
+ {
+   "email": "C.Rojas@microsoft.com"
+ },
+ {
+   "email": "Caglar.Kara@microsoft.com"
+ },
+ {
+   "email": "Can.Kuruca@microsoft.com"
+ },
+ {
+   "email": "Candice.Groce@microsoft.com"
+ },
+ {
+   "email": "carfer@microsoft.com"
+ },
+ {
+   "email": "Carine.Laine@microsoft.com"
+ },
+ {
+   "email": "Carl.Neal@microsoft.com"
+ },
+ {
+   "email": "Carl.Uussalu@microsoft.com"
+ },
+ {
+   "email": "Carla.Bodagh@microsoft.com"
+ },
+ {
+   "email": "carla.lopez@microsoft.com"
+ },
+ {
+   "email": "Carlo.Marchesi@microsoft.com"
+ },
+ {
+   "email": "carlos.garcia@microsoft.com"
+ },
+ {
+   "email": "Carlos.Marques@microsoft.com"
+ },
+ {
+   "email": "Carmelo.Ferrara@microsoft.com"
+ },
+ {
+   "email": "Carsten.Lemm@microsoft.com"
+ },
+ {
+   "email": "Cassandra.Jones@microsoft.com"
+ },
+ {
+   "email": "cbernard@microsoft.com"
+ },
+ {
+   "email": "cddupui@microsoft.com"
+ },
+ {
+   "email": "cecaglar@micrsosoft.com"
+ },
+ {
+   "email": "Cecilie.Widsteen@microsoft.com"
+ },
+ {
+   "email": "Cem.Ayberkin@microsoft.com"
+ },
+ {
+   "email": "Cenyu.Zhang@microsoft.com"
+ },
+ {
+   "email": "cesanu@microsoft.com"
+ },
+ {
+   "email": "cesunder@microsoft.com"
+ },
+ {
+   "email": "Chad.Hage@microsoft.com"
+ },
+ {
+   "email": "Chad.Kittel@microsoft.com"
+ },
+ {
+   "email": "Chandrasekar.Vuppalapati@microsoft.com"
+ },
+ {
+   "email": "Chandu.cheeti@microsoft.com"
+ },
+ {
+   "email": "Charlene.McKeown@microsoft.com"
+ },
+ {
+   "email": "Charles.Rice@microsoft.com"
+ },
+ {
+   "email": "chbaudo@microsoft.com"
+ },
+ {
+   "email": "cheeyong.poh@microsoft.com"
+ },
+ {
+   "email": "Chen.Yuening@microsoft.com"
+ },
+ {
+   "email": "chfeval@microsoft.com"
+ },
+ {
+   "email": "chfle@microsoft.com"
+ },
+ {
+   "email": "chfrance@microsoft.com"
+ },
+ {
+   "email": "chgovani@microsoft.com"
+ },
+ {
+   "email": "Chiara.Brandle@microsoft.com"
+ },
+ {
+   "email": "Chih.Lin@microsoft.com"
+ },
+ {
+   "email": "chjoakim@microsoft.com"
+ },
+ {
+   "email": "Chow.Weng@microsoft.com"
+ },
+ {
+   "email": "chrdavi@microsoft.com"
+ },
+ {
+   "email": "Chris.Bowman@microsoft.com"
+ },
+ {
+   "email": "Chris.Kirby@microsoft.com"
+ },
+ {
+   "email": "Chris.Rice@microsoft.com"
+ },
+ {
+   "email": "Chris.Skaling@microsoft.com"
+ },
+ {
+   "email": "Chris.Waterman@microsoft.com"
+ },
+ {
+   "email": "Christian.Bryne@microsoft.com"
+ },
+ {
+   "email": "Christian.Epstein@microsoft.com"
+ },
+ {
+   "email": "Christian.Hamson@microsoft.com"
+ },
+ {
+   "email": "Christine.Luo@microsoft.com"
+ },
+ {
+   "email": "Christoper.Gunawan@microsoft.com"
+ },
+ {
+   "email": "Christoph.Kreibich@microsoft.com"
+ },
+ {
+   "email": "Christopher.Bennett@microsoft.com"
+ },
+ {
+   "email": "Christopher.Hough@microsoft.com"
+ },
+ {
+   "email": "Christopher.House@microsoft.com"
+ },
+ {
+   "email": "Christopher.Moore@microsoft.com"
+ },
+ {
+   "email": "Christopher.Pfaff@microsoft.com"
+ },
+ {
+   "email": "Christopher.Whitehead@microsoft.com"
+ },
+ {
+   "email": "chuch@microsoft.com"
+ },
+ {
+   "email": "ChungMing.Liang@microsoft.com"
+ },
+ {
+   "email": "chvugrin@microsoft.com"
+ },
+ {
+   "email": "Cihan.Duruer@microsoft.com"
+ },
+ {
+   "email": "Clark.Joe@microsoft.com"
+ },
+ {
+   "email": "claudia.lopez@microsoft.com"
+ },
+ {
+   "email": "clement.LeRoux@microsoft.com"
+ },
+ {
+   "email": "clevi@microsoft.com"
+ },
+ {
+   "email": "cliveg@microsoft.com"
+ },
+ {
+   "email": "cljung@microsoft.com"
+ },
+ {
+   "email": "cofa@microsoft.com"
+ },
+ {
+   "email": "Colin.Cole@microsoft.com"
+ },
+ {
+   "email": "Conrad.Sidey@microsoft.com"
+ },
+ {
+   "email": "Corey.Callaway@microsoft.com"
+ },
+ {
+   "email": "Cory.Stevenson@microsoft.com"
+ },
+ {
+   "email": "cpyne@microsoft.com"
+ },
+ {
+   "email": "Craig.Forster@microsoft.com"
+ },
+ {
+   "email": "cristabel.talavera@microsoft.com"
+ },
+ {
+   "email": "Cui.Yan@microsoft.com"
+ },
+ {
+   "email": "dabedin@microsoft.com"
+ },
+ {
+   "email": "dabedin@microsoft.com"
+ },
+ {
+   "email": "dabiscup@microsoft.com"
+ },
+ {
+   "email": "dade@microsoft.com"
+ },
+ {
+   "email": "dadelane@microsoft.com"
+ },
+ {
+   "email": "daisami@microsoft.com"
+ },
+ {
+   "email": "daiyu.hatakeyama@microsoft.com"
+ },
+ {
+   "email": "dajansen@microsoft.com"
+ },
+ {
+   "email": "Dale.Emel@microsoft.com"
+ },
+ {
+   "email": "Dale.Harrison@microsoft.com"
+ },
+ {
+   "email": "damangat@microsoft.com"
+ },
+ {
+   "email": "dan.sheehan@microsoft.com"
+ },
+ {
+   "email": "Dan.Stillwell@microsoft.com"
+ },
+ {
+   "email": "Dana.Rivkind@microsoft.com"
+ },
+ {
+   "email": "Dania.Ghazal@microsoft.com"
+ },
+ {
+   "email": "Dania.Kodeih@microsoft.com"
+ },
+ {
+   "email": "Daniel.Amadei@microsoft.com"
+ },
+ {
+   "email": "Daniel.Baker@microsoft.com"
+ },
+ {
+   "email": "Daniel.Cardoso@microsoft.com"
+ },
+ {
+   "email": "Daniel.Falkner@microsoft.com"
+ },
+ {
+   "email": "Daniel.Hibbert@microsoft.com"
+ },
+ {
+   "email": "Daniel.Maldonado@microsoft.com"
+ },
+ {
+   "email": "Daniel.Poku@microsoft.com"
+ },
+ {
+   "email": "Daniel.Urbina@microsoft.com"
+ },
+ {
+   "email": "dannal@microsoft.com"
+ },
+ {
+   "email": "Danny.Wong@microsoft.com"
+ },
+ {
+   "email": "darchi@microsoft.com"
+ },
+ {
+   "email": "Dario.Catani@microsoft.com"
+ },
+ {
+   "email": "Darius.Tehrani@microsoft.com"
+ },
+ {
+   "email": "Darren.Johns@microsoft.com"
+ },
+ {
+   "email": "Darryl.Hogan@microsoft.com"
+ },
+ {
+   "email": "Dave.Stampfli@microsoft.com"
+ },
+ {
+   "email": "David.Alberto@microsoft.com"
+ },
+ {
+   "email": "David.Apolinar@microsoft.com"
+ },
+ {
+   "email": "David.Cervigon@microsoft.com"
+ },
+ {
+   "email": "David.Hoerster@microsoft.com"
+ },
+ {
+   "email": "David.Ma@microsoft.com"
+ },
+ {
+   "email": "David.Pazdera@microsoft.com"
+ },
+ {
+   "email": "David.Phelps@microsoft.com"
+ },
+ {
+   "email": "David.Poulet@microsoft.com"
+ },
+ {
+   "email": "David.Toronto@microsoft.com"
+ },
+ {
+   "email": "David.Watson@microsoft.com"
+ },
+ {
+   "email": "David.Winegar@microsoft.com"
+ },
+ {
+   "email": "David.Zeller@microsoft.com"
+ },
+ {
+   "email": "Davide.DelVecchio@microsoft.com"
+ },
+ {
+   "email": "Davide.Ivanov@microsoft.com"
+ },
+ {
+   "email": "dbrind@microsoft.com"
+ },
+ {
+   "email": "dchui@microsoft.com"
+ },
+ {
+   "email": "Deanna.Arora@microsoft.com"
+ },
+ {
+   "email": "Debananda.Ghosh@microsoft.com"
+ },
+ {
+   "email": "Debra.Palme@microsoft.com"
+ },
+ {
+   "email": "dechrist@microsoft.com"
+ },
+ {
+   "email": "deepakus@microsoft.com"
+ },
+ {
+   "email": "Deepanshu.Tyagi@microsoft.com"
+ },
+ {
+   "email": "Deepti.Kumar@microsoft.com"
+ },
+ {
+   "email": "Del.Ana@microsoft.com"
+ },
+ {
+   "email": "delbertm@microsoft.com"
+ },
+ {
+   "email": "Denis.Rougeau@microsoft.com"
+ },
+ {
+   "email": "Dennis.Acker@microsoft.com"
+ },
+ {
+   "email": "dennis.mulder@microsoft.com"
+ },
+ {
+   "email": "Dennis.Van.De.Laar@microsoft.com"
+ },
+ {
+   "email": "Dennis.van.Herk@microsoft.com"
+ },
+ {
+   "email": "deperat@microsoft.com"
+ },
+ {
+   "email": "Derek.Kerr@microsoft.com"
+ },
+ {
+   "email": "Derrick.Sharpe@microsoft.com"
+ },
+ {
+   "email": "Devang.Shah@microsoft.com"
+ },
+ {
+   "email": "deviv@microsoft.com"
+ },
+ {
+   "email": "dgollob@microsoft.com"
+ },
+ {
+   "email": "Dhanaji.More@microsoft.com"
+ },
+ {
+   "email": "diego.melgarejo@microsoft.com"
+ },
+ {
+   "email": "Diego.Trinciarelli@microsoft.com"
+ },
+ {
+   "email": "Dina.Fatkulbayanova@microsoft.com"
+ },
+ {
+   "email": "Dipanjan.Biswas@microsoft.com"
+ },
+ {
+   "email": "Dirk.Johann@microsoft.com"
+ },
+ {
+   "email": "Dominik.Zemp@microsoft.com"
+ },
+ {
+   "email": "Don.High@microsoft.com"
+ },
+ {
+   "email": "Donovan.Hughes@microsoft.com"
+ },
+ {
+   "email": "Doudet.Pierre@microsoft.com"
+ },
+ {
+   "email": "duanecr@microsoft.com"
+ },
+ {
+   "email": "duthiruv@microsoft.com"
+ },
+ {
+   "email": "Duy.Huynh@microsoft.com"
+ },
+ {
+   "email": "Dylan.Jong@microsoft.com"
+ },
+ {
+   "email": "eason.lai@microsoft.com"
+ },
+ {
+   "email": "Ebisa.Negeri@microsoft.com"
+ },
+ {
+   "email": "Ebru.Evliyaoglu@microsoft.com"
+ },
+ {
+   "email": "Ed.Barnett@microsoft.com"
+ },
+ {
+   "email": "Eddy.Saad@microsoft.com"
+ },
+ {
+   "email": "edgar.fereira@microsoft.com"
+ },
+ {
+   "email": "edgome@microsoft.com"
+ },
+ {
+   "email": "edhagan@microsoft.com"
+ },
+ {
+   "email": "edknox@microsoft.com"
+ },
+ {
+   "email": "Edmond.Segalen@microsoft.com"
+ },
+ {
+   "email": "Eduardo.Diaz@microsoft.com"
+ },
+ {
+   "email": "Edward.Wilson@microsoft.com"
+ },
+ {
+   "email": "Elad.Hascal@microsoft.com"
+ },
+ {
+   "email": "elafenga@microsoft.com"
+ },
+ {
+   "email": "elantoin@microsoft.com"
+ },
+ {
+   "email": "Elena.Aparaschivei@microsoft.com"
+ },
+ {
+   "email": "Elena.Neroslavskaya@microsoft.com"
+ },
+ {
+   "email": "Eli.Cohen@microsoft.com"
+ },
+ {
+   "email": "emgatch@microsoft.com"
+ },
+ {
+   "email": "Emmanuel.Deletang@microsoft.com"
+ },
+ {
+   "email": "erander@microsoft.com"
+ },
+ {
+   "email": "ercharbo@microsoft.com"
+ },
+ {
+   "email": "ergullbr@microsoft.com"
+ },
+ {
+   "email": "Eric.Golpe@microsoft.com"
+ },
+ {
+   "email": "Eric.Jadi@microsoft.com"
+ },
+ {
+   "email": "Eric.van.Wijk@microsoft.com"
+ },
+ {
+   "email": "ericg@microsoft.com"
+ },
+ {
+   "email": "Erik.Bailey@microsoft.com"
+ },
+ {
+   "email": "Erik.Chavez@microsoft.com"
+ },
+ {
+   "email": "Erik.Eckhardt@microsoft.com"
+ },
+ {
+   "email": "erikl@microsoft.com"
+ },
+ {
+   "email": "Ernani.Martins@microsoft.com"
+ },
+ {
+   "email": "Eujon.sellers@microsoft.com"
+ },
+ {
+   "email": "eunhokim@microsoft.com"
+ },
+ {
+   "email": "Eunji.Son@microsoft.com"
+ },
+ {
+   "email": "evalvesd@mircosoft.com"
+ },
+ {
+   "email": "E-Yen.Tan@microsoft.com"
+ },
+ {
+   "email": "Fabian.Nordhorn@microsoft.com"
+ },
+ {
+   "email": "Fabian.Wohlschlager@microsoft.com"
+ },
+ {
+   "email": "Fabiana.Santana@microsoft.com"
+ },
+ {
+   "email": "Fabien.Dibot@microsoft.com"
+ },
+ {
+   "email": "Fabien.Robert@microsoft.com"
+ },
+ {
+   "email": "Fabio.Bonisoli@microsoft.com"
+ },
+ {
+   "email": "Fabio.Braga@microsoft.com"
+ },
+ {
+   "email": "Fabrcio.Sanchez@microsoft.com"
+ },
+ {
+   "email": "fabricea@microsoft.com"
+ },
+ {
+   "email": "fadoumbo@microsoft.com"
+ },
+ {
+   "email": "Fahd.Rafi@microsoft.com"
+ },
+ {
+   "email": "Faisal.Riaz@microsoft.com"
+ },
+ {
+   "email": "faisalha@microsoft.com"
+ },
+ {
+   "email": "Faizan.Khan@microsoft.com"
+ },
+ {
+   "email": "Farah.Omer@microsoft.com"
+ },
+ {
+   "email": "Faraz.Rasheed@microsoft.com"
+ },
+ {
+   "email": "Fardau.Neerden@microsoft.com"
+ },
+ {
+   "email": "Farhad.Heybati@microsoft.com"
+ },
+ {
+   "email": "Farhan.Shahnewaz@microsoft.com"
+ },
+ {
+   "email": "Fariba.Haddadi@microsoft.com"
+ },
+ {
+   "email": "fasantia@microsoft.com"
+ },
+ {
+   "email": "Fatos.Ismali@microsoft.com"
+ },
+ {
+   "email": "felabuns@microsoft.com"
+ },
+ {
+   "email": "Felipe.Andrade@microsoft.com"
+ },
+ {
+   "email": "Felipe.Ayora@microsoft.com"
+ },
+ {
+   "email": "fenwan@microsoft.com"
+ },
+ {
+   "email": "Fernando.Altamirano@microsoft.com"
+ },
+ {
+   "email": "fernando.izo@microsoft.com"
+ },
+ {
+   "email": "Florent.Thibault@microsoft.com"
+ },
+ {
+   "email": "Florian.Eiden@microsoft.com"
+ },
+ {
+   "email": "Francesca.Pasceri@microsoft.com"
+ },
+ {
+   "email": "Francis.Dogbey@microsoft.com"
+ },
+ {
+   "email": "Francis.Gosling@microsoft.com"
+ },
+ {
+   "email": "Frank.Brinkmann@microsoft.com"
+ },
+ {
+   "email": "Frank.Ruben@microsoft.com"
+ },
+ {
+   "email": "Frank.Sposaro@microsoft.com"
+ },
+ {
+   "email": "Frankie.Yuen@microsoft.com"
+ },
+ {
+   "email": "frbanner@microsoft.com"
+ },
+ {
+   "email": "Frederic.Gisbert@microsoft.com"
+ },
+ {
+   "email": "frederic.stenzel@microsoft.com"
+ },
+ {
+   "email": "Fredrik.Arnesen@microsoft.com"
+ },
+ {
+   "email": "Fretz.Nuson@microsoft.com"
+ },
+ {
+   "email": "frfoese@microsoft.com"
+ },
+ {
+   "email": "frlope@microsoft.com"
+ },
+ {
+   "email": "Fumio.Sekita@microsoft.com"
+ },
+ {
+   "email": "fvitrant@microsoft.com"
+ },
+ {
+   "email": "Gabrielle.Davelaar@microsoft.com"
+ },
+ {
+   "email": "gaedmon@microsoft.com"
+ },
+ {
+   "email": "Galina.Polyakova@microsoft.com"
+ },
+ {
+   "email": "Galiya.Warrier@microsoft.com"
+ },
+ {
+   "email": "Ganesh.Radhakrishnan@microsoft.com"
+ },
+ {
+   "email": "gangliu@microsoft.com"
+ },
+ {
+   "email": "Garcia.Marc@microsoft.com"
+ },
+ {
+   "email": "Gary.Klionsky@microsoft.com"
+ },
+ {
+   "email": "Gary.McMahon@microsoft.com"
+ },
+ {
+   "email": "Gary.Mullen-Schultz@microsoft.com"
+ },
+ {
+   "email": "Gautam.Karmakar@microsoft.com"
+ },
+ {
+   "email": "gautel@microsoft.com"
+ },
+ {
+   "email": "gbelenky@microsoft.com"
+ },
+ {
+   "email": "gechilak@microsoft.com"
+ },
+ {
+   "email": "Georg.Urban@microsoft.com"
+ },
+ {
+   "email": "ghahm@microsoft.com"
+ },
+ {
+   "email": "Ghaleb.Mohamed@microsoft.com"
+ },
+ {
+   "email": "Ghizlane.ElGoutbi@microsoft.com"
+ },
+ {
+   "email": "Gianluca.DeRossi@microsoft.com"
+ },
+ {
+   "email": "Gianluca.Leuzzi@microsoft.com"
+ },
+ {
+   "email": "Gildardo.Rojas@microsoft.com"
+ },
+ {
+   "email": "gimartin@microsoft.com"
+ },
+ {
+   "email": "Gin.Cheng@microsoft.com"
+ },
+ {
+   "email": "giselat@microsoft.com"
+ },
+ {
+   "email": "Gitte.Vermeiren@microsoft.com"
+ },
+ {
+   "email": "Giuliano.Rapoz@microsoft.com"
+ },
+ {
+   "email": "Giuseppe.Guerrasio@microsoft.com"
+ },
+ {
+   "email": "Gleisson.Bezerra@microsoft.com"
+ },
+ {
+   "email": "Glenn.Coleman@microsoft.com"
+ },
+ {
+   "email": "Glenn.Ohara@microsoft.com"
+ },
+ {
+   "email": "Gonzalo.Corbijn@microsoft.com"
+ },
+ {
+   "email": "Gonzalo.Fiuza@microsoft.com"
+ },
+ {
+   "email": "Gordon.Byers@microsoft.com"
+ },
+ {
+   "email": "Goutham.Upadhyaya@microsoft.com"
+ },
+ {
+   "email": "Graham.Mark@microsoft.com"
+ },
+ {
+   "email": "Gray.Jeremy@microsoft.com"
+ },
+ {
+   "email": "Greg.Loxton@microsoft.com"
+ },
+ {
+   "email": "Greg.Voght@microsoft.com"
+ },
+ {
+   "email": "Gregory.Jones@microsoft.com"
+ },
+ {
+   "email": "Gregory.Neuveglise@microsoft.com"
+ },
+ {
+   "email": "grkoepke@microsoft.com"
+ },
+ {
+   "email": "Guanyi.Sun@microsoft.com"
+ },
+ {
+   "email": "gufranca@microsoft.com"
+ },
+ {
+   "email": "Guillermo.Caicedo@microsoft.com"
+ },
+ {
+   "email": "Gupta.Ashish@microsoft.com"
+ },
+ {
+   "email": "gursi@microsoft.com"
+ },
+ {
+   "email": "Guru.Bandiatmakur@microsoft.com"
+ },
+ {
+   "email": "Guru.Hegde@microsoft.com"
+ },
+ {
+   "email": "Guy.Bertental@microsoft.com"
+ },
+ {
+   "email": "haalkema@microsoft.com"
+ },
+ {
+   "email": "haash@microsoft.com"
+ },
+ {
+   "email": "hachisht@microsoft.com"
+ },
+ {
+   "email": "Haider.Raza@microsoft.com"
+ },
+ {
+   "email": "Haixia.Yu@microsoft.com"
+ },
+ {
+   "email": "HansPeter.Bareiner@microsoft.com"
+ },
+ {
+   "email": "Harald.Fianbakken@microsoft.com"
+ },
+ {
+   "email": "Harish.Bansal@microsoft.com"
+ },
+ {
+   "email": "Haroon.Chaudhary@microsoft.com"
+ },
+ {
+   "email": "havibe@microsoft.com"
+ },
+ {
+   "email": "Hctor.Quintanilla@microsoft.com"
+ },
+ {
+   "email": "hemacn@microsoft.com"
+ },
+ {
+   "email": "Hemake.Sannasgala@microsoft.com"
+ },
+ {
+   "email": "Henk.van.de.Crommert@microsoft.com"
+ },
+ {
+   "email": "Henning.Rauch@microsoft.com"
+ },
+ {
+   "email": "henrikmo@microsoft.com"
+ },
+ {
+   "email": "Henrique.Silva@microsoft.com"
+ },
+ {
+   "email": "Henry.Jurkauskas@microsoft.com"
+ },
+ {
+   "email": "hepriisa@microsoft.com"
+ },
+ {
+   "email": "Herb.Raffaele@microsoft.com"
+ },
+ {
+   "email": "Hideo.Takagi@microsoft.com"
+ },
+ {
+   "email": "hiltonp@microsoft.com"
+ },
+ {
+   "email": "Himanshu.Gupta@microsoft.com"
+ },
+ {
+   "email": "hjyang@microsoft.com"
+ },
+ {
+   "email": "Holger.Bruchelt@microsoft.com"
+ },
+ {
+   "email": "Holger.Reiners@microsoft.com"
+ },
+ {
+   "email": "Holger.Sirtl@microsoft.com"
+ },
+ {
+   "email": "hosam.kamel@microsoft.com"
+ },
+ {
+   "email": "Hossein.Sarshar@microsoft.com"
+ },
+ {
+   "email": "Howard.Ginsburg@microsoft.com"
+ },
+ {
+   "email": "hsethi@microsoft.com"
+ },
+ {
+   "email": "hucamarg@microsoft.com"
+ },
+ {
+   "email": "huiw@microsoft.com"
+ },
+ {
+   "email": "huxu@microsoft.com"
+ },
+ {
+   "email": "Huy.Ly@microsoft.com"
+ },
+ {
+   "email": "hysong@microsoft.com"
+ },
+ {
+   "email": "Hyundong.Kim@microsoft.com"
+ },
+ {
+   "email": "Ian.Alderman@microsoft.com"
+ },
+ {
+   "email": "Ian.Clarke@microsoft.com"
+ },
+ {
+   "email": "Idan.Shahar@microsoft.com"
+ },
+ {
+   "email": "ifaneke@microsoft.com"
+ },
+ {
+   "email": "ile@microsoft.com"
+ },
+ {
+   "email": "ilkim@microsoft.com"
+ },
+ {
+   "email": "Imtiaz.Siddiqui@microsoft.com"
+ },
+ {
+   "email": "Inder.Rana@microsoft.com"
+ },
+ {
+   "email": "Ioanna.Tzanetou@microsoft.com"
+ },
+ {
+   "email": "Isaac.Bayoh@microsoft.com"
+ },
+ {
+   "email": "Isaac.Roitman@microsoft.com"
+ },
+ {
+   "email": "Isabel.Delgado@microsoft.com"
+ },
+ {
+   "email": "Isabel.Grund@microsoft.com"
+ },
+ {
+   "email": "Israel.Ekpo@microsoft.com"
+ },
+ {
+   "email": "Issagha.BA@microsoft.com"
+ },
+ {
+   "email": "Issei.Hiraoka@microsoft.com"
+ },
+ {
+   "email": "Istvan.Cebrian@microsoft.com"
+ },
+ {
+   "email": "Itai.Binyamin@microsoft.com"
+ },
+ {
+   "email": "ivmckinl@microsoft.com"
+ },
+ {
+   "email": "jachong@microsoft.com"
+ },
+ {
+   "email": "Jack.Bender@microsoft.com"
+ },
+ {
+   "email": "Jack.Xue@microsoft.com"
+ },
+ {
+   "email": "Jacky.Tang@microsoft.com"
+ },
+ {
+   "email": "Jacob.Switzer@microsoft.com"
+ },
+ {
+   "email": "Jain.Nitin@microsoft.com"
+ },
+ {
+   "email": "Jake.Wang@microsoft.com"
+ },
+ {
+   "email": "Jaladhi.Mehta@microsoft.com"
+ },
+ {
+   "email": "James.Complin@microsoft.com"
+ },
+ {
+   "email": "James.Daly@microsoft.com"
+ },
+ {
+   "email": "James.Ding@microsoft.com"
+ },
+ {
+   "email": "James.Griffin@microsoft.com"
+ },
+ {
+   "email": "James.Kahle@microsoft.com"
+ },
+ {
+   "email": "James.Nguyen@microsoft.com"
+ },
+ {
+   "email": "James.Prendergast@microsoft.com"
+ },
+ {
+   "email": "James.Tooles@microsoft.com"
+ },
+ {
+   "email": "jamesask@microsoft.com"
+ },
+ {
+   "email": "jamesfit@microsoft.com"
+ },
+ {
+   "email": "Jamie.Peebles@microsoft.com"
+ },
+ {
+   "email": "Janet.Amezcua@microsoft.com"
+ },
+ {
+   "email": "Jani.Nevalainen@microsoft.com"
+ },
+ {
+   "email": "Janne.Hansen@microsoft.com"
+ },
+ {
+   "email": "japadman@microsoft.com"
+ },
+ {
+   "email": "jarobey@microsoft.com"
+ },
+ {
+   "email": "jaroslav.jindrich@microsoft.com"
+ },
+ {
+   "email": "Jarrett.Long@microsoft.com"
+ },
+ {
+   "email": "jasande@microsoft.com"
+ },
+ {
+   "email": "jaschuh@microsoft.com"
+ },
+ {
+   "email": "Jason.Specland@microsoft.com"
+ },
+ {
+   "email": "Jason.Wages@microsoft.com"
+ },
+ {
+   "email": "Jatin.Grover@microsoft.com"
+ },
+ {
+   "email": "Javier.Roman@microsoft.com"
+ },
+ {
+   "email": "Jay.Kumar@microsoft.com"
+ },
+ {
+   "email": "Jay.Witt@microsoft.com"
+ },
+ {
+   "email": "jayli@microsoft.com"
+ },
+ {
+   "email": "jbarnes@microsoft.com"
+ },
+ {
+   "email": "jcason@microsoft.com"
+ },
+ {
+   "email": "jcordtz@microsoft.com"
+ },
+ {
+   "email": "JeanBaptiste.Dubois@microsoft.com"
+ },
+ {
+   "email": "jechenso@microsoft.com"
+ },
+ {
+   "email": "jedemigu@microsoft.com"
+ },
+ {
+   "email": "jedussou@microsoft.com"
+ },
+ {
+   "email": "jeetzler@microsoft.com"
+ },
+ {
+   "email": "Jeff.Baker@microsoft.com"
+ },
+ {
+   "email": "Jeff.Murphy@microsoft.com"
+ },
+ {
+   "email": "Jeff.Sanders@microsoft.com"
+ },
+ {
+   "email": "Jeffrey.Dahan@microsoft.com"
+ },
+ {
+   "email": "jeffseag@microsoft.com"
+ },
+ {
+   "email": "jeffvan@microsoft.com"
+ },
+ {
+   "email": "jeflan@microsoft.com"
+ },
+ {
+   "email": "Jenny.Popova@microsoft.com"
+ },
+ {
+   "email": "Jens.Gerecke@microsoft.com"
+ },
+ {
+   "email": "Jens.Hollaender@microsoft.com"
+ },
+ {
+   "email": "Jens.Schwarzer@microsoft.com"
+ },
+ {
+   "email": "Jeremy.Peach@microsoft.com"
+ },
+ {
+   "email": "Jeroen.Bolle@microsoft.com"
+ },
+ {
+   "email": "Jerome.Vigne@microsoft.com"
+ },
+ {
+   "email": "jerrylee@microsoft.com"
+ },
+ {
+   "email": "Jesse.vanleth@microsoft.com"
+ },
+ {
+   "email": "jfdore@microsoft.com"
+ },
+ {
+   "email": "jichba@microsoft.com"
+ },
+ {
+   "email": "jijchen@microsoft.com"
+ },
+ {
+   "email": "Jim.Dierkes@microsoft.com"
+ },
+ {
+   "email": "Jim.Kao@microsoft.com"
+ },
+ {
+   "email": "Jim.Priestley@microsoft.com"
+ },
+ {
+   "email": "Jim.Reid@microsoft.com"
+ },
+ {
+   "email": "Jim.Strang@microsoft.com"
+ },
+ {
+   "email": "jim.williams@microsoft.com"
+ },
+ {
+   "email": "jimblizz@microsoft.com"
+ },
+ {
+   "email": "jimlane@microsoft.com"
+ },
+ {
+   "email": "jincho@microsoft.com"
+ },
+ {
+   "email": "jingram@microsoft.com"
+ },
+ {
+   "email": "Jiri.Binko@microsoft.com"
+ },
+ {
+   "email": "jjoyce@microsoft.com"
+ },
+ {
+   "email": "JL.Revilla@microsoft.com"
+ },
+ {
+   "email": "Joachim.Hafner@microsoft.com"
+ },
+ {
+   "email": "Joachim.Nasslander@microsoft.com"
+ },
+ {
+   "email": "Joakim.Joakim@microsoft.com"
+ },
+ {
+   "email": "Joanne.Healy@microsoft.com"
+ },
+ {
+   "email": "jober@microsoft.com"
+ },
+ {
+   "email": "jobyford@microsoft.com"
+ },
+ {
+   "email": "Jochen.van.Wylick@microsoft.com"
+ },
+ {
+   "email": "jocho@microsoft.com"
+ },
+ {
+   "email": "Jock.Williams@microsoft.com"
+ },
+ {
+   "email": "Joe.Plumb@microsoft.com"
+ },
+ {
+   "email": "Joe.Sarabia@microsoft.com"
+ },
+ {
+   "email": "Joe.Vandermark@microsoft.com"
+ },
+ {
+   "email": "joebel@microsoft.com"
+ },
+ {
+   "email": "Joel.Stidley@microsoft.com"
+ },
+ {
+   "email": "Joerg.Jooss@microsoft.com"
+ },
+ {
+   "email": "jofennem@micrsoft.com"
+ },
+ {
+   "email": "jofultz@microsoft.com"
+ },
+ {
+   "email": "Johan.Andolf@microsoft.com"
+ },
+ {
+   "email": "Johan.Grant@microsoft.com"
+ },
+ {
+   "email": "Johan.Tysklind@microsoft.com"
+ },
+ {
+   "email": "John.Coleman@microsoft.com"
+ },
+ {
+   "email": "John.Jenner@microsoft.com"
+ },
+ {
+   "email": "John.Knightly@microsoft.com"
+ },
+ {
+   "email": "john.korkes@microsoft.com"
+ },
+ {
+   "email": "John.Manaloto@microsoft.com"
+ },
+ {
+   "email": "John.Metzger@microsoft.com"
+ },
+ {
+   "email": "John.Poetzinger@microsoft.com"
+ },
+ {
+   "email": "John.Skjorbaek@microsoft.com"
+ },
+ {
+   "email": "John.Swain@microsoft.com"
+ },
+ {
+   "email": "johndand@microsoft.com"
+ },
+ {
+   "email": "Johnson.Patrick@microsoft.com"
+ },
+ {
+   "email": "jolest@microsoft.com"
+ },
+ {
+   "email": "joloughl@microsoft.com"
+ },
+ {
+   "email": "jomallin@microsoft.com"
+ },
+ {
+   "email": "Jon.Jahren@microsoft.com"
+ },
+ {
+   "email": "Jon.Machtynger@microsoft.com"
+ },
+ {
+   "email": "Jon.Satchwell@microsoft.com"
+ },
+ {
+   "email": "Jonas.Norlund@microsoft.com"
+ },
+ {
+   "email": "Jonathan.Hudspeth@microsoft.com"
+ },
+ {
+   "email": "Jordan.Radkov@microsoft.com"
+ },
+ {
+   "email": "jorsmith@microsoft.com"
+ },
+ {
+   "email": "Jose.Salazar@microsoft.com"
+ },
+ {
+   "email": "jose.yapur@microsoft.com"
+ },
+ {
+   "email": "JoseAngel.Fernandez@microsoft.com"
+ },
+ {
+   "email": "Joseph.Barnes@microsoft.com"
+ },
+ {
+   "email": "Joseph.Healy@microsoft.com"
+ },
+ {
+   "email": "Joseph.Karasha@microsoft.com"
+ },
+ {
+   "email": "josimb@microsoft.com"
+ },
+ {
+   "email": "jovagh@microsoft.com"
+ },
+ {
+   "email": "jsvan@microsoft.com"
+ },
+ {
+   "email": "Jug.Mensenares@microsoft.com"
+ },
+ {
+   "email": "jugabb@microsoft.com"
+ },
+ {
+   "email": "jugordon@microsoft.com"
+ },
+ {
+   "email": "Jules.Ouellette@microsoft.com"
+ },
+ {
+   "email": "Julia.Hazelwood@microsoft.com"
+ },
+ {
+   "email": "Julian.Soh@microsoft.com"
+ },
+ {
+   "email": "Julie.Rachel@microsoft.com"
+ },
+ {
+   "email": "jumisawa@microsoft.com"
+ },
+ {
+   "email": "jun.hou@microsoft.com"
+ },
+ {
+   "email": "Junior.Sawney@microsoft.com"
+ },
+ {
+   "email": "junyashi@microsoft.com"
+ },
+ {
+   "email": "jurey@microsoft.com"
+ },
+ {
+   "email": "jurodr@microsoft.com"
+ },
+ {
+   "email": "Justice.Zisanhi@microsoft.com"
+ },
+ {
+   "email": "Jyotsna.Ravi@microsoft.com"
+ },
+ {
+   "email": "jyseong@microsoft.com"
+ },
+ {
+   "email": "kafong@microsoft.com"
+ },
+ {
+   "email": "Kalai.Elumalai@microsoft.com"
+ },
+ {
+   "email": "kamouss@microsoft.com"
+ },
+ {
+   "email": "kanilss@microsoft.com"
+ },
+ {
+   "email": "Kannan.Rajagopalan@microsoft.com"
+ },
+ {
+   "email": "kapeltol@microsoft.com"
+ },
+ {
+   "email": "Kapil.Arora@microsoft.com"
+ },
+ {
+   "email": "Kare.Rasmussen@microsoft.com"
+ },
+ {
+   "email": "karimka@microsoft.com"
+ },
+ {
+   "email": "Karl-Heinz.Suetterlin@microsoft.com"
+ },
+ {
+   "email": "karlku@microsoft.com"
+ },
+ {
+   "email": "Karthik.Venkatraman@microsoft.com"
+ },
+ {
+   "email": "kasawa@microsoft.com"
+ },
+ {
+   "email": "Kasey.Shah@microsoft.com"
+ },
+ {
+   "email": "kasrini@microsoft.com"
+ },
+ {
+   "email": "Katharina.Henriksen@microsoft.com"
+ },
+ {
+   "email": "Kathiravan.Thangavelu@microsoft.com"
+ },
+ {
+   "email": "Kaushik.Bardhan@microsoft.com"
+ },
+ {
+   "email": "Kazuhide.Inoue@microsoft.com"
+ },
+ {
+   "email": "kbock@microsoft.com"
+ },
+ {
+   "email": "KC.Munnings@microsoft.com"
+ },
+ {
+   "email": "KC.Tung@microsoft.com"
+ },
+ {
+   "email": "Ken.Skvarcius@microsoft.com"
+ },
+ {
+   "email": "Ken.Ward@microsoft.com"
+ },
+ {
+   "email": "Keshri.Asthana@microsoft.com"
+ },
+ {
+   "email": "Ketur.Shah@microsoft.com"
+ },
+ {
+   "email": "Kevin.D.Brown@microsoft.com"
+ },
+ {
+   "email": "Kevin.Hillinger@microsoft.com"
+ },
+ {
+   "email": "Kevin.Kasalonis@microsoft.com"
+ },
+ {
+   "email": "Kevin.Mack@microsoft.com"
+ },
+ {
+   "email": "keyo@microsoft.com"
+ },
+ {
+   "email": "kgates@microsoft.com"
+ },
+ {
+   "email": "khemikap@microsoft.com"
+ },
+ {
+   "email": "Kim.Raymond@microsoft.com"
+ },
+ {
+   "email": "Kim.Whitehall@microsoft.com"
+ },
+ {
+   "email": "King.Chris@microsoft.com"
+ },
+ {
+   "email": "Kinshuk.Sengupta@microsoft.com"
+ },
+ {
+   "email": "Koketso.Moikangwe@microsoft.com"
+ },
+ {
+   "email": "kolepes@microsoft.com"
+ },
+ {
+   "email": "Konstantinos.Pantos@microsoft.com"
+ },
+ {
+   "email": "Kostas.Tselios@microsoft.com"
+ },
+ {
+   "email": "Krishnaswamy.Venkataraman@microsoft.com"
+ },
+ {
+   "email": "krishsub@microsoft.com"
+ },
+ {
+   "email": "Kristina.Florea@microsoft.com"
+ },
+ {
+   "email": "Kristina.Srensen@microsoft.com"
+ },
+ {
+   "email": "Kumar.Manish@microsoft.com"
+ },
+ {
+   "email": "kumar.shastry@microsoft.com"
+ },
+ {
+   "email": "Kunal.Chandratre@microsoft.com"
+ },
+ {
+   "email": "Kunal.Jain@microsoft.com"
+ },
+ {
+   "email": "KunHo.Ko@microsoft.com"
+ },
+ {
+   "email": "Kuo.David@microsoft.com"
+ },
+ {
+   "email": "Kwanghoon.Jhin@microsoft.com"
+ },
+ {
+   "email": "kyburns@microsoft.com"
+ },
+ {
+   "email": "Kylin.Tong@microsoft.com"
+ },
+ {
+   "email": "laahlfor@microsoft.com"
+ },
+ {
+   "email": "Lachlan.MatthewDickinson@microsoft.com"
+ },
+ {
+   "email": "laedell@microsoft.com"
+ },
+ {
+   "email": "lagrob@microsoft.com"
+ },
+ {
+   "email": "Lamin.Jobe@microsoft.com"
+ },
+ {
+   "email": "Lana.Koprivica@microsoft.com"
+ },
+ {
+   "email": "lanochil@microsoft.com"
+ },
+ {
+   "email": "Lars.Gustavsson@microsoft.com"
+ },
+ {
+   "email": "Lars.Heppert@microsoft.com"
+ },
+ {
+   "email": "Lars.Lindstedt@microsoft.com"
+ },
+ {
+   "email": "Laurence.Benjamin@microsoft.com"
+ },
+ {
+   "email": "Lavan.Nallainathan@microsoft.com"
+ },
+ {
+   "email": "laxminb@microsoft.com"
+ },
+ {
+   "email": "lberman@microsoft.com"
+ },
+ {
+   "email": "leandrew@microsoft.com"
+ },
+ {
+   "email": "Leandro.Okabayashi@microsoft.com"
+ },
+ {
+   "email": "Lee.HS@microsoft.com"
+ },
+ {
+   "email": "Lee.Schuenemeyer@microsoft.com"
+ },
+ {
+   "email": "leemike@microsoft.com"
+ },
+ {
+   "email": "leizha@microsoft.com"
+ },
+ {
+   "email": "leliang@microsoft.com"
+ },
+ {
+   "email": "lesoroki@microsoft.com"
+ },
+ {
+   "email": "Levi.Romandine@microsoft.com"
+ },
+ {
+   "email": "Linda.Zhang@microsoft.com"
+ },
+ {
+   "email": "Ling.Tse@microsoft.com"
+ },
+ {
+   "email": "Little.Chris@microsoft.com"
+ },
+ {
+   "email": "lium@microsoft.com"
+ },
+ {
+   "email": "locas@microsoft.com"
+ },
+ {
+   "email": "lokrishn@microsoft.com"
+ },
+ {
+   "email": "Lorenzo.Barbieri@microsoft.com"
+ },
+ {
+   "email": "Loring.Pelz@microsoft.com"
+ },
+ {
+   "email": "Lotan.Steinberg@microsoft.com"
+ },
+ {
+   "email": "lruval@microsoft.com"
+ },
+ {
+   "email": "lucali@microsoft.com"
+ },
+ {
+   "email": "lucarval@microsoft.com"
+ },
+ {
+   "email": "Luis.Flores@microsoft.com"
+ },
+ {
+   "email": "lyouarti@microsoft.com"
+ },
+ {
+   "email": "maarten.wiese@microsoft.com"
+ },
+ {
+   "email": "macanty@microsoft.com"
+ },
+ {
+   "email": "machanth@microsoft.com"
+ },
+ {
+   "email": "madedroo@microsoft.com"
+ },
+ {
+   "email": "Madhu.Desarapu@microsoft.com"
+ },
+ {
+   "email": "madsd@microsoft.com"
+ },
+ {
+   "email": "maelkhaz@microsoft.com"
+ },
+ {
+   "email": "Maggie.Liu@microsoft.com"
+ },
+ {
+   "email": "Mahsa.Rouzbahman@microsoft.com"
+ },
+ {
+   "email": "Maik.Sandmann@microsoft.com"
+ },
+ {
+   "email": "makomatr@microsoft.com"
+ },
+ {
+   "email": "malefe@microsoft.com"
+ },
+ {
+   "email": "Mallikarjun.Tuppad@microsoft.com"
+ },
+ {
+   "email": "mamalle@microsoft.com"
+ },
+ {
+   "email": "man@microsoft.com"
+ },
+ {
+   "email": "Manavi.Banerjee@microsoft.com"
+ },
+ {
+   "email": "Manchul.Park@microsoft.com"
+ },
+ {
+   "email": "Mandar.Chawathe@microsoft.com"
+ },
+ {
+   "email": "Manish.Choudhary@microsoft.com"
+ },
+ {
+   "email": "Manoel.Amado@microsoft.com"
+ },
+ {
+   "email": "Manpreet.Singh@microsoft.com"
+ },
+ {
+   "email": "Manuela.Polimeno@microsoft.com"
+ },
+ {
+   "email": "Marc.van.Houten@microsoft.com"
+ },
+ {
+   "email": "Marcel.Peterhans@microsoft.com"
+ },
+ {
+   "email": "Marcelo.Silva@microsoft.com"
+ },
+ {
+   "email": "Marcelo.Zambrana@microsoft.com"
+ },
+ {
+   "email": "Marcin.Kucharski@microsoft.com"
+ },
+ {
+   "email": "Marco.Naccarato@microsoft.com"
+ },
+ {
+   "email": "Marcus.McConnell@microsoft.com"
+ },
+ {
+   "email": "Marcus.Soares@microsoft.com"
+ },
+ {
+   "email": "mardi@microsoft.com"
+ },
+ {
+   "email": "maria.pronin@microsoft.com"
+ },
+ {
+   "email": "Marianela.Ramsdell@microsoft.com"
+ },
+ {
+   "email": "mariano.rodriguez@microsoft.com"
+ },
+ {
+   "email": "Marin.Marinov@microsoft.com"
+ },
+ {
+   "email": "Mario.Cavaldesi@microsoft.com"
+ },
+ {
+   "email": "Marius.Pedersen@microsoft.com"
+ },
+ {
+   "email": "Mariusz.Kolodziej@microsoft.com"
+ },
+ {
+   "email": "Marjorie.Adriaenssens@microsoft.com"
+ },
+ {
+   "email": "Mark.Garcia@microsoft.com"
+ },
+ {
+   "email": "Mark.Gosson@microsoft.com"
+ },
+ {
+   "email": "Mark.Kenyon@microsoft.com"
+ },
+ {
+   "email": "Mark.Malek@microsoft.com"
+ },
+ {
+   "email": "mark.mayle@microsoft.com"
+ },
+ {
+   "email": "Mark.Nichols@microsoft.com"
+ },
+ {
+   "email": "Mark.Terrace@microsoft.com"
+ },
+ {
+   "email": "Mark.Whitby@microsoft.com"
+ },
+ {
+   "email": "markjon@microsoft.com"
+ },
+ {
+   "email": "markm@microsoft.com"
+ },
+ {
+   "email": "Marko.Koivisto@microsoft.com"
+ },
+ {
+   "email": "marpy@microsoft.com"
+ },
+ {
+   "email": "Martin.Ihrke@microsoft.com"
+ },
+ {
+   "email": "Martin.Vach@microsoft.com"
+ },
+ {
+   "email": "martina.lang@microsoft.com"
+ },
+ {
+   "email": "Marvin.Buss@microsoft.com"
+ },
+ {
+   "email": "Marvin.Garcia@microsoft.com"
+ },
+ {
+   "email": "Masaru.Takahashi@microsoft.com"
+ },
+ {
+   "email": "maskato@microsoft.com"
+ },
+ {
+   "email": "Mat.Morgan@microsoft.com"
+ },
+ {
+   "email": "Mathew.Alves@microsoft.com"
+ },
+ {
+   "email": "Mathieu.Benoit@microsoft.com"
+ },
+ {
+   "email": "Matjaz.Perpar@microsoft.com"
+ },
+ {
+   "email": "matsj@microsoft.com"
+ },
+ {
+   "email": "Matt.Davis@microsoft.com"
+ },
+ {
+   "email": "Matt.Hansen@microsoft.com"
+ },
+ {
+   "email": "Matt.Hyde@microsoft.com"
+ },
+ {
+   "email": "Matt.McInnis@microsoft.com"
+ },
+ {
+   "email": "Matt.Quinn@microsoft.com"
+ },
+ {
+   "email": "Matt.Ruma@microsoft.com"
+ },
+ {
+   "email": "Matt.Weale@microsoft.com"
+ },
+ {
+   "email": "Matt.White@microsoft.com"
+ },
+ {
+   "email": "matt.witman@microsoft.com"
+ },
+ {
+   "email": "Matthew.McGarry@microsoft.com"
+ },
+ {
+   "email": "Matthew.Puckett@microsoft.com"
+ },
+ {
+   "email": "Matthias.Buchhorn@microsoft.com"
+ },
+ {
+   "email": "mattstep@microsoft.com"
+ },
+ {
+   "email": "Maulik.Soni@microsoft.com"
+ },
+ {
+   "email": "Maurice.Jutte@microsoft.com"
+ },
+ {
+   "email": "Mauro.Minella@microsoft.com"
+ },
+ {
+   "email": "mavahen@microsoft.com"
+ },
+ {
+   "email": "Max.Melcher@microsoft.com"
+ },
+ {
+   "email": "mblanco@microsoft.com"
+ },
+ {
+   "email": "mblant@microsoft.com"
+ },
+ {
+   "email": "meag@microsoft.com"
+ },
+ {
+   "email": "Meinrad.Weiss@microsoft.com"
+ },
+ {
+   "email": "melilace@microsoft.com"
+ },
+ {
+   "email": "Melony.Qin@microsoft.com"
+ },
+ {
+   "email": "Mercy.Ranjit@microsoft.com"
+ },
+ {
+   "email": "Mesut.Aladag@microsoft.com"
+ },
+ {
+   "email": "mgarner@microsoft.com"
+ },
+ {
+   "email": "Michael.Dobing@microsoft.com"
+ },
+ {
+   "email": "Michael.Hellrich@microsoft.com"
+ },
+ {
+   "email": "Michael.McKechney@microsoft.com"
+ },
+ {
+   "email": "Michael.Papasevastos@microsoft.com"
+ },
+ {
+   "email": "Michael.Petersen@microsoft.com"
+ },
+ {
+   "email": "Michael.Rhoads@microsoft.com"
+ },
+ {
+   "email": "michal.marusan@microsoft.com"
+ },
+ {
+   "email": "Michele.Camuri@microsoft.com"
+ },
+ {
+   "email": "Mickey.Patel@microsoft.com"
+ },
+ {
+   "email": "mifogli@microsoft.com"
+ },
+ {
+   "email": "mifung@microsoft.com"
+ },
+ {
+   "email": "MiguelAngel.Rivera@microsoft.com"
+ },
+ {
+   "email": "Miho.Matsuo@microsoft.com"
+ },
+ {
+   "email": "mihs@microsoft.com"
+ },
+ {
+   "email": "Mihyun.Kim@microsoft.com"
+ },
+ {
+   "email": "Mikael.Hermansson@microsoft.com"
+ },
+ {
+   "email": "mikaelc@microsoft.com"
+ },
+ {
+   "email": "Mike.Baker@microsoft.com"
+ },
+ {
+   "email": "Mike.Blancas@microsoft.com"
+ },
+ {
+   "email": "Mike.Eizensmits@microsoft.com"
+ },
+ {
+   "email": "mikhail.almeida@microsoft.com"
+ },
+ {
+   "email": "mikrum@microsoft.com"
+ },
+ {
+   "email": "mimochiz@microsoft.com"
+ },
+ {
+   "email": "mimott@microsoft.com"
+ },
+ {
+   "email": "mimyers@microsoft.com"
+ },
+ {
+   "email": "minaecho@microsoft.com"
+ },
+ {
+   "email": "minettes@microsoft.com"
+ },
+ {
+   "email": "Minsuk.Kim@microsoft.com"
+ },
+ {
+   "email": "mirobson@microsoft.com"
+ },
+ {
+   "email": "Mitsuhiro.Takagi@microsoft.com"
+ },
+ {
+   "email": "miwedder@microsoft.com"
+ },
+ {
+   "email": "mmilazzo@microsoft.com"
+ },
+ {
+   "email": "Mohamed.Kabiruddin@microsoft.com"
+ },
+ {
+   "email": "Mohamed.Sharaf@microsoft.com"
+ },
+ {
+   "email": "Mona.Thoraia@microsoft.com"
+ },
+ {
+   "email": "Moonis.Tahir@microsoft.com"
+ },
+ {
+   "email": "Moonsun.Lee@microsoft.com"
+ },
+ {
+   "email": "Morne.Blake@microsoft.com"
+ },
+ {
+   "email": "Moumi.Panja@microsoft.com"
+ },
+ {
+   "email": "mozahran@microsoft.com"
+ },
+ {
+   "email": "mroyster@microsoft.com"
+ },
+ {
+   "email": "mstoll@microsoft.com"
+ },
+ {
+   "email": "mubaluny@microsoft.com"
+ },
+ {
+   "email": "mueken@microsoft.com"
+ },
+ {
+   "email": "Muthu.Ramanathan@microsoft.com"
+ },
+ {
+   "email": "Mutlu.Dogruel@microsoft.com"
+ },
+ {
+   "email": "Muturi.Njenga@microsoft.com"
+ },
+ {
+   "email": "Muz.Syed@microsoft.com"
+ },
+ {
+   "email": "Myeong.Ku@microsoft.com"
+ },
+ {
+   "email": "Mykola.Kovalenko@microsoft.com"
+ },
+ {
+   "email": "Myra.Ma@microsoft.com"
+ },
+ {
+   "email": "nabeelp@microsoft.com"
+ },
+ {
+   "email": "nabijne@microsoft.com"
+ },
+ {
+   "email": "Nagesh.Mahadev@microsoft.com"
+ },
+ {
+   "email": "Nair.Manoj@microsoft.com"
+ },
+ {
+   "email": "Naomi.Alpern@microsoft.com"
+ },
+ {
+   "email": "nashamim@microsoft.com"
+ },
+ {
+   "email": "nataliak@microsoft.com"
+ },
+ {
+   "email": "Naveed.Zaheer@microsoft.com"
+ },
+ {
+   "email": "nawan@microsoft.com"
+ },
+ {
+   "email": "Neel.Nanda@microsoft.com"
+ },
+ {
+   "email": "negupt@microsoft.com"
+ },
+ {
+   "email": "Neil.DeBrass@microsoft.com"
+ },
+ {
+   "email": "Neil.Millington@microsoft.com"
+ },
+ {
+   "email": "neimac@microsoft.com"
+ },
+ {
+   "email": "nelsd@microsoft.com"
+ },
+ {
+   "email": "niball@microsoft.com"
+ },
+ {
+   "email": "Nicholas.Moore@microsoft.com"
+ },
+ {
+   "email": "Nick.Hill@microsoft.com"
+ },
+ {
+   "email": "Nick.Hurt@microsoft.com"
+ },
+ {
+   "email": "Nick.Powell@microsoft.com"
+ },
+ {
+   "email": "Nicolas.Barrasson@microsoft.com"
+ },
+ {
+   "email": "Nicolas.Roult@microsoft.com"
+ },
+ {
+   "email": "Nicolas.Yuen@microsoft.com"
+ },
+ {
+   "email": "nicurrid@microsoft.com"
+ },
+ {
+   "email": "nigandhi@microsoft.com"
+ },
+ {
+   "email": "Nikki.Conley@microsoft.com"
+ },
+ {
+   "email": "Nills.Franssens@microsoft.com"
+ },
+ {
+   "email": "Ninad.Mehta@microsoft.com"
+ },
+ {
+   "email": "ninad@microsoft.com"
+ },
+ {
+   "email": "Nirmal.Thewarathanthri@microsoft.com"
+ },
+ {
+   "email": "Nitesh.Thakrar@microsoft.com"
+ },
+ {
+   "email": "Nithesh.Krishnappa@microsoft.com"
+ },
+ {
+   "email": "Nitin.Mehta@microsoft.com"
+ },
+ {
+   "email": "Nivea.Silva@microsoft.com"
+ },
+ {
+   "email": "Norman.Sequeira@microsoft.com"
+ },
+ {
+   "email": "Nuno.Centeno@microsoft.com"
+ },
+ {
+   "email": "Nuno.Nunes@microsoft.com"
+ },
+ {
+   "email": "nusrivas@microsoft.com"
+ },
+ {
+   "email": "nylee@microsoft.com"
+ },
+ {
+   "email": "nzarrari@microsoft.com"
+ },
+ {
+   "email": "Olavo.Borges@microsoft.com"
+ },
+ {
+   "email": "Olga.Londer@microsoft.com"
+ },
+ {
+   "email": "olileger@microsoft.com"
+ },
+ {
+   "email": "Oliver.Dorr@microsoft.com"
+ },
+ {
+   "email": "Oliver.Lohmann@microsoft.com"
+ },
+ {
+   "email": "Oliver.MulelidTynes@microsoft.com"
+ },
+ {
+   "email": "Olivier.Fliche@microsoft.com"
+ },
+ {
+   "email": "Oluwasegun.Ogunbajo@microsoft.com"
+ },
+ {
+   "email": "omamjad@microsoft.com"
+ },
+ {
+   "email": "Omkar.Naik@microsoft.com"
+ },
+ {
+   "email": "Orhan.Celik@microsoft.com"
+ },
+ {
+   "email": "Oshik.Avioz@microsoft.com"
+ },
+ {
+   "email": "Ossie.Terron@microsoft.com"
+ },
+ {
+   "email": "P.J.Grinsell@microsoft.com"
+ },
+ {
+   "email": "pabmar@microsoft.com"
+ },
+ {
+   "email": "padmar@microsoft.com"
+ },
+ {
+   "email": "paelaz@microsoft.com"
+ },
+ {
+   "email": "Paola.Annis@microsoft.com"
+ },
+ {
+   "email": "Param.Singh@microsoft.com"
+ },
+ {
+   "email": "Parinaz.Bassampour@microsoft.com"
+ },
+ {
+   "email": "Park.In@microsoft.com"
+ },
+ {
+   "email": "Pascal.vanderHeiden@microsoft.com"
+ },
+ {
+   "email": "Patel.Anand@microsoft.com"
+ },
+ {
+   "email": "Patrick.Alexander@microsoft.com"
+ },
+ {
+   "email": "Patrick.Gryczka@microsoft.com"
+ },
+ {
+   "email": "Patrick.vanLoon@microsoft.com"
+ },
+ {
+   "email": "Patriek.van.Dorp@microsoft.com"
+ },
+ {
+   "email": "Paul.Hakim@microsoft.com"
+ },
+ {
+   "email": "Paul.Kelso@microsoft.com"
+ },
+ {
+   "email": "paul.latham@microsoft.com"
+ },
+ {
+   "email": "Paul.Mooney@microsoft.com"
+ },
+ {
+   "email": "Paul.Riviera@microsoft.com"
+ },
+ {
+   "email": "Paul.Singh@microsoft.com"
+ },
+ {
+   "email": "Paula.White@microsoft.com"
+ },
+ {
+   "email": "Paulo.Renato@microsoft.com"
+ },
+ {
+   "email": "Pavle.Coric@microsoft.com"
+ },
+ {
+   "email": "pchiou@microsoft.com"
+ },
+ {
+   "email": "pebarrer@microsoft.com"
+ },
+ {
+   "email": "pedro.martinez@microsoft.com"
+ },
+ {
+   "email": "Pedro.Pereira@microsoft.com"
+ },
+ {
+   "email": "pehancoc@microsoft.com"
+ },
+ {
+   "email": "pemerker@microsoft.com"
+ },
+ {
+   "email": "pennyko@microsoft.com"
+ },
+ {
+   "email": "persch@microsoft.com"
+ },
+ {
+   "email": "pete.rodriguez@microsoft.com"
+ },
+ {
+   "email": "peteb@microsoft.com"
+ },
+ {
+   "email": "Peter.Beijderwellen@microsoft.com"
+ },
+ {
+   "email": "Peter.Joseph@microsoft.com"
+ },
+ {
+   "email": "Peter.Laudati@microsoft.com"
+ },
+ {
+   "email": "Peter.Liljenroth@microsoft.com"
+ },
+ {
+   "email": "Peter.Lithner@microsoft.com"
+ },
+ {
+   "email": "peter.souk@microsoft.com"
+ },
+ {
+   "email": "Petri.Pehkonen@microsoft.com"
+ },
+ {
+   "email": "petri.savolainen@microsoft.com"
+ },
+ {
+   "email": "Phil.Jirsa@microsoft.com"
+ },
+ {
+   "email": "philil@microsoft.com"
+ },
+ {
+   "email": "Philip.Williams@microsoft.com"
+ },
+ {
+   "email": "Philipp.Loisel@microsoft.com"
+ },
+ {
+   "email": "Phillip.Marsh@microsoft.com"
+ },
+ {
+   "email": "phillipn@microsoft.com"
+ },
+ {
+   "email": "Pierre.Gagnon@microsoft.com"
+ },
+ {
+   "email": "Pierre-Olivier.Patin@microsoft.com"
+ },
+ {
+   "email": "Pieter.de.Bruin@microsoft.com"
+ },
+ {
+   "email": "Pieter.Kestelyn@microsoft.com"
+ },
+ {
+   "email": "pigilot@microsoft.com"
+ },
+ {
+   "email": "Piotr.Zajac@microsoft.com"
+ },
+ {
+   "email": "Pleun.Nijhoff@microsoft.com"
+ },
+ {
+   "email": "Prabhat.Gupta@microsoft.com"
+ },
+ {
+   "email": "Pradeep.Kumar@microsoft.com"
+ },
+ {
+   "email": "Prakash.Beegala@microsoft.com"
+ },
+ {
+   "email": "Pranab.Paul@microsoft.com"
+ },
+ {
+   "email": "Pranav.Holavanahalli@microsoft.com"
+ },
+ {
+   "email": "Pranesh.Soundarrajan@microsoft.com"
+ },
+ {
+   "email": "prashap@microsoft.com"
+ },
+ {
+   "email": "Prateek.Gandhi@microsoft.com"
+ },
+ {
+   "email": "Pratheek.Devaraj@microsoft.com"
+ },
+ {
+   "email": "pravko@microsoft.com"
+ },
+ {
+   "email": "Prem.Samuel@microsoft.com"
+ },
+ {
+   "email": "Preston.Romney@microsoft.com"
+ },
+ {
+   "email": "Prithvi.Reddy@microsoft.com"
+ },
+ {
+   "email": "prwani@microsoft.com"
+ },
+ {
+   "email": "Pupun.Das@microsoft.com"
+ },
+ {
+   "email": "Pushker.Sahai@microsoft.com"
+ },
+ {
+   "email": "qiangzho@microsoft.com"
+ },
+ {
+   "email": "qubrasse@microsoft.com"
+ },
+ {
+   "email": "rabickel@microsoft.com"
+ },
+ {
+   "email": "rabiswas@microsoft.com"
+ },
+ {
+   "email": "Radhakrishnan.Iyer@microsoft.com"
+ },
+ {
+   "email": "radut@microsoft.com"
+ },
+ {
+   "email": "Rafferty.Uy@microsoft.com"
+ },
+ {
+   "email": "Rafik.Mazouz@microsoft.com"
+ },
+ {
+   "email": "ragoetz@microsoft.com"
+ },
+ {
+   "email": "rags@microsoft.com"
+ },
+ {
+   "email": "rahgupt@microsoft.com"
+ },
+ {
+   "email": "rahul.athale@microsoft.com"
+ },
+ {
+   "email": "Rahul.Deshmukh@microsoft.com"
+ },
+ {
+   "email": "Raj.Krishnan@microsoft.com"
+ },
+ {
+   "email": "Rajan.Bhayana@microsoft.com"
+ },
+ {
+   "email": "rajaque@microsoft.com"
+ },
+ {
+   "email": "rajendran.muniappan@microsoft.com"
+ },
+ {
+   "email": "Rakesh.Shah@microsoft.com"
+ },
+ {
+   "email": "Ralph.Kemperdick@microsoft.com"
+ },
+ {
+   "email": "Ram.Madhurakavi@microsoft.com"
+ },
+ {
+   "email": "Ramon.Garza@microsoft.com"
+ },
+ {
+   "email": "Raouf.Aimeur@microsoft.com"
+ },
+ {
+   "email": "rathur@microsoft.com"
+ },
+ {
+   "email": "Ravi.Kaur@microsoft.com"
+ },
+ {
+   "email": "Ravi.Pedapati@microsoft.com"
+ },
+ {
+   "email": "razkha@microsoft.com"
+ },
+ {
+   "email": "rdoherty@microsoft.com"
+ },
+ {
+   "email": "rebremer@microsoft.com"
+ },
+ {
+   "email": "Reddy.Sucharit@microsoft.com"
+ },
+ {
+   "email": "redelang@microsoft.com"
+ },
+ {
+   "email": "Reecha.Mishra@microsoft.com"
+ },
+ {
+   "email": "Reid.Purvis@microsoft.com"
+ },
+ {
+   "email": "Rene.Hezser@microsoft.com"
+ },
+ {
+   "email": "Reuben.Cleetus@microsoft.com"
+ },
+ {
+   "email": "Reza.Mahmood@microsoft.com"
+ },
+ {
+   "email": "rhudson@microsoft.com"
+ },
+ {
+   "email": "Ricardo.Martins@microsoft.com"
+ },
+ {
+   "email": "Ricardo.Niepel@microsoft.com"
+ },
+ {
+   "email": "Rich.McBrine@microsoft.com"
+ },
+ {
+   "email": "Richard.Bannister@microsoft.com"
+ },
+ {
+   "email": "Richard.Fitzgerald@microsoft.com"
+ },
+ {
+   "email": "Richard.Hollister@microsoft.com"
+ },
+ {
+   "email": "richard.spitz@microsoft.com"
+ },
+ {
+   "email": "Richard.Timmering@microsoft.com"
+ },
+ {
+   "email": "richjohn@microsoft.com"
+ },
+ {
+   "email": "Rick.Davis@microsoft.com"
+ },
+ {
+   "email": "rickwey@microsoft.com"
+ },
+ {
+   "email": "ridegonz@microsoft.com"
+ },
+ {
+   "email": "rifiel@microsoft.com"
+ },
+ {
+   "email": "rijen@microsoft.com"
+ },
+ {
+   "email": "risemaan@microsoft.com"
+ },
+ {
+   "email": "Rita.Ladda@microsoft.com"
+ },
+ {
+   "email": "Ritesh.Kohli@microsoft.com"
+ },
+ {
+   "email": "Rivaaj.Jumna@microsoft.com"
+ },
+ {
+   "email": "riwasa@microsoft.com"
+ },
+ {
+   "email": "Rober.Torres@microsoft.com"
+ },
+ {
+   "email": "Robert.Biro@microsoft.com"
+ },
+ {
+   "email": "Robert.Boban@microsoft.com"
+ },
+ {
+   "email": "Robert.Turnage@microsoft.com"
+ },
+ {
+   "email": "Robert.Vinod@microsoft.com"
+ },
+ {
+   "email": "Robin.Ghosh@microsoft.com"
+ },
+ {
+   "email": "robnotto@microsoft.com"
+ },
+ {
+   "email": "robrakef@microsoft.com"
+ },
+ {
+   "email": "robudath@microsoft.com"
+ },
+ {
+   "email": "Roby.Rubiano@microsoft.com"
+ },
+ {
+   "email": "Rocco.Ren@microsoft.com"
+ },
+ {
+   "email": "rocurls@microsoft.com"
+ },
+ {
+   "email": "Rod.Means@microsoft.com"
+ },
+ {
+   "email": "rodcol@microsoft.com"
+ },
+ {
+   "email": "Rodrigo.Medeiros@microsoft.com"
+ },
+ {
+   "email": "Rodrigo@microsoft.com"
+ },
+ {
+   "email": "Roeland.Nieuwenhuis@microsoft.com"
+ },
+ {
+   "email": "Roelf.Zomerman@microsoft.com"
+ },
+ {
+   "email": "roelmore@microsoft.com"
+ },
+ {
+   "email": "Roger.Busser@microsoft.com"
+ },
+ {
+   "email": "rogerioc@microsoft.com"
+ },
+ {
+   "email": "Rolf.Tesmer@microsoft.com"
+ },
+ {
+   "email": "Romain.Jauffret@microsoft.com"
+ },
+ {
+   "email": "Ronald.Van.Teeffelen@microsoft.com"
+ },
+ {
+   "email": "Rong.Fang@microsoft.com"
+ },
+ {
+   "email": "Ronny.Hansen@microsoft.com"
+ },
+ {
+   "email": "rosobra@microsoft.com"
+ },
+ {
+   "email": "Roy.Prasenjit@microsoft.com"
+ },
+ {
+   "email": "Roy.Wilson@microsoft.com"
+ },
+ {
+   "email": "royang@microsoft.com"
+ },
+ {
+   "email": "rucarmo@microsoft.com"
+ },
+ {
+   "email": "Rui.Pereira@microsoft.com"
+ },
+ {
+   "email": "rumor@microsoft.com"
+ },
+ {
+   "email": "Ruqsana.Jabbar@microsoft.com"
+ },
+ {
+   "email": "Russell.Arp@microsoft.com"
+ },
+ {
+   "email": "Russell.Bradford@microsoft.com"
+ },
+ {
+   "email": "Russell.Smith@microsoft.com"
+ },
+ {
+   "email": "Russell.Vanderpool@microsoft.com"
+ },
+ {
+   "email": "Ruth.Bacci@microsoft.com"
+ },
+ {
+   "email": "Ryan.Krokson@microsoft.com"
+ },
+ {
+   "email": "Ryan.McIntyre@microsoft.com"
+ },
+ {
+   "email": "Ryan.Patch@microsoft.com"
+ },
+ {
+   "email": "ryberry@microsoft.com"
+ },
+ {
+   "email": "rygraham@microsoft.com"
+ },
+ {
+   "email": "Ryuki.Yoshimatsu@microsoft.com"
+ },
+ {
+   "email": "saabouis@microsoft.com"
+ },
+ {
+   "email": "saaugust@microsoft.com"
+ },
+ {
+   "email": "Sachin.Sinha@microsoft.com"
+ },
+ {
+   "email": "safeenab@microsoft.com"
+ },
+ {
+   "email": "Saffi.Ali@microsoft.com"
+ },
+ {
+   "email": "Sahana.Prabhakar@microsoft.com"
+ },
+ {
+   "email": "Sajit.Sasi@microsoft.com"
+ },
+ {
+   "email": "Saket.Suman@microsoft.com"
+ },
+ {
+   "email": "sakubsad@microsoft.com"
+ },
+ {
+   "email": "sam.elanis@microsoft.com"
+ },
+ {
+   "email": "Sam.Stamp@microsoft.com"
+ },
+ {
+   "email": "Sami.Abdallah@microsoft.com"
+ },
+ {
+   "email": "Sami.Isoaho@microsoft.com"
+ },
+ {
+   "email": "samslee@microsoft.com"
+ },
+ {
+   "email": "Samuel.Rowe@microsoft.com"
+ },
+ {
+   "email": "Sana.Sanai@microsoft.com"
+ },
+ {
+   "email": "sanathu@microsoft.com"
+ },
+ {
+   "email": "sanghlee@microsoft.com"
+ },
+ {
+   "email": "Sanja.Jovanovic@microsoft.com"
+ },
+ {
+   "email": "Sanjay.Jha@microsoft.com"
+ },
+ {
+   "email": "Sanjay.Shah@microsoft.com"
+ },
+ {
+   "email": "Sanjeev.Devarapalli@microsoft.com"
+ },
+ {
+   "email": "sanzharm@microsoft.com"
+ },
+ {
+   "email": "Sarah.Hiepler@microsoft.com"
+ },
+ {
+   "email": "Sarah.Lean@microsoft.com"
+ },
+ {
+   "email": "sarahma@microsoft.com"
+ },
+ {
+   "email": "saravich@microsoft.com"
+ },
+ {
+   "email": "Sarika.Pal@microsoft.com"
+ },
+ {
+   "email": "Sarmad.Jari@microsoft.com"
+ },
+ {
+   "email": "Sasa.Kovacevic@microsoft.com"
+ },
+ {
+   "email": "sasasid@microsoft.com"
+ },
+ {
+   "email": "sasditt@microsoft.com"
+ },
+ {
+   "email": "Saurabh.Seth@microsoft.com"
+ },
+ {
+   "email": "Saurabh.Vartak@microsoft.com"
+ },
+ {
+   "email": "Sayantani.Goswami@microsoft.com"
+ },
+ {
+   "email": "sbounds@microsoft.com"
+ },
+ {
+   "email": "scogru@microsoft.com"
+ },
+ {
+   "email": "Scott.Haglund@microsoft.com"
+ },
+ {
+   "email": "Scott.Nichols@microsoft.com"
+ },
+ {
+   "email": "Scott.ONeill@microsoft.com"
+ },
+ {
+   "email": "Scott.Stout@microsoft.com"
+ },
+ {
+   "email": "scottse@microsoft.com"
+ },
+ {
+   "email": "seaclark@microsoft.com"
+ },
+ {
+   "email": "seang@microsoft.com"
+ },
+ {
+   "email": "sebaclem@microsoft.com"
+ },
+ {
+   "email": "Sebastian.Adan@microsoft.com"
+ },
+ {
+   "email": "Sebastian.Bader@microsoft.com"
+ },
+ {
+   "email": "Sebastien.Brasseur@microsoft.com"
+ },
+ {
+   "email": "Sebastien.Claude@microsoft.com"
+ },
+ {
+   "email": "Sebastien.Penet@microsoft.com"
+ },
+ {
+   "email": "Sedat.Yogurtcuoglu@microsoft.com"
+ },
+ {
+   "email": "segonza@microsoft.com"
+ },
+ {
+   "email": "seijim@microsoft.com"
+ },
+ {
+   "email": "semihe@microsoft.com"
+ },
+ {
+   "email": "Senem.Kocak@microsoft.com"
+ },
+ {
+   "email": "Senthuran.Sivananthan@microsoft.com"
+ },
+ {
+   "email": "Seokhun.Bang@microsoft.com"
+ },
+ {
+   "email": "Sergio.Guerrero@microsoft.com"
+ },
+ {
+   "email": "Sergio.Mion@microsoft.com"
+ },
+ {
+   "email": "Sergio.Zenatti@microsoft.com"
+ },
+ {
+   "email": "shadph@microsoft.com"
+ },
+ {
+   "email": "Shah.Manish@microsoft.com"
+ },
+ {
+   "email": "Shahaf.Cohen@microsoft.com"
+ },
+ {
+   "email": "Sharmaine.Popov@microsoft.com"
+ },
+ {
+   "email": "Sharmistha.Das@microsoft.com"
+ },
+ {
+   "email": "Shaun.Mullis@microsoft.com"
+ },
+ {
+   "email": "Shawn.Weisfeld@microsoft.com"
+ },
+ {
+   "email": "Shawn.Woodside@microsoft.com"
+ },
+ {
+   "email": "shays@microsoft.com"
+ },
+ {
+   "email": "shbitla@microsoft.com"
+ },
+ {
+   "email": "shchauh@microsoft.com"
+ },
+ {
+   "email": "shchauha@microsoft.com"
+ },
+ {
+   "email": "shchitt@microsoft.com"
+ },
+ {
+   "email": "Shekhar.Patnaik@microsoft.com"
+ },
+ {
+   "email": "Sherief.Selim@microsoft.com"
+ },
+ {
+   "email": "shicluo@microsoft.com"
+ },
+ {
+   "email": "Shimail.gillani@microsoft.com"
+ },
+ {
+   "email": "Shivinder.Singh@microsoft.com"
+ },
+ {
+   "email": "shkh@microsoft.com"
+ },
+ {
+   "email": "Shoresh.Khezri@microsoft.com"
+ },
+ {
+   "email": "Shri.Chakraborty@microsoft.com"
+ },
+ {
+   "email": "Shrikrishna.Khose@microsoft.com"
+ },
+ {
+   "email": "shsakam@microsoft.com"
+ },
+ {
+   "email": "Shuichi.Gojuki@microsoft.com"
+ },
+ {
+   "email": "Shuqi.Yang@microsoft.com"
+ },
+ {
+   "email": "shzhai@microsoft.com"
+ },
+ {
+   "email": "sichaud@microsoft.com"
+ },
+ {
+   "email": "Simon.Hutson@microsoft.com"
+ },
+ {
+   "email": "Simon.Schwingel@microsoft.com"
+ },
+ {
+   "email": "simont@microsoft.com"
+ },
+ {
+   "email": "singh.ashish@microsoft.com"
+ },
+ {
+   "email": "Singh.Gagandeep@microsoft.com"
+ },
+ {
+   "email": "sjbaek@microsoft.com"
+ },
+ {
+   "email": "slindsay@microsoft.com"
+ },
+ {
+   "email": "smith.anthony@microsoft.com"
+ },
+ {
+   "email": "Smith.Scott@microsoft.com"
+ },
+ {
+   "email": "Smitha.Venkat@microsoft.com"
+ },
+ {
+   "email": "snair@microsoft.com"
+ },
+ {
+   "email": "Sofiane.Yahiaoui@microsoft.com"
+ },
+ {
+   "email": "sonan@microsoft.com"
+ },
+ {
+   "email": "sonandi@microsoft.com"
+ },
+ {
+   "email": "sowmyans@microsoft.com"
+ },
+ {
+   "email": "soyi@microsoft.com"
+ },
+ {
+   "email": "sralaval@microsoft.com"
+ },
+ {
+   "email": "srane@microsoft.com"
+ },
+ {
+   "email": "Sreedar.R@microsoft.com"
+ },
+ {
+   "email": "srgolla@microsoft.com"
+ },
+ {
+   "email": "Sri.Hari@microsoft.com"
+ },
+ {
+   "email": "Srini.Ambati@microsoft.com"
+ },
+ {
+   "email": "Srinivas.Hulsusgud@microsoft.com"
+ },
+ {
+   "email": "srpilla@microsoft.com"
+ },
+ {
+   "email": "sseow@microsoft.com"
+ },
+ {
+   "email": "Stanley.Lam@microsoft.com"
+ },
+ {
+   "email": "starmory@microsoft.com"
+ },
+ {
+   "email": "stbaehr@microsoft.com"
+ },
+ {
+   "email": "stcraft@microsoft.com"
+ },
+ {
+   "email": "stdetoni@microsoft.com"
+ },
+ {
+   "email": "stdickso@microsoft.com"
+ },
+ {
+   "email": "stdistef@microsoft.com"
+ },
+ {
+   "email": "stecha@microsoft.com"
+ },
+ {
+   "email": "Stefan.Volkmer@microsoft.com"
+ },
+ {
+   "email": "Steffen.Krause@microsoft.com"
+ },
+ {
+   "email": "steggert@microsoft.com"
+ },
+ {
+   "email": "Stephen.Chester@microsoft.com"
+ },
+ {
+   "email": "stephen.helwig@microsoft.com"
+ },
+ {
+   "email": "Stephen.Mann@microsoft.com"
+ },
+ {
+   "email": "Steve.Griffith@microsoft.com"
+ },
+ {
+   "email": "Steve.Kaiser@microsoft.com"
+ },
+ {
+   "email": "Steve.Kurtz@microsoft.com"
+ },
+ {
+   "email": "Steve.Loethen@microsoft.com"
+ },
+ {
+   "email": "Steve.Walker@microsoft.com"
+ },
+ {
+   "email": "stevehow@microsoft.com"
+ },
+ {
+   "email": "Steven.Pontello@microsoft.com"
+ },
+ {
+   "email": "Steven.Thompson@microsoft.com"
+ },
+ {
+   "email": "Steven.Wilder@microsoft.com"
+ },
+ {
+   "email": "Steven.Yukai.Shi@microsoft.com"
+ },
+ {
+   "email": "stevlin@microsoft.com"
+ },
+ {
+   "email": "sthoward@microsoft.com"
+ },
+ {
+   "email": "stigly@microsoft.com"
+ },
+ {
+   "email": "stordahl@microsoft.com"
+ },
+ {
+   "email": "stpapaix@microsoft.com"
+ },
+ {
+   "email": "ststraub@microsoft.com"
+ },
+ {
+   "email": "stuf@microsoft.com"
+ },
+ {
+   "email": "stwan@microsoft.com"
+ },
+ {
+   "email": "stzimmer@microsoft.com"
+ },
+ {
+   "email": "Suhasa.Rao@microsoft.com"
+ },
+ {
+   "email": "sukute@microsoft.com"
+ },
+ {
+   "email": "Sullivan.Timothy@microsoft.com"
+ },
+ {
+   "email": "Suman.Cuddapah@microsoft.com"
+ },
+ {
+   "email": "Sundar.Chellappa@microsoft.com"
+ },
+ {
+   "email": "Suneet.Nangia@microsoft.com"
+ },
+ {
+   "email": "Suranga.Fernando@microsoft.com"
+ },
+ {
+   "email": "surep@microsoft.com"
+ },
+ {
+   "email": "Surinder.Singh@microsoft.com"
+ },
+ {
+   "email": "surjin@microsoft.com"
+ },
+ {
+   "email": "susaho@microsoft.com"
+ },
+ {
+   "email": "Susanna.Mostaghim@microsoft.com"
+ },
+ {
+   "email": "Sushil.Shah@microsoft.com"
+ },
+ {
+   "email": "sushim@microsoft.com"
+ },
+ {
+   "email": "swieder@microsoft.com"
+ },
+ {
+   "email": "swseo@microsoft.com"
+ },
+ {
+   "email": "sypyo@microsoft.com"
+ },
+ {
+   "email": "tacowan@microsoft.com"
+ },
+ {
+   "email": "Tae.Hwang@microsoft.com"
+ },
+ {
+   "email": "takashi.okawa@microsoft.com"
+ },
+ {
+   "email": "Takashi.Ushigami@microsoft.com"
+ },
+ {
+   "email": "tamaher@microsoft.com"
+ },
+ {
+   "email": "Taraneh.Khazaei@microsoft.com"
+ },
+ {
+   "email": "tarunar@microsoft.com"
+ },
+ {
+   "email": "t-asguer@microsoft.com"
+ },
+ {
+   "email": "Tash.Tahir@microsoft.com"
+ },
+ {
+   "email": "t-dipere@microsoft.com"
+ },
+ {
+   "email": "Tedman.Lee@microsoft.com"
+ },
+ {
+   "email": "Tejas.Rathod@microsoft.com"
+ },
+ {
+   "email": "teodelas@microsoft.com"
+ },
+ {
+   "email": "Theo.van@microsoft.com"
+ },
+ {
+   "email": "Thiago.Ataide@microsoft.com"
+ },
+ {
+   "email": "Thiago.Born@microsoft.com"
+ },
+ {
+   "email": "thlind@microsoft.com"
+ },
+ {
+   "email": "Thomas.Abraham@microsoft.com"
+ },
+ {
+   "email": "Thomas.Cousin@microsoft.com"
+ },
+ {
+   "email": "Thomas.Huang@microsoft.com"
+ },
+ {
+   "email": "Thomas.Schwarz@microsoft.com"
+ },
+ {
+   "email": "Thomas.Vachon@microsoft.com"
+ },
+ {
+   "email": "thomasbj@microsoft.com"
+ },
+ {
+   "email": "tiagoh@microsoft.com"
+ },
+ {
+   "email": "tibarar@microsoft.com"
+ },
+ {
+   "email": "tiferro@microsoft.com"
+ },
+ {
+   "email": "Tim.Aranki@microsoft.com"
+ },
+ {
+   "email": "tim.benroeck@microsoft.com"
+ },
+ {
+   "email": "Tim.Thaens@microsoft.com"
+ },
+ {
+   "email": "Tim.Verbist@microsoft.com"
+ },
+ {
+   "email": "Timo.Klimmer@microsoft.com"
+ },
+ {
+   "email": "Timothy.Strimple@microsoft.com"
+ },
+ {
+   "email": "tinodo@microsoft.com"
+ },
+ {
+   "email": "t-isamos@microsoft.com"
+ },
+ {
+   "email": "t-kevand@microsoft.com"
+ },
+ {
+   "email": "t-limars@microsoft.com"
+ },
+ {
+   "email": "tnolan@microsoft.com"
+ },
+ {
+   "email": "Todd.Pliner@microsoft.com"
+ },
+ {
+   "email": "Todd.Whitehead@microsoft.com"
+ },
+ {
+   "email": "togunder@microsoft.com"
+ },
+ {
+   "email": "Tom.Hickling@microsoft.com"
+ },
+ {
+   "email": "Tom.Petreca@microsoft.com"
+ },
+ {
+   "email": "tomakabe@microsoft.com"
+ },
+ {
+   "email": "Tommy.Falgout@microsoft.com"
+ },
+ {
+   "email": "Tomohiro.Sugimoto@microsoft.com"
+ },
+ {
+   "email": "tomorris@microsoft.com"
+ },
+ {
+   "email": "tonbark@microsoft.com"
+ },
+ {
+   "email": "Tonio.Lora@microsoft.com"
+ },
+ {
+   "email": "Tony.Sanchez@microsoft.com"
+ },
+ {
+   "email": "Toon.Dillen@microsoft.com"
+ },
+ {
+   "email": "torosgo@microsoft.com"
+ },
+ {
+   "email": "Torsten.Stiller@microsoft.com"
+ },
+ {
+   "email": "toscal@microsoft.com"
+ },
+ {
+   "email": "travis.Nielsen@microsoft.com"
+ },
+ {
+   "email": "trbran@microsoft.com"
+ },
+ {
+   "email": "Trey.Talbott@microsoft.com"
+ },
+ {
+   "email": "Trond.Stroemme@microsoft.com"
+ },
+ {
+   "email": "troyault@microsoft.com"
+ },
+ {
+   "email": "t-samena@microsoft.com"
+ },
+ {
+   "email": "Turner.Robert@microsoft.com"
+ },
+ {
+   "email": "Tushar.Gandhi@microsoft.com"
+ },
+ {
+   "email": "tylerd@microsoft.com"
+ },
+ {
+   "email": "Tylor.Merck@microsoft.com"
+ },
+ {
+   "email": "udsarm@microsoft.com"
+ },
+ {
+   "email": "Ujjwal.Kumar@microsoft.com"
+ },
+ {
+   "email": "Usama.Salama@microsoft.com"
+ },
+ {
+   "email": "utkatte@microsoft.com"
+ },
+ {
+   "email": "Uwe.Hoffmann@microsoft.com"
+ },
+ {
+   "email": "vakamako@microsoft.com"
+ },
+ {
+   "email": "Valdemar.Zavadsky@microsoft.com"
+ },
+ {
+   "email": "valerio.farias@microsoft.com"
+ },
+ {
+   "email": "Valerio.Frediani@microsoft.com"
+ },
+ {
+   "email": "Vamshi.Polasa@microsoft.com"
+ },
+ {
+   "email": "vashete@microsoft.com"
+ },
+ {
+   "email": "vedarisi@microsoft.com"
+ },
+ {
+   "email": "veekonom@microsoft.com"
+ },
+ {
+   "email": "Venkatesh.Thirunavukkarasu@microsoft.com"
+ },
+ {
+   "email": "venuved@microsoft.com"
+ },
+ {
+   "email": "Veronica.Bas@microsoft.com"
+ },
+ {
+   "email": "Vesal.Tirgari@microsoft.com"
+ },
+ {
+   "email": "Victor.Del@microsoft.com"
+ },
+ {
+   "email": "Victor.Pareja@microsoft.com"
+ },
+ {
+   "email": "Victor.Pikula@microsoft.com"
+ },
+ {
+   "email": "Vidhyadhar.Pandit@microsoft.com"
+ },
+ {
+   "email": "Vikki.Fox@microsoft.com"
+ },
+ {
+   "email": "vikothar@microsoft.com"
+ },
+ {
+   "email": "vilauzon@microsoft.com"
+ },
+ {
+   "email": "vimore@microsoft.com"
+ },
+ {
+   "email": "Vincent.Baaij@microsoft.com"
+ },
+ {
+   "email": "vincent.chartier@microsoft.com"
+ },
+ {
+   "email": "Vincent.Rouet@microsoft.com"
+ },
+ {
+   "email": "Vincent.Staropoli@microsoft.com"
+ },
+ {
+   "email": "Vincent.Tsai@microsoft.com"
+ },
+ {
+   "email": "Vinit.Sharma@microsoft.com"
+ },
+ {
+   "email": "Viral.Shah@microsoft.com"
+ },
+ {
+   "email": "vitochin@microsoft.com"
+ },
+ {
+   "email": "Vivek.Arya@microsoft.com"
+ },
+ {
+   "email": "Vlad.Kozlov@microsoft.com"
+ },
+ {
+   "email": "Volkan.Civelek@microsoft.com"
+ },
+ {
+   "email": "vszalma@microsoft.com"
+ },
+ {
+   "email": "vyunev@microsoft.com"
+ },
+ {
+   "email": "Waleed.Afzal@microsoft.com"
+ },
+ {
+   "email": "Wanderson.Lima@microsoft.com"
+ },
+ {
+   "email": "Waqar.Aziz@microsoft.com"
+ },
+ {
+   "email": "Ward.Pauwels@microsoft.com"
+ },
+ {
+   "email": "Wasim.Ahmad@microsoft.com"
+ },
+ {
+   "email": "Wayne.Wilkerson@microsoft.com"
+ },
+ {
+   "email": "waynesm@microsoft.com"
+ },
+ {
+   "email": "Wely.Lau@microsoft.com"
+ },
+ {
+   "email": "wesback@microsoft.com"
+ },
+ {
+   "email": "Wesley.DeBolster@microsoft.com"
+ },
+ {
+   "email": "weswu@microsoft.com"
+ },
+ {
+   "email": "wifeng@microsoft.com"
+ },
+ {
+   "email": "Will.Brown@microsoft.com"
+ },
+ {
+   "email": "Will.Johnson@microsoft.com"
+ },
+ {
+   "email": "William.dam@microsoft.com"
+ },
+ {
+   "email": "William.Darnell@microsoft.com"
+ },
+ {
+   "email": "William.Salazar@microsoft.com"
+ },
+ {
+   "email": "Winson.Woo@microsoft.com"
+ },
+ {
+   "email": "Wouter.vanEck@microsoft.com"
+ },
+ {
+   "email": "Wouter.VanRanst@microsoft.com"
+ },
+ {
+   "email": "Wriju.Ghosh@microsoft.com"
+ },
+ {
+   "email": "xageerin@microsoft.com"
+ },
+ {
+   "email": "xiangao@microsoft.com"
+ },
+ {
+   "email": "Xiaobin.Liu@microsoft.com"
+ },
+ {
+   "email": "Xin.Jiang@microsoft.com"
+ },
+ {
+   "email": "Xueman.Li@microsoft.com"
+ },
+ {
+   "email": "Yarek.Kowalik@microsoft.com"
+ },
+ {
+   "email": "Yaron.Pri@microsoft.com"
+ },
+ {
+   "email": "Yazhou.Tu@microsoft.com"
+ },
+ {
+   "email": "yichen3@microsoft.com"
+ },
+ {
+   "email": "Ying.Guan@microsoft.com"
+ },
+ {
+   "email": "yipjin@microsoft.com"
+ },
+ {
+   "email": "ykaum@microsoft.com"
+ },
+ {
+   "email": "yoarai@microsoft.com"
+ },
+ {
+   "email": "yochun@microsoft.com"
+ },
+ {
+   "email": "yodobrin@microsoft.com"
+ },
+ {
+   "email": "yoduboin@microsoft.com"
+ },
+ {
+   "email": "Yoichi.Koshida@microsoft.com"
+ },
+ {
+   "email": "yonghp@microsoft.com"
+ },
+ {
+   "email": "Yoshifumi.Watanabe@microsoft.com"
+ },
+ {
+   "email": "yoshito.higa@microsoft.com"
+ },
+ {
+   "email": "Yu.Paul@microsoft.com"
+ },
+ {
+   "email": "yuadac@microsoft.com"
+ },
+ {
+   "email": "Yuanbin.Teng@microsoft.com"
+ },
+ {
+   "email": "yuichii@microsoft.com"
+ },
+ {
+   "email": "yuqzhou@microsoft.com"
+ },
+ {
+   "email": "Zach.Owens@microsoft.com"
+ },
+ {
+   "email": "Zane.Rahui@microsoft.com"
+ },
+ {
+   "email": "zdong@microsoft.com"
+ },
+ {
+   "email": "zhech@microsoft.com"
+ },
+ {
+   "email": "Zhenbo.Zhang@microsoft.com"
+ },
+ {
+   "email": "Zhichao.Li@microsoft.com"
+ },
+ {
+   "email": "zhlia@microsoft.com"
+ },
+ {
+   "email": "Zhonghui.Xu@microsoft.com"
+ },
+ {
+   "email": "Zoran.Jovanovic@microsoft.com"
+ }
+]

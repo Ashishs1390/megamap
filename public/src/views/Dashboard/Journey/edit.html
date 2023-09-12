@@ -1,0 +1,344 @@
+<div class="hpanel">
+  <div class="panel-body">
+    <h3>&nbsp;&nbsp;&nbsp;Edit "{{revised_node.properties.title}}"<a href="" title="close" ng-click="cancel('Workshop')" class="fa fa-times pull-right" style="color:#777"></a></h3>
+    <form name="simpleForm" novalidate id="simpleForm">
+      <div  class="p-m">
+        <div class="row u-pt10 u-pb15 ">
+          <div class="form-group col-md-9" ng-init="revised_node.properties.workshop_type ? '' : revised_node.properties.workshop_type = 'journey'">
+            <label required>Workshop Type</label>
+            <br>
+            <div class="radio-inline">
+              <label>
+                <input type="radio" value="journey" id="journey" name="workshopType" ng-model="revised_node.properties.workshop_type" required>
+                Journey Map
+              </label>
+            </div>
+            <div class="radio-inline">
+              <label>
+                <input type="radio" value="persona" id="persona" name="workshopType" ng-model="revised_node.properties.workshop_type" required>
+                Persona Profile
+              </label>
+            </div>
+            <div class="radio-inline">
+              <label>
+                <input type="radio" value="brainstorm" id="brainstorm" name="workshopType" ng-model="revised_node.properties.workshop_type" required>
+                Brainstorm
+              </label>
+            </div>
+            <br>
+            <div class="radio-inline">
+              <label>
+                <input type="radio" value="adoption" id="adoption" name="workshopType" ng-model="revised_node.properties.workshop_type" required>
+                Adoption Pattern
+              </label>
+            </div>
+            <div class="radio-inline">
+              <label>
+                <input type="radio" value="learning" id="learning" name="workshopType" ng-model="revised_node.properties.workshop_type" required>
+                Learning Path
+              </label>
+            </div>
+            <div class="radio-inline">
+              <label>
+                <input type="radio" value="horizon" id="horizon" name="workshopType" ng-model="revised_node.properties.workshop_type" required>
+                Horizon Graph
+              </label>
+            </div>
+          </div>
+          <div class="form-group col-md-3">
+            <label>Voting Limit</label>
+            <input type="number" value="" id="" class="form-control" name="" placeholder="1" ng-model="revised_node.properties.vote_limit_per_stage">
+          </div>
+          <div class="form-group col-lg-12">
+            <label>Title <span class="{{!revised_node.properties.title.length ? 'red-text':''}}">*</span></label>
+            <small class="u-float-right text-mute">{{revised_node.properties.title.length || 0}} / 40 MAX characters</small>
+            <input type="" value="" id="" class="form-control" ng-model="revised_node.properties.title" placeholder="title">
+          </div>
+          <div class="form-group col-lg-12">
+            <label>Description <span class="{{!revised_node.properties.description.length ? 'red-text':''}}">*</span></label>
+            <small class="u-float-right text-mute">{{revised_node.properties.description.length || 0}} / 140 MAX characters</small>
+            <input ng-maxlength="140" type="text" value="" id="" class="form-control" name="" placeholder="description" ng-model="revised_node.properties.description">
+          </div>
+          <div class="form-group col-lg-12">
+            <label>Cover Image </label>
+            <small> Recommend dimension 480x160 </small>
+            <input type="" value="" id="" class="form-control" placeholder="image url" ng-model="revised_node.properties.image_url">
+          </div>
+
+          <div class="form-group col-lg-12">
+            <label>Original Create Date</label>
+            <input type="date" id="" class="form-control" ng-model="revised_node.properties.originated_at" date-object>
+          </div>
+
+          <div class="form-group col-lg-12">
+            <label>Static Image Reference</label>
+            <input type="text" value="" id="" class="form-control" name="" placeholder="" ng-model="revised_node.properties.static_image_ref">
+          </div>
+
+          <!-- only show these properties for journey's -->
+          <div ng-show="true">
+
+            <!-- ADVANCED FEATURES -->
+            <div class="form-group col-lg-12">
+              <label><button class="btn btn-default" ng-click="advancedFeatures = !advancedFeatures">Advanced Features...</button></label>
+            </div>
+            <div ng-show="advancedFeatures">
+              <div class="form-group col-md-6">
+                <label>Default Sort Order</label>
+                <select class="form-control"
+                  ng-model="revised_node.properties.sort_notes_by" ng-options="o.property as o.label for o in sortOptions">
+                </select>
+              </div>
+              <div class="form-group col-md-6">
+                <label required>Attendees Create Notes?</label>
+                <br>
+                <div class="radio-inline">
+                  <label>
+                    <input type="radio" ng-value="true" name="attendees_create_notes" ng-model="revised_node.properties.attendees_create_notes" required>
+                    True
+                  </label>
+                </div>
+                <div class="radio-inline">
+                  <label>
+                    <input type="radio" ng-value="false" name="attendees_create_notes" ng-model="revised_node.properties.attendees_create_notes" required>
+                    False
+                  </label>
+                </div>
+              </div>
+               <div class="form-group col-md-12">
+                <label required>Live Workshop Mode</label>
+                <br>
+                <div class="col-md-6">
+                  <div class="radio-inline">
+                    <label >
+                      <input type="radio" ng-value="modValue" name="live_mode" ng-model="revised_node.properties.live_mode">
+                      True
+                    </label>
+                  </div>
+                  <div class="radio-inline">
+                      <label>
+                        <input type="radio" ng-value="modValue1" name="live_mode" ng-model="revised_node.properties.live_mode">
+                        False
+                      </label>
+                  </div>
+                </div>
+                <div class="form-group col-md-6">
+                  <label>Countdown Time (minutes)</label>
+                  <input type="number"class="form-control" ng-model="revised_node.properties.countdown_minutes">
+                </div>
+                <!-- <span>{{modValue1}}</span> -->
+
+                <label>
+                  Plus 1 on merge
+                  <input type="checkbox" ng-model="revised_node.properties.merge_plus_one" ng-change="">
+                </label>
+              </div>
+              <div class="form-group col-md-12 journey-score" ng-init="revised_node.properties.workshop_type ? '' : revised_node.properties.workshop_type = 'journey_score'">
+                <label required>Journey Scoring (please select method)</label>
+                <br><br>
+                <div class="row">
+                  <div class="form-group col-md-10">
+                    <label class="for-radio">
+                      <input type="radio" ng-selected="true" value="journey_score" name="scoreType" ng-model="revised_node.properties.score_type" required>
+                      Manual scoring (Journey all up score 0 - 10)
+                    </label>
+                  </div>
+                  <div class="form-group scoring col-md-2">
+                    <input type="number" class="form-control" ng-model="revised_node.properties.journey_score">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="form-group col-md-10">
+                    <label class="for-radio">
+                      <input type="radio" value="journey_automatic_score" name="scoreType" ng-model="revised_node.properties.score_type" required>
+                      Automatic scoring (Avg effective & importance)
+                    </label>
+                  </div>
+                  <div class="form-group scoring col-md-2">
+                    <input disabled type="number"class="form-control" ng-model="journey_automatic_score">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="form-group col-md-10">
+                    <label class="for-radio">
+                      <input type="radio" value="journey_importance" name="scoreType" ng-model="revised_node.properties.score_type" required>
+                      Importance scoring (using: <strong>{{getInteractionTitle(revised_node.properties.important_score_interaction)}}</strong>)
+                      <div class="select-button" ng-click="popoverData('important')"
+                        uib-popover-template="'views/Dashboard/Journey/popover.html'"
+                        popover-title="Select Interaction"
+                        popover-is-open="importantIsOpen">
+                        select type
+                      </div>
+                    </label>
+                  </div>
+                  <div class="form-group scoring col-md-2">
+                    <input disabled type="number"class="form-control" ng-model="journey_importance_score">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="form-group col-md-10">
+                    <label class="for-radio">
+                      <input type="radio" value="journey_effectiveness" name="scoreType" ng-model="revised_node.properties.score_type" required>
+                      Effectiveness scoring (using: <strong>{{getInteractionTitle(revised_node.properties.effective_score_interaction)}}</strong>)
+                      <div class="select-button" ng-click="popoverData('effective')"
+                        uib-popover-template="'views/Dashboard/Journey/popover.html'"
+                        popover-title="Select Interaction"
+                        popover-is-open="effectiveIsOpen">
+                        select type
+                      </div>
+                    </label>
+                  </div>
+                  <div class="form-group scoring col-md-2">
+                    <input disabled type="number" class="form-control" ng-model="journey_effectiveness_score">
+                  </div>
+                </div>
+              </div>
+
+              <!-- Sentiment  -->
+              <div class="form-group col-md-12 journey-score" ng-init="revised_node.properties.sentiment_type ? '' : revised_node.properties.sentiment_type = 'sentiment_default'">
+                <label required>Sentiment Analysis (please select method)</label>
+                <br><br>
+                <div class="row">
+                  <div class="form-group col-md-10">
+                    <label class="for-radio">
+                      <input type="radio" value="sentiment_default" name="sentimentType" ng-model="revised_node.properties.sentiment_type" required>
+                      Default/Automatic Sentiment
+                    </label>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="form-group col-md-10">
+                    <label class="for-radio">
+                      <input type="radio" value="sentiment_excel" name="sentimentType" ng-model="revised_node.properties.sentiment_type" required>
+                      Run Sentiment from Excel <a class="select-button" ng-href="https://{{subdomain}}.sentiment.ruptive.cx/dumpview?journey={{revised_node.properties.uuid}}" target="_blank">click to upload</a>
+                    </label>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="form-group col-md-10">
+                    <label class="for-radio">
+                      <input type="radio" value="sentiment_graph" name="sentimentType" ng-model="revised_node.properties.sentiment_type" required>
+                      Run Sentiment from Graph <a class="select-button" ng-href="https://{{subdomain}}.sentiment.ruptive.cx/upload?journey={{revised_node.properties.uuid}}" target="_blank">click to upload</a>
+                    </label>
+                  </div>
+                </div>
+                <br>
+              </div>
+              <!-- end sentiment -->
+
+              <!-- Accessibility  -->
+              <div class="form-group col-md-12 journey-score">
+                <label required>Accessibility</label>
+                <br><br>
+                <div class="row">
+                  <div class="form-group col-md-10">
+                    <label class="for-radio">
+                      <input type="checkbox" ng-model="revised_node.properties.disable_live_updates">
+                      Disable Live Updates
+                    </label>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="form-group col-md-10">
+                    <label class="for-radio">
+                      <input type="checkbox" ng-model="revised_node.properties.high_contrast">
+                      Enable High Contrast (Note headers, etc)
+                    </label>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="form-group col-md-10">
+                    <label class="for-radio">
+                      <input type="checkbox" ng-model="revised_node.properties.disable_leaderboard">
+                      Disable Leaderboard
+                    </label>
+                  </div>
+                </div>
+                <br>
+              </div>
+              <!-- end Accessibility -->
+
+              <!-- connections -->
+              <div class="form-group">
+                <div class="col-md-6">
+                  <label required>Show Connections (Split Screen)</label>
+                  <br>
+                  <div class="radio-inline">
+                    <label>
+                      <input type="radio" ng-value="{{true}}" name="show_connections" ng-model="revised_node.properties.show_connections" required>
+                      True
+                    </label>
+                  </div>
+                  <div class="radio-inline">
+                    <label>
+                      <input type="radio" ng-value="{{false}}" name="show_connections" ng-model="revised_node.properties.show_connections" required>
+                      False
+                    </label>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <label>Connection Pane Header</label>
+                  <input ng-disabled="revised_node.properties.show_connections === false" type="text" class="form-control" placeholder="Connections" ng-model="revised_node.properties.connection_header_text">
+                </div>
+                </div>
+              <div class="clearfix"></div>
+              <!-- end connections -->
+              <br>
+
+              <div class="form-group col-md-6">
+                <label>Desired Goal Score (0-10)</label>
+                <input type="number" value="" id="" class="form-control" name="" placeholder="1.0" ng-model="revised_node.properties.desired_score">
+              </div>
+              <div class="clearfix"></div>
+
+              <!-- KPIS -->
+                <div class="form-group col-sm-4" ng-repeat="kpi in revised_node.kpis">
+                  <label ng-hide="editLabel">{{kpi.rel.label || kpi.title}}
+                    <!-- &nbsp;&nbsp;<i ng-click="editLabel = !editLabel" class="fa fa-pencil"></i> -->
+                  </label>
+                  <label ng-show="editLabel">
+                    <input type="text" class="form-control" ng-model="kpi.rel.label">
+                    <button ng-click="editLabel = !editLabel" class="btn btn-default btn-inline">save</button>
+                  </label>
+                  <input type="number" class="form-control" placeholder="0" ng-model="kpi.rel.score">
+                </div>
+                <!-- <div class="form-group col-sm-4" ng-repeat="placeholder in (6 - kpis.length)">gr</div> -->
+
+              <div ng-repeat="field in dynamicFields">
+                <div class="form-group col-sm-4" ng-repeat="(key, value) in field">
+                  <label ng-hide="editLabel">{{revised_node.properties[key].label || value.label}}
+                    &nbsp;&nbsp;<i ng-click="editLabel = !editLabel" class="fa fa-pencil"></i>
+                  </label>
+                  <label ng-show="editLabel">
+                    <input type="text" class="form-control" ng-model="revised_node.properties[key].label">
+                    <button ng-click="editLabel = !editLabel" class="btn btn-default btn-inline">save</button>
+                  </label>
+                  <input type="number" class="form-control" placeholder="0" ng-model="revised_node.properties[key].value">
+                </div>
+              </div>
+
+              <div class="form-group col-sm-4" ng-repeat="n in [1,2,3]">
+                <label>Custom Index {{n}}</label>
+                <multiselect ng-model="revised_node.properties['index_'+n]"
+                  options="correlations" id-prop="property" display-prop="label"
+                  ng-change="updateIndexAverage('index_'+n, revised_node.properties['index_'+n])">
+                </multiselect>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+        <div class="text-right m-t-xs">
+          <button ng-click="PopDeleteAlert()" class="btn btn-danger u-float-left">Delete</button>
+          <button ng-click="cancel()" class="btn btn-default">Close</button>
+          <button ng-click="submit()"  class="btn btn-success" >Update</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

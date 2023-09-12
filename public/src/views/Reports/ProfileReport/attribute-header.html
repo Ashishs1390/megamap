@@ -1,0 +1,33 @@
+<div class='c-report-profile__editor u-table teal clearfix' ng-show='editing'>
+    <div class="dropdown u-table-cell" uib-dropdown>
+        <a uib-dropdown-toggle href>
+            <div class="u-p5 u-color-white" style="cursor:default"><span>{{ViewMode || "Choose ViewMode"}}</span> <b class="caret"></b></div>
+        </a>
+        <ul class="animated flipInX m-t-xs" uib-dropdown-menu>
+            <li><a>Pick ViewMode</a></li>
+            <li class="divider"></li>
+            <li ng-repeat='view_mode in ["table","chart","image","custom"]' ng-click='SetViewMode(view_mode)'><a>{{view_mode}}</a></li>
+        </ul>
+    </div>
+    <div class="dropdown u-table-cell" uib-dropdown>
+        <a uib-dropdown-toggle href>
+            <div class="u-p5 u-color-white"><span>{{SelectedAttribute.properties.title || "Choose Attribute"}}</span> <b class="caret"></b></div>
+        </a>
+        <ul class="animated flipInX m-t-xs" uib-dropdown-menu>
+            <li><a>Pick attribute</a></li>
+            <li class="divider"></li>
+            <li ng-repeat='attribute in attributes' ng-click='SetSelectedAttribute(attribute); '><a>{{attribute.properties.title}} - {{attribute.notes.length}}</a></li>
+        </ul>
+    </div>
+    <div class="dropdown u-table-cell" uib-dropdown ng-if='SelectedAttribute'>
+        <a uib-dropdown-toggle href>
+            <div class="u-p5 u-color-white"><span>{{SelectedInteraction.properties.title || "Choose Interaction"}}</span> <b class="caret"></b></div>
+        </a>
+        <ul class="animated flipInX m-t-xs" uib-dropdown-menu>
+            <li><a>Pick Interaction</a></li>
+            <li class="divider"></li>
+            <li ng-repeat='interaction in SelectedAttribute.Interactions' ng-click='SetSelectedInteraction(interaction)'><a class='{{interaction.properties.color}} lighten-5'>{{interaction.properties.title}} - {{interaction.ImportantNotes.length}}</a></li>
+
+        </ul>
+    </div>
+</div>

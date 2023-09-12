@@ -1,0 +1,145 @@
+<ul side-navigation class="nav c-nav-sidebar">
+    <li>
+        <a ui-sref="dashboard.bullseyedetail"><span class="nav-label">Executive Dashboard</span></a>
+    </li>
+    <li>
+        <a ui-sref="dashboard.users"><span class="nav-label">Manage Users</span></a>
+    </li>
+    <li>
+        <a ui-sref="dashboard.templates"><span class="nav-label">Manage Templates</span></a>
+    </li>
+
+    <li class="active">
+        <a href="#"><span class="nav-label">Manage Libraries</span><span class="fa arrow"></span> </a>
+        <ul class="nav nav-second-level">
+            <li ui-sref-active="active">
+              <a ui-sref="dashboard.persona"><span class="nav-label">Persona Profiles</span></a>
+            </li>
+            <li ui-sref-active="active">
+              <a ui-sref="dashboard.journey" ui-sref-opts="{inherit: false}"><span class="nav-label">Journey Maps</span></a>
+            </li>
+            <li ui-sref-active="active">
+              <a ui-sref="dashboard.brainstorm"><span class="nav-label">Brainstorming</span></a>
+            </li>
+            <li ui-sref-active="active">
+                <a ui-sref="dashboard.adoption"><span class="nav-label">Adoption Patterns</span></a>
+            </li>
+            <li ui-sref-active="active">
+                <a ui-sref="dashboard.learning"><span class="nav-label">Learning Paths</span></a>
+            </li>
+            <li ui-sref-active="active">
+                <a ui-sref="dashboard.horizon"><span class="nav-label">Horizon Maps</span></a>
+            </li>
+            <li ui-sref-active="active">
+                <a ui-sref="dashboard.groups"><span class="nav-label">Groups</span></a>
+            </li>
+        </ul>
+      </li>
+
+      <li ng-if="$root.subdomain === 'google'">
+          <a ui-sref="dashboard.project({uuid:'a8d639a0-631b-11ea-a42d-7d96e5c08366'})" ui-sref-opts="{inherit: false}"><span class="nav-label">My Certification</span></a>
+      </li>
+
+      <li ng-class="{'active': componentsActive}">
+        <a href="#"><span class="nav-label">Components</span><span class="fa arrow"></span> </a>
+        <ul class="nav nav-second-level" ng-click="componentsActive = true">
+            <li ui-sref-active="active">
+              <a ui-sref="model.label({'label':'interaction'})"><span class="nav-label">Note Types</span></a>
+            </li>
+            <li ui-sref-active="active">
+              <a ui-sref="model.label({'label':'stage'})"><span class="nav-label">Stages</span></a>
+            </li>
+            <li ui-sref-active="active">
+              <a ui-sref="model.label({'label':'persona'})"><span class="nav-label">Personas</span></a>
+            </li>
+            <li ui-sref-active="active">
+              <a ui-sref="model.label({'label':'audience'})"><span class="nav-label">Audiences</span></a>
+            </li>
+            <li ui-sref-active="active">
+              <a ui-sref="model.label({'label':'segment'})"><span class="nav-label">Segments</span></a>
+            </li>
+            <li ui-sref-active="active">
+              <a ui-sref="model.label({'label':'product'})"><span class="nav-label">Products</span></a>
+            </li>
+            <li ui-sref-active="active">
+              <a ui-sref="dashboard.component({label: 'Initiative'})"><span class="nav-label">Initiatives</span></a>
+            </li>
+            <li ui-sref-active="active">
+              <a ui-sref="model.label({'label':'strategy'})"><span class="nav-label">Strategies</span></a>
+            </li>
+            <li ui-sref-active="active">
+              <a ui-sref="dashboard.component({label: 'Service'})"><span class="nav-label">Services</span></a>
+            </li>
+            <li ui-sref-active="active">
+              <a ui-sref="dashboard.component({label: 'Capability'})"><span class="nav-label">Capabilities</span></a>
+            </li>
+            <li ui-sref-active="active">
+              <a ui-sref="dashboard.component({label: 'Mot'})"><span class="nav-label">MOTs</span></a>
+            </li>
+            <li ui-sref-active="active">
+              <a ui-sref="dashboard.component({label: 'Process'})"><span class="nav-label">Processes</span></a>
+            </li>
+            <li ui-sref-active="active">
+              <a ui-sref="dashboard.component({label: 'App'})"><span class="nav-label">Apps</span></a>
+            </li>
+            <li ui-sref-active="active">
+              <a ui-sref="dashboard.component({label: 'DataSource'})"><span class="nav-label">Data Sources</span></a>
+            </li>
+            <li ui-sref-active="active">
+              <a ui-sref="dashboard.kpi"><span class="nav-label">KPIs</span></a>
+            </li>
+        </ul>
+    </li>
+
+    <li class="">
+        <a href="#"><span class="nav-label">Manage Blockers</span><span class="fa arrow"></span> </a>
+        <ul class="nav nav-second-level">
+          <li ui-sref-active="active">
+              <a ui-sref="dashboard.blockers"><span class="nav-label">Blockers</span></a>
+          </li>
+        </ul>
+    </li>
+
+    <li class="">
+        <a href="#"><span class="nav-label">Manage Projects</span><span class="fa arrow"></span> </a>
+        <ul class="nav nav-second-level">
+          <li ui-sref-active="active" ng-click="expandProjects = true">
+              <a ui-sref="dashboard.projects"><span class="nav-label">Projects</span></a>
+          </li>
+        </ul>
+    </li>
+
+    <li class="">
+        <a href="#"><span class="nav-label">Manage Ideas</span><span class="fa arrow"></span> </a>
+        <ul class="nav nav-second-level">
+          <li ui-sref-active="active">
+              <a ui-sref="dashboard.ideas"><span class="nav-label">Ideas</span></a>
+          </li>
+        </ul>
+    </li>
+
+    <li class="">
+        <a href="#"><span class="nav-label">Manage Bullseyes</span><span class="fa arrow"></span> </a>
+        <ul class="nav nav-second-level">
+          <li ui-sref-active="active" ng-click="expandBullseyes = true">
+              <a ui-sref="dashboard.bullseye"><span class="nav-label">Company Bullseye</span></a>
+          </li>
+          <li ui-sref-active="active" ng-click="expandBullseyes = true">
+              <a ui-sref="workshopcard.bullseye"><span class="nav-label">Bullseye Maps</span></a>
+          </li>
+          <li ui-sref-active="active" ng-click="expandBullseyes = true">
+              <a ui-sref="model.label({'label':'strategy'})"><span class="nav-label">Strategies</span></a>
+          </li>
+          <li ui-sref-active="active" ng-click="expandBullseyes = true">
+            <a ui-sref="model.label({'label':'segment'})"><span class="nav-label">Segment</span></a>
+          </li>
+          <li ui-sref-active="active" ng-click="expandBullseyes = true">
+            <a ui-sref="model.label({'label':'audience'})"><span class="nav-label">Audience</span></a>
+          </li>
+        </ul>
+    </li>
+
+    <li>
+       <a ng-click="$root.logout()"><span class="nav-label">Logout</span></a>
+   </li>
+</ul>

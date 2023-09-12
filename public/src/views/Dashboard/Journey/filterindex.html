@@ -1,0 +1,10 @@
+<div class="journey-dashboard">
+    <div class="content">
+        <div class="row">
+        
+            <div ng-if='$root.Person.role == "tenant"' ng-controller='journeyTenantCtrl' ng-include="'views/Dashboard/Journey/filterlibrary.html'"></div>
+            <div ng-if='$root.Person.role == "admin"' ng-controller='journeyAdminCtrl' ng-include="'views/Dashboard/Journey/filterlibrary.html'"></div>
+            <div ng-if='$root.Person.role == "attendee"' ng-controller='journeyAttendeeCtrl' ng-include="'views/Dashboard/Journey/filterlibrary.html'"></div>
+        </div>
+    </div>
+</div>

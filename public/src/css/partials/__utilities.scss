@@ -1,0 +1,417 @@
+/**
+ * NOTE
+ * => DO NOT USE "@extend" to inherit a ".class" from any file.
+ * => Use %extend to extend placeholder from __placeholder only to avoid bloated style.
+ *
+ * => Utilities are global styles, please don't update any class for specific component.
+*/
+
+
+// @import '__spacing';
+
+
+.clear {
+  clear:both;
+}
+
+/* Background style.
+-------------------------------------------------------- */
+.u-bg-cover {
+  background-size: cover;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+}
+
+.u-bg-white {
+  background-color: #fff !important;
+}
+
+.u-bg-grey {
+  background-color: $bg-grey !important;
+}
+
+.u-bg-grey-darker {
+  background-color: $bg-grey-dark !important;
+}
+
+.u-bg-blue {
+  background-color: $bg-blue !important;
+}
+
+.u-bg-blue-dark {
+  background-color: $bg-blue-dark !important;
+}
+
+.u-bg-transparent {
+  background-color: transparent !important;
+}
+
+.u-bg-gradient-vertical {
+  @include gradient-vertical;
+}
+
+.u-bg-gradient-horizontal {
+  @include gradient-horizontal(left);
+}
+
+.u-bg-shade {
+  @include shade;
+}
+
+.u-bg-parallax {
+  background-attachment: fixed;
+}
+
+
+/* Font style
+-------------------------------------------------------- */
+.u-color-white {
+  color: #fff !important;
+}
+
+.u-color-blue {
+  color: $color-blue !important;
+}
+
+.u-color-normal {
+  color: $color-normal !important;
+}
+
+.u-color-red {
+  color: #e74c3c !important;
+}
+
+.u-color-green {
+  color: #62cb31 !important;
+}
+
+// a class to fix php generated <p> tag
+.u-color-white-child {
+  * {
+    color: #fff !important;
+  }
+}
+
+/* Font weight
+-------------------------------------------------------- */
+// exact same as bold, but can use with <strong> for accessibility
+.u-font-bold {
+  font-weight: $font-weight__bold !important;
+}
+/* Font size
+-------------------------------------------------------- */
+// can be used for special element such as privacy
+.u-font-sm {
+  font-size: 13px !important;
+}
+
+
+/* link
+-------------------------------------------------------- */
+.u-link-stealth {
+  color: $color-normal;
+  display: inline-block;
+  &:hover, &:focus {
+    text-decoration: none;
+  }
+}
+
+.u-link-underline {
+  text-decoration: none !important;
+  &:hover {
+    text-decoration: underline !important;
+  }
+}
+
+/* One line truncate
+-------------------------------------------------------- */
+.u-truncate {
+  @include truncate();
+}
+
+/* Image
+-------------------------------------------------------- */
+// Responsive and stretch to fullsize image
+.u-img-full {
+  width: 100%;
+  display: block;
+}
+
+// Responsive image but not full size
+.u-child-img-responsive img,
+.u-img-responsive {
+   display: block;
+   margin: 0;
+   max-width: 100%;
+   height: auto;
+}
+
+
+/* Img, video, iframe object ratios scales
+-------------------------------------------------------- */
+// Responsive media element with different ratios(works on image too)
+.u-embed-responsive {
+  position: relative;
+  display: block;
+  height: 0;
+  padding: 0;
+  overflow: hidden;
+
+  &--16by9 {
+    padding-bottom: 56.25%;
+  }
+  &--4by3 {
+    padding-bottom: 75%;
+  }
+
+  &__item,
+  iframe,
+  embed,
+  object,
+  video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    height: 100%;
+    width: 100%;
+    border: 0;
+  }
+
+}
+
+
+/* Generic overlay style
+-------------------------------------------------------- */
+// can have an transparent image at background with utility colors
+// Also could works as a child of flex parent with width/height 100%
+.u-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+
+
+/* '>' icon
+-------------------------------------------------------- */
+.u-has-caret { //Extend by button and anchor
+  &:after {
+    font-family: 'epg-icons';
+    margin-left: 4px;
+    content: "\2f";
+    pointer-events: none; // makes element ignored by click event letting you click behind it
+  }
+  @include rtl {
+    &:after {
+      transform: rotate(180deg);
+    }
+  };
+  //IE10 bug fix, remove underline for inline-block pseudo class
+  // Note, updating global u-has-caret with !important will override this bug fix.
+  @media all and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    //must init and reset to make it work.
+    &:hover:after {
+      text-decoration: underline !important;
+    }
+    &:hover:after {
+      text-decoration: none !important;
+    }
+  }
+}
+
+
+
+
+/* Image shapes
+-------------------------------------------------------- */
+// padding top needs to be the same as your width
+.u-circle {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+
+/* ordered and unordered List
+-------------------------------------------------------- */
+.u-list-clean {
+  margin: 0;
+  li {
+    margin: 0;
+  }
+}
+
+.u-list-nobullet { list-style: none; }
+.u-list-inline {
+  width: 100%;
+  list-style: none;
+  li {
+    display: inline-block;
+  }
+}
+
+
+/* Text alignment
+-------------------------------------------------------- */
+.u-text-left { text-align: left; }
+.u-text-right { text-align: right; }
+.u-text-center { text-align: center; }
+
+/* Float alignment
+-------------------------------------------------------- */
+.u-float-left {
+  float: left !important;
+}
+.u-float-right {
+  float: right !important;
+}
+.u-float-center {
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+/* Adjust height setting
+--------------------------------------------------------- */
+.u-height-auto {
+  height: auto !important;
+}
+
+
+/* Absolute center, used directly in html
+-------------------------------------------------------- */
+.u-abs-center           { @extend %u-abs-center; }
+.u-abs-ver-center       { @include vertical-center; }
+.u-abs-hor-center       { @include horizontal-center; }
+
+
+/* Static center
+-------------------------------------------------------- */
+// parents div must have 100% height
+.u-static-ver-center    { @include vertical-align;  }
+.u-static-ver-bottom    { @include vertical-align(bottom);  }
+
+/* 2nd Static center
+-------------------------------------------------------- */
+// -outside and -inside must use together
+.u-static-ver-center-parent {
+    //if parent of this class doesn't have height defined, then define the height inside your element that use this class
+    //if parent has height defined, then added height 100% to use all height of parent
+    height: 100%;
+    &:before {
+      content: '';
+      display: inline-block;
+      height: 100%;
+      vertical-align: middle;
+    }
+}
+.u-static-ver-center-child {
+  display: inline-block !important;
+  vertical-align: middle;
+}
+.u-static-ver-bottom-child {
+  display: inline-block !important;
+  vertical-align: bottom;
+}
+
+
+/* table
+-------------------------------------------------------- */
+.u-table {
+  display: table;
+  width: 100%;
+  &--divider {
+    border-left: 1px solid $border-grey;
+    padding: 5px;
+  }
+}
+.u-table-layout-fix {
+  table-layout: fixed;
+}
+.u-table-cell {
+  display: table-cell;
+}
+
+/* Element aligment
+-------------------------------------------------------- */
+.u-vertical-mid {
+  vertical-align: middle;
+}
+.u-vertical-top {
+  vertical-align: top;
+}
+
+
+/* Rotate icon (such as arrows)
+-------------------------------- */
+.u-rotate-90 {
+  display: inline-block;
+  transform: rotate(90deg);
+}
+
+.u-rotate-180 {
+  display: inline-block;
+  transform: rotate(180deg);
+}
+
+.u-rotate-270 {
+  display: inline-block;
+  transform: rotate(-90deg);
+}
+
+
+
+/* Divider
+-------------------------------------------------------- */
+.u-divider {
+  border-bottom: 1px solid $border-grey-light;
+}
+
+
+/* panel heading theme
+-------------------------------------------------------- */
+.panel-heading {
+  &-sm {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+}
+
+/* Js related show-hide class
+-------------------------------------------------------- */
+.js-hide {
+  display: none !important;
+}
+
+/* Print related
+-------------------------------------------------------- */
+.u-print-hidden {
+  @media print {
+    display: none;
+  }
+}
+
+
+/* Accessibility rework
+-------------------------------------------------------- */
+// Class for Screen Reader content only, not intended as a permenant solution, but for now this will help fix where missing or misused heading tags (h1, h2, etc...)
+// Source: http://webaim.org/techniques/css/invisiblecontent/#absolutepositioning
+.u-access-hidden {
+  position:absolute;
+  left:-10000px;
+  color: #fff !important;
+  background-color: #000 !important;
+  font-weight: bold;
+  @include rtl {
+    right: -5000px;
+    left: auto;
+  }
+
+  top:auto;
+  width:1px;
+  height:1px;
+  overflow:hidden;
+}

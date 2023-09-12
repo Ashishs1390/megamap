@@ -1,0 +1,23 @@
+<div class="post-container u-bg-white clearfix">
+    <div class="hpanel">
+        <div class="filters clearfix">
+            <div class='col-xs-12'>
+                Unselect interactions:
+                <a class="filters--item btn {{interaction.properties.color || 'orange lighten-1'}} {{ UnSelectedInteractions.indexOf(interaction.properties.uuid) >= 0 ? 'lighten-3' : ''}} "
+                    ng-click="ToggleVisibleInteraction(interaction.properties);" ng-repeat='interaction in JourneyInteractions'>{{interaction.properties.title | titleCase}}
+                </a>
+            </div>
+        </div>
+        <div class="c-flex c-flex--4 c-flex--wrap c-flex--stretch c-workshop-cards">
+            <div ng-hide="InteractionFromNote( journeySubGraph.nodes[journeySubGraph.rels[relationship].from_id] )" animate-panel effect="bounceInRight"
+                child="element" ng-repeat="relationship in journeySubGraph.incoming.note_stage[SelectedStage.properties.uuid]"
+                class="c-flex__col post-item">
+                <i class="pull-right fa fa-gear u-color-white" ng-if='$root.Person.properties.admin || journeySubGraph.nodes[journeySubGraph.rels[journeySubGraph.outgoing.note_author[journeySubGraph.nodes[journeySubGraph.rels[relationship].from_id].properties.uuid][0]].to_id].properties.uuid == $root.Person.properties.uuid'
+                    ng-click='open_edit_note(journeySubGraph.nodes[journeySubGraph.rels[relationship].from_id].properties.uuid)'> </i>
+                <journey-note-card class="hpanel element" journey-sub-graph='journeySubGraph' note="journeySubGraph.nodes[journeySubGraph.rels[relationship].from_id]"></journey-note-card>
+            </div>
+            <div class="c-flex__col"></div>
+            <div class="c-flex__col"></div>
+        </div>
+    </div>
+</div>

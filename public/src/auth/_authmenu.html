@@ -1,0 +1,30 @@
+<span layout="row" ng-hide="currentUser">
+  <md-button ui-sref-active="active" ui-sref="login">
+    <span>Login</span>
+  </md-button>
+  <md-button ui-sref-active="active" ui-sref="register">
+    <span>Register</span>
+  </md-button>
+</span>
+<span layout="row" ng-show="currentUser">
+  <md-menu md-position-mode="target-right target">
+    <md-button ng-click="$mdOpenMenu($event)" ui-sref-active="active">
+      <span>{{currentUser.email}}</span>
+    </md-button>
+    <md-menu-content width="3">
+      <md-menu-item ng-repeat="nav in authmenu">
+        <md-button ui-sref-active="active" ui-sref="{{nav.state}}">
+          <md-icon>{{nav.icon}}</md-icon>
+          <span>{{nav.link}}</span>
+        </md-button>
+      </md-menu-item>
+      <md-divider ng-if="currentUser.admin"></md-divider>
+      <md-menu-item ng-if="currentUser.admin">
+        <md-button ui-sref-active="active" ui-sref="admin">
+          <md-icon>supervisor_account</md-icon>
+          <span>Admin</span>
+        </md-button>
+      </md-menu-item>
+    </md-menu-content>
+  </md-menu>
+</span>

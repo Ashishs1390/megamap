@@ -1,0 +1,209 @@
+<div>
+  <div ng-if='Getting' class="c-abs-loading"><img src="/build/images/loading.gif" /></div>
+  <div ng-if='!Getting' class="content">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="font-bold m-b-sm">
+          Project details
+        </div>
+  
+        <div class="hpanel">
+  
+          <!-- <div class="project-image" ng-style="{'background-image':'url('+project.properties.image_url+')'}" ng-click="href(project.properties.image_url)"></div> -->
+          <div class="panel-body">
+            <div>
+              <canvas height="140" id="singleBar" class="chart chart-bar"
+                chart-data="singleBarData" chart-series="singleBarSeries" chart-labels="singleBarLabels" chart-options="singleBarOptions">
+              </canvas>
+            </div>
+            <div class="pull-right">
+              <button class="btn btn-default btn-xs" ng-click='PopEditModal(project.properties.uuid)'> <i class="fa fa-pencil"></i> Edit</button>
+            </div>
+            <h2 class="m-t-none" ng-bind="project.properties.title"></h2>
+            <small ng-bind="project.properties.description"></small>
+            <hr>
+            <div class="small m-t-xs">
+              Created by <strong>{{subgraph.nodes[author_uuid].properties.firstname}}</strong>, {{subgraph.nodes[author_uuid].properties.description}}
+            </div>
+          </div>
+        </div>
+  
+        <!-- project milestones -->
+  
+      </div>
+      <div class="col-md-4" ng-hide="true">
+  
+        <div class="font-bold m-b-sm">
+          Project statistics
+        </div>
+  
+        <div class="hpanel stats">
+          <div class="panel-body">
+            <div class="project-progress" ng-class="project.progressColor">
+              Project Progress<br><strong>{{project.progress}}%</strong>
+            </div>
+            <div>
+              <i class="pe-7s-cash fa-4x"></i>
+              <h1 class="m-xs text-danger">{{project.properties.future_costs_per_month * 12 | currency:undefined:0}}</h1>
+            </div>
+            <p>
+              {{project.properties.cost_description}}
+            </p>
+          </div>
+        </div>
+  
+        <div class="font-bold m-b-sm">
+          Project participants
+          <div class="pull-right">
+            <button ng-click="PopAttendeeModal()" class="btn btn-primary btn-xs"><i class="fa fa-user"></i> Invite</button>
+          </div>
+        </div>
+  
+  
+  
+        <div class="row">
+  
+          <div class="col-md-6" ng-repeat="participant in participants">
+            <div class="hpanel">
+              <div class="panel-body text-center">
+                <img alt="logo" class="img-circle img-small" src="{{participant.image_url || '/build/images/user-default.png'}}" onerror="this.src = '/build/images/user-default.png'">
+                <div class="m-t-sm">
+                  <strong>{{participant.firstname}}</strong>
+                  <p class="small">{{participant.description}}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+  
+        </div>
+  
+      </div>
+    </div>
+    <div>
+      <div>
+        <div class="panel-body container">
+          <p>
+            <button ng-click="CreateMilestone()" class="btn btn-primary btn-xs pull"><i class="fa fa-user"></i> Create Milestone</button>
+          </p>
+          <br>
+          <div class="table-responsive panel-group" id="accordion">
+            <table class="table table-hover table-bordered table-striped panel panel-default">
+              <thead>
+                <tr>
+                  <th>+/-</th>
+                  <!-- <th>Sequence Number</th> -->
+                  <th class="project-table-head">Milestone Name</th>
+                  <th class="project-table-head">
+                    Milestone StartDate
+                    <div>
+                      <a href="#" ng-click="sort('startDate')" class="sorting sortDir" ng-class="{ active: isSorted('startDate') }">&#x25B2;</a>
+                      <a href="#" ng-click="sort('-startDate')" class="sorting sortDir" ng-class="{ active: isSorted('-startDate' ) }">&#x25BC;</a>
+                    </div>
+                  </th>
+                  <th class="project-table-head">
+                    Milestone Deadline
+                    <div>
+                      <a href="#" ng-click="sort('deadline')" class="sorting sortDir" ng-class="{ active: isSorted('deadline') }">&#x25B2;</a>
+                      <a href="#" ng-click="sort('-deadline')" class="sorting sortDir" ng-class="{ active: isSorted('-deadline' ) }">&#x25BC;</a>
+                    </div>
+                  </th>
+                  <th class="project-table-head">
+                    Milestone Progress%
+                    <div class="project-progress-filter">
+                      <a href="#" ng-click="sort('progress')" class="sorting sortDir" ng-class="{ active: isSorted('progress') }">&#x25B2;</a>
+                      <a href="#" ng-click="sort('-progress')" class="sorting sortDir" ng-class="{ active: isSorted('-progress' ) }">&#x25BC;</a>
+                      <select ng-model="filterBy.selectedProgress" ng-options="x as x.title for x in progressList"></select>
+                    </div>
+                  </th>
+                  <th class="project-table-head">Milestone Priority
+                    <select ng-model="filterBy.selectedPriority" ng-options="x for x in priorities"></select>
+                  </th>
+                  <th class="project-table-head">Linked Notes</th>
+                  <th class="project-table-head">Milestone Logs</th>
+                  <th class="project-table-head">Milestone History Graphs</th>
+                </tr>
+              </thead>
+              <tbody ng-repeat="milestone in milestones | orderBy:predicate:reverse | filter : filterMilestones">
+                
+                <tr>
+                  <td class="accordion">
+                    <a data-toggle="collapse" data-parent="#accordion" href="{{'#milestone'+$index}}"></a>
+                  </td>  
+                  <td class="issue-info">
+                    <a href="#">
+                      {{milestone.title}}
+                    </a>
+                    <br/>
+                    <small>
+                      {{milestone.description}}
+                    </small>
+                    <button ng-click="PopEditMilestoneModal(milestone)" class="btn btn-default btn-xs" title="Edit">
+                      <i class="fa fa-pencil"></i> Edit
+                    </button>
+                  </td>
+                 
+                  <!-- Start Date -->
+                  <td>
+                    {{milestone.startDate | date}}
+                  </td>
+                  
+                  <!-- Deadline -->
+                  <td>
+                    {{milestone.deadline | date}}
+                  </td>
+                  <td>
+                    {{getProjectProgress(milestone)}}%
+                  </td>
+  
+                  <td>
+                    {{milestone.priority}}
+                  </td>
+                  <!-- Notes -->
+                  <td >
+                    <button ng-click="PopNotesModal(milestone.uuid , project.properties.uuid)" class="btn btn-primary btn-xs">Link Notes</button>
+                    <hr>
+                    <ul  id="{{'milestone'+$index}}" class="panel-collapse collapse in">
+                      <li ng-repeat='note in milestone.notes track by $index'>
+                        <a ng-if="note" ng-click="PopEditMilestoneNoteModal(note , milestone.uuid)" class="milestone_note">
+                          <strong>{{note.description}}</strong> [{{note.journey.title}}]
+                          [Progress : {{note.progress}}%]
+                          [Owner :{{note.projectAssignee.title || note.projectAssignee.email}}] ...
+                        </a>
+                        <!-- Put progress in a tooltip -->
+                        <!-- Progress: {{subgraph.rels[rel].properties.progress || "N/A"}} -->
+                      </li>
+                    </ul>
+                  </td>
+                  
+                  <td ng-click="PopShowCommentsModal(milestone)" class="text-left">
+                    <!-- <button ng-click="showComments[$index] = !showComments[$index]" class="btn btn-default btn-xs" title="Comments"> -->
+                      <button  class="btn btn-default btn-xs" title="Comments"></button>
+                      <i class="fa fa-comment"></i> Logs
+                    </button>
+                  </td>
+                  <td>
+                    <!-- <img src="/build/images/project-graph.png" height="100" width="100" alt="Project History"> -->
+                    <canvas height="200" id="singleBar" class="chart chart-bar"
+                      chart-data="milestone.singleBarData" chart-series="milestone.singleBarSeries" chart-labels="milestone.singleBarLabels" chart-options="milestone.singleBarOptions">
+                    </canvas>
+                  </td>
+  
+                </tr> 
+                <div colspan="7" class="comments list-group" ng-show="showComments[$index]">
+                  <a href="#" class="list-group-item">
+                    <strong>John Smith:</strong> Cras justo odio
+                  </a>
+                  <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
+                  <a href="#" class="list-group-item">Morbi leo risus</a>
+                  <a href="#" class="list-group-item">Porta ac consectetur ac</a>
+                  <a href="#" class="list-group-item">Vestibulum at eros</a>
+                </div>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</div>

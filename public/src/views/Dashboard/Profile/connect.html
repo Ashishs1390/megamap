@@ -1,0 +1,63 @@
+<div wizard steps='7' final-step-callback='PrepData'>
+    <div ng-if='Getting' class="c-abs-loading"><img src="../../../../build/images/loading.gif"></div>
+    <div ng-if="!Getting" class="row">
+        <div class="col-lg-12">
+            <div class="hpanel">
+                <div class="panel-heading">
+                    <div></div>
+                    <label>{{profile_connections.nodes[profile_connections.node_label_index.Profile[0]].properties.title}}</label>                    : Connections
+                </div>
+                <div class="panel-body">
+                    <form name="simpleForm" novalidate id="simpleForm">
+                        <div class="text-center m-b-md">
+                            <a ng-click="wizard.show(1)" class="btn" ng-class="{ 'btn-primary': step == 1, 'btn-default': step != 1}">Step 1 - Product</a>
+                            <a ng-click="wizard.show(2)" class="btn" ng-class="{ 'btn-primary': step == 2, 'btn-default': step != 2}">Step 2 - Persona</a>
+                            <a ng-click="wizard.show(3)" class="btn" ng-class="{ 'btn-primary': step == 3, 'btn-default': step != 3}">Step 3 - Strategy</a>
+                            <a ng-click="wizard.show(4)" class="btn" ng-class="{ 'btn-primary': step == 4, 'btn-default': step != 4}">Step 4 - Interactions</a>
+                            <a ng-click="wizard.show(5)" class="btn" ng-class="{ 'btn-primary': step == 5, 'btn-default': step != 5}">Step 5 - Attributes</a>
+                            <a ng-click="wizard.show(6)" class="btn" ng-class="{ 'btn-primary': step == 6, 'btn-default': step != 6}">Step 6 - Additional Facilitators</a>
+
+                            <a ng-click="wizard.show(steps)" class="btn" ng-class="{ 'btn-primary': step == steps, 'btn-default': step != steps}">Step 7 - Finish </a>
+                        </div>
+                        <div ng-show="step == 1" class="p-m row">
+                            <single-subscriber subgraph='profile_connections' original='initial_profile_connections' pivot='profile_connections.node_label_index.Profile[0]'
+                                type='"profile_product"' label='"Product"'></single-subscriber>
+                        </div>
+                        <div ng-show="step == 2" class="p-m row">
+                            <single-subscriber subgraph='profile_connections' original='initial_profile_connections' pivot='profile_connections.node_label_index.Profile[0]'
+                                label='"Persona"' type='"profile_persona"'></single-subscriber>
+                        </div>
+                        <div ng-show="step == 3" class="p-m row">
+                            <single-subscriber subgraph='profile_connections' original='initial_profile_connections' pivot='profile_connections.node_label_index.Profile[0]'
+                                label='"Strategy"' type='"profile_strategy"'></single-subscriber>
+                        </div>
+                        <div ng-show="step == 4" class="p-m row">
+                            <multi-subscriber subgraph='profile_connections' original='initial_profile_connections' pivot='profile_connections.node_label_index.Profile[0]'
+                                label='"Interaction"' type='"profile_interactions"'></multi-subscriber>
+                        </div>
+                        <div ng-show="step == 5" class="p-m row">
+                            <multi-subscriber subgraph='profile_connections' original='initial_profile_connections' pivot='profile_connections.node_label_index.Profile[0]'
+                                label='"Attribute"' type='"profile_attributes"'></multi-subscriber>
+                        </div>
+
+                        <div ng-show="step == 6" class="p-m row">
+                            <multi-subscriber subgraph='profile_connections' original='initial_profile_connections' pivot='profile_connections.node_label_index.Profile[0]'
+                                label='"Person"' type='"facilitator"'></multi-subscriber>
+                        </div>
+
+
+
+
+                      
+                        <div class="text-right m-t-xs">
+                            <button ng-click="cancel()" class="btn btn-default">Cancel</button>
+                            <button ng-click="wizard.prev()" ng-disabled="step == 1" class="btn btn-default">Previous</button>
+                            <button ng-click="wizard.next()" ng-disabled="step == steps" ng-hide="step == steps" class="btn btn-default">Next</button>
+                            <button ng-click="submit()" ng-show="step == steps" class="btn btn-success" >Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,229 @@
+<div class="inmodal edit-note">
+  <div class="modal-header text-center row no-gutter u-pb0">
+    <div class="note-creator note-creator-interaction">
+      <h3>
+        Edit Note
+        <span class="pull-right">
+          <button ladda="posting" ng-click="$root.acceptedDrawing().isEmpty ? '' : note.drawing_url = $root.acceptedDrawing().dataUrl; submit(note)"
+            class="btn green lighten-4">
+            <span class="ladda-label">Push Update</span>
+          </button>
+          <a href="" title="close" ng-click="cancel()" class="fa fa-times" style="color:#777"></a>
+        </span>
+      </h3>
+    </div>
+  </div>
+
+  <div class="modal-body u-pt0">
+    <div class='note-creator--step note-creator--step-persona no-gutter'>
+
+      <h5 style="position:relative;top:-12px;">Journey: <strong>{{note.rels.journey.title}}</strong></h5>
+
+      <uib-tabset active="active">
+        <uib-tab index="0" heading="Basic">
+          <br>
+          <div class="row">
+            <div class="col-sm-6">
+              <h4 class="is-blue">Select Relationships</h4>
+              <!-- Persona -->
+              <table class="table u-mb30">
+                <thead class='{{!note.rels.persona ? "red" : "green"}} lighten-3'>
+                  <tr><td>Choose Persona</td></tr>
+                </thead>
+                <tbody ui-sortable ng-model='note.rels.stage' class='green lighten-5'>
+                  <tr ng-show="note.rels.persona">
+                    <td class='font-bold'>{{note.rels.persona.title | titleCase}}
+                      <i ng-click="note.rels.persona = null" class='fa fa-minus pull-right'></i></td>
+                    </tr>
+                  </tbody>
+                  <tbody ng-hide='eventScope.journey.personas.length==0'>
+                    <tr ng-hide='note.rels.persona || persona.system' ui-sortable ng-model='note.rels.persona'
+                    ng-repeat='persona in eventScope.journey.personas | orderBy: "order"'
+                    class='grey lighten-5' ng-click="note.rels.persona = persona">
+                    <td>{{persona.title | titleCase}}<i class='fa fa-plus pull-right'></i></td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <!-- Stage -->
+              <table class="table u-mb30">
+                <thead class='{{!note.rels.stage ? "red" : "green"}} lighten-3'>
+                  <tr><td>Choose Stage</td></tr>
+                </thead>
+                <tbody ui-sortable ng-model='note.rels.stage' class='green lighten-5'>
+                  <tr ng-show="note.rels.stage">
+                    <td class='font-bold'>{{note.rels.stage.title | titleCase}}
+                      <i ng-click="note.rels.stage = null" class='fa fa-minus pull-right'></i></td>
+                    </tr>
+                  </tbody>
+                  <tbody ng-hide='eventScope.journey.stages.length==0'>
+                    <tr ng-hide='note.rels.stage' ui-sortable ng-model='note.rels.stage' ng-repeat='stage in eventScope.journey.stages | orderBy: "order"'
+                    class='grey lighten-5' ng-click="note.rels.stage = stage">
+                    <td>{{stage.title | titleCase}} <i class='fa fa-plus pull-right'></i></td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <!-- Interaction -->
+              <table class="table u-mb30">
+                <thead class='{{!note.rels.interaction ? "red" : note.rels.interaction.color || "orange"}} lighten-3'>
+                  <tr><td>Choose Note Type</td></tr>
+                </thead>
+                <tbody ui-sortable ng-model='note.rels.interaction' class='{{note.rels.interaction.color || "orange"}} lighten-5'>
+                  <tr ng-show="note.rels.interaction">
+                    <td class='font-bold'>{{note.rels.interaction.title}}
+                      <i ng-click="note.rels.interaction = null" class='fa fa-minus pull-right'></i></td>
+                    </tr>
+                  </tbody>
+                  <tbody ng-hide='eventScope.journey.interactions.length==0'>
+                    <tr ng-hide='note.rels.interaction' ui-sortable ng-model='note.rels.interaction' ng-repeat='interaction in eventScope.journey.interactions'
+                    class='grey lighten-5' ng-click="note.rels.interaction = interaction">
+                    <td>{{interaction.title}}<i class='fa fa-plus pull-right'></i></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="col-sm-6">
+              <h4 class="is-blue">Add URL link</h4>
+              <div class="u-pb15">
+                <input type="url" id="" name="" class="form-control" value="" placeholder="Add URL with http:// or https:// to your note" ng-model="note.external_url">
+              </div>
+
+              <h4 class="is-blue">Sequence/Step/Priority</h4>
+              <div class="u-pb15">
+                <input class="form-control" type="number" ng-model="note.order_in_sequence"/>
+              </div>
+
+              <h4 class="is-blue">Prioritization Matrix</h4>
+              <div class="row">
+                <div class="form-group col-sm-6">
+                  <label>Impact</label>
+                  <input type="number" value="0" id="" ng-keyup="calculateGap()" class="form-control" ng-model="note.average_importance" placeholder='{{eventScope.ranking}}'>
+                </div>
+                <div class="form-group col-sm-6">
+                  <label>Effort</label>
+                  <input type="number" value="0" id="" ng-keyup="calculateGap()" class="form-control" ng-model="note.average_effectiveness" placeholder='{{eventScope.rating}}'>
+                </div>
+              </div>
+
+              <h4 class="is-blue" title="This will appear next to note description and it will be used in Journey maps.">
+                Add a thumbnail
+              </h4>
+              <div class="u-pb15">
+                <input type="url" id="" name="" class="form-control" value="" placeholder="Add URL with http:// or https:// to your note" ng-model="note.touch_point_icon" title="This will appear next to note description and it will be used in Journey maps.">
+              </div>
+            </div>
+          </div>
+
+          <h4 class="is-blue">
+            Add {{drawing_panel_open ? 'a drawing' : 'text'}} to your note
+            <span class="{{note.description.length ? 'green-text' : 'red-text'}}"> * </span>
+
+            <span class="pull-right cursor" ng-click="drawing_panel_open = !drawing_panel_open">
+              <a href="">
+                <strong>
+                  <i ng-hide="drawing_panel_open" class="fa fa-paint-brush"></i>
+                  <i ng-show="drawing_panel_open" class="fa fa-font"></i>
+                </strong>
+              </a>
+            </span>
+          </h4>
+          <div class="row no-gutters">
+            <div class="col-lg-12">
+              <form name="simpleForm" novalidate id="simpleForm">
+                <div class="p-m {{note.rels.interaction.color || 'orange'}} lighten-3">
+                  <div class='row '>
+                    <!-- text -->
+                    <div class='col-xs-12' ng-hide="drawing_panel_open">
+                      <div class="charcount"> {{note.description.length || 0}} / 200 MAX characters</div>
+                      <textarea name="note_description" required placeholder="Add text to your note (max 200 characters)" type='text' class='col-xs-12'
+                      ng-model='note.description' ng-maxlength='200' ng-keydown="preventTyping($event, note.description, 199)"/>
+                    </div>
+                    <!-- drawing -->
+                    <div class='col-xs-12' ng-show="drawing_panel_open">
+                      <div ng-show="note.drawing_url" class="drawing-display">
+                        <a class="btn pull-right" ng-click="$root.clearDrawing(); note.drawing_url = null"><u>delete</u></a>
+                        <img ng-src="{{note.drawing_url}}">
+                      </div>
+                      <div ng-hide="note.drawing_url">
+                        <a class="btn pull-right" ng-click="$root.clearDrawing()"><u>reset</u></a>
+                        <signature-pad
+                          accept="$root.acceptedDrawing"
+                          clear="$root.clearDrawing"
+                          height="500"
+                          width="500"
+                          disabled="note.drawing_url">
+                        </signature-pad>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+
+        </uib-tab>
+        <uib-tab index="1" heading="MOT">
+          <br>
+          <span ng-init="setMotRadio(note)" ng-init="note.mot_archive = false">
+            <label>
+              Moment of Truth (MOT)
+              <input type="radio" name="mot_type" value="1" ng-model="note.mot_type" ng-change="note.mot = true; note.mot_solution = false; note.mot_archive = false">
+            </label>
+            &nbsp;&nbsp;&nbsp;
+            <label>
+              MOT Solution
+              <input type="radio" name="mot_type" value="2" ng-model="note.mot_type" ng-change="note.mot = false; note.mot_solution = true; note.mot_archive = false">
+            </label>
+            &nbsp;&nbsp;&nbsp;
+            <label ng-show="note.mot || note.mot_solution">
+              The Note formerly known as MOT(S)
+              <input type="radio" name="mot_type" value="3" ng-model="note.mot_type" ng-change="note.mot_archive = true; note.mot = false; note.mot_solution = false; note.toggleFields = true">
+            </label>
+            &nbsp;&nbsp;&nbsp;
+            <label class="pull-right" ng-show="note.mot == false && note.mot_solution == false">
+              show/hide
+              <input type="checkbox" ng-model="note.toggleFields" >
+            </label>
+            <!-- <label>
+              Moment of Truth (MOT)
+              <input type="checkbox" ng-model="note.mot" ng-change="">
+            </label>
+            &nbsp;&nbsp;&nbsp;
+            <label>
+              MOT Solution
+              <input type="checkbox" ng-model="note.mot_solution" ng-change="note.mot = true" ng-disabled="!note.mot">
+            </label> -->
+          </span>
+          <br>
+          <div ng-include="'views/Workshops/Journey/_mot_settings.html'"></div>
+        </uib-tab>
+        <uib-tab index="2" heading="Advanced">
+          <br>
+          <div ng-include="'views/Workshops/Journey/_advanced_settings.html'"></div>
+        </uib-tab>
+        <uib-tab index="3" heading="Horizon Map">
+          <br>
+          <div ng-include="'views/Workshops/Journey/_horizon_map_settings.html'"></div>
+        </uib-tab>
+      </uib-tabset>
+
+    </div>
+  </div>
+
+<!-- end advanced settings -->
+<!-- </div> -->
+  <hr/>
+  <div class="modal-footer row">
+    <div class="text-right m-t-xs">
+      <button ng-disabled='posting' ng-hide="note.connection" type="button" class="btn btn-danger u-float-left" ng-click="PopDeleteAlert(note.uuid)"> Delete this Note</button>
+      <button ng-disabled='posting' type="button" class="btn btn-default" ng-click="cancel()">Cancel</button>
+
+      <button ladda="posting" ng-click="$root.acceptedDrawing().isEmpty ? '' : note.drawing_url = $root.acceptedDrawing().dataUrl; submit(note)"
+        class="btn green lighten-4">
+        <span class="ladda-label">Push Update</span>
+      </button>
+    </div>
+  </div>
+</div>

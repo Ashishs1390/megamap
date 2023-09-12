@@ -1,0 +1,17 @@
+<div>
+<div class='c-note-icons {{$root.Person.role == "attendee" ? "c-note-icons--attendee" : ""}}'>
+    <i class="fa icon-cone {{ false ? 'active' : '' }}" title="Linked to one or multiple projects"></i>
+    <i class="fa fa-comment {{ false ? 'active' : '' }}" title="Quant or Qual data is added."></i>
+    <i class="fa fa-heartbeat" title="Live thresholds"></i>
+    <i class="fa fa-gear"
+    
+    ng-click='$parent.open_edit_note(note, $index + 1)'>{{$root.Person.role}}
+    </i>
+</div>
+
+<div class="hpanel" id="{{note.uuid}}">
+    <div ng-include="'views/Workshops/Journey/JourneyNote/note-top.html'"></div>
+    <div ng-include="'views/Workshops/Journey/JourneyNote/note-mid.html'"></div>
+    <div ng-include="'views/Workshops/Journey/JourneyNote/note-bot.html'"></div>
+</div>
+</div>

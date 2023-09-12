@@ -1,0 +1,25 @@
+<div >
+  <div ng-if='Getting' class="c-abs-loading"><img src="../../../../build/images/loading.gif"></div>
+  <div ng-if="!Getting" class="row">
+    <div class="col-lg-12">
+      <div class="hpanel">
+        <div class="panel-heading">
+          <div></div>
+          Delete
+        </div>
+        <div class="panel-body">
+          <form name="simpleForm" novalidate id="simpleForm">
+            <div class="text-right m-t-xs">
+            
+              <button ng-click="cancel()" class="btn btn-default">Close</button>
+             
+              <button ng-click="submit()"  class="btn btn-success" >Delete</button>
+            </div>
+          </form>
+          <div class="m-t-md">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

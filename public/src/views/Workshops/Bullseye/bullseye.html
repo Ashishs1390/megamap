@@ -1,0 +1,21 @@
+<div class="post-container u-bg-white clearfix">
+    <div class="hpanel">
+        <table class="table">
+            <tbody>
+                <tr class="c-modal--report__trHeader c-modal__importantRow">
+                    <td>Strategy</td>
+                    <td ng-repeat='component_id in subgraph.node_label_index.Segment'>{{subgraph.nodes[component_id].properties.title}}</td>
+                </tr>
+    
+                <tr ng-repeat='node_uuid in subgraph.node_label_index.Strategy' >
+                    <td>{{subgraph.nodes[node_uuid].properties.title}}</td>
+                    <td style='border-left:1px solid black' ng-repeat='component_id in subgraph.node_label_index.Segment'></td>
+                </tr>
+               
+            </tbody>
+        </table>
+       
+
+        
+    </div>
+</div>

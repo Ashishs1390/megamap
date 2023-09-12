@@ -1,0 +1,27 @@
+<div class='node-card panel u-mb0'>
+    <div class="label pull-right {{ node.properties.color || ' u-color-normal ' }}" />
+    <div class="panel-body hpanel text-center u-mb0">
+        <div class="c-card-profile u-bg-cover clear" style="background-image: url( {{ node.properties.image_url || '/build/images/placeholder-1.png' }} )">
+            <!-- <img class="u-img-responsive u-img-full" ng-if='node.properties.image_url' ng-src="{{node.properties.image_url}}" /> -->
+        </div>
+        <h2 class="m-xs">{{node.properties.title}}</h2>
+        <small>{{node.properties.description }}</small>
+    </div>
+    <div class="panel-footer contact-footer">
+        <div class="row">
+            <div class="col-md-3 border-right">
+                <div class="contact-stat"><span>Notes: </span> <strong>{{library.incoming.note_profile[node.properties.uuid].length || 0}}</strong></div>
+            </div>
+            <div class="col-md-3 border-right">
+                <div class="contact-stat"><span>Attendees: </span> <strong>{{library.outgoing.profile_attendee[node.properties.uuid].length || 0}}</strong></div>
+            </div>
+            <div class="col-md-3 border-right">
+                <div class="contact-stat"><span>Author: </span> <strong>{{library.nodes[library.rels[library.outgoing.author[node.properties.uuid][0]].to_id].properties.firstname}}</strong></div>
+            </div>
+            <div class="col-md-3">
+                <div class="contact-stat"><span>Persona: </span> <strong>{{library.nodes[library.rels[library.outgoing.profile_persona[node.properties.uuid][0]].to_id].properties.title}}</strong></div>
+            </div>
+        </div>
+    </div>
+
+</div>

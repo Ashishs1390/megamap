@@ -1,0 +1,682 @@
+
+
+/* Do not update anything in c-flex. This is reusable framework
+-------------------------------------------------------- */
+.c-flex {
+  display: flex;
+  justify-content: space-between;
+
+  &--flex-start {
+    justify-content: flex-start;
+  }
+  &--hor-center {
+    justify-content: center;
+  }
+  &--ver-center {
+    align-items: center;
+  }
+  &--space-around {
+    justify-content: space-around;
+  }
+  &--wrap {
+    flex-wrap: wrap;
+  }
+  &--stretch {
+    align-items: stretch;
+  }
+
+  > .c-flex__col {
+    @include simpleTransition(0.25);
+  }
+
+  // general flex grid layout
+  &--2 {
+    > .c-flex__col {
+      flex-basis: 49%;
+    }
+    @include breakpoint(small only) {
+      flex-wrap: wrap;
+      > .c-flex__col {
+        flex-basis: 100%;
+      }
+    }
+    &--no-gutter {
+      > .c-flex__col {
+        flex-basis: 50%;
+      }
+    }
+  }
+
+  &--3 {
+    > .c-flex__col {
+      flex-basis: 32%;
+    }
+    @include breakpoint(small only) {
+      flex-wrap: wrap;
+      > .c-flex__col {
+        flex-basis: 100%;
+      }
+    }
+    &.c-flex--wrap {
+      flex-wrap: wrap;
+      @include breakpoint(medium only) {
+        > .c-flex__col {
+          flex-basis: 48%;
+        }
+      }
+    }
+  }
+
+  &--4 {
+    > .c-flex__col {
+      flex-basis: 23%;
+    }
+    @include breakpoint(medium only) {
+      flex-wrap: wrap;
+      > .c-flex__col {
+        flex-basis: 48.5%;
+      }
+    }
+    @include breakpoint(small only) {
+      flex-wrap: wrap;
+      > .c-flex__col {
+        flex-basis: 100%;
+      }
+    }
+  }
+
+  &--5 {
+    > .c-flex__col {
+      flex-basis: 18.5%;
+      .icons {
+        font-size: rem-calc( 40 );
+      }
+    }
+    @include breakpoint(medium only) {
+      flex-wrap: wrap;
+      > .c-flex__col {
+        flex-basis: 48.5%;
+      }
+    }
+    @include breakpoint(small only) {
+      flex-wrap: wrap;
+      > .c-flex__col {
+        flex-basis: 100%;
+        margin-bottom: 20px;
+      }
+    }
+  }
+
+  &--mobileCenter {
+    @include breakpoint(small only) {
+      text-align: center;
+    }
+  }
+
+  &--6 {
+    > .c-flex__col {
+      flex-basis: 18.5%;
+      //TODO: use icons size defined in __font-glyph and remove this one since this is hardcoded
+      .icons {
+        font-size: rem-calc( 40 );
+      }
+    }
+    @include breakpoint(medium only) {
+      flex-wrap: wrap;
+      > .c-flex__col {
+        flex-basis: 48.5%;
+      }
+    }
+    @include breakpoint(small only) {
+      flex-wrap: wrap;
+      > .c-flex__col {
+        flex-basis: 100%;
+      }
+    }
+  }
+}
+
+
+
+/* Each card in dashboard
+-------------------------------------------------------- */
+.c-dashboard-cards {
+  .c-flex__col {
+    margin-bottom: 40px;
+    @include breakpoint(large only) {
+      flex-basis: 49%;
+    }
+  }
+}
+
+/* Each card in dashboard
+-------------------------------------------------------- */
+.c-workshop-cards {
+  padding: 27px;
+}
+
+
+/* Each notes in workshop
+-------------------------------------------------------- */
+.post-item {
+  position: relative;
+
+  @include breakpoint(large only) {
+    flex-basis: 49% !important;
+  }
+}
+.posted {
+  margin-top: 20px;
+  overflow: hidden;
+
+
+  &--settings {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    font-size: 17px;
+    opacity: .7;
+
+    &:hover {
+      opacity: 1;
+      cursor: pointer;
+    }
+  }
+
+  &--category {
+    display: block;
+    width: 100%;
+    padding: 8px 0;
+    font-size: 12px;
+    border-bottom: 0;
+  }
+
+  &--profile {
+    z-index: 1;
+    animation: 0.8s visibilityDelay;
+    animation-fill-mode: forwards;
+    visibility: hidden;
+
+    img {
+      position: absolute;
+      top: 7px;
+      left: -13px;
+      display: inline-block;
+      width: 50px;
+      height: 50px;
+      border-radius: 100px;
+      border: 2px solid #fff;
+      z-index: 1;
+    }
+  }
+
+  &--userName {
+    position: absolute;
+    top: 5px;
+    left: 37px;
+    font-weight: 400;
+    font-size: 11px;
+    background: none !important;
+    color: $color-normal;
+  }
+
+
+  &--copy {
+    position: relative;
+    color: $color-normal;
+    h3 {
+      @include breakpoint(medium only) {
+        font-size: 20px;
+      }
+    }
+  }
+
+  &--votes {
+    flex: 1 0 auto;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-end;
+    position: absolute;
+    bottom: -37px;
+    right: 0;
+    text-align: center;
+    vertical-align: middle;
+    z-index: 2;
+
+    &__icon,
+    &__counter {
+      margin: 0;
+      text-align: center;
+      padding: 0;
+      display: inline-block;
+    }
+
+    &__icon {
+      margin: 0;
+      text-align: center;
+      padding: 0;
+      display: inline-block;
+    }
+
+    &__up,
+    &__down {
+      // border-radius: 50%;
+      // padding: 5px;
+      border-radius: 3px;
+      margin-right: 8px;
+      min-width: 36px;
+      height: 32px;
+      padding-top: 4px;
+      background: #fff;
+      font-weight: 700;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    &__up {
+      color: #0f9a00;
+      &:first-child {
+        border: 1px solid color('green', 'base');
+      }
+
+      &:nth-child(2) {
+        border: 1px solid color('orange', 'base');
+      }
+
+      &:nth-child(3) {
+        border: 1px solid color('blue', 'base');
+      }
+    }
+
+    &__down {
+      color: rgb(189, 2, 2);
+      border: 1px solid color('red', 'base');
+    }
+  }
+}
+
+
+.c-note-icons {
+  position: absolute;
+  top: 20px;
+  right: 0;
+  color: #fff;
+  z-index: 3;
+  animation: 1s visibilityDelay;
+  animation-fill-mode: forwards;
+  visibility: hidden;
+
+  i {
+    font-size: 14px;
+    padding: 4px;
+    opacity: 0.3;
+    &.active {
+      opacity: 1;
+    }
+  }
+  .fa:not(.fa-gear) {
+    vertical-align: middle;
+    position: relative;
+    bottom: 3px;
+  }
+  .fa-gear {
+    padding: 5px;
+    margin-top: 0;
+    font-size: 16px;
+    opacity: 1;
+    line-height: 18px;
+    cursor: pointer;
+
+    @include shade(0.2);
+    @include simpleTransition(0.25s);
+    &:hover {
+      @include shade(0.4);
+    }
+  }
+  .icon-cone {
+    margin-top: 1px;
+    font-family: 'hxi-icons';
+    font-size: 13px;
+  }
+
+  &--attendee {
+    // top: 24px;
+  }
+}
+
+
+/* external link
+-------------------------------------------------------- */
+.external-url-icon {
+  padding: 5px 8px;
+  position: relative;
+  right: -16px;
+  top: 10px;
+  float: right;
+  a {
+    font-size: 16px;
+  }
+}
+
+/* external link
+-------------------------------------------------------- */
+.touchpoint-icon {
+  img {
+    min-width: 26px;
+    float: right;
+  }
+  @include breakpoint(large down) {
+    img {
+      max-width: 35px;
+    }
+  }
+}
+
+
+/* spinning animation
+-------------------------------------------------------- */
+.c-abs-loading {
+  text-align: center;
+  width: 100%;
+  // height: 100%;
+  z-index: 100;
+  img {
+    @extend %u-abs-center;
+    display: inline-block;
+  }
+}
+
+
+
+/* panel heading for edit btns
+-------------------------------------------------------- */
+.library-card-groupBtns {
+  border-top: 0;
+  text-align: center;
+  border: 1px solid $border-grey;
+  border-top: 0;
+
+  a {
+    border-left: 1px solid $border-grey;
+    padding: 8px;
+    &:first-child {
+      border-left: 0;
+    }
+    &:hover {
+      cursor: pointer;
+      background-color: $bg-grey-dark;
+    }
+
+    @include exactly(2) {
+      width: 50%;
+      display: inline-block;
+    }
+    @include exactly(3) {
+      width: 33.3%;
+    }
+  }
+}
+
+
+/* color palettes
+-------------------------------------------------------- */
+.c-color-palettes {
+  &__item {
+    text-align: center;
+    display: inline-block;
+    margin-right: 5px;
+  }
+}
+
+/* general prifle image for most of place except report
+-------------------------------------------------------- */
+// Recommend 480x160
+.c-card-profile {
+  margin-bottom: 20px;
+  height: 160px;
+  cursor: pointer;
+}
+
+
+.post-container {
+  border: 1px solid $border-grey;
+  border-top: 0;
+}
+
+.yellow {
+  background-color: #f7d331!important;
+  &.lighten-4 {
+    opacity: 0.5;
+  }
+  &.lighten-5 {
+    background-color: #ffeea3!important;
+  }
+}
+
+/* Node-card in configurator
+-------------------------------------------------------- */
+.node-card {
+  background: #fff;
+  border: 1px solid $border-grey;
+  .label {
+    clear: both;
+    margin-top: 10px;
+    margin-right: 15px;
+    margin-bottom: 10px;
+  }
+  .panel-footer {
+    background: #fff;
+    border-top: 1px solid $border-grey;
+    border-bottom: 0;
+  }
+  .contact-stat {
+    word-break: break-all;
+    span,strong {
+      font-weight: $font-weight__bold;
+    }
+  }
+  &__title {
+    color: $navyBlue1;
+  }
+}
+
+/* Journey dashboard,
+-------------------------------------------------------- */
+.journey-dashboard {
+  .node-card {
+    .panel-body {
+      border-top: 0;
+    }
+  }
+}
+
+/* Configurator dashboard
+-------------------------------------------------------- */
+.configurator-dashboard {
+}
+
+
+/* Generic section title
+-------------------------------------------------------- */
+.c-section-title {
+  color: $navyBlue1;
+}
+
+.c-role-label {
+  padding: 10px 0px 0px 0px;
+  margin-bottom: 0px;
+
+  span {
+    text-transform: capitalize;
+  }
+}
+
+.nav-sidebar {
+  .nav-label {
+    text-transform: capitalize;
+  }
+}
+
+/* Table in Invite modal
+-------------------------------------------------------- */
+.c-subscriber-grids {
+  padding: 10px;
+  background-color: $bg-grey-dark;
+
+  .c-flex__col {
+    position: relative;
+    text-align: center;
+    margin-bottom: 10px;
+    padding: 20px;
+    border: 1px solid $border-grey;
+    background-color: #fff;
+
+    .fa-plus {
+      color: $color-grey-light;
+      font-size: 14px;
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+  }
+
+  p,strong {
+    word-break: break-all;
+  }
+
+  i {
+    display: inline-block;
+    font-size: 32px;
+    color: #ddd;
+    padding: 14px;
+  }
+
+
+  &--clickable {
+    .c-flex__col {
+      cursor: pointer;
+
+      &:hover {
+        border: 1px solid $border-grey-light;
+        .fa-plus {
+          color: $color-grey-dark;
+        }
+      }
+    }
+  }
+
+}
+
+/* Reports modals/wrapper
+-------------------------------------------------------- */
+.c-modal {
+
+  // Shared style between journey and profile report
+  &--report {
+    background: $purple1;
+    td {
+      font-size: 14px;
+
+      &:first-child {
+        text-align: left;
+      }
+    }
+
+    &__trHeader {
+      background-color: $bg-grey-dark;
+      td {
+        vertical-align: bottom;
+        font-size: 14px;
+        font-weight: 600;
+
+        &:first-child {
+          width: 30%;
+        }
+        &:nth-child(2), &:nth-child(3) {
+          text-align: center;
+        }
+      }
+    }
+  }
+  // Temporary disabled
+
+  // &--report--journey,
+  // &--report--profile,
+  // &--report--live {}
+  // &--report--profile {}
+}
+
+
+/* Quick live report component
+-------------------------------------------------------- */
+.c-report-live {
+  background: $bg-grey;
+
+  &__interaction {
+    margin-bottom: 30px;
+  }
+
+  .panel-heading {
+    margin: 0;
+    border-bottom: 0;
+  }
+
+  .table {
+    border: 1px solid $border-grey;
+    background: #fff;
+  }
+
+  .c-modal--report__trHeader {
+    td {
+      text-align: left;
+      font-size: 12px;
+      &:first-child {
+        width: 70%;
+      }
+    }
+  }
+
+  h3,h4,h5,h6,tr {
+    text-transform: capitalize;
+  }
+
+}
+
+/* Journey report comopnent
+-------------------------------------------------------- */
+.c-report-journey {
+
+  .c-flex__col {
+    border: 0;
+    &:nth-child(2) ~ .c-flex__col {
+      margin-top: 30px;
+    }
+    @include breakpoint(medium down) {
+      flex-basis: 100%;
+      margin-top: 15px;
+    }
+  }
+
+  .table {
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+  }
+
+  td ~ td {
+    text-align: center;
+  }
+
+  &__defaultTable {
+    .c-modal--report__trHeader {
+      td {
+        font-size: 13px;
+        &:first-child {
+          width: 70%;
+        }
+      }
+    }
+  }
+
+}

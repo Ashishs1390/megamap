@@ -1,0 +1,6 @@
+dispatch:
+  - url: "*.usage.ruptive.cx/*"
+    service: usage
+
+  - url: "*ruptive.cx/*"
+    service: default

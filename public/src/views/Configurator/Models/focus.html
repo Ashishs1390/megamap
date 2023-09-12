@@ -1,0 +1,68 @@
+<div ng-controller='focusNodeCtrl' class="col-xs-12 wrapper content">
+    <div ng-if='Getting' class="c-abs-loading"><img src="../../../../build/images/loading.gif"></div>
+    <div class="col-md-12 hpanel white">
+        <div class='col-md-12'>
+            <h1>Inputs </h1>
+            <div ng-show='or_ids && or_ids.length>0'>
+                <h2>ORS </h2>
+                <h3>Outputs share a relationship to ONE OR MORE nodes within OR </h3>
+            </div>
+            <hr/>
+        </div>
+        
+        <div class='col-xs-6 col-md-4 col-lg-3 ec_dev' style='margin:10px;' ng-repeat='uuid in or_ids'>
+            <focus-card node='subgraph.nodes[uuid]'> </focus-card>
+            <div class='u-table library-card-groupBtns u-bg-grey'>
+                <a ng-click='Center(uuid)' class="u-table-cell">Focus</a>
+                <a ui-sref='model.connector({from_id:uuid})' class="u-table-cell">Relations</a>
+                <a ng-click='RemoveOr(uuid)' class="u-table-cell">Remove</a>
+            
+            </div>
+        </div>
+        
+    </div>
+    
+
+
+    <div class="col-md-12 hpanel white">
+        <h1>Outputs </h1>
+        <div class="hpanel">
+            <div class="panel-body">
+                <div class='col-xs-12 ' style='margin:10px'>
+                    <form name="simpleForm" novalidate id="simpleForm">
+                        <div class="text-center m-b-md">
+                            <a class="btn" ng-click='SetViewMode(label)' ng-class="{ 'btn-primary': view_mode == label, 'btn-default': view_mode != label}"
+                                ng-repeat='label in ViewModes'>{{label}}</a>
+                        </div>
+                    </form>
+                    <div ng-show='view_mode == "Relations"' class='col-xs-12'>
+                        <form name="simpleForm" novalidate id="simpleForm">
+                            <div class="text-center m-b-md">
+                                <a class="btn" ng-click='SetViewRels(label)' ng-class="{ 'btn-primary': rel_type == label, 'btn-default': rel_type != label}"
+                                    ng-repeat='label in subgraph.rel_types'>{{label}}</a>
+                            </div>
+                        </form>
+                    </div>
+                    <div ng-show='view_mode == "Neighbors"' class='col-xs-12'>
+                        <form name="simpleForm" novalidate id="simpleForm">
+                            <div class="text-center m-b-md">
+                                <a class="btn" ng-click='SetViewNeighbors(label)' ng-class="{ 'btn-primary': node_label == label, 'btn-default': node_label != label}"
+                                    ng-repeat='label in subgraph.labels'>{{label}}</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <hr/>
+            <div class='col-xs-6 col-md-4 col-lg-3' ng-repeat='uuid in uuids'>
+                <focus-card node='subgraph.nodes[uuid]'> </focus-card>
+                <div class='u-table library-card-groupBtns u-bg-grey'>
+                    <a ng-click='AND(uuid)' class="u-table-cell">AND</a>
+                    <a ng-click='OR(uuid)' class="u-table-cell">OR</a>
+                    <a ui-sref='model.connector({from_id:or_ids[0], to_id:uuid, })' class="u-table-cell">Relations</a>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

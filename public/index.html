@@ -1,0 +1,64 @@
+<html lang="en">
+
+<head>
+    <script>
+      if(window.location.host === 'ruptive.cx') {
+        window.location.replace("https://www.ruptive.cx")
+      }
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta http-equiv="content-type" content="text/html; charset=UTF8">
+    <base href="/">
+    <!-- favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="build/images/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="build/images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="build/images/favicon/favicon-16x16.png">
+    <link rel="manifest" href="build/images/favicon/site.webmanifest">
+    <!-- Styles -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+    <link href="libs/fa5/css/all.css" type="text/css" rel="stylesheet">
+    <link href="fonts/pe-icon-7-stroke/css/pe-icon-7-stroke.css" type="text/css"/>
+    <link href="fonts/pe-icon-7-stroke/css/helper.css" type="text/css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.3.4/bluebird.min.js"></script>
+    <script src="https://secure.aadcdn.microsoftonline-p.com/lib/1.0.0/js/msal.js"></script> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.7/summernote.css" />
+    <link rel="stylesheet" href="https://cdn.syncfusion.com/18.4.0.30/js/web/flat-azure/ej.web.all.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="build/vendor/vendor.css">
+    <link rel="stylesheet" href="build/app.css">
+    <link rel="stylesheet" href="build/styles.css">
+    <!-- bing analytics validation -->
+    <!-- <meta name="msvalidate.01" content="41E99E6162B3E65C10CF7F80E427E0C9" /> -->
+    <!-- <script>(function(w,d,t,r,u){var f,n,i;w[u]=w[u]||[],f=function(){var o={ti:"26048107"};o.q=w[u],w[u]=new UET(o),w[u].push("pageLoad")},n=d.createElement(t),n.src=r,n.async=1,n.onload=n.onreadystatechange=function(){var s=this.readyState;s&&s!=="loaded"&&s!=="complete"||(f(),n.onload=n.onreadystatechange=null)},i=d.getElementsByTagName(t)[0],i.parentNode.insertBefore(n,i)})(window,document,"script","//bat.bing.com/bat.js","uetq");</script> -->
+
+    <script src="https://a1968972.fanoutcdn.com/bayeux/static/faye-browser-min.js"></script>
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    <script src="https://cdn.rawgit.com/zenorocha/clipboard.js/master/dist/clipboard.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/keymage/1.1.3/keymage.js"></script>
+</head>
+
+<body class="{{$state.current.name}}" ng-app="workshop" ng-cloak>
+    <div ng-show="loadingJourney" id="load_journey">
+      <div class="content">
+        <p>Loading Journey, Notes, & Relationships...</p>
+      </div>
+    </div>
+    <!-- Main View -->
+    <div ui-view autoscroll="true"></div>
+
+    <!-- Scripts -->
+    <script src="build/vendor/vendor.js"></script>
+    <script src="https://cdn.pubnub.com/sdk/javascript/pubnub.4.27.3.js"></script>
+    <script src="https://cdn.pubnub.com/sdk/pubnub-angular/pubnub-angular-4.2.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/danialfarid-angular-file-upload/12.2.13/ng-file-upload.min.js"></script>
+    <script src="https://cdn.syncfusion.com/18.4.0.30/js/web/ej.web.all.min.js"></script>
+    <script src="https://cdn.syncfusion.com/18.4.0.30/js/common/ej.widget.angular.min.js"></script>
+
+    <!-- inject:js -->
+    <script src="build/app-622000de.js"></script>
+    <script src="build/templates-7c8c4b85.js"></script>
+    <!-- endinject -->
+    <script type="text/javascript" src="./libs/jqColorPicker.min.js"></script>
+</body>
+
+</html>

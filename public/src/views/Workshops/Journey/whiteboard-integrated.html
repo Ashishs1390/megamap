@@ -1,0 +1,224 @@
+<div ng-class="channel" class="whiteboardbody">
+	<div class="upload-overlay" ng-show="uploading">
+		<i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+	</div>
+	<div ng-class="container"></div>
+
+	<!---Toolbar -!-->
+	<div class="toolbar">
+		<div class="btn-group">
+			<button ng-hide="showDeleteConfirm" ng-click="delete()" title="Clear the whiteboard" class="whiteboardBtn">
+				<i class="fa fa-trash"></i>
+			</button>
+			<button ng-show="showDeleteConfirm" ng-click="deleteConfirm()" ng-mouseleave="showDeleteConfirm = false" title="Confirm Delete" class="whiteboardBtn">
+				<i class="fa fa-check"></i>
+			</button>
+			<button ng-click="undo()" title="Undo your last step" class="whiteboardBtn">
+				<i class="fa fa-undo"></i>
+			</button>
+		</div>
+
+		<div class="btn-group">
+			<button ng-click="setTool($event, 'mouse')" tool="mouse" title="Use mouse" type="button" class="whiteboardTool" ng-class="{'active': isActiveTool('mouse')}">
+				<i class="fa fa-mouse-pointer"></i>
+			</button>
+			<button ng-click="setTool($event, 'recSelect')" style="padding-bottom: 11px;" tool="recSelect" title="Select an area" type="button"
+				class="whiteboardTool" ng-class="{'active': isActiveTool('recSelect')}">
+				<!-- <img src="./images/dottedRec.png"> -->
+				<img src="/build/images/whiteboard/dottedRec.png"/>
+			</button>
+			<button ng-click="setTool($event, 'pen')" tool="pen" title="Use pen" class="whiteboardTool" ng-class="{'active': isActiveTool('pen')}">
+				<i class="fa fa-pencil"></i>
+			</button>
+			<button ng-click="setTool($event, 'line')" style="padding-bottom: 8px; padding-top: 6px;" tool="line" title="draw a line"
+				class="whiteboardTool" ng-class="{'active': isActiveTool('line')}">
+				╱
+			</button>
+			<button ng-click="setTool($event, 'rect')" tool="rect" title="draw a rectangle" class="whiteboardTool" ng-class="{'active': isActiveTool('rect')}">
+				<i class="fa fa-square-o"></i>
+			</button>
+			<button ng-click="setTool($event, 'circle')" tool="circle" title="draw a circle" class="whiteboardTool" ng-class="{'active': isActiveTool('circle')}">
+				<i class="fa fa-circle-o"></i>
+			</button>
+			<button ng-click="setTool($event, 'text')" tool="text" title="write text" class="whiteboardTool" ng-class="{'active': isActiveTool('text')}">
+				<i class="fa fa-font"></i>
+			</button>
+			<button ng-click="setTool($event, 'eraser')" tool="eraser" title="Use eraser" class="whiteboardTool" ng-class="{'active': isActiveTool('eraser')}">
+				<i class="fa fa-eraser"></i>
+			</button>
+		</div>
+
+		<div class="btn-group">
+			<button style="width: 190px; cursor:default;">
+				<div class="activeToolIcon" ng-bind-html="activeToolHtml" style="position:absolute; left:5px;top: 15px;">
+				</div>
+				<img style="position: absolute; left: 20px; top: 16px; height:14px; width:130px;"
+					src="/build/images/whiteboard/slider-background.svg">
+				<input title="Thickness" class="whiteboardThicknessSlider"
+					style="position: absolute; left:18px; width: 130px; top: 15px;" type="range" min="1" max="50"
+					value="3">
+				<div title="Colorpicker"
+					style="position: absolute; left: 155px; top: 10px; width: 26px; height: 23px; border-radius: 3px; overflow: hidden; border: 1px solid darkgrey;">
+					<div class="whiteboardColorpicker" value="#000000"
+						style="width: 40px; height: 35px; border: 0px; padding: 0px; position: relative; top: 0px; left: -5px;">
+					</div>
+				</div>
+			</button>
+		</div>
+
+		<div class="btn-group">
+			<button ng-click="uploadImage()" title="Add Image to whiteboard" type="button" class="whiteboardBtn">
+				<i class="fa fa-image"></i>
+			</button>
+
+			<!-- <button style="position: relative;" class="uploadJsonBtn" title="Load saved JSON to whiteboard" type="button"
+				class="whiteboardBtn">
+
+				<i class="fa fa-file-code-o"></i>
+				<i style="position: absolute; top: 3px; left: 2px; color: #000000; font-size: 0.66em; "
+					class="fa fa-arrow-up"></i>
+			</button> -->
+
+			<input style="display:none;" class="myFile" type="file" />
+		</div>
+
+		<div class="btn-group">
+			<button ng-click="save()" style="position: relative;" title="Save Changes" class="whiteboardBtn">
+				<i class="fa fa-floppy-o"></i>
+			</button>
+			<button ng-click="saveWhiteboardImage()" title="Download Whiteboard Image" type="button" class="whiteboardBtn">
+				<i class="fa fa-cloud-download"></i>
+			</button>
+			<button ng-click="share" title="share whiteboard" type="button">
+				<i class="fa fa-share-square"></i>
+			</button>
+		</div>
+
+		<div class="btn-group minGroup">
+			<button style="width: 25px;	padding: 11px 11px;" class="minMaxBtn" title="hide buttons" type="button">
+				<i class="minBtn" style="position:relative; left:-5px;" class="fa fa-angle-left"></i>
+				<i class="maxBtn" style="position:relative; left:-5px; display: none;" class="fa fa-angle-right"></i>
+			</button>
+		</div>
+</div>
+
+<style>
+.whiteboardbody {
+    position: relative;
+    margin: 0px;
+    height: calc(var(--vh, 1vh) * 100);
+    width: 100%;
+    overflow: hidden;
+}
+
+.whiteboardbody .upload-overlay {
+	background: white;
+	position: absolute;
+	left: 0; right: 0;
+	top: 0; bottom: 0;
+	opacity: 0.8;
+	z-index: 1000;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.whiteboardContainer {
+    height: calc(var(--vh, 1vh) * 100);
+    width: 100%;
+}
+
+.whiteboardbody .btn-group button {
+    background: transparent;
+    border: 1px solid #636060;
+    /* Green border */
+    color: black;
+    /* White text */
+    padding: 11px 14px;
+    /* Some padding */
+    cursor: pointer;
+    /* Pointer/hand icon */
+    float: left;
+    /* Float the buttons side by side */
+    font-size: 1.2em;
+    height: 45px;
+}
+
+.whiteboardbody button::-moz-focus-inner {
+    border: 0;
+}
+
+.whiteboardbody .btn-group button:not(:last-child) {
+    border-right: none;
+    /* Prevent double borders */
+}
+
+/* Clear floats (clearfix hack) */
+
+.whiteboardbody .btn-group:after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+/* Add a background color on hover */
+
+.whiteboardbody .btn-group button:hover {
+    background-color: #9a9a9a;
+}
+
+.whiteboardbody button {
+    outline-width: 0;
+}
+
+.whiteboardbody .btn-group {
+    background-color: #808080ab;
+    margin-left: 5px;
+    float: left;
+    position: relative;
+}
+
+.whiteboardbody .whiteboardTool.active {
+    background: #bfbfbf;
+}
+
+.whiteboardbody #whiteboardThicknessSlider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 10px;
+    border-radius: 3px;
+    background: transparent;
+    outline: none;
+    opacity: 1;
+    -webkit-transition: opacity .15s ease-in-out;
+    transition: opacity .15s ease-in-out;
+}
+
+.whiteboardbody .textBox.active {
+    border: 1px dashed gray;
+}
+
+.whiteboardbody .textBox>.removeIcon, .textBox>.moveIcon {
+    display: none;
+}
+
+.whiteboardbody .textBox.active>.removeIcon, .textBox.active>.moveIcon {
+    display: block;
+}
+
+.whiteboardbody .modalBtn {
+    padding: 5px;
+    border-radius: 5px;
+    border: 0px;
+    min-width: 50px;
+    cursor: pointer;
+}
+
+
+
+.whiteboardbody .toolbar {
+	position: absolute; top: 10px; left: 10px;
+}
+
+
+</style>

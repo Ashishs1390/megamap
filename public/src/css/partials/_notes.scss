@@ -1,0 +1,112 @@
+// style for new note design
+
+._note {
+  position: relative;
+  border-radius: 5px;
+  background: #f5f5f5;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.10), 0 3px 16px rgba(0,0,0,0.10);
+  // box-shadow: 0 10px 18px rgba(0,0,0,0.10), 0 3px 10px rgba(0,0,0,0.10);
+  margin: 15px auto;
+  overflow: hidden;
+  min-width: 210px;
+  max-width: 260px;
+  min-height: 280px;
+  & ._header {
+    padding: 10px 12px;
+    color: white;
+    & i {
+      float: right;
+      position: relative;
+      top: 3px;
+      cursor: pointer;
+    }
+  }
+  & ._body {
+    padding: 12px;
+
+    & ._icons {
+      > i {
+        padding: 0 3px;
+        color: #ddd;
+        &.mot {
+          font-size: 10px;
+          position: relative;
+          top: -1px;
+        }
+      }
+    }
+    & ._text {
+      margin: 10px 0 15px 0;
+    }
+    & ._author {
+      overflow: auto;
+      position: absolute;
+      bottom: 50px;
+      left:10px;
+      right:10px;
+      & ._avatar {
+        width: 28px;
+        height: 28px;
+        position: relative;
+        border-radius: 50%;
+        background-color: #888;
+        background-size: cover;
+        background-position: 50% 50%;
+        float: left;
+        margin: 4px 10px 2px 0;
+      }
+      & ._details {
+        font-size: 9px;
+        color: #888;
+      }
+    }
+  }
+  & ._footer {
+    padding: 12px 7px;
+    font-size: 9px;
+    text-align: center;
+    background: #fff;
+    white-space: nowrap;
+    position: absolute;
+    bottom: 0;
+    left:0;
+    right:0;
+    > div {
+      padding: 0;
+      cursor: pointer;
+
+      &.votes {
+        color:#62cb31;
+        & i, & span, & strong {
+          display:inline;
+          color:#62cb31;
+        }
+      }
+      &.pains {
+        color:#e74c3c;
+        & i, & span, & strong {
+          display:inline;
+          color:#e74c3c;
+        }
+      }
+    }
+  }
+}
+
+
+.toggle-votecounts {
+  position: absolute;
+  right: -16px;
+  bottom: -35px;
+  & a {
+    padding: 2px 7px;
+  }
+}
+
+.comment-ranking {
+  margin-bottom: 5px;
+  & i {
+    margin-right: 2px;
+    cursor: pointer;
+  }
+}

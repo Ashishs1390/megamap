@@ -1,0 +1,41 @@
+<div class="col-sm-12">
+    <div ng-repeat='stage in JourneyStages' class="clearfix c-report-journey__propsTable">
+        <div class="hpanel clearfix">
+            <h4>{{stage.properties.title}}</h4>
+            <div class="panel-body">
+                <div class="c-flex c-flex--2 c-flex--stretch c-flex--wrap">
+                    <div ng-repeat='interaction in stage.Interactions' class="c-flex__col">
+                        <h5 class="panel-heading {{interaction.properties.color || 'orange'}} lighten-1 u-color-white u-mb0"><b>{{interaction.properties.title}}</b></h5>
+                        <div>
+                            <table class="table">
+                                <tbody>
+                                    <tr class="c-modal--report__trHeader c-modal--report__importantRow green lighten-5">
+                                        <td>Top rated</td>
+                                        <td>{{sortValue.display}}</td>
+                                        <td ng-show="sortValue.display != 'Average Effectiveness'">Average Effectiveness</td>
+                                        <td ng-show="sortValue.display != 'Average Importance'">Average Importance</td>
+                                        <td ng-show="sortValue.display != 'Correlation'">Correlation</td>
+                                        <td ng-show="sortValue.display != 'Sample Size'">Sample Size</td>
+                                        <td ng-show="sortValue.display != 'Gap'">Gap</td>
+                                    </tr>
+                                    <tr ng-repeat='note_uuid in interaction[sortValue.props+"_notes"] ' ng-if='subgraph.nodes[note_uuid].properties.Importance > 0'>
+                                        
+                                        <td>{{subgraph.nodes[note_uuid].properties.description}}</td>
+                                        <td>{{subgraph.nodes[note_uuid].properties[sortValue.props] || 0}}</td>
+                                        
+                                        <td ng-show="sortValue.props != 'average_effectiveness'">{{subgraph.nodes[note_uuid].properties.average_effectiveness || 0}}</td>
+                                        <td ng-show="sortValue.props != 'average_importance'">{{subgraph.nodes[note_uuid].properties.average_importance || 0}}</td>
+                                        <td ng-show="sortValue.props != 'correlation'">{{subgraph.nodes[note_uuid].properties.correlation || 0}}</td>
+                                        <td ng-show="sortValue.props != 'sample_size'">{{subgraph.nodes[note_uuid].properties.sample_size || 0}}</td>
+                                        <td ng-show="sortValue.props != 'gap'">{{subgraph.nodes[note_uuid].properties.gap || 0}}</td>
+                                        
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

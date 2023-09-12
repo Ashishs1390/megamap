@@ -1,0 +1,63 @@
+<div class='grey lighten-3' ng-controller='journeySummaryCtrl'>
+    <!--<div id="header" ng-include="'views/JourneyWorkshop/header.html'"></div>
+    <aside id="menu" ng-include="'views/JourneyWorkshop/navigation.html'"></aside>-->
+    <div class='hpanel'>
+        <div class='panel-heading'>
+            <div class='panel-body grey lighten-4'>
+                <h2> {{focusedJourney.properties.title}}</h2>
+
+            </div>
+        </div>
+    </div>
+    <div class="content row ">
+        <div class='col-xs-12 grey-border white lighten-5' style='border:1px solid; margin-bottom:25px' ng-repeat='stage in focusedJourney.label_index.stage'>
+            <div class='panel-heading'>
+                <div class='panel-body'>
+                    <h2>{{focusedJourney.nodes[stage].properties.title | titleCase}} ({{focusedJourney.nodes[stage].label_index.note.length
+                        || 0}})</h2>
+                </div>
+            </div>
+
+            <div ng-repeat='(key, val) in focusedJourney.nodes[stage].interactions'  class='panel-body col-xs-4'>
+                <div class='panel-heading {{focusedJourney.nodes[key].properties.color}} lighten-5'>
+                    <h3>{{focusedJourney.nodes[key].properties.title}}</h3>
+                </div>
+                <div class='panel-body table-responsive'>
+                    <table cellpadding="0" cellspacing="0" class="table">
+                        <thead class='green lighten-5'>
+                            <tr>
+                                <th>Top Rated</th>
+                                <th></th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat='note in val.rating | limitTo: 3'>
+                                <td>{{focusedJourney.nodes[note].properties.title}}</td>
+                                <td>{{focusedJourney.nodes[note].rating || 0}}</td>
+
+                            </tr>
+                        </tbody>
+                        <thead class='red lighten-5'>
+                            <tr>
+                                <th>Painful</th>
+                                <th></th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat='note in val.pain_rating | limitTo: 1'>
+                                <td>{{focusedJourney.nodes[note].properties.title}}</td>
+                                <td>{{focusedJourney.nodes[note].pain_rating || 0}}</td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+</div>

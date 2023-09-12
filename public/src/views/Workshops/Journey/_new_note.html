@@ -1,0 +1,51 @@
+<div class="_note">
+  <div class="_header {{note.rels.interaction.color || 'orange'}}">
+    {{note.rels.interaction.title}}
+    <i class="fa fa-cog fa-lg" title="Edit Note" ng-click='open_edit_note(note, $index + 1)'
+      ng-show="$root.Person.role !== ('attendee' || 'external') || $root.Person.properties.uuid === note.rels.author.uuid">
+    </i>
+  </div>
+  <!-- note body -->
+  <div class="_body">
+    <!-- icon bar -->
+    <div class="_icons">
+      <i class="fa fa-unlock" title="Live thresholds"></i>
+      <i class="fa fa-heartbeat" title="Live thresholds"></i>
+      <i class="mot" title="Live thresholds">MOT</i>
+      <i class="fa fa-compress fa-rotate-180 pull-right" title="Merge Notes"></i>
+    </div>
+    <!-- note text -->
+    <div class="_text">{{note.description}}</div>
+    <!-- note author -->
+    <div class="_author">
+      <div class="_avatar" ng-style="{'background-image': note.rels.author.image_url ? 'url('+note.rels.author.image_url+')' : 'url(/build/images/user-default.png)'}">
+      </div>
+      <div class="_details">
+        <div><strong>{{note.rels.author.firstname}} {{note.rels.author.lastname}}</strong></div>
+        <div>Nov 30, 2018</div>
+        <div>{{note.rels.persona.title}}</div>
+      </div>
+    </div>
+  </div>
+  <div class="_footer row">
+    <div class="col-xs-4 votes" title="Vote Important">
+      <span ng-click='vote("vote", note, stage.uuid, $event)'>
+        <strong ng-show="journey.show_votes || $root.Person.role != 'attendee'">{{note.rels.votes_count || 0}}</strong>
+        <i class="fa {{note.rels.user_vote ? 'fa-thumbs-up' : 'fa-thumbs-o-up'}}"></i>
+        <span class="text">Important</span>
+      </span>
+    </div>
+    <div class="col-xs-4" title="Click to Comment" ng-click="showComments = !showComments; focusCommentInput('#note_'+note.uuid)">
+      <strong>{{note.rels.comments_count || 0}}</strong>
+      <i class="fa {{note.rels.commenter ? 'fa-comment' : 'fa-comment-o'}}"></i>
+      <span class="text">Comments</span>
+    </div>
+    <div class="col-xs-4 pains" title="Vote Painful">
+      <span ng-click='vote("pain", note, stage.uuid, $event)'>
+        <strong ng-show="journey.show_votes || $root.Person.role != 'attendee'">{{note.rels.pains_count || 0}}</strong>
+        <span class="text">Painful</span>
+        <i class="fa {{note.rels.user_pain ? 'fa-thumbs-up' : 'fa-thumbs-o-up'}}"></i>
+      </span>
+    </div>
+  </div>
+</div>

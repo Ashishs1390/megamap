@@ -1,0 +1,66 @@
+<style>
+  .inmodal.unique {
+    height: 870px;
+  }
+  /* .ta-editor {
+    min-height: 200px;
+    height: auto;
+    overflow: auto;
+    font-family: inherit;
+    font-size: 100%;
+  } */
+  .modal-actions {
+    margin: 15px 25px;
+  }
+  button {
+    margin-left: 5px;
+  }
+</style>
+
+<div class="inmodal unique">
+  <div class="modal-body">
+    <h3>Enter Stage Description</h3>
+    <input type="text" class="form-control" ng-model="wsd" placeholder="Enter Stage Description" />
+  </div>
+
+  <div class="modal-body">
+    <h3>Enter Stage Static Image</h3>
+    <input type="text" class="form-control" ng-model="wsi" placeholder="Enter Stage Static Image" />
+  </div>
+
+  <div class="modal-body">
+    <h3>Enter Stage Static Text</h3>
+    <div>
+      <textarea style="width:100px" id="texteditor" ej-rte e-value="wst"></textarea>
+    </div>
+  </div>
+
+  <div class="modal-body">
+    <h3>Sentiment Score</h3>
+    <input type="number" class="form-control" ng-model="wss" placeholder="Sentiment Score" />
+  </div>
+
+  <div class="modal-body" >
+    <h3>White board mode</h3>
+    <br>
+    <div class="radio-inline">
+      <label >
+        <input type="radio" ng-value="true" name="whiteboard_mode" ng-model="ws_whiteboard" required>
+        True
+      </label>
+    </div>
+    <div class="radio-inline">
+      <label>
+        <input type="radio" ng-value="false" name="whiteboard_mode" ng-model="ws_whiteboard" required>
+        False
+      </label>
+    </div>
+  </div>
+
+  <br>
+  <div class="modal-actions">
+    <button class="btn btn-secondary pull-left" ng-click="default()">Load Default Description</button>
+    <button class="btn btn-primary pull-right" ng-click="save()" ng-disabled="!wsd">Save</button>
+    <button class="btn btn-secondary pull-right" ng-click="close()">Cancel</button>
+  </div>
+</div>

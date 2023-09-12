@@ -1,0 +1,195 @@
+<div class="journey-dashboard" ng-init="group={members:[]}">
+
+  <div ng-show="loadingJourneys || loadingJourney" class="auth-loading">
+    <i class="fa fa-circle-o-notch fa-spin"></i>
+    <!-- <h5>{{loadingJourneys}}</h5> -->
+  </div>
+
+  <div class="content">
+    <div class="hpanel Info">
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-sm-12 col-lg-6">
+            <h2 ng-hide="showAll()" class="c-section-title">{{workshopType | titleCase}}{{workshopTail()}}</h2>
+            <h2 ng-show="showAll()" class="c-section-title">My Libraries
+              <span ng-if="$root.Person.role !== 'attendee'">
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <small>Click to Show/Hide:</small>
+                <div class="workshop-filters">
+                  <a class="filters--item btn large yellow {{showWorkshopType.adoption ? 'lighten-1' : 'lighten-4'}}"
+                    ng-click="showWorkshopType.adoption = !showWorkshopType.adoption">Adoption Patterns</a>
+                  <a class="filters--item btn large orange {{showWorkshopType.journey ? 'lighten-1' : 'lighten-4'}}"
+                    ng-click="showWorkshopType.journey = !showWorkshopType.journey">Journeys</a>
+                  <a class="filters--item btn large green {{showWorkshopType.persona ? 'lighten-1' : 'lighten-4'}}"
+                    ng-click="showWorkshopType.persona = !showWorkshopType.persona">Personas</a>
+                  <a class="filters--item btn large blue {{showWorkshopType.brainstorm ? 'lighten-1' : 'lighten-4'}}"
+                    ng-click="showWorkshopType.brainstorm = !showWorkshopType.brainstorm">Brainstormings</a>
+                  <a class="filters--item btn large pink {{showWorkshopType.learning ? 'lighten-1' : 'lighten-4'}}"
+                    ng-click="showWorkshopType.learning = !showWorkshopType.learning">Learning Paths</a>
+                  <a class="filters--item btn large brown {{showWorkshopType.horizon ? 'lighten-1' : 'lighten-4'}}"
+                    ng-click="showWorkshopType.horizon = !showWorkshopType.horizon">Horizon Maps</a>
+                </div>
+              </span>
+            </h2>
+          </div>
+          <div class="col-sm-12 col-lg-6 u-mt10">
+            <div class="row">
+              <div class="col-xs-7" ng-class="{'col-xs-offset-4': ($root.Person.role == 'attendee' && !$root.Person.properties.power_user)}">
+                <input class="form-control" ng-model="search" ng-keyup="fetchJourneyOnSearch()"
+                  placeholder="Search by title, description, author, or type">
+              </div>
+              <div class="col-xs-5 text-align-center">
+                <div class="btn-toolbar" role="toolbar">
+                  <div class="btn-group" role="group" ng-show='$root.Person.role != "attendee" && $root.Person.role != "external"'>
+                    <button type="button" class="btn btn-primary" ng-click="PopCreateModal('Journey');">
+                      Create {{workshopType | titleCase}}
+                    </button>
+                    <button type="button" class="btn btn-primary btn-block"
+                      ng-if='PopCreateModal && $root.Person.role == "attendee" && $root.Person.properties.power_user'
+                      ng-click="PopCreateModal('Journey', 'brainstorm');">
+                      Create Brainstorm
+                    </button>
+                  </div>
+                  <div class="btn-group" role="group" ng-show='$root.Person.role != "attendee" && $root.Person.role != "external"'>
+                    <button type="button" class="btn btn-secondary" ng-click="GroupState = !GroupState">
+                      Group
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div ng-if='Getting' class=" c-abs-loading"><img src="/build/images/loading.gif" /></div>
+    <div>
+
+      <div class="c-flex c-flex--3 c-flex--stretch c-flex--wrap c-dashboard-cards" infinite-scroll="loadMore()">
+        <div class="c-flex__col" ng-repeat='journey in journeys | orderBy: "workshop_type"'
+          ng-init="journey.workshop_type ? '' : journey.workshop_type = 'journey'"
+          ng-show="showWorkshopType[journey.workshop_type]">
+          <div class='library_card_wrapper'>
+
+            <div class="group-state" ng-if="GroupState">
+              <div class="pointer">
+                <h4 ng-click="group.members.push(journey.uuid)" ng-show="!group.members.includes(journey.uuid)">click to select</h4>
+                <h4 ng-click="group.members.splice(group.members.indexOf(journey.uuid), 1)" ng-show="group.members.includes(journey.uuid)">click to deselect</h4>
+              </div>
+              <br/>
+              <div class="btn-group" role="group" ng-show='$root.Person.role != "attendee" && $root.Person.role != "external"'>
+                <button type="button" class="btn btn-secondary" ng-click="group={members:[]}; GroupState = false">
+                  Cancel
+                </button>
+                <button type="button" class="btn btn-primary" ng-controller="GroupsCtrl" ng-click="CreateGroup(group, 'Journey');">
+                  Create Group
+                </button>
+              </div>
+            </div>
+
+            <div ng-show="$root.Person.properties.uuid == journey.author.uuid"
+              class="label gold gold--with-margin pull-right">Author</div>
+            <workshop-label workshop-type="journey.workshop_type" />
+            <div clas="clearfix"></div>
+
+            <div class='node-card panel u-mb0'>
+              <div class="label pull-right {{ journey.color || ' u-color-normal ' }}" />
+              <div class="panel-body hpanel text-center u-mb0">
+                <div class="c-card-profile u-bg-cover clear" ui-sref="workshop.journey({id:journey.uuid})"
+                  style="cursor:pointer; background-image: url( {{ journey.image_url || '/build/images/placeholder-1.png' }} )">
+                  <!-- <small>[ click image to enter ]</small> -->
+                </div>
+                <h2 class="node-card__title">{{journey.title}} {{journey.workshop}}</h2>
+                <small>{{journey.description }}</small>
+              </div>
+
+              <!-- CARD FOOTER STATS -->
+              <div class="panel-footer" ng-if="$root.Person.role != 'attendee' && $root.Person.role != 'external'">
+                <div class="row">
+                  <div class="col-md-3">
+                    <div class="contact-stat"><span>Notes: </span> <strong>{{journey.notes || 0}}</strong></div>
+                  </div>
+                  <div class="col-md-3 border-left">
+                    <div class="contact-stat">
+                      <span>Attendees: </span>
+                      <strong>
+                        {{journey.attendees || 0}} | {{journey.external_attendees || 0}}
+                      </strong>
+                    </div>
+                  </div>
+                  <div class="col-md-3 border-left">
+                    <div class="contact-stat"><span>Author: </span> <strong>{{journey.author.firstname}}</strong>
+                    </div>
+                  </div>
+                  <div class="col-md-3 border-left">
+                    <div class="contact-stat"><span>Score: </span>
+
+                      <strong>{{scores[journey.score_type](journey)}}</strong></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+            <div ng-if="$root.Person.role != 'attendee' && $root.Person.role != 'external'"
+              class='u-table library-card-groupBtns u-bg-grey'>
+              <a ui-sref='workshop.journey({id:journey.uuid})' class="u-table-cell">View
+                {{workshopType | titleCase}}</a>
+              <a ng-if="journey.group" ng-controller="GroupsCtrl" ng-click="MemberGroups(journey, ViewGroup)" class="u-table-cell">
+                View Groups
+              </a>
+              <a ng-click="PopOverviewModal(journey.uuid)" class="u-table-cell">Connections</a>
+              <a ng-click="openAboutModal(journey)" class="u-table-cell">About</a>
+              <a ng-click="PopConnectModal(journey.uuid)" class="u-table-cell">Components</a>
+            </div>
+            <div ng-if="$root.Person.role == 'attendee' || $root.Person.role == 'external'"
+              class='u-table library-card-groupBtns u-bg-grey'>
+              <a ui-sref='workshop.journey({id:journey.uuid})' class="u-table-cell">View Workshop</a>
+              <a ng-click="PopAttendeeModal(journey, false)" class="u-table-cell" ng-if="$root.Person.properties.power_user">
+                Attendees
+              </a>
+            </div>
+
+
+            <div ng-if="$root.Person.role != 'attendee' && $root.Person.role != 'external'"
+              class='u-table library-card-groupBtns u-bg-grey'>
+              <a ng-click="PopAttendeeModal(journey, false)" class="u-table-cell">Attendees</a>
+              <a ng-click="addUsers(journey,$root.subdomain)" class="u-table-cell">Add Multiple Attendees</a>
+              <a ng-click="PopAttendeeModal(journey, true)" class="u-table-cell">External Attendees</a>
+
+              <!-- <a ng-if="$root.Person.role != 'attendee'" ng-click="PopQuickReportModal(journey.uuid)" class="u-table-cell">Quick Summary</a> -->
+              <a ng-click="ViewReport(journey.uuid, journey.workshop_type)" class="u-table-cell">Report</a>
+              <a ng-hide="journey.workshop_type === 'horizon'" ui-sref="workshop.graphs({id: journey.uuid})" class="u-table-cell">
+                Graphs
+              </a>
+              <a ng-show="journey.workshop_type === 'horizon'" ui-sref="workshop.horizon_graphs({id: journey.uuid})" class="u-table-cell">
+                Graphs
+              </a>
+              <br/>
+
+            </div>
+            <div ng-if="$root.Person.role != 'attendee' && $root.Person.role != 'external'"
+              class='u-table library-card-groupBtns u-bg-grey'>
+                <a ng-click='PopEditModal(journey.uuid, journey.interactions)' class=" u-table-cell ">Edit</a>
+              </div>
+          </div>
+
+        </div>
+        <!-- to fix flex alignement issue -->
+        <div class="c-flex__col"></div>
+        <div class="c-flex__col"></div>
+      </div>
+    </div>
+    <div class="pagination-journey">
+      <!-- <button ng-click="paginate('prev')">previous</button>
+      <span>{{start}} to {{end}} 0f {{count}}<span>
+          <button ng-click="paginate('next')">next</button> -->
+      <!-- <div paging page="1" page-size="5" total="count" paging-action="paginate(page)" show-prev-next="true"
+        show-first-last="true">
+      </div> -->
+    </div>
+
+  </div>
+</div>

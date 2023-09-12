@@ -1,0 +1,40 @@
+<div id={{$ctrl.scoreid}} class="scorebox">
+  <div class="clickable close-icon" ng-click="$ctrl.hideScorebox()">
+    <svg class="icon--close" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+      <line x1="3" y1="3" x2="21" y2="21"/>
+      <line x1="3" y1="21" x2="21" y2="3"/>
+    </svg>
+  </div>
+  <div class="slidercontainer">
+      <rzslider class="custom-slider" rz-slider-model="$ctrl.slider.value" rz-slider-options="$ctrl.slider.options"></rzslider>
+    </div>
+    <div class="score-content">
+      PICK SCORE
+    </div>
+    <div class="comment-section">
+      <p>Comment section</p>
+      <div class="add-comment">
+        <input type="text" class="comment-input" placeholder="Type your comment here" ng-model="$ctrl.newComment.msg"/>
+        <input type="button" class="btn btn-primary" value="Post" ng-click="$ctrl.postSliderComment()"/>
+      </div>
+
+      <div class="media social-profile clearfix" ng-repeat="comments in $ctrl.score.comments track by $index" id="comment_{{comments.properties.uuid}}" >
+        <a class="pull-left">
+            <!-- <img ng-src="{{comment.author.image_url || '/build/images/user-default.png'}}" alt="comment author" onerror="this.onerror=null;this.src='/build/images/user-default.png';"> -->
+          </a>
+          <div class="media-body">
+            <span class="font-bold">{{comments.properties.firstname}}</span>
+            <small class="text-muted">{{comments.properties.created_at | date}}</small>&nbsp;&nbsp;
+            <i class="fa fa-trash pull-right" ng-click="$ctrl.deleteComment(comments,$ctrl.score.uuid)" title="delete comment (*when deleting multiple new comments, please refresh page before delete action)" style="cursor:pointer;"
+              ng-show="$root.Person.role === 'admin' || $root.Person.role === 'tenant' || $root.Person.properties.uuid === comment.author.uuid">
+            </i>
+            <div>
+                <span class="font-bold">
+                {{comments.properties.comment}}
+              </span>
+            </div>
+          </div>
+      </div>
+    </div>
+    </div>
+</div>

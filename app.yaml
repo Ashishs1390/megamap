@@ -1,0 +1,11 @@
+runtime: nodejs10
+service: default
+handlers:
+  - url: /.*
+    secure: always
+    redirect_http_response_code: 301
+    script: auto
+env_variables:
+  APP_VARIABLES: NODE_ENV====production&&&&AWS_ACCESS_KEY_ID====AKIAJS6JTV43IFCUBFTA&&&&AWS_SECRET_ACCESS_KEY====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&&&&FANOUT_REALM_ID====a1968972&&&&FANOUT_REALM_KEY====ekDlCCGD6JqdYCfB0WNxBg==
+  GRAPH_URL: bolt+routing://neo4j:Dw5Yttx9IEHLG99fJQQZP7Ye70-mW5tjMWz2QfL-7cM@7db4f865.databases.neo4j.io:7687
+  SECRET: fj845tqw123ey7834cfty5783fut5utf583j0f89uct5893fy85fuy3890uy5v8uy34vyu5980uvy5830utv082t89u38ut8950u38yvu6uy58904yuc85u3yvyyut589c4

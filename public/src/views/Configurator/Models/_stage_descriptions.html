@@ -1,0 +1,17 @@
+<div class="hpanel">
+  <div class="panel-body">
+    <h3>Stage Descriptions:<a href="" title="close" ng-click="close()" class="fa fa-times pull-right" style="color:#777"></a></h3>
+    <br>
+    <p>Default Stage Description: {{default}}</p>
+    <hr>
+    <br>
+    <div ng-repeat="desc in descriptions">
+      <h4>Workshop: {{desc.journey}}</h4>
+      <p>{{desc.description}}</p>
+      <hr>
+    </div>
+    <div class="modal-actions">
+      <button class="btn btn-secondary pull-right" ng-click="close()">Close</button>
+    </div>
+  </div>
+</div>

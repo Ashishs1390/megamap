@@ -1,0 +1,166 @@
+/* When using "transform" for centering element, make sure the element has no
+   floating point for font size. or it will be blurry
+-------------------------------------------------------- */
+
+/// Vertically centers the element inside of its first non-static parent,
+/// @link http://www.sivertical-aligntepoint.com/centering-with-sass/ Centering With Sass
+@mixin vertical-center {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/// Horizontally centers the element inside of its first non-static parent,
+/// @link http://www.sitepoint.com/centering-with-sass/ Centering With Sass
+@mixin horizontal-center {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/// Absolutely centers the element inside of its first non-static parent,
+/// @link http://www.sitepoint.com/centering-with-sass/ Centering With Sass
+@mixin absolute-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+
+/* Static vertical align. May require height of 100% */
+// Alternative: u-vertical-center-ouside/inside
+// This mixin could cause blurry text since z-index is interfered. 
+// Add persepctive to clear blurry effect
+@mixin vertical-align($alignment: middle) { //may not work if content has float, 
+  position: relative;
+  display: block;
+  @if $alignment == 'middle'{
+    top: 50%;
+    transform: translateY(-50%); //51 to fix blury pixel problem
+  }
+  @if $alignment == 'bottom'{
+    top: 100%;
+    transform: translateY(-100%);
+  }
+}
+
+
+@mixin clearfix {
+  &:before,
+  &:after {
+    content: ' ';
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+
+/// Adds CSS for a "quantity query" selector that automatically sizes elements based on how many there are inside a container.
+/// @link http://alistapart.com/article/quantity-queries-for-css Quantity Queries for CSS
+///
+/// @param {Number} $max - Maximum number of items to detect. The higher this number is, the more CSS that's required to cover each number of items.
+/// @param {Keyword} $elem [li] - Tag to use for sibling selectors.
+@mixin auto-width($max, $elem: li) {
+  @for $i from 2 through $max {
+    &:nth-last-child(#{$i}):first-child,
+    &:nth-last-child(#{$i}):first-child ~ #{$elem} {
+      width: percentage(1 / $i);
+    }
+  }
+}
+
+
+/* Gradient
+-------------------------------------------------------- */
+// from top to bottom, transparent to dark
+@mixin gradient-vertical($start-color: transparent, $end-color: rgba(0, 0, 0, 0.4), $start-percent: 0%, $end-percent: 100%) {
+  background-image: -webkit-linear-gradient(top, $start-color $start-percent, $end-color $end-percent);  // Safari 5.1-6, Chrome 10+
+  background-image: -o-linear-gradient(top, $start-color $start-percent, $end-color $end-percent);  // Opera 12
+  background-image: linear-gradient(to bottom, $start-color $start-percent, $end-color $end-percent); // Standard, IE10, Firefox 16+, Opera 12.10+, Safari 7+, Chrome 26+
+  background-repeat: repeat-x;
+}
+// left to right, dark to transparent be default
+@mixin gradient-horizontal($direction: left, $start-color: rgba(0, 0, 0, 0.4), $end-color: transparent, $start-percent: 0%, $end-percent: 100%) {
+  background-image: -webkit-linear-gradient($direction, top, $start-color $start-percent, $end-color $end-percent);  // Safari 5.1-6, Chrome 10+
+  background-image: -o-linear-gradient($direction, top, $start-color $start-percent, $end-color $end-percent);  // Opera 12
+  background-image: linear-gradient(to right, $start-color $start-percent, $end-color $end-percent); // Standard, IE10, Firefox 16+, Opera 12.10+, Safari 7+, Chrome 26+
+  background-repeat: repeat-x;
+}
+
+
+/* Opacity shade
+-------------------------------------------------------- */
+// maybe slow for mobile, needs to be tested
+@mixin shade($opacity: 0.55) {
+  box-shadow: inset 0 0 0 1000px rgba(0,0,0, $opacity);
+}
+
+@mixin box-shadow($border: 3px, $opacity: 0.4) {
+  box-shadow: 0 0 $border rgba(0, 0, 0, $opacity);
+}
+
+
+/* Singleline ellipsis
+-------------------------------------------------------- */
+@mixin truncate($width: 100%) {
+  display: block;
+  width: $width;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;     /** IE6+, Firefox 7+, Opera 11+, Chrome, Safari **/
+  -o-text-overflow: ellipsis;  /** Opera 9 & 10 **/
+}
+
+
+// Makes an element visually hidden, but still accessible to keyboards and assistive devices.
+// @link http://snook.ca/archives/html_and_css/hiding-content-for-accessibility Hiding Content for Accessibility
+@mixin element-invisible {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+}
+
+/// Reverses the CSS output created by the `element-invisible()` mixin.
+@mixin element-invisible-off {
+  position: static !important;
+  height: auto;
+  width: auto;
+  overflow: visible;
+  clip: auto;
+}
+
+
+@mixin rtl {
+  html[dir="rtl"] & {
+    @content;
+  }
+}
+
+
+// TODO: create h1-h6 placeholder for extention.
+
+
+
+
+/*
+  This mixin can be used to set the object-fit:
+  @include object-fit(contain);
+  or object-fit and object-position:
+  @include object-fit(cover, top);
+*/
+@mixin object-fit($fit: fill, $position: null){
+  -o-object-fit: $fit;
+     object-fit: $fit;
+  @if $position {
+    -o-object-position: $position;
+       object-position: $position;
+    font-family: 'object-fit: #{$fit}; object-position: #{$position}';
+  } @else {
+    font-family: 'object-fit: #{$fit}';
+  }
+}

@@ -1,0 +1,11 @@
+<div title="{{node.properties.title || node.properties.description}} {{recent}}">
+    <div ng-if="badge" style="position:absolute;left:0;top:0;border-radius: 2px 0 5px 0;" class="badge" title="{{badge}}">{{badge | limitTo:20}}
+      <span ng-show="badge.length > 20">...</span>
+    </div>
+    <img alt="logo" class="img-circle img-small" ng-if="node.properties.image_url.length" src="{{node.properties.image_url}}" onerror="this.onerror=null;this.src='/build/images/user-default.png';">
+    <i ng-if="!node.properties.image_url.length" class='fa fa-user'></i>
+    <i class='fa {{icon}} {{hide}}'> </i>
+    <div class="m-t-sm">
+        <strong>{{node.properties.title || node.properties.description}}</strong>
+    </div>
+</div>

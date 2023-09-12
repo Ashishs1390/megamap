@@ -1,0 +1,15 @@
+<div class="posted {{profileSubGraph.nodes[profileSubGraph.rels[profileSubGraph.outgoing.note_interaction[note.properties.uuid][0]].to_id].properties.color}} lighten-4">
+    <div class="posted--category label col-xs-6 {{profileSubGraph.nodes[profileSubGraph.rels[profileSubGraph.outgoing.note_interaction[note.properties.uuid][0]].to_id].properties.color || 'orange'}} lighten-1">
+        {{profileSubGraph.nodes[profileSubGraph.rels[profileSubGraph.outgoing.note_interaction[note.properties.uuid][0]].to_id].properties.title}}
+    </div>
+
+    <div class="posted--profile">
+        <div class="posted--profile__photo">
+            <img ng-src='{{profileSubGraph.nodes[profileSubGraph.rels[profileSubGraph.outgoing.note_author[note.properties.uuid][0]].to_id].properties.image_url || "/build/images/user-default.png"}}' class='img-circle' />
+        </div>
+
+        <p class="posted--userName">
+            {{profileSubGraph.nodes[profileSubGraph.rels[profileSubGraph.outgoing.note_author[note.properties.uuid][0]].to_id].properties.firstname}}
+        </p>
+    </div>
+</div>

@@ -1,0 +1,48 @@
+<div class="c-modal c-modal--report c-modal--report--live">
+    <div ng-if="!Getting" class="row">
+        <div class="col-lg-12">
+            <div class="hpanel">
+                <div class="panel-heading">
+                    <div></div>
+                    <label>Bullseye</label> :: Overview
+                </div>
+                <div class="panel-body c-report-live">
+                    <div ng-repeat="stage in BullseyeStages">
+                        <h4>{{stage.properties.title}}</h4>
+                        <div class="panel-body c-report-live__interaction">
+                            <div ng-repeat="interaction in stage.Interactions">
+                                <h5 class="panel-heading {{interaction.properties.color || 'orange'}} lighten-3">{{interaction.properties.title}}</h5>
+                                <table class="table">
+                                    <tbody>
+                                        <tr class="c-modal--report__trHeader c-modal__importantRow">
+                                            <td>Top rated</td>
+                                            <td>Important</td>
+                                            <td>Pain</td>
+                                        </tr>
+
+                                        <tr ng-repeat='note_uuid in interaction.ImportantNotes | limitTo:3' ng-if='subgraph.nodes[note_uuid].properties.Importance>0'>
+                                            <td class="col-sm-10">{{subgraph.nodes[note_uuid].properties.description}}</td>
+                                            <td class="col-sm-1">{{subgraph.nodes[note_uuid].properties.Importance}}</td>
+                                            <td class="col-sm-1">{{subgraph.nodes[note_uuid].properties.Pain}}</td>
+                                        </tr>
+                                        <tr class="c-modal--report__trHeader c-modal__painRow">
+                                            <td>Most Painful</td>
+                                            <td>Importance</td>
+                                            <td>Pain</td>
+                                        </tr>
+                                        <tr class="" ng-repeat='note_uuid in interaction.PainfulNotes | limitTo:1' ng-if='subgraph.nodes[note_uuid].properties.Pain>0'>
+                                            <td class="col-sm-10">{{subgraph.nodes[note_uuid].properties.description}}</td>
+                                            <td class="col-sm-1">{{subgraph.nodes[note_uuid].properties.Importance}}</td>
+                                            <td class="col-sm-1">{{subgraph.nodes[note_uuid].properties.Pain}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

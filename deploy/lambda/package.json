@@ -1,0 +1,41 @@
+{
+  "name": "ruptive",
+  "version": "0.0.1",
+  "description": "Ruptive",
+  "main": "lambda.js",
+  "private": true,
+  "sasslintConfig": ".scss-lint.yml",
+  "config": {
+    "s3BucketName": "ruptive-lambda",
+    "region": "us-west-2",
+    "cloudFormationStackName": "RuptiveServerless",
+    "functionName": "Ruptive",
+    "accountId": "029056024178"
+  },
+  "scripts": {
+    "invoke-lambda": "aws lambda invoke --function-name $npm_package_config_functionName --region $npm_package_config_region --payload file://deploy/lambda/api-gateway-event.json lambda-invoke-response.json && cat lambda-invoke-response.json",
+    "create-bucket": "aws s3 mb s3://$npm_package_config_s3BucketName --region $npm_package_config_region",
+    "delete-bucket": "aws s3 rb s3://$npm_package_config_s3BucketName --region $npm_package_config_region",
+    "package": "aws cloudformation package --template ./cloudformation.yaml --s3-bucket $npm_package_config_s3BucketName --output-template ./packaged-sam.yaml --region $npm_package_config_region",
+    "package-deploy": "aws cloudformation deploy --template-file ./packaged-sam.yaml --stack-name $npm_package_config_cloudFormationStackName --capabilities CAPABILITY_IAM --region $npm_package_config_region",
+    "copy-build": "rm -rf package && mkdir package && cp -r ../../public ../../dist package.json lambda.js package && cd package && rm -rf public/src && npm install",
+    "deploy": "npm run copy-build && npm run package && npm run package-deploy && rm -rf package",
+    "delete-stack": "aws cloudformation delete-stack --stack-name $npm_package_config_cloudFormationStackName --region $npm_package_config_region",
+    "setup": "npm install && (aws s3api get-bucket-location --bucket $npm_package_config_s3BucketName --region $npm_package_config_region || npm run create-bucket) && npm run package-deploy"
+  },
+  "license": "UNLICENSED",
+  "dependencies": {
+    "aws-serverless-express": "3.3.3",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.17.2",
+    "compression": "^1.5.2",
+    "cors": "^2.8.3",
+    "dotenv": "^4.0.0",
+    "express": "^4.15.3",
+    "fanoutpub": "^1.0.3",
+    "jsonwebtoken": "^8.1.0",
+    "lodash": "^4.17.4",
+    "morgan": "^1.9.1",
+    "neo4j-driver": "^1.7.3"
+  }
+}

@@ -1,0 +1,121 @@
+/* Most of these are not needed since we use compiler to
+  automatically add relative styles
+-------------------------------------------------------- */
+@mixin transform($rot, $scale1, $scale2) {
+  -webkit-transform: rotate($rot) scale($scale1, $scale2);
+      -ms-transform: rotate($rot) scale($scale1, $scale2);
+          transform: rotate($rot) scale($scale1, $scale2);
+}
+
+@mixin keyframeAnimation($name, $duration, $count, $function) {
+  -moz-animation: $name, $duration, $count, $function;
+  -webkit-animation: $name, $duration, $count, $function;
+  -ms-animation: $name, $duration, $count, $function;
+  -o-animation: $name, $duration, $count, $function;
+  animation: $name, $duration, $count, $function;
+}
+
+// MIXIN: Transition
+@mixin transition($property, $duration, $timing-function, $delay) {
+  -webkit-transition: $property $duration $timing-function $delay;
+  -moz-transition: $property $duration $timing-function $delay;
+  -o-transition: $property $duration $timing-function $delay;
+  transition: $property $duration $timing-function $delay;
+}
+
+// try to use 'transition: property xx ease-in-out' directly instead of bloaded mixin
+// unless you need its special fix.
+@mixin simpleTransition($transition...) {
+  -webkit-transition: $transition;
+  -moz-transition: $transition;
+  -o-transition: $transition;
+  transition: $transition;
+  //Fixes a hover flicker in Chrome and a few other browsers
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+// MIXIN: Opacity
+@mixin opacity($trans) {
+  filter: alpha(opactiy=($trans * 100));
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=#{$trans * 100})";
+  -moz-opacity: $trans;
+  -khtml-opacity: $trans;
+  opacity: $trans;
+}
+
+// MIXIN: Transform
+@mixin transform($rot, $scale1, $scale2) {
+  -webkit-transform: rotate($rot) scale($scale1, $scale2);
+     -moz-transform: rotate($rot) scale($scale1, $scale2);
+       -o-transform: rotate($rot) scale($scale1, $scale2);
+      -ms-transform: rotate($rot) scale($scale1, $scale2);
+          transform: rotate($rot) scale($scale1, $scale2);
+}
+
+// MIXIN: Transform: Scale
+@mixin transform($scale1, $scale2) {
+  -webkit-transform: scale($scale1, $scale2);
+     -moz-transform: scale($scale1, $scale2);
+       -o-transform: scale($scale1, $scale2);
+      -ms-transform: scale($scale1, $scale2);
+          transform: scale($scale1, $scale2);
+}
+
+
+// MIXIN: Transform Rotate
+@mixin rotate($rot) {
+  -webkit-transform: rotate($rot);
+     -moz-transform: rotate($rot);
+       -o-transform: rotate($rot);
+      -ms-transform: rotate($rot);
+          transform: rotate($rot);
+}
+
+// MIXIN: CSS Filter Image to White
+@mixin filter-white {
+  -webkit-filter: brightness(0) invert(1);
+  filter: brightness(0) invert(1);
+  filter: white;
+  // filter: url('url("data:image/svg+xml;utf8,<svg%20xmlns='http://www.w3.org/2000/svg'><filter%20id='grayscale'><feColorMatrix%20type='matrix'%20values='0.3333%200.3333%200.3333%200%200%200.3333%200.3333%200.3333%200%200%200.3333%200.3333%200.3333%200%200%200%200%200%201%200'/></filter></svg>#grayscale");')
+}
+
+
+/* Keyframes
+-------------------------------------------------------- */
+@keyframes hide-show {
+  from {
+    opacity: 0.2;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+
+@keyframes fadeOutDown {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0);
+  }
+}
+
+.fadeOutDown {
+  -webkit-animation-name: fadeOutDown;
+  animation-name: fadeOutDown 0.35s;
+  animation-fill-mode: both;
+}
+
+@keyframes visibilityDelay {
+  99% {
+    visibility: hidden;
+  }
+  100% {
+    visibility: visible;
+  }
+}

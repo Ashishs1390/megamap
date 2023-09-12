@@ -1,0 +1,35 @@
+<div wizard steps='2' final-step-callback='PrepData'>
+    <div ng-if="Getting">Loading... </div>
+    <div ng-if="!Getting" class="row">
+        <div class="col-lg-12">
+            <div class="hpanel">
+                <div class="panel-heading">
+                    <div></div>
+                    <label>{{journey_connections.nodes[journey_connections.node_label_index.Journey[0]].properties.title}}</label> : Connections
+                </div>
+                <div class="panel-body">
+                    <form name="simpleForm" novalidate id="simpleForm">
+                        <div class="text-center m-b-md">
+                            <a ng-click="wizard.show(1)" class="btn" ng-class="{ 'btn-primary': step == 1, 'btn-default': step != 1}">Step 1 - Invite</a>
+
+                            <a ng-click="wizard.show(steps)" class="btn" ng-class="{ 'btn-primary': step == steps, 'btn-default': step != steps}">Step 2 - Finish </a>
+                        </div>
+                       
+                        <div ng-show="step == 1" class="p-m row">
+                            <ordered-subscriber subgraph='journey_connections' original='initial_journey_connections' pivot='journey_connections.node_label_index.Journey[0]'
+                                type='"journey_attendee"' label='"Person"'></ordered-subscriber>
+                        </div>
+                       
+                        <div class="text-right m-t-xs">
+                            <button ng-click="cancel()" class="btn btn-default">Cancel</button>
+                            <button ng-click="wizard.prev()" ng-disabled="step == 1" class="btn btn-default">Previous</button>
+                            <button ng-click="wizard.next()" ng-disabled="step == steps" ng-hide="step == steps" class="btn btn-default">Next</button>
+                            <button ng-click="submit()" ng-show="step == steps" class="btn btn-success">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

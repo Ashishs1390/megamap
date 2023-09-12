@@ -1,0 +1,18 @@
+<div class='node-card panel u-mb0 {{ node.properties.color ? node.properties.color + "-border-top" : "orange-border-top" }}'>
+    <div class="label pull-right {{ node.properties.color || ' u-color-normal ' }}" />
+    <div class="panel-body hpanel text-center u-mb0">
+        <div class="c-card-profile u-bg-cover clear" style="background-image: url( {{ node.properties.image_url || '/build/images/placeholder-1.png' }} )">
+        </div>
+        <h2 class="node-card__title">{{node.properties.title}}</h2>
+        <small>{{node.properties.description }}</small>
+    </div>
+    <div class="panel-footer">
+        <div class="row">
+            <div class="col-md-6"> <div class="contact-stat"><span>Attendees: </span> <strong>{{library.outgoing.bullseye_attendee[node.properties.uuid].length || 0}}</strong></div> </div>
+            <div class="col-md-6 border-left {{library.rels[library.outgoing.author[node.properties.uuid][0]].to_id == $root.Person.properties.uuid ? 'green lighten-4' : ''}}">
+                <div class="contact-stat"><span>Author: </span> <strong>{{library.nodes[library.rels[library.outgoing.author[node.properties.uuid][0]].to_id].properties.title}}</strong></div>
+            </div>
+
+        </div>
+    </div>
+</div>

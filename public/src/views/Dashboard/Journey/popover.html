@@ -1,0 +1,8 @@
+<div style="width:300px">
+  <div ng-repeat="interaction in currentJourneyInteractions">
+    <a class="filters--item btn small lighten-1 " ng-class="{{interaction.color == undefined}} ? 'orange' : '{{interaction.color}}'"  href="javascript:;" ng-click="selectInteraction(interaction.uuid);">
+      {{interaction.color}}
+      {{interaction.title}}
+    </a>
+  </div>
+</div>

@@ -1,0 +1,82 @@
+<div id="header" ng-include="'views/Graphs/Journey/header.html'"></div>
+<aside id="menu" ng-include="'views/Graphs/Journey/navigation.html'"></aside>
+
+<div id="wrapper" class="journey-details">
+  <div class="content">
+
+    <div class="row graphs" ng-repeat="stage in journey.stages">
+
+      <div class="col-xs-12 col-lg-6" ng-repeat="graphNo in [1, 2]">
+        <div class="hpanel Info">
+          <div class="panel-body">
+            <div class="header">
+              <h3 class="font-light graph-header">{{stage.title}} ({{journey.title}})</h3>
+            </div>
+            <div class="graph-sidebar">
+              <div class="btn-group">
+                <!-- INTERACTION FILTER -->
+                <p>Interaction</p>
+                <button data-toggle="dropdown" class="btn btn-default btn-sm dropdown-toggle"
+                  ng-init="stage['canvas-'+graphNo+'-interaction'] = journey.interactions[graphNo-1]">
+                  {{stage['canvas-'+graphNo +'-'+'interaction'].title}} <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                  <li ng-repeat="interaction in journey.interactions">
+                    <a ng-click="init(stage, graphNo, stage['canvas-'+graphNo+'-interaction'], stage['canvas-'+graphNo+'-x']); stage['canvas-' + graphNo + '-interaction'] = interaction">{{interaction.title | titleCase}}</a>
+                  </li>
+                </ul>
+              </div>
+              <!-- X AXIS -->
+              <div class="btn-group">
+                <p>X Axis</p>
+                <button data-toggle="dropdown" class="btn btn-default btn-sm dropdown-toggle"
+                  ng-init="stage['canvas-'+graphNo+'-x'] = axisProperties[0]">
+                  {{stage['canvas-'+graphNo+'-x'].label}} <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                  <li ng-repeat="x in axisProperties">
+                    <a ng-click="init(stage, graphNo, stage['canvas-'+graphNo +'-interaction'], stage['canvas-'+graphNo+'-x'], stage['canvas-'+graphNo+'-y_plus'], stage['canvas-'+graphNo+'-y_minus']); stage['canvas-'+graphNo+'-x'] = x">{{x.label}}</a>
+                  </li>
+                </ul>
+              </div>
+              <!-- Y+ AXIS -->
+              <div class="btn-group">
+                <p>Y+ Axis</p>
+                <button data-toggle="dropdown" class="btn btn-default btn-sm dropdown-toggle"
+                  ng-init="stage['canvas-'+graphNo+'-y_plus'] = axisProperties[1]">
+                  {{stage['canvas-'+graphNo+'-y_plus'].label}} <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a ng-click="init(stage, graphNo, stage['canvas-'+graphNo +'-interaction'], stage['canvas-'+graphNo+'-x'], stage['canvas-'+graphNo+'-y_plus'], stage['canvas-'+graphNo+'-y_minus']); stage['canvas-'+graphNo+'-y_plus'] = null">Deselect</a>
+                  </li>
+                  <li ng-repeat="x in axisProperties">
+                    <a ng-click="init(stage, graphNo, stage['canvas-'+graphNo +'-interaction'], stage['canvas-'+graphNo+'-x'], stage['canvas-'+graphNo+'-y_plus'], stage['canvas-'+graphNo+'-y_minus']); stage['canvas-'+graphNo+'-y_plus'] = x">{{x.label}}</a>
+                  </li>
+                </ul>
+              </div>
+              <!-- Y- AXIS -->
+              <div class="btn-group">
+                <p>Y- Axis</p>
+                <button data-toggle="dropdown" class="btn btn-default btn-sm dropdown-toggle">
+                  {{stage['canvas-'+graphNo+'-y_minus'].label}} <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a ng-click="init(stage, graphNo, stage['canvas-'+graphNo +'-interaction'], stage['canvas-'+graphNo+'-x'], stage['canvas-'+graphNo+'-y_plus'], stage['canvas-'+graphNo+'-y_minus']); stage['canvas-'+graphNo+'-y_minus'] = null">Deselect</a>
+                  </li>
+                  <li ng-repeat="x in axisProperties">
+                    <a ng-click="init(stage, graphNo, stage['canvas-'+graphNo +'-interaction'], stage['canvas-'+graphNo+'-x'], stage['canvas-'+graphNo+'-y_plus'], stage['canvas-'+graphNo+'-y_minus']); stage['canvas-'+graphNo+'-y_minus'] = x">{{x.label}}</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="graph">
+              <canvas ng-attr-id="{{'canvas-' + graphNo + '-' + stage.uuid}}" ng-init="init(stage, graphNo, stage['canvas-'+graphNo+'-interaction'], axisProperties[0], axisProperties[2], null)"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

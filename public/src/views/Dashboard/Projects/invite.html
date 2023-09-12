@@ -1,0 +1,12 @@
+<div class="panel-body">
+  <div ng-if='subgraph.nodes'>
+  <multi-subscriber-grid
+    subgraph="subgraph"
+    original="subgraph_initial"
+    pivot="subgraph.node_label_index.Project[0]"
+    label="'Person'"
+    type="'project_attendee'">
+  </multi-subscriber-grid>
+  <button class="btn btn-default u-mt10 pull-right" ng-click='submit()'>Submit</button>
+  </div>
+</div>

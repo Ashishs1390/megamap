@@ -1,0 +1,68 @@
+<div>
+    <div ng-if='Getting' class="c-abs-loading"><img src="../../../../build/images/loading.gif"></div>
+    <div ng-if="!Getting" class="row">
+        <div class="col-lg-12">
+            <div class="hpanel">
+                <div class="panel-heading">
+                    <div></div>
+                    {{label}} creation
+                </div>
+                <div class="panel-body">
+                    <form name="simpleForm" novalidate id="simpleForm">
+
+                        <div class="p-m">
+                            <div class="row">
+                                <div class="col-lg-3 text-center">
+                                    <i class="pe-7s-user fa-5x text-muted"></i>
+                                    <p class="small m-t-md">
+                                        <strong>{{label | titleCase}} info: </strong>
+                                        <br/><br/>Name and describe this {{label}}. These fields will help identify your
+                                        {{label}} for guests and for collecting results
+                                    </p>
+                                </div>
+                                <div class="col-lg-9 {{revised_node.properties.color}} lighten-4">
+                                    <div class="row u-pt10 u-pb15 ">
+                                        <div class="form-group col-lg-12">
+                                            <label>Title <span class="{{!revised_node.properties.title.length ? 'red-text':''}}">*</span></label>
+                                            <small class="u-float-right text-mute">{{revised_node.properties.title.length || 0}} / 40 MAX characters</small>
+                                            <input type="" value="" id="" class="form-control" ng-model="revised_node.properties.title" placeholder="title">
+                                        </div>
+                                        <div class="form-group col-lg-12">
+                                            <label>Description <span class="{{!revised_node.properties.description.length ? 'red-text':''}}">*</span></label>
+                                            <small class="u-float-right text-mute">{{revised_node.properties.description.length || 0}} / 140 MAX characters</small>
+                                            <input type="text" value="" id="" class="form-control" name="" placeholder="description" ng-model="revised_node.properties.description">
+                                        </div>
+                                        <div class="form-group col-lg-12">
+                                            <label>Image </label>
+                                            <small> Recommend dimension 480x160 </small>
+                                            <input type="" value="" id="" class="form-control" placeholder="image url" ng-model="revised_node.properties.image_url">
+                                        </div>
+                                        <div class="col-xs-12">
+                                            <div class="form-inline">
+                                                Maturity Level:
+                                                <select class="form-control" ng-model="revised_node.properties.maturity_level" ng-options='option for option in ["1-Ad-hoc","2-Managed","3-Integrated","4-Optimized","5-Innovating"]'>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="text-right m-t-xs">
+                            <button ng-click="cancel()" class="btn btn-default">Cancel</button>
+                            <button ng-click="submit()"  class="btn btn-success">Submit</button>
+                        </div>
+
+
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

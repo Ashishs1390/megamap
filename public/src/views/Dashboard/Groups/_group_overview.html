@@ -1,0 +1,33 @@
+<div class="inmodal">
+  <div class="modal-header">
+    <div class="note-creator">
+      <h3 class="row">
+        <div class="col-sm-12">
+          {{ group.name }} members
+        </div>
+      </h3>
+    </div>
+  </div>
+
+  <div class="modal-body" ng-click="cancel()" >
+    <div ng-repeat="label in members.labels">
+      <div>
+        <h4>{{label}}</h4>
+      </div>
+      <div class="c-flex c-flex--2 c-flex--stretch c-flex--wrap c-subscriber-grids">
+        <small-card ui-sref="workshop.journey({id: node.properties.uuid})" class="c-flex__col" ng-repeat='node in members.nodes | filter: node.labels.includes(label)' subgraph="subgraph" node="node" hide="'js-hide'"></small-card>
+      </div>
+    </div>
+  </div>
+  <br/>
+
+  <div class="modal-footer row">
+    <button class="btn btn-secondary" ng-click="cancel()">
+      Cancel
+    </button>
+    <button class="btn btn-primary" ng-click="cancel(); view(group)">
+      View Group
+    </button>
+  </div>
+  <br/>
+</div>

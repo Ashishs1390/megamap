@@ -1,0 +1,7 @@
+<div class="Kpi-dashboard">
+    <div class="content">
+        
+        <div ng-if='$root.Person.role == "tenant"' ng-controller='kpiTenantCtrl' ng-include="'views/Dashboard/Kpi/library.html'"></div>
+        <div ng-if='$root.Person.role == "admin"' ng-controller='kpiAdminCtrl' ng-include="'views/Dashboard/Kpi/library.html'"></div>
+    </div>
+</div>

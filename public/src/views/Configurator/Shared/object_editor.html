@@ -1,0 +1,65 @@
+<div class="row this-one">
+    <div class="col-lg-3 text-center">
+        <i class="pe-7s-user fa-5x text-muted"></i>
+        <p class="small m-t-md">
+            <strong>{{label | titleCase}} info: </strong>
+            <br/><br/>Name and describe this {{label}}. These fields will help identify your {{label}} for guests and for
+            collecting results
+        </p>
+    </div>
+    <div class="col-lg-9 lighten-4">
+        <div class="row u-pt10 u-pb15 ">
+            <div class="form-group col-lg-12">
+                <label>Title <span class="{{!revised_node.properties.title.length ? 'red-text':''}}">*</span></label>
+                <small class="u-float-right text-mute">{{revised_node.properties.title.length || 0}} / 40 MAX characters</small>
+                <input type="" value="" id="" class="form-control" ng-change="updateDescription()" ng-model="revised_node.properties.title" placeholder="title">
+            </div>
+            <div class="form-group col-lg-12">
+                <label>Description <span class="{{!revised_node.properties.description.length ? 'red-text':''}}">*</span></label>
+                <small class="u-float-right text-mute">{{revised_node.properties.description.length || 0}} / 140 MAX characters</small>
+                <input type="text" value="" id="" class="form-control" name="" ng-focus="descOnFocus()" placeholder="description" ng-model="revised_node.properties.description">
+            </div>
+            <div class="form-group col-lg-12">
+                <label>Image </label>
+                <small> Recommend dimension 480x160 </small>
+                <input type="" value="" id="" class="form-control" placeholder="image url" ng-model="revised_node.properties.image_url">
+            </div>
+
+            <div class="col-lg-12" ng-show="label == 'Interaction' || revised_node.labels.indexOf('Interaction') !=-1">
+                <div class="c-color-palettes">
+                    <div>
+                        <label>Color</label>
+                    </div>
+                    <div class="c-color-palettes__item" ng-repeat='color in $root.colors'>
+                        <div class='panel {{color}}' style='height:25px; width:25px' ng-click='revised_node.properties.color = color' title="{{color}}"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12" ng-show="label == 'Interaction' || revised_node.labels.indexOf('Interaction') !=-1">
+                <div class="c-color-palettes">
+                    <div>
+                      <label>Vote Configuration</label>
+                    </div>
+                    <span class="">
+                      <input type="checkbox" ng-model="revised_node.properties.hide_important" ng-change="">
+                      Hide Important Votes
+                    </span>
+                    &nbsp;&nbsp;
+                    <span>
+                      <input type="checkbox" ng-model="revised_node.properties.hide_painful" ng-change="">
+                      Hide Painful Votes
+                    </span>
+                </div>
+            </div>
+            <div class="col-xs-12" ng-show="label=='Strategy'">
+                <div class="form-inline">
+                    <div>
+                        <label>Type</label>
+                    </div>
+                    <select class="form-control" ng-model="revised_node.properties.strategy_type" ng-options='option for option in ["1-Business", "2-Brand", "3-Experience", "4-Technology"]'>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

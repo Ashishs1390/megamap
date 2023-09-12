@@ -1,0 +1,29 @@
+<ul class="nav c-nav-sidebar">
+
+    <li>
+        <a ui-sref="dashboard.journey" ui-sref-opts="{inherit: false}"><span class="nav-label">My Libraries</span></a>
+    </li>
+    <li ng-if="$root.subdomain === 'google'">
+        <a ui-sref="dashboard.project({uuid:'a8d639a0-631b-11ea-a42d-7d96e5c08366'})" ui-sref-opts="{inherit: false}"><span class="nav-label">My Certification</span></a>
+    </li>
+
+    <li ui-sref-active="active">
+        <a ui-sref="dashboard.projects"><span class="nav-label">My Projects</span></a>
+    </li>
+    <li ui-sref-active="active" ng-click="expandBullseyes = true">
+        <a ui-sref="workshopcard.bullseye"><span class="nav-label">My Bullseye Maps</span></a>
+    </li>
+    <!-- <li>
+        <a ui-sref="account"><span class="nav-label">Edit Profile</span></a>
+    </li> -->
+    <li>
+       <a ng-click="$root.logout()"><span class="nav-label">Logout</span></a>
+   </li>
+
+    <!-- <li>
+        <a ui-sref="workshopcard.bullseye"><span class="nav-label">My Strategies</span></a>
+    </li>
+    <li>
+        <a ui-sref="dashboard.projects"><span class="nav-label">My Projects</span></a>
+    </li> -->
+</ul>

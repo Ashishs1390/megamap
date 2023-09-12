@@ -1,0 +1,11 @@
+<div id="navigation">
+        <div ng-include="'views/Shared/Navigation/profileArea.html'"/>
+         <ul side-navigation class="nav c-nav-sidebar" id="side-menu">
+             <li ui-sref-active="active"><a ui-sref="dashboard.profile"><i class="fa arrow pull-left u-pt10 u-pr10"></i>Return to<br>Dashboard</a></li>
+             <li><a ui-sref="reports.profile({uuid:profile_uuid})">Generate Report</a></li>
+             <li><a ng-show='PopQuickReportModal' ng-click="PopQuickReportModal(profile_uuid)">View Summary</a></li>
+             <li>
+                 <a href="#" ng-show="PopAttendeeModal" ng-click="PopAttendeeModal(profile_uuid)" ><span class="nav-label">Manage Attendees</span></a>
+             </li>
+         </ul>
+     </div>

@@ -1,0 +1,50 @@
+<div class="col-md-3 hpanel white">
+    <div class='col-md-12'>
+        <h1>Relate </h1>
+        <hr/>
+    </div>
+    <uib-accordion close-others="oneAtATime">
+        <uib-accordion-group>
+            <uib-accordion-heading>
+                <div class='row '>
+                    Create
+                    <i class="fa fa-chevron-down"></i>
+                </div>
+            </uib-accordion-heading>
+            <div class="row">
+                <div class='col-xs-12'>
+                    <label class='col-xs-12'> <input ng-model='$parent.$parent.$parent.$parent.rel_type'/> : RelType</label>
+                    <hr/>
+                    <label class='col-xs-12'> <input ng-model='$parent.$parent.$parent.$parent.rel.progress'/> : Progress</label>
+                    <hr/>
+                    <label class='col-xs-12'> <input type='number' ng-model='$parent.$parent.$parent.$parent.rel.order'/> : Order</label>
+                </div>
+                <div class='col-xs-12'>
+                    <button ladda="posting" ng-click="submit()" class="btn green lighten-4" data-style="expand-left">
+                                <span class="ladda-label">Relate</span>
+                            </button>
+                </div>
+            </div>
+        </uib-accordion-group>
+        <uib-accordion-group>
+
+            <uib-accordion-heading>
+                <div class='row '>
+                    View Existing
+                    <i class="fa fa-chevron-down"></i>
+                </div>
+            </uib-accordion-heading>
+            <div class="row">
+                <div class='row ec_dev' ng-repeat='rel in result_subgraph.rels'>
+                    <div class='col-xs-12'>Type: {{rel.type}} </div>
+                    <div class='col-xs-6 '>Created: {{rel.properties.created_at | date}} </div>
+                    <div class='col-xs-3 '>Progress: {{rel.properties.progress}} </div>
+                    <div class='col-xs-3 '>Order: {{rel.properties.order}} </div>
+                </div>
+                <hr/>
+            </div>
+    </uib-accordion>
+
+
+
+</div>

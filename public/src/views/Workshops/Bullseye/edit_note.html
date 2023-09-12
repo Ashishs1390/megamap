@@ -1,0 +1,188 @@
+<div class="inmodal">
+    <div class="modal-header text-center row">
+        <div class="note-creator note-creator-interaction">
+
+            <h3>Note Creator</h3>
+
+            <div class="note-creator--flex">
+                <div class='note-creator--step note-creator--step-interaction'>
+                    <h4>
+                        1. Choose stage
+                        <span class='{{((!subgraph.node_label_index || !subgraph.node_label_index.Stage || subgraph.node_label_index.Stage.length == 0)) ? "red-text" : "green-text"}} lighten-3'> *</span>
+                    </h4>
+
+                    <div class="p-m row">
+                        <single-subscriber subgraph='subgraph' original='eventScope.bullseyeSubGraph' pivot='pivot' label='"Stage"' type='"note_stage"'
+                            pool='stage_pool'></single-subscriber>
+                    </div>
+                </div>
+                <div class='note-creator--step note-creator--step-interaction'>
+                    <h4>
+                        2. Choose note
+                        <span class='{{((!subgraph.node_label_index || !subgraph.node_label_index.Interaction || subgraph.node_label_index.Interaction.length == 0)) ? "red-text" : "green-text"}} lighten-3'> * </span>
+                    </h4>
+
+                    <div class="p-m row">
+                        <single-subscriber subgraph='subgraph' original='eventScope.bullseyeSubGraph' pivot='pivot' label='"Interaction"' type='"note_interaction"'
+                            pool='interaction_pool'></single-subscriber>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal-body">
+        <h4>
+            3. Add text to your note
+            <span class="{{note.properties.description.length ? 'green-text' : 'red-text'}}"> * </span>
+        </h4>
+        <div class="row">
+            <div class="col-lg-12">
+                <form name="simpleForm" novalidate id="simpleForm">
+                    <div class="p-m {{eventScope.bullseyeSubGraph.nodes[eventScope.bullseyeSubGraph.rels[eventScope.bullseyeSubGraph.outgoing.note_interaction[note.properties.uuid][0]].to_id].properties.color || 'orange'}} lighten-3">
+                        <div class='row '>
+                            <div class='col-xs-12'>
+                                <div class="charcount"> {{note.properties.description.length || 0}} / 140 MAX characters</div>
+                                <textarea required placeholder="Add text to your note" type='text' class='col-xs-12'
+                                    ng-model='note.properties.description' />
+                            </div>
+                        </div>
+                        <uib-accordion>
+                            <uib-accordion-group ng-if='note.properties.image_url' is-open='note.drawing_panel_open' heading="Current Drawing">
+                                <div class='{{eventScope.SelectedInteraction.properties.color || "grey"}} lighten-3 row'>
+                                    <img ng-src="{{note.properties.image_url}}">
+                                </div>
+                            </uib-accordion-group>
+                            <uib-accordion-group heading="Add drawing to note">
+                                <div class='{{eventScope.SelectedInteraction.properties.color || "grey"}} lighten-3 row'>
+                                    <signature-pad accept="accept" class='{{eventScope.SelectedInteraction.properties.color}} lighten-5 white-border' style='border:5px solid'
+                                        clear="clear" style='width:100%' height="500" width="500" disabled="false"></signature-pad>
+                                    <button type="button" class="mob-button btn btn-default red lighten-5 pull-left" ng-click="clear()">Clear Drawing</button>
+                                    <button type="button" class="mob-button btn btn-default pull-right green lighten-4" ng-click="note.properties.image_url = accept().dataUrl; clear();note.drawing_panel_open=true;">Set Note Image</button>
+                                </div>
+                            </uib-accordion-group>
+                        </uib-accordion>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <h4>4. Add URL link</h4>
+        <div class="row">
+            <div class="col-lg-12">
+                <form name="simpleForm" novalidate id="simpleForm">
+                    <div class="col-lg-12">
+                        <div class="row u-pt10 u-pb15">
+                            <div class="form-group col-lg-12">
+                                <input type="url" id="" name="" class="form-control" value="" placeholder="Add URL with http:// or https:// to your note" ng-model="note.properties.external_url">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <h4>5. Add some Qual Data</h4>
+        <div class="row">
+            <div class="col-lg-12">
+                <form name="simpleForm" novalidate id="simpleForm">
+                    <div class="col-lg-12">
+                        <div class="row u-pt10 u-pb15 ">
+                            <div class="form-group col-lg-6">
+                                <label>Qual Date</label>
+                                <input type="date" id="" class="form-control" ng-model="note.properties.qual_date" date-object>
+                            </div>
+                            <div class="form-group col-lg-6">
+                                <label>Number of interviews</label>
+                                <input type="number" value="0" id="" class="form-control" ng-model="note.properties.number_of_interview" placeholder="">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <h4>6. Add some Quant Data</h4>
+        <div class="row">
+            <div class="col-lg-12">
+                <form name="simpleForm" novalidate id="simpleForm">
+                    <div class="col-lg-12">
+                        <div class="row u-pt10 u-pb15 ">
+                            <div class="form-group col-lg-6">
+                                <label>Quant Date</label>
+                                <input type="date" id="" class="form-control" ng-model="note.properties.quant_date" date-object>
+                            </div>
+                            <div class="form-group col-lg-6">
+                                <label>Sample Size</label>
+                                <input type="number" value="0" id="" class="form-control" ng-model="note.properties.sample_size" placeholder="">
+                            </div>
+                            <div class="form-group col-lg-6">
+                                <label>Average Importance</label>
+                                <input type="number" value="0" id="" class="form-control" ng-model="note.properties.average_importance" placeholder="">
+                            </div>
+                            <div class="form-group col-lg-6">
+                                <label>Average Effectiveness</label>
+                                <input type="number" value="0" id="" class="form-control" ng-model="note.properties.average_effectiveness" placeholder="">
+                            </div>
+                            <div class="form-group col-lg-6">
+                                <label>Gap</label>
+                                <input type="number" value="0" id="" class="form-control" ng-model="note.properties.gap" placeholder="">
+                            </div>
+                            <div class="form-group col-lg-6">
+                                <label>Correlation</label>
+                                <input type="number" value="0" id="" class="form-control" ng-model="note.properties.correlation" placeholder="">
+                            </div>
+
+
+                            <div class="form-group col-lg-6">
+                                <label>CXI Priority</label>
+                                <input type="number" value="0" id="" class="form-control" ng-model="note.properties.cxi_priority" placeholder="">
+                            </div>
+
+                            <div class="form-group col-lg-6">
+                                <label>CXI % Complete</label>
+                                <input type="number" value="0" id="" class="form-control" ng-model="note.properties.cxi_percent_complete" placeholder="">
+                            </div>
+
+                            <div class="form-group col-lg-6">
+                                <label>Kano Quadrant</label>
+                                <div class="dropdown" uib-dropdown>
+                                    <a uib-dropdown-toggle href>
+                                        <p class="c-role-label" ng-show='!note.properties.kano_quadrant'><span>None</span><b class="caret"></b></p>
+                                        <p class="c-role-label" ng-show='note.properties.kano_quadrant'><span>{{note.properties.kano_quadrant}}</span><b class="caret"></b></p>
+
+                                    </a>
+                                    <ul class="animated flipInX m-t-xs" uib-dropdown-menu>
+                                        <li class="u-p5 u-pl20">Select</li>
+                                        <li class="divider"></li>
+                                        <li ng-click='note.properties.kano_quadrant="Basic"'><a>Basic</a></li>
+                                        <li ng-click='note.properties.kano_quadrant="Excitement"'><a>Excitement</a></li>
+                                        <li ng-click='note.properties.kano_quadrant="Performance: Key Driver"'><a>Performance: Key Driver</a></li>
+                                        <li ng-click='note.properties.kano_quadrant="Performance: Secondary"'><a>Performance: Secondary</a></li>
+                                        <li ng-click='note.properties.kano_quadrant=""'><a> None</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal-footer row">
+    <div class="text-right m-t-xs">
+        <button ng-if='!posting' type="button" class="btn btn-danger u-float-left" ng-click="PopDeleteAlert()">Delete this Note</button>
+        <button ng-if='!posting' type="button" class="btn btn-default" ng-click="cancel()">Cancel</button>
+
+        <button ladda="posting" ng-click="submit()" ng-if='eventScope.SelectedStage && eventScope.SelectedInteraction && note.properties.description.length >0 && note.properties.description.length < 140'
+            class="btn green lighten-4" data-style="expand-left">
+                <span class="ladda-label">Push Update</span>
+            </button>
+    </div>
+</div>
+</div>

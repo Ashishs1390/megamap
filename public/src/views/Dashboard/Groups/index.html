@@ -1,0 +1,61 @@
+<div class="content">
+  <div class="hpanel Info">
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-xs-12 col-sm-8">
+          <h2 class="c-section-title">Groups</h2>
+        </div>
+        <div class="col-xs-12 col-sm-4 u-mt10">
+          <div class="row">
+            <div class="col-xs-12">
+              <input type="text" class="form-control float-right" ng-model="groupFilter" placeholder="filter groups">
+            </div>
+            <!-- <div class="col-xs-4">
+              <button class="btn btn-primary btn-block" ng-click="CreateGroup('Journey');">
+                Create Group
+              </button>
+            </div> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div ng-if='Getting' class="c-abs-loading"><img src="/build/images/loading.gif" /></div>
+  <div class="c-flex c-flex--3 c-flex--stretch c-flex--wrap c-dashboard-cards">
+    <div class="c-flex__col" ng-repeat='group in groups | filter: groupFilter'>
+      <div class='library_card_wrapper'>
+        <div ng-if="group.author.uuid === $root.Person.properties.uuid" class="label gold gold--with-margin pull-right">Author</div>
+
+        <div class='node-card panel u-mb0'>
+          <div class="label pull-right {{ group.color || ' u-color-normal ' }}" />
+          <div class="panel-body hpanel text-center u-mb0">
+            <div class="c-card-profile u-bg-cover clear" style="background-image: url( {{ group.image_url || '/build/images/placeholder-1.png' }} )">
+            </div>
+            <h3 class="node-card__title">{{group.name}}</h3>
+            <small>{{group.description }}</small>
+          </div>
+          <div class="panel-footer">
+            <div class="row">
+              <div class="col-md-6 border-left">
+                <div class="contact-stat" title={{group.author.email}}>
+                  <span>Author: </span> <strong>{{group.author.firstname || group.author.email}}</strong>
+                </div>
+              </div>
+              <div class="col-md-6 border-left">
+              <div class="contact-stat"><span>Type: </span> <strong>{{group.type | titleCase}}</strong></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class='u-table library-card-groupBtns u-bg-grey'>
+        <a ng-click="GroupOverview(group)" class="u-table-cell">Overview</a>
+        <a ng-click="ViewGroup(group, ViewGroup)" class="u-table-cell">View Group</a>
+        <a ng-click="DeleteGroup(group)" class="u-table-cell">Delete Group</a>
+      </div>
+    </div>
+  </div>
+  <!-- to fix flex alignement issue -->
+  <div class="c-flex__col"></div>
+  <div class="c-flex__col"></div>
+  </div>
+</div>

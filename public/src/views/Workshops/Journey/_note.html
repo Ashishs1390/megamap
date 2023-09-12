@@ -1,0 +1,295 @@
+  <div class="hpanel note-hpanel" id="note_{{note.uuid}}" ng-init="initializeLimits(note, stage.uuid)" rels="{{journey.uuid}}_{{stage.uuid}}_{{note.uuid}}_{{note.rels.interaction.uuid}}_{{note.rels.persona.uuid}}"
+       ng-class="{
+         'mergeMode':
+            (mergeMode && mergeObject.primary !== note.uuid && mergeObject.others.indexOf(note.uuid) < 0) ||
+            ((mot_connections.mot === note.uuid || mot_connections.notes.includes(note.uuid)) && showMotConnections) ||
+            ((showConnections || connectMode) && (connections.connection !== note.uuid && !connections.notes.includes(note.uuid) && !connections.connections.includes(note.uuid)))
+       }"
+       ng-click="mergeMode && mergeObject.primary !== note.uuid ? select_for_merge(note) : ''; (connectMode && readyForConnect) ? select_for_connect(note) : '';">
+
+    <div class="panel-heading {{note.connection ? 'blue-grey' : (journey.high_contrast ? 'black' : (note.rels.interaction.color || 'orange'))}} lighten-2 note-header">
+      <div class="media social-profile clearfix" title="{{note.rels.author.email}}">
+        <img src="{{note.rels.author.image_url || '/build/images/user-default.png'}}" alt="note author" onerror="this.onerror=null;this.src='/build/images/user-default.png';">
+        <span class="note-author">{{note.rels.author.firstname}}</span>
+      </div>
+      <div class="note-order" title="Order in Sequence">{{sortedCount(note)}}</div>
+      <small class="text-white">{{note.component_type || note.rels.interaction.title}}</small>
+      <div class="icons" ng-hide="mergeMode || connectMode">
+        <i class="mot pointer" title="Moment of Truth" ng-show="note.mot || note.mot_solution" ng-click="OpenMOTsettings(note)">MOT{{note.mot_solution ? 'S' : ''}}</i>
+         <!-- <i ng-if="note.isMilestoneLinked" ng-click="goToProject(note)" ng-class="[getClass(note.progress)]" class="fa icon-cone" title="Linked to one or multiple projects"></i> -->
+         <img ng-if="note.isMilestoneLinked" ng-click="goToProject(note)" ng-src="{{getImgName(note.progress)}}" class="note_cone_icon" ng-attr-title="This note improvement is {{note.progress}}% completed as part of a Project:{{note.projectName}}"  height="10px" width="10px" alt="">
+        <!--<i class="fa fa-comment disabled" title="Quant or Qual data is added."></i>
+        <i class="fa fa-heartbeat disabled" title="Live thresholds"></i> -->
+        <i class="fa fa-paint-brush pointer" title="Toggle Drawing" ng-click='showDrawing = !showDrawing'
+           ng-show="note.drawing_url"></i>
+        <i class="fa fa-plug" title="Connect Components" ng-click='editDescription = false; connect_note_component(note)'
+           ng-if="$root.Person.role !== 'attendee' && note.connection"></i>
+        <i class="fa fa-compress" title="Merge Notes" ng-click='editDescription = false; updateNote(note); merge_into_note(note)'
+           ng-show="!note.connection && (['admin', 'tenant'].includes($root.Person.role) || $root.Person.properties.power_user)"></i>
+        <i class="fa fa-gear edit-note" ng-click='open_edit_note(note, $index + 1)'
+           ng-show="$root.Person.role !== 'attendee' || $root.Person.properties.uuid === note.rels.author.uuid"></i>
+      </div>
+    </div>
+
+    <div ng-show="showDrawing" class="note panel-body note-drawing {{note.static ? 'white' : ( note.connection ? 'blue-grey' : (note.rels.interaction.color || 'orange'))}} lighten-5 clearfix" ng-click="myStyle={'background-color':'blue'}"
+      ng-style="{'background-image': 'url('+ (showDrawing ? note.drawing_url : '') +')'}">
+    </div>
+
+    <div ng-hide="showDrawing" class="note panel-body {{note.static ? 'white' : ( note.connection ? 'blue-grey' : (note.rels.interaction.color || 'orange'))}} lighten-5 clearfix" ng-click="myStyle={'background-color':'blue'}"
+      ng-style="{'background-image': 'url('+ (showDrawing ? note.drawing_url : '') +')'}">
+
+      <a ng-if="note.static" ng-href="{{stage.workshop_static_image_ref || journey.static_image_ref}}" target="_blank">
+        <img class="static-image" ng-src="{{stage.workshop_static_image_ref || journey.static_image_ref}}" />
+        <br/>
+      </a>
+      <div ng-if="note.static" ng-bind-html="stage.workshop_static_text"></div>
+      <div ng-show="mergeMode || connectMode" class="mergeNoteOverlay parentNoteForMerge"
+        ng-class="{
+          parentNoteForMerge: mergeMode && mergeObject.primary === note.uuid,
+          childNoteForMerge: mergeMode && mergeObject.primary !== note.uuid
+        }">
+        <div ng-show="mergeMode && mergeObject.primary === note.uuid" class="mergeNoteInner">
+          <a class="btn btn-warning btn-xs pull-right" ng-click="finish_merge()">Merge</a>
+          <a class="btn btn-secondary btn-xs pull-right" ng-click="cancel_merge()">Cancel</a>
+          <p>PRIMARY [KEEP NOTE]</p>
+          <small>click other notes to be merged</small>
+          <!-- <a class="btn btn-secondary btn-sm" ng-click="cancel_merge()">Cancel Merge</a> -->
+        </div>
+        <div ng-show="mergeMode && mergeObject.others.indexOf(note.uuid) > -1 && mergeObject.primary !== note.uuid" class="mergeNoteInner orange lighten-1">
+          <a class="btn btn-indigo btn-xs pull-right" ng-click="switch_primary_for_merge(note)">Make Primary</a>
+          <p>CLICK TO DESELECT</p>
+        </div>
+
+        <div ng-show="connectMode && (connections.connection === note.uuid || connections.notes.includes(note.uuid) || connections.connections.includes(note.uuid))" class="mergeNoteInner">
+          <a class="btn btn-warning btn-xs pull-right" ng-click="finish_connect()" ng-if="note.connection">Finish</a>
+          <a class="btn btn-secondary btn-xs pull-right" ng-click="cancel_connect()">Cancel</a>
+          <!-- <a class="btn btn-secondary btn-xs pull-right" ng-click="reset_connections(note)" ng-if="note.connection">Reset</a> -->
+          <small>Connect note components</small>
+        </div>
+      </div>
+
+      <!-- video display -->
+      <div class="close-video" ng-show="showVideo" ng-click="showVideo = false">
+        [x]
+      </div>
+      <div class="video-container" style="outline:0;box-shadow:none" ng-if="showVideo">
+        <video controls autoplay>
+          <source ng-src="{{note.video_url | trustUrl}}">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+
+      <!-- touchpoint image -->
+      <div class="media social-profile clearfix"></div>
+      <div class="note-date" ng-hide="showVideo">
+
+        <div style="display:inline-block" class="connections pointer" ng-show="note.connection" ng-click='toggle_view_connections(note.uuid)'>
+          <count>{{note.rels.connected_note_count}}</count>
+          <i class="fa fa-eye" title="View Connections"></i>
+        </div>
+
+        <div style="display:inline-block" class="connections pointer" ng-show="note.mot && !note.mot_solution" ng-click='toggle_view_mots(note.uuid)'>
+          <!-- <count>{{note.rels.connected_note_count}}</count> -->
+          <i class="fa fa-eye" title="View MOTs"></i>
+        </div>
+
+        <i class="fa fa-unlock" aria-hidden="true" title="Externally Visible" ng-show="note.external"></i>
+        {{note.updated_at | date}} ({{note.uuid.substring(0, note.uuid.length - 32)}})
+
+        <i class="fa fa-play pull-right" aria-hidden="true" ng-show="note.video_url" ng-click="showVideo = true">&nbsp;<u><a href="javascript:;">play video</a></u></i>
+      </div>
+      <textarea autofocus class="note-content edit-description" ng-model="note.description" ng-show="editDescription">
+      </textarea>
+      <div class="note-content social-content m-t-md" ng-class="{'has-touchpoint-image': note.touch_point_icon, 'small-text': note.description.length > 140}"
+        ng-hide="editDescription" ng-click="editDescription = (($root.Person.role === 'admin' || $root.Person.properties.uuid === note.rels.author.uuid) && !mergeMode)"
+        ng-bind="note.description">
+      </div>
+      <div class="touchpoint-image" >
+        <img ng-if="note.touch_point_icon" ng-src="{{note.touch_point_icon}}" ng-href="note.touch_point_icon"/>
+
+        <a class="external-image" ng-if="note.external_url" ng-href="{{note.external_url}}" target="_blank">
+          <i class="fa fa-external-link"></i>
+        </a>
+
+      </div>
+      <div class="clearfix"></div>
+      <!-- persona title -->
+      <div class="note-persona" ng-hide="showVideo">
+        <span ng-hide="note.connection">
+          Persona: {{note.rels.persona.title}}
+        </span>
+        <!-- <span ng-click="showDrawing = !showDrawing" class="pull-right" ng-show="note.drawing_url" title="Toggle Drawing">
+          <i class="fa fa-paint-brush"></i>
+        </span> -->
+        <h5 class="pull-right" style="z-index:100;" ng-show="showPositions" title="Position">
+          <strong>{{$index + 1}}</strong>
+        </h5>
+      </div>
+      <!-- exit inline edit -->
+      <a class="pull-right inline-edit-close" ng-show="editDescription" ng-click="editDescription = false; updateNote(note)">save</a>
+    </div>
+    <div class="panel-footer contact-footer">
+      <div class="row noselect">
+
+        <div class="col-xs-3">
+          <div class="contact-stat votes" title="Importance" ng-hide="note.rels.interaction.hide_important">
+            <span ng-click='vote("vote", note, stage.uuid, $event)'>
+              <b class="vote-count" ng-show="journey.show_votes || $root.Person.role != 'attendee'">{{note.rels.votes_count || 0}}</b>
+              <i class="fa {{note.rels.user_vote ? 'fa-exclamation-circle' : 'fa-exclamation circle'}}"></i>
+              <!-- <i class="fa {{note.rels.user_vote ? 'fa-thumbs-up' : 'fa-thumbs-o-up'}}"></i> -->
+              <!-- <span class="text">Important</span> -->
+            </span>
+          </div>
+        </div>
+        <div class="col-xs-6"
+          ng-click="showComments = !showComments; FilterObj.isFilterChanged = FilterObj.isFilterChanged ? false : false ; focusCommentInput('#note_'+note.uuid)">
+          <div class="contact-stat comments" title="Click to comment">
+            <b class="comment-count">{{note.rels.comments_count || 0}}</b>
+            <i class="fa {{note.rels.commenter ? 'fa-comment' : 'fa-comment-o'}}"></i>
+            <span class="{{showComments ? 'show-comments' : 'hide-comments'}} text">
+              Comments
+            </span>
+          </div>
+        </div>
+        <div class="col-xs-3">
+          <div class="contact-stat pains" title="Pain Point" ng-hide="note.rels.interaction.hide_painful">
+            <span ng-click='vote("pain", note, stage.uuid, $event)'>
+              <i class="{{note.rels.user_pain ? 'fas' : 'far'}} fa5-angry"></i>
+              <!-- <i class="fa {{note.rels.user_pain ? 'fa-thumbs-down' : 'fa-thumbs-o-down'}}"></i> -->
+              <b class="vote-count" ng-show="journey.show_votes || $root.Person.role != 'attendee'">{{note.rels.pains_count || 0}}</b>
+              <!-- <span class="text">Painful</span> -->
+            </span>
+          </div>
+        </div>
+      </div>
+      <div ng-show="showComments && !FilterObj.isFilterChanged" class="comments-panel">
+      <div class="social-talk">
+        <!-- beginning -->
+        <div class="media social-profile clearfix" id="comment_{{comment.uuid}}" ng-repeat="comment in note.rels.comments | orderBy: 'created_at'">
+          <a class="pull-left" title="{{comment.author.email}}">
+            <img ng-src="{{comment.author.image_url || '/build/images/user-default.png'}}" alt="comment author" onerror="this.onerror=null;this.src='/build/images/user-default.png';">
+          </a>
+          <div class="media-body">
+            <div>
+              <span class="font-bold">{{comment.author.firstname}}</span>
+              <small class="text-muted">{{comment.created_at | date}}</small>&nbsp;&nbsp;
+              <small ng-show="comment.rank && comment.rank > 0" class="font-bold">
+                {{comment.rank}}/{{starcount}}
+                <i class="fa fa-star"></i>
+              </small>
+              <div class="pull-right" style="cursor:pointer" ng-show="$root.Person.role === 'admin' || $root.Person.role === 'tenant' || $root.Person.properties.uuid === comment.author.uuid">
+                <i class="fa fa-trash fa-fw"
+                   ng-click="deleteComment(note, comment)"
+                   title="delete comment (*when deleting multiple new comments, please refresh page before delete action)">
+                </i>
+                <i class="fa fa-pencil fa-fw"
+                   ng-click="editCommentMode = !editCommentMode"
+                   title="edit comment (*when editing multiple new comments, please refresh page before edit action)">
+                </i>
+              </div>
+            </div>
+            <!-- <div class="clearfix"></div> -->
+            <hr>
+            <div class="social-content">
+              <div ng-hide="editCommentMode">
+                <span ng-show="comment.voc" class="voc">[ VoC ]</span>
+                <span ng-show="comment.task" class="voc">[ Task ]</span>
+                <span ng-show="comment.pmo" class="voc">[ PMO ]</span>
+                <span ng-show="comment.merged_in_at" class="voc">
+                  [ Merged {{comment.merged_in_at | date}} ]
+                  <span ng-show="comment.merged_from_note">[ {{comment.votes_count}}, {{comment.pains_count}} ] *</span>
+                </span>
+                <br ng-show="comment.voc || comment.merged_in_at">
+                <span class="comment-text">{{comment.comment}}</span>
+              </div>
+
+              <div ng-show="editCommentMode">
+                <textarea autogrow rows="2" style="padding:4px;margin:-5px;" class="form-control" ng-model="comment.comment"></textarea>
+
+                <div class="text-right">
+                  <input type="button" class="btn btn-primary btn-sm" value="Save" ng-click="updateComment(note, comment); editCommentMode = false;" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="media social-profile clearfix" id="comment_{{comment.uuid}}" ng-repeat="comment in newComments[note.uuid]">
+          <a class="pull-left" title="{{comment.author.email}}">
+            <img ng-src="{{comment.author.image_url || '/build/images/user-default.png'}}" alt="comment author" onerror="this.onerror=null;this.src='/build/images/user-default.png';">
+          </a>
+          <div class="media-body">
+            <span class="font-bold">{{comment.author.firstname}}</span>
+            <small class="text-muted">{{comment.created_at | date}}</small>&nbsp;&nbsp;
+            <small ng-show="comment.rank && comment.rank > 0" class="font-bold">
+              {{comment.rank}}/{{starcount}}
+              <i class="fa fa-star"></i>
+            </small>
+            <div class="pull-right" style="cursor:pointer" ng-show="$root.Person.role === 'admin' || $root.Person.role === 'tenant' || $root.Person.properties.uuid === comment.author.uuid">
+              <i class="fa fa-trash fa-fw"
+                 ng-click="deleteComment(note, comment)"
+                 title="delete comment (*when deleting multiple new comments, please refresh page before delete action)">
+              </i>
+              <i class="fa fa-pencil fa-fw"
+                 ng-click="editCommentMode = !editCommentMode"
+                 title="edit comment (*when editing multiple new comments, please refresh page before edit action)">
+              </i>
+            </div>
+            <div class="social-content">
+              <div ng-hide="editCommentMode">
+                <span ng-show="comment.voc" class="voc">[ VoC ]</span>
+                <span ng-show="comment.task" class="voc">[ Task ]</span>
+                <span ng-show="comment.pmo" class="voc">[ PMO ]</span>
+                <span class="comment-text">{{comment.comment}}</span>
+              </div>
+
+              <div ng-show="editCommentMode">
+                <textarea autogrow rows="2" style="padding:4px;margin:-5px;" class="form-control" ng-model="comment.comment"></textarea>
+
+                <div class="col-xs-4 text-right">
+                  <input type="button" class="btn btn-sm btn-primary" value="Save" ng-click="updateComment(note, comment); editCommentMode = false;" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- end -->
+      </div>
+      <br>
+      <!-- post comment -->
+      <form class="social-form comment-form noselect">
+        <!-- <input class="comment-input-text form-control" ng-focus="true" ng-model="newComment" placeholder="Type comment here"> -->
+        <textarea autogrow rows="2" style="padding:4px;margin:-5px;" class="form-control" ng-focus="true" ng-model="newComment" placeholder="Type comment here"></textarea>
+        <br>
+        <div class="row">
+          <div class="col-xs-12 comment-ranking">
+            <i ng-repeat="s in [].constructor(starcount) track by $index"
+              class="fa fa-star{{newCommentRank <= $index ? '-o' : ''}}"
+              ng-click="rankComment($index + 1)">
+            </i>
+          </div>
+          <div class="col-xs-8">
+            <label class="checkbox-inline">
+              <input type="checkbox" class="iCheck-helper" ng-model="vocComment" value="option1">
+              VoC
+            </label>
+            <!-- <br> -->
+            <label class="checkbox-inline">
+              <input type="checkbox" class="iCheck-helper" ng-model="taskComment" value="option1">
+              Task
+            </label>
+          </div>
+          <div class="col-xs-4 text-right">
+            <input type="button" class="btn btn-primary" value="Post" ng-click="postComment(note, newComment, newCommentRank, vocComment, taskComment); newComment = ''; vocComment = false ; taskComment = false ; (noteCardOrder == '-rels.comments_count') ? showComments = false : ''"/>
+          </div>
+        </div>
+      </form>
+    </div>
+    </div>
+  </div>
+
+  <!-- <style>
+    .comment-form .comment-input-text {
+      position: relative;
+      left: -5px;
+    }
+  </style> -->

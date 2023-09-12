@@ -1,0 +1,21 @@
+<div ng-if="!$ctrl.full">
+  <div class="row kpiwidget">
+    <div class="col-md-4" ng-repeat="kpi in $ctrl.kpiFirstRow track by $index" ng-init="chartindex =  $index">
+      <journey-score control-id="{{'kpichart' + chartindex}}" score="kpi.score"></journey-score>
+      <div class="chartLegend"><span>{{kpi.rel.label || kpi.title}}</span></div>
+    </div>
+  </div>
+  <div class="row kpiwidget">
+    <div class="col-md-4" ng-repeat="kpi in $ctrl.kpiSecondRow track by $index" ng-init="chartindex = 3+ $index">
+      <journey-score control-id="{{'kpichart' + chartindex}}" score="kpi.score"></journey-score>
+      <div class="chartLegend"><span>{{kpi.rel.label || kpi.title}}</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="row kpiwidget" ng-if="$ctrl.full">
+  <div class="col-md-2" ng-repeat="kpi in $ctrl.kpiFullRow track by $index" ng-init="chartindex =  $index">
+    <journey-score control-id="{{'kpichart' + chartindex}}" score="kpi.score"></journey-score>
+    <div class="chartLegend"><span>{{kpi.rel.label || kpi.title}}</span></div>
+  </div>
+</div>

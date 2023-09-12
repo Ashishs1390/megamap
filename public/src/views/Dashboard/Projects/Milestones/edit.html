@@ -1,0 +1,83 @@
+<div >
+  <div ng-if='Getting' class="c-abs-loading"><img src="/build/images/loading.gif"></div>
+  <div ng-if="!Getting" class="row">
+    <div class="col-lg-12">
+      <div class="hpanel {{revised_node.properties.color}}">
+        <div class="panel-heading">
+          {{label | titleCase}} Edit
+        </div>
+        <div class="panel-body">
+          <form name="simpleForm" novalidate id="simpleForm">
+            <div class="text-center m-b-md">
+              <!-- <a ng-click="wizard.show(1)" class="btn" ng-class="{ 'btn-primary': step == 1, 'btn-default': step != 1}">Step 1 - Info</a>
+              <a ng-click="wizard.show(2)" class="btn" ng-class="{ 'btn-primary': step == 2, 'btn-default': step != 2}">Step 2 - Finish </a> -->
+            </div>
+            <div  class="p-m">
+              <div class="row u-pt10 u-pb15 ">
+
+                <div class="form-group col-lg-12">
+                  <!-- <label>Title</label> -->
+                  <strong>Milestone Created:</strong>&nbsp;&nbsp;{{revised_node.properties.created_at | date}}
+                  <!-- <input type="" value="" id="" class="form-control" ng-model="revised_node.properties.title" placeholder="Title"> -->
+                </div>
+                <div class="form-group col-lg-12">
+                  <label>Title</label>
+                  <input type="" value="" id="" class="form-control" ng-model="revised_node.properties.title" placeholder="Title">
+                </div>
+                <div class="form-group col-lg-12">
+                  <label>Description</label>
+                  <input type="text" value="" id="" class="form-control" name="" placeholder="Description" ng-model="revised_node.properties.description">
+                </div>
+                <div class="form-group col-lg-12">
+                  <label>Start Date</label>
+                  <input type="date" value="" id="" class="form-control" name="" ng-model="revised_node.properties.startDate" ng-change="revised_node.properties.deadline == revised_node.properties.startDate ? revised_node.properties.deadline = revised_node.properties.startDate" date-object>
+                </div>
+                <div class="form-group col-lg-12">
+                  <label>Deadline</label>
+                  <input type="date" value="" id="" class="form-control" name="" ng-model="revised_node.properties.deadline" date-object>
+                </div>
+                
+                <div class="form-group col-lg-12" >
+                  <label ng-class="{'error-message' : simpleForm.priority.$invalid}">Priority(between 1 and 5)</label>
+                  <input name="priority" type="number" value="" class="form-control" min="1" max="5" placeholder="Priority" ng-model="revised_node.properties.priority">
+                  <div class="error-message" ng-if="simpleForm.priority.$invalid">Please enter valid values</div>
+                </div>
+                <!-- <div class="form-group col-lg-12" >
+                  <label ng-class="{'error-message' : simpleForm.priority.$invalid}">Sequence</label>
+                  <input name="priority" type="number" value="" class="form-control" placeholder="Sequence" ng-model="revised_node.properties.sequence">
+                </div> -->
+                <div class="form-group col-lg-12">
+                  <label>Progress</label><br/>
+                  <small>What percent of this milestone is complete?</small>
+                  <div class="input-group">
+                    <span class="input-group-addon">%</span>
+                    <input type="number" value="" class="form-control" disabled ng-model="milestone.progress">
+                    
+                  </div>
+                </div>
+                <!-- <div class="col-lg-12">
+                  <div class="c-color-palettes">
+                    <div>
+                      <label>Color</label>
+                    </div>
+                    <div class="c-color-palettes__item" ng-repeat='color in $root.colors'>
+                      <div class='panel {{color}}' style='height:25px; width:25px' ng-click='revised_node.properties.color = color' title="{{color}}"></div>
+                    </div>
+                  </div>
+                </div> -->
+              </div>
+
+              <div class="text-right m-t-xs">
+                <button ng-click="PopDeleteAlert()" ng-disabled="notesAvailable" ng-attr-title="{{disabledTitle}}" class="btn btn-danger u-float-left">Delete</button>
+
+                <button ng-click="cancel()" class="btn btn-default">Close</button>
+                <button ng-click="submit()" ng-disabled="simpleForm.priority.$invalid" class="btn btn-success" >Update</button>
+              </div>
+            </form>
+            <div class="m-t-md">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

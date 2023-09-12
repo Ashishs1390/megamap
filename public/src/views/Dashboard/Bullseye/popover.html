@@ -1,0 +1,7 @@
+<div style="width:300px">
+  <div ng-repeat="interaction in $parent.$parent.interactions">
+    <a class="filters--item btn small lighten-1 {{interaction.color}}" href="javascript:;" ng-click="$parent.$parent.$parent.selectInteraction(interaction.uuid);">
+      {{interaction.title}}
+    </a>
+  </div>
+</div>

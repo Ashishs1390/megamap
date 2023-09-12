@@ -1,0 +1,13 @@
+{
+	"port": 8080,
+	"bodyLimit": "500kb",
+	"corsHeaders": ["Link"],
+	"sysadmins": [
+		"sasha@ruptive.cx",
+		"ricky.brown@indigoslate.com",
+		"slavicaf@microsoft.com",
+		"maya.andreic@indigoslate.com",
+		"msftadmin@ruptive.cx",
+		"zechariah.kress@indigoslate.com"
+	]
+}

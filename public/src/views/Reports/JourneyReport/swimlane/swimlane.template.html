@@ -1,0 +1,155 @@
+<style ng-if="$ctrl.cxipriority < 0">
+  .laneStage > :nth-child(n+{{$ctrl.notecount}}) { display:none; }
+</style>
+
+<div class="laneheaderRow">
+  <div ng-repeat="stage in $ctrl.journey.stagesOnly | orderBy: 'order'"
+    popover-placement="top" class="laneheader {{$ctrl.scoreColor(stage.workshop_sentiment_score)}}"
+    ng-click="$ctrl.sentimentModal( $ctrl.journey.uuid, stage )">
+    <div class="herderfish">
+      <div class="fishLaneName">
+        {{$parent.$parent.isBrainstormStage(stage) ? (stage.title.split('_')[1] | date) : (stage.title || titleCase) }}
+      </div>
+      <div class="laneIcon" ng-class="{lastLaneIcon:$last==true}"></div>
+    </div>
+
+  </div>
+</div>
+<br>
+<!-- <div class="show_hide_mot" ng-click="showMotPlot = !showMotPlot">{{showMotPlot ? 'Hide' : 'Show'}} MOT</div> -->
+<div class="touchpointplot" ng-class="{'hide-mot-plot':!$parent.showMotPlot}">
+  <touchpoint-graph journey="$parent.journey"  stages="$parent.stagesOnly" touchpoints="$parent.touchpoints"></touchpoint-graph>
+  <div class="laneName">
+     MOMENTS OF TRUTH <br>
+     <img class="closeIcon" src="/build/images/reports/icon-close.svg" ng-click="$parent.showMotPlot = false" title="hide"/>
+     <!-- <i class="fa fa-paint-brush fa-rotate-270" style="margin:0 10px 0 -10px" ng-click="$parent.altlane = !$parent.altlane" title="style"></i> -->
+  </div>
+</div>
+
+
+
+<div ui-sortable>
+  <div id="lane{{$index}}" class="lane" ng-repeat="interaction in $ctrl.journey.interactions"
+    ng-class="{altlane: !altlane}" ng-init="altlane = ($index +1)%2 == 0"
+    ng-hide="$ctrl.usedinteractions.index.indexOf(interaction.uuid) < 0">
+    <div ng-repeat="persona in $ctrl.journey.personas | orderBy: 'order'" ng-hide="$parent.$parent.$parent.UnSelectedPersonas.indexOf(persona.uuid) > -1">
+      <div class="lanebodyRow" ng-hide="$parent.$parent.$parent.UnSelectedInteractions.indexOf(interaction.uuid) > -1 || closed">
+        <div class="laneName">
+          <span>{{interaction.title}} - IMP [{{persona.title}}]</span><br>
+          <img class="closeIcon" src="/build/images/reports/icon-close.svg" ng-click="closed = true" title="hide"/>
+          <i class="fa fa-paint-brush fa-rotate-270" style="margin:0 10px 0 -10px" ng-click="$parent.altlane = !$parent.altlane" title="style"></i>
+        </div>
+        <div class="lanebodyContent" ng-repeat="stage in $ctrl.journey.stages | orderBy: 'order'">
+          <ul class="laneStage ">
+            <li ng-repeat="note in stage.notes | orderBy: ($ctrl.cxipriority > -1 ? ['gap', 'description'] : ['-rels.votes_count', 'description']) | filter: $parent.$parent.$parent.$parent.search"
+                ng-if="(note.rels.interaction.uuid == interaction.uuid) && (note.rels.persona.uuid == persona.uuid)"
+                ng-show="$ctrl.cxipriority > -1 ? ($ctrl.cxipriority == note.cxi_priority) : (note.rels.votes_count > 0)"
+                ng-init="note.gap = (note.average_effectiveness - note.average_importance).toFixed(2)"
+                title="{{$ctrl.cxipriority > -1 ? ('GAP: ' + (note.gap || 'NA')) : ''}}">
+
+              <!-- vote counts -->
+              <div ng-show="$parent.$parent.$parent.$parent.$parent.$parent.showVoteCounts" class="commentVote">
+                {{note.rels.votes_count}}
+              </div>
+              <!-- note description -->
+              <span class="comment">
+                {{note.description}}
+                <div ng-show="$ctrl.cxipriority > -1" class="commentVote"></div>
+
+                <strong ng-show="$ctrl.cxipriority > -1">
+                  [ P{{note.cxi_priority}}:
+                    <span ng-show="note.gap && note.average_effectiveness && note.average_importance">
+                      ({{note.gap}}),
+                      ({{note.average_effectiveness}},{{note.average_importance}}),
+                    </span>
+                    {{note.kano_quadrant}}
+                  ]
+                </strong>
+                <strong ng-show="$parent.$parent.$parent.$parent.$parent.$parent.showPrimaryKpi">
+                  <span ng-repeat="kpi in $ctrl.journey.kpis">
+                    <span ng-show="kpi.uuid === note.primary_kpi"> ; [ Primary KPI: {{kpi.rel.label || kpi.title}} ]</span>
+                    <!-- <span ng-show="kpi.uuid === note.secondary_kpi">Secondary: {{kpi.rel.label || kpi.title}}</span> -->
+                  </span>
+                </strong>
+                <!-- <strong ng-show="note.primary && $parent.$parent.$parent.$parent.$parent.$parent.showPrimaryKpi">
+                  [ KPI: {{note.primary}}]
+                </strong> -->
+                <strong class="voc" ng-show="$ctrl.hasVocComment(note.rels.comments) && $parent.$parent.$parent.$parent.$parent.$parent.showVoc">
+                  [VoC]
+                </strong>
+                <!-- <pre>{{note.rels.comments | json}}</pre> -->
+                <strong ng-show="$parent.$parent.$parent.$parent.$parent.$parent.showNoteAuthors">[{{note.rels.author.firstname}}]</strong>
+              </span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="lanebodyRow" ng-show="$parent.$parent.$parent.showPainLanes && !closed">
+        <div class="laneName">
+          <img class="closeIcon" src="/build/images/reports/icon-close.svg" ng-click="closed = true" title="hide"/>
+          <i class="fa fa-paint-brush fa-rotate-270" style="margin:0 10px 0 -10px" ng-click="$parent.altlane = !$parent.altlane" title="style"></i>
+          <span>{{interaction.title}} - PAIN [{{persona.title}}]</span>
+        </div>
+        <div class="lanebodyContent pains" ng-repeat="stage in $ctrl.journey.stages | orderBy: 'order'">
+          <ul class="laneStage">
+            <li ng-repeat="note in stage.notes | orderBy: ($ctrl.cxipriority > -1 ? ['gap', 'description'] : ['-rels.pains_count', 'description'])"
+                ng-if="($ctrl.cxipriority > -1 ? ($ctrl.cxipriority == note.cxi_priority) : (note.rels.pains_count > 0)) && (note.rels.interaction.uuid == interaction.uuid) && (note.rels.persona.uuid == persona.uuid)"
+                title="{{$ctrl.cxipriority > -1 ? ('GAP: ' + (note.gap || 'NA')) : ''}}">
+
+              <div ng-show="$ctrl.cxipriority < 0 && $parent.$parent.$parent.$parent.$parent.$parent.showVoteCounts" class="commentVote">{{note.rels.pains_count}}</div>
+              <div ng-show="$ctrl.cxipriority > -1" class="commentVote">P{{note.cxi_priority}}</div>
+
+              <!-- <span class="comment">
+                {{note.description}}
+                <strong ng-show="note.primary.value && $parent.$parent.$parent.$parent.$parent.$parent.showPrimaryKpi">
+                  [ KPI: {{note.primary.value}}]
+                </strong>
+              </span> -->
+
+              <span class="comment">{{note.description}} <span ng-show="$ctrl.cxipriority > -1">[{{note.cxi_priority ? note.kano_quadrant : ''}}]</span>
+                <strong ng-show="$parent.$parent.$parent.$parent.$parent.$parent.showPrimaryKpi">
+                  [ KPI:
+                  <span ng-repeat="kpi in $ctrl.journey.kpis">
+                    <span ng-show="kpi.uuid === note.primary_kpi">{{kpi.rel.label || kpi.title}} </span>
+                    <span ng-show="kpi.uuid === note.secondary_kpi">{{kpi.rel.label || kpi.title}} </span>
+                  </span>
+                  ]
+                </strong>
+                <!-- <strong ng-show="note.primary && $parent.$parent.$parent.$parent.$parent.$parent.showPrimaryKpi">
+                  [ KPI: {{note.primary}}]
+                </strong> -->
+                <strong class="voc" ng-show="$ctrl.hasVocComment(note.rels.comments) && $parent.$parent.$parent.$parent.$parent.$parent.showVoc">
+                  [VoC]
+                </strong>
+                <!-- <pre>{{note.rels.comments | json}}</pre> -->
+                <strong ng-show="$parent.$parent.$parent.$parent.$parent.$parent.showNoteAuthors">[{{note.rels.author.firstname}}]</strong>
+              </span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+<div>
+
+<!-- <div id="lane{{$index}}" class="lane" ng-repeat="interaction in $ctrl.journey.interactions" ng-class="{altlane:($index +1)%3 ==0}" ng-show="$ctrl.lanes[{{$index}}] === true">
+  <div class="lanebodyRow" ng-hide="$ctrl.isEmpty(interaction)">
+    <div class="laneName">
+      <img class="closeIcon" src="/build/images/reports/icon-close.svg" ng-click="$ctrl.hidelane($index)"/>
+      <span>{{interaction.title}}</span>
+    </div>
+    <div class="lanebodyContent" ng-repeat="stage in $ctrl.journey.stages">
+      <ul class="laneStage">
+        <li ng-repeat="note in stage.notes" ng-if="(note.rels.interaction.uuid == interaction.uuid)">
+          <div class="commentVote">{{note.votes}}</div>
+          <span class="comment">{{note.description}}</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div> -->
+
+<!-- <div class="effectiveImportancePlot">
+<effective-importance data="$ctrl.effectiveImportance"></effective-importance>
+</div> -->

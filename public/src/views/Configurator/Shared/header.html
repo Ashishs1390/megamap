@@ -1,0 +1,64 @@
+<div class="color-line">
+</div>
+<div id="logo" class="light-version">
+    <span>
+            <img style="width:80%" ng-src="{{'https://ruptivefiles.blob.core.windows.net/logos/' + subdomain + '-logo.png' || '/build/images/no-company-logo.png'}}"
+            onerror="this.onerror=null;this.src='/build/images/no-company-logo.png';"/>
+        </span>
+</div>
+<nav role="navigation">
+    <minimaliza-menu></minimaliza-menu>
+    <div class="small-logo" style="width:100px">
+        <span class="text-primary">
+        <img style="width:100%" ng-src="{{'https://ruptivefiles.blob.core.windows.net/logos/' + subdomain + '-logo.png' || '/build/images/no-company-logo.png'}}"
+        onerror="this.onerror=null;this.src='/build/images/no-company-logo.png';"/>
+      </span>
+    </div>
+
+    <!-- <div class="mobile-menu">
+        <button type="button" class="navbar-toggle mobile-menu-toggle" data-toggle="collapse" data-target="#mobile-collapse">
+            <i class="fa fa-chevron-down"></i>
+        </button>
+        <div class="collapse mobile-navbar" id="mobile-collapse">
+            <ul class="nav navbar-nav">
+                <li>
+                    <a ng-click=$root.logout()>Logout</a>
+                </li>
+            </ul>
+        </div>
+    </div> -->
+    <div class="navbar-right">
+        <ul class="nav navbar-nav no-borders">
+            <!-- <li uib-dropdown>
+                <a href="#" uib-dropdown-toggle>
+                    <i class="pe-7s-keypad"></i>
+                </a>
+                <div uib-dropdown-menu class="hdropdown bigmenu animated flipInX">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <a ng-click='$root.Person.properties.admin = !$root.Person.properties.admin'>
+                                    <i class="pe pe-7s-portfolio text-info"></i>
+                                    <h5>Admin Toggle : {{$root.Person.properties.admin}}</h5>
+                                </a>
+                                </td>
+                                <td>
+                                    <a ng-click='$root.Person.properties.tenant = !$root.Person.properties.tenant '>
+                                    <i class="pe pe-7s-portfolio text-info"></i>
+                                    <h5>Tenant Toggle : {{$root.Person.properties.tenant}}</h5>
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </li> -->
+            <li>
+                <a ng-click="$root.logout()">
+                    <i class="fa fa-sign-out"></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>

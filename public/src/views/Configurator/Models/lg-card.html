@@ -1,0 +1,16 @@
+<div class='node-card panel u-mb0 {{node.properties.color || "orange"}} lighten-5'>
+    <div ng-if="library.rels[library.outgoing.author[node.properties.uuid][0]].to_id == $root.Person.properties.uuid" class="label gold pull-right">Author</div>
+    <div class="panel-body hpanel text-center u-mb0">
+        <div class="c-card-profile u-bg-cover green" style="background-image: url( {{ node.properties.image_url || '/build/images/placeholder-1.png' }} )">
+        </div>
+        <h2 class="node-card__title ">{{node.properties.title}}</h2>
+        <small>{{node.properties.description}}</small>
+    </div>
+    <div class="panel-footer">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="contact-stat"><span>Author: </span> <strong>{{library.nodes[library.rels[library.outgoing.author[node.properties.uuid][0]].to_id].properties.title}}</strong></div>
+            </div>
+        </div>
+    </div>
+</div>

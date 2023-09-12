@@ -1,0 +1,46 @@
+<div class="col-md-3 hpanel white">
+        <div class='col-md-12 '>
+            <h1>To </h1>
+            <div class='row ec_dev ' style='margin:10px;' ng-if='to'>
+                <connector-card class='green lighten-4' node='to'> </connector-card>
+                <div class='u-table library-card-groupBtns u-bg-grey'>
+                    <a ng-click='Select("to",null)' class="u-table-cell">Deselect</a>
+                </div>
+            </div>
+        </div>
+        <hr/>
+        <div class='col-xs-12 ec_dev'>
+            <uib-accordion close-others="oneAtATime">
+                <uib-accordion-group>
+                    <uib-accordion-heading>
+                        <div class='row '>
+                            Search
+                            <i class="fa fa-chevron-down"></i>
+                        </div>
+    
+                    </uib-accordion-heading>
+                    <div class="row">
+                        <div class="form-inline">
+                            Label
+                            <select class="form-control " ng-model="to_search_label" ng-change='SetSearchLabel("to",to_search_label);'
+                                ng-options='option for option in master_labels'>
+                                            </select>
+                        </div>
+                        <div class="form-inline">
+                            Search Term
+                            <input class=' form-control ' ng-model='to_search_term' ng-change="SetSearchTerm('to', to_search_term)" />
+                        </div>
+                        <div class='btn btn-primary col-xs-12' ng-click='search("to",to_search_term)'>Submit</div>
+                    </div>
+                </uib-accordion-group>
+            </uib-accordion>
+        </div>
+        <hr/>
+        <div class='col-xs-12 ec_dev ' style='margin:10px;' ng-if='to_id != node.properties.uuid' ng-repeat='node in to_subgraph.nodes'>
+            <connector-card class='{{(to_id == node.properties.uuid) ? "blue lighten-3" : ""}}' node='node'> </connector-card>
+            <div class='u-table library-card-groupBtns u-bg-grey'>
+                <a ng-click='Select("to",node.properties.uuid)' class="u-table-cell">Select</a>
+                <a ui-sref='model.focus({or_ids:[node.properties.uuid]})' class="u-table-cell">Focus</a>
+            </div>
+        </div>
+    </div>

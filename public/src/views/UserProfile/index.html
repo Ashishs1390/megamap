@@ -1,0 +1,86 @@
+<style>
+  .profile-form {
+    max-width: 1000px;
+    /* margin: auto; */
+  }
+</style>
+
+<div class="row">
+  <div class="col-lg-12">
+    <div class="hpanel">
+      <div class="panel-heading">
+        <div></div>
+        User account editor
+      </div>
+      <div class="panel-body">
+        <form class="profile-form" name="simpleForm" novalidate id="simpleForm" ng-submit="update(user)" autocomplete="off">
+          <div class="row">
+            <div class="col-lg-3 text-center">
+              <img src="{{user.properties.image_url}}" style='max-height:100px' class="img-circle m-b" alt="avatar">
+              <!-- <i ng-hide='$root.Person.properties.image_url' class="pe-7s-user fa-5x text-muted"></i> -->
+              <p class="small m-t-md">
+                <strong>User Info </strong>
+              </p>
+            </div>
+            <div class="col-lg-9 lighten-4">
+              <div class="row u-pt10 u-pb15 ">
+                <div class="form-group">
+                  <label>Profile Photo </label>
+                  <small> Recommend dimension 480x160 </small>
+                  <input type="text" class="form-control" placeholder="Profile Image" ng-model="user.properties.image_url">
+                </div>
+                <div class="form-group">
+                  <label>Email </label>
+                  <input type="email" value="" id="" class="form-control" ng-disabled="true || ssoUser" ng-model="user.properties.email" placeholder="Email Address">
+                </div>
+                <div class="form-group">
+                  <label>First Name </label>
+                  <input type="text" class="form-control" ng-disabled="true || ssoUser" ng-model="user.properties.firstname" placeholder="First Name">
+                </div>
+                <div class="form-group">
+                  <label>Last Name </label>
+                  <input type="text" class="form-control" ng-disabled="true || ssoUser" ng-model="user.properties.lastname" placeholder="Last Name">
+                </div>
+                <!-- <div class="form-group">
+                  <label>About you </label>
+                  <input type="text" class="form-control" name="" ng-disabled="ssoUser" placeholder="About yourself" ng-model="user.properties.description">
+                </div>
+                <div class="form-group">
+                  <label>Phone </label>
+                  <input type="phone" id="phone" autocomplete="off" ng-disabled="ssoUser" class="form-control" name="phone" placeholder="123-456-7890" ng-model="user.properties.phone">
+                </div> -->
+                <p></p>
+                <div ng-if="!ssoUser">
+                  <div class="form-group">
+                    <br>
+                    <h3>Change Password</h3>
+                    <hr>
+                    <small>Note: after changing password you will be automatically logged out</small>
+                  </div>
+                  <input readonly style="border:none;outline:0;box-shadow:none;height:1px;" type="text" id="dummy_email">
+                  <input readonly style="border:none;outline:0;box-shadow:none;height:1px;" type="password" name="password" id="dummy_password">
+                  <div class="form-group">
+                    <label>Current Password </label>
+                    <input type="password" autocomplete="off" class="form-control" name="current_password" placeholder="Current Password" ng-model="user.currentPassword">
+                  </div>
+                  <div class="form-group">
+                    <label>New Password </label>
+                    <input type="password" autocomplete="off" class="form-control" name="new_password" placeholder="New Password" ng-model="user.newPassword">
+                  </div>
+                  <div class="form-group">
+                    <label>Confirm New Password </label>
+                    <input type="password" autocomplete="off" class="form-control" name="new_password_confirm" placeholder="New Password" ng-model="user.newPasswordConfirm">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="text-right m-t-xs">
+            <input type="submit" class="btn btn-success" value="Update Profile">
+            <button class="btn btn-default" ng-click="goback()"> Cancel </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,7 @@
+<div class="configurator-dashboard">
+    
+        <div ng-if='$root.Person.role == "tenant"' ng-controller="nodeTenantCtrl" ng-include="'views/Configurator/Models/library.html'"></div>
+        <div ng-if='$root.Person.role == "admin"' ng-controller="nodeAdminCtrl" ng-include="'views/Configurator/Models/library.html'"></div>
+        <div ng-if='$root.Person.role == "attendee"' ng-controller="nodeAttendeeCtrl" ng-include="'views/Configurator/Models/library.html'"></div>
+
+    </div>

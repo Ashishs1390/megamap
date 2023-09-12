@@ -1,0 +1,99 @@
+<div class="content" ng-controller='projectTenantCtrl'>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="hpanel Info">
+        <div class="panel-body">
+          <div class="row" ng-init="showProjectType['cx-improvement'] = true; showProjectType.idea = true; showProjectType.blocker = true;">
+              <div class="col-sm-12 col-lg-6">
+                  <h2 class="c-section-title">Projects&nbsp;&nbsp;&nbsp;&nbsp;
+                    <div class="workshop-filters">
+                      <a class="filters--item btn large blue {{showProjectType.idea ? 'lighten-1' : 'lighten-4'}}"
+                         ng-click="showProjectType.idea = !showProjectType.idea">Ideas</a>
+                      <a class="filters--item btn large green {{showProjectType['cx-improvement'] ? 'lighten-1' : 'lighten-4'}}"
+                         ng-click="showProjectType['cx-improvement'] = !showProjectType['cx-improvement']">CX Improvements</a>
+                     <a class="filters--item btn large red {{showProjectType.blocker ? 'lighten-1' : 'lighten-4'}}"
+                        ng-click="showProjectType.blocker = !showProjectType.blocker">Blockers</a>
+                    </div>
+                  </h2>
+              </div>
+              <div class="col-sm-12 col-lg-6 u-mt10">
+                <div class="row">
+                  <div class="col-sm-12 col-md-8">
+                    <input type="text" class="form-control" ng-model="searchText" placeholder="Search" />
+                  </div>
+                  <div class="col-xs-12 col-md-4">
+                    <input type='button' class='btn btn-primary btn-block' ng-if='PopCreateModal && $root.Person.role != "attendee"' ng-click='PopCreateModal()' value='Create Project' />
+                  </div>
+                </div>
+              </div>
+          </div>
+
+          <div class="clearfix"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div ng-if='Getting' class="c-abs-loading"><img src="/build/images/loading.gif" /></div>
+  <div class="projects c-flex c-flex--2 c-flex--stretch c-flex--wrap">
+    <div class="c-flex__col" subgraph ng-repeat="uuid in subgraph.node_label_index.Project" ng-init="project = subgraph.nodes[uuid]" ng-show="showProjectType[project.properties.project_type]">
+      <div class="project-card hpanel">
+        <div class="panel-body">
+          <div class="project-type {{project.properties.project_type}}" ng-bind="project.properties.project_type"></div>
+          <div class="row">
+            <div class="col-sm-8 project-name" ui-sref="dashboard.project({uuid: uuid})">
+              <h4><a ng-bind="project.properties.title"></a></h4>
+              <p ng-bind="project.properties.description"></p>
+              <div class="row">
+                <div class="col-sm-3">
+                  <div class="project-label">OWNER</div>
+                  <small>{{subgraph.nodes[subgraph.rels[subgraph.outgoing.author[uuid][0]].to_id].properties.firstname}}</small>
+                </div>
+                <div class="col-sm-3">
+                  <div class="project-label">START</div>
+                  <small>{{project.properties.start_date | date}} </small>
+                </div>
+                <div class="col-sm-3">
+                  <div class="project-label">END</div>
+                  <small>{{project.properties.end_date | date}} </small> </div>
+                  <div class="col-sm-3" title="This Project is {{project.properties.progress}}% complete">
+                    <div class="project-label">PROGRESS</div>
+                    <uib-progressbar max="100" ng-if="project.properties.progress > 50" value="project.properties.progress" type="success" class="m-t-xs  full progress-small"></uib-progressbar>
+                    <uib-progressbar max="100" ng-if="project.properties.progress <= 50" value="project.properties.progress" type="danger" class="m-t-xs  full progress-small"></uib-progressbar>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-4 project-info">
+                <div class="project-action m-t-md">
+                  <div class="btn-group">
+                    <button class="btn btn-xs btn-default" ui-sref="dashboard.project({uuid: uuid})"> View</button>
+                    <button class="btn btn-xs btn-default" ng-click='PopAttendeeModal(uuid)'> Invite</button>
+                    <button class="btn btn-xs btn-default" ng-click='PopEditModal(uuid)'> Edit</button>
+                  </div>
+                </div>
+                <div class="project-value">
+                  <h2 class="text-success">
+                    {{project.properties.future_costs_per_month * 12 || " " | currency:undefined:0}}
+                  </h2>
+                </div>
+                <div class="project-people" ng-init="printsub(subgraph)"> 
+                  <!-- <p ng-repeat='rel_uuid in subgraph.outgoing_nodes.project_attendee[uuid]'>
+                    <img alt="logo" class="img-circle img-small" ng-if="subgraph.nodes[rel_uuid].properties.image_url.length" src="{{subgraph.nodes[rel_uuid].properties.image_url}}" onerror="this.onerror=null;this.src='/build/images/user-default.png';">
+                    <i ng-if="!subgraph.nodes[rel_uuid].properties.image_url" class='fa fa-user'></i>
+                  </p>  -->
+                  <p style="display: inline;" ng-repeat='rel_uuid in subgraph.outgoing_nodes.project_attendee[uuid]' title="{{subgraph.nodes[rel_uuid].properties.email}}"  >
+                    <img alt="logo" class="img-circle img-small" ng-if="subgraph.nodes[rel_uuid].properties.image_url.length" src="{{subgraph.nodes[rel_uuid].properties.image_url}}" onerror="this.onerror=null;this.src='/build/images/user-default.png';">
+                    <img ng-if="!subgraph.nodes[rel_uuid].properties.image_url" alt="logo" class="img-circle img-small" src="/build/images/user-default.png">
+                  </p>                 
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="panel-footer">
+            <!-- Additional information about project in footer -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>

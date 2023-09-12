@@ -1,0 +1,68 @@
+<div class="color-line">
+</div>
+<div id="logo" class="light-version">
+  <span>
+    <img style="width:80%" ng-src="{{'https://ruptivefiles.blob.core.windows.net/logos/' + subdomain + '-logo.png'}}"
+         onerror="this.src = 'https://ruptivefiles.blob.core.windows.net/logos/ruptive-logo.png'"/>
+  </span>
+</div>
+
+<nav role="navigation">
+  <minimaliza-menu></minimaliza-menu>
+  <div class="container-fluid headernav">
+    <div class="small-logo" style="width:80px">
+      <span class="text-primary">
+        <img style="width:100%" ng-src="{{'https://ruptivefiles.blob.core.windows.net/logos/' + subdomain + '-logo.png'}}"
+             onerror="this.src = 'https://ruptivefiles.blob.core.windows.net/logos/ruptive-logo.png'"/>
+      </span>
+    </div>
+
+    <ul class="nav header-nav navbar-nav navbar-left no-borders">
+      <div id="leaderboard" ng-cloak>
+        <button popover-is-open="leaderboardOpen" popover-placement="bottom-left" uib-popover-template="'statsPopover.html'" type="button" class="btn btn-default navbar-btn">
+          Leaderboard...
+        </button>
+        <script type="text/ng-template" id="statsPopover.html">
+          <uib-tabset active="true" justified="true">
+            <uib-tab ng-repeat="stat in stats" index="{{$index}}" heading="{{stat.title}}">
+               <ul ng-repeat="contributor in stat.contributors">
+                 <hr/>
+                 <li>
+                   <div class="pull-left avatar">
+                     <img ng-src="{{contributor.image_url || '/build/images/user-default.png'}}" onerror="this.onerror=null;this.src='/build/images/user-default.png';">
+                   </div>
+                   <h5 ng-show="contributor.name">
+                     {{contributor.name}} <span class="text-muted">({{contributor.email}})</span>
+                   </h5>
+                   <h5 ng-hide="contributor.name">{{contributor.email}}</h5>
+                   <p>{{stat.count_label}}<strong>{{contributor.count}}</strong></p>
+                 </li>
+               </ul>
+            </uib-tab>
+          </uib-tabset>
+        </script>
+        <span ng-hide="journey.disable_leaderboard">
+          <button ng-repeat="stat in stats" class="btn navbar-btn top-contributor-stat" title="{{stat.contributors[0].name}} ({{stat.contributors[0].email}})">
+            <div class="pull-left avatar">
+              <img ng-src="{{stat.contributors[0].image_url || '/build/images/user-default.png'}}" onerror="this.onerror=null;this.src='/build/images/user-default.png';">
+            </div>
+            <strong>{{stat.contributors[0].firstname || ''}}</strong> [ {{stat.count_label}}<span class="">{{stat.contributors[0].count}}</span> ]
+          </button>
+        </span>
+      </div>
+
+      <!-- <li class="text-dark" ng-show="showConnections" ng-click="toggle_view_connections()">
+        <a>Viewing connections, click to exit view</a>
+      </li> -->
+    </ul>
+
+    <ul class="nav navbar-nav navbar-right no-borders">
+      <li class="nav-stopwatch pull-right" ng-show="journey.live_mode">
+        <stopwatch minutes="journey.countdown_minutes || 30" action="stopwatchAction"></stopwatch>
+      </li>
+      <button ng-if="$root.Person.role != 'attendee'" class="btn btn-default navbar-btn" href="javascript:;" ng-controller="workshopHeaderCtrl" ng-click="PopConnectModal()">
+        <i class="fa fa-plus" style="color:black"></i> Add Component
+      </button>
+    </ul>
+  </div>
+</nav>

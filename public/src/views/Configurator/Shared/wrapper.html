@@ -1,0 +1,16 @@
+<!-- Header -->
+<div id="header" ng-include="'views/Configurator/Shared/header.html'"></div>
+
+<!-- Navigation -->
+<aside id="menu" ng-include="'views/Configurator/Shared/navigation.html'"></aside>
+
+<!-- Main Wrapper -->
+<div id="wrapper" ng-if='$root.Person.properties.uuid'>
+  <div ui-view></div>
+
+  <!-- footer -->
+  <div id="footer" class="pull-right">
+    <a ng-href="{{getPrivacyPolicyUrl()}}" target="_blank"><u>Privacy Policy</u></a>&nbsp;&nbsp;&nbsp;
+    <a href="mailto:ruptivefeedback@indigoslate.com?subject=Provide Feedback"><u>Provide Feedback</u></a>
+  </div>
+</div>

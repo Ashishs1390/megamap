@@ -1,0 +1,30 @@
+<style>
+  .inmodal.unique {
+    height: 250px;
+  }
+  p {
+    /* font-weight: bold; */
+  }
+  .modal-actions {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+  }
+  button {
+    margin-left: 5px;
+  }
+</style>
+
+<div class="inmodal unique">
+  <div class="modal-body">
+    <h3>{{workshop.title}}</h3>
+    <hr>
+    <p><strong>Original Date:</strong> {{workshop.originated_at | date}}</p>
+    <p><strong>Created Date:</strong> {{workshop.created_at | date}}</p>
+    <p><strong>Last Activity:</strong> {{workshop.last_active_at | date}}</p>
+    <p><strong>View Count:</strong> {{workshop.view_count}}</p>
+  </div>
+  <div class="modal-actions">
+    <button class="btn btn-secondary pull-right" ng-click="close()">Close</button>
+  </div>
+</div>

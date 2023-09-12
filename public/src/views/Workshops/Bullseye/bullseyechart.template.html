@@ -1,0 +1,102 @@
+<div class="content">
+  <div class="hpanel Info">
+    <div class="panel-body row">
+      <h2 class="c-section-title col-md-6">{{$ctrl.bullseyetitle}}</h2>
+
+    </div>
+  </div>
+</div>
+<div id="chart" class="chart-container">
+  <div ng-if='$ctrl.Getting' class="c-abs-loading"><img src="/build/images/loading.gif" /></div>
+  <svg id="svgelement" width=2133 height=1400 style='stroke-width: 0px; background-color: #F9F1D5;'>
+  </svg>
+</div>
+<div ng-repeat="stg in $ctrl.strategies">
+  <div id="{{$ctrl.getStrategyId(stg.name)}}" class="strategy-tooltip">
+    <span>{{$parent.$parent.strategies[stg.name]}}</span>
+  </div>
+</div>
+<!-- Arcs -->
+<div ng-repeat="arc in $ctrl.arcs">
+  <bullseye-arc scoreid="arc.scoreid" displayscorepopuponclick="$ctrl.displayscorepopuponclick"
+    displayarccolor="$ctrl.displayarccolor" start-angle="arc.startangle" end-angle="arc.endangle"
+    inner-radius="arc.innerradius" outer-radius="arc.outerradius" padding="2" strategy="arc.strategy"
+    segment="arc.segment" audience="arc.audience" svg-parent="chart" label="arc.label" , score="arc.score" ,
+    scorelabel="arc.scorelabel" , user-score="arc.userValue" , arc-clicked="$ctrl.arclicked(intersectionuuid)" ,
+    score-update-callback="$ctrl.scoreUpdateCallback(selectedScore, scoreid)">
+  </bullseye-arc>
+</div>
+<div class="kludge">
+  <div class="kludge">
+  </div>
+  <div class="summary-container">
+    <div class="summary-section strategies">
+      <h3 class="summary-section-title"> STRATEGIES</h3>
+      <ul>
+        <li ng-repeat="stg in $ctrl.strategies" title="{{stg.name}}">
+          <span class="summary-section-left-column">
+            <img src="{{$ctrl.strategyIcons[$index]}}">{{$parent.$parent.strategies[stg.name]}}:&nbsp;
+          </span>
+          <span class="summary-section-right-column">{{stg.avgscore}}</span>
+        </li>
+      </ul>
+    </div>
+    <div class="summary-section segments">
+      <h3 class="summary-section-title"> Segments</h3>
+      <ul>
+        <li ng-repeat="segment in $ctrl.segments">
+          <span class="summary-section-left-column">{{segment.name}}: </span><span
+            class="summary-section-right-column">{{segment.avgscore}}</span>
+      </ul>
+    </div>
+
+    <!-- <div class="form-group col-md-6 journey-score for-bullseye">
+    <label required>Journey Scoring (please select method)</label>
+    <br><br>
+    <div class="row">
+      <div class="form-group col-md-10">
+        <label class="for-radio">
+          <input type="radio" value="journey_score" name="scoreType" ng-model="$ctrl.score_type" ng-change="$ctrl.changeScoreType()" required>
+          Manual scoring (Journey all up score 0 - 10)
+        </label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group col-md-10">
+        <label class="for-radio">
+          <input type="radio" value="journey_automatic_score" name="scoreType" ng-model="$ctrl.score_type" ng-change="$ctrl.changeScoreType()" required>
+          Automatic scoring (Avg effective & importance)
+        </label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group col-md-10">
+        <label class="for-radio">
+          <input type="radio" value="journey_effectiveness" name="scoreType" ng-model="$ctrl.score_type" ng-change="$ctrl.changeScoreType()" required>
+          Effectiveness scoring (using: <strong>{{getInteractionTitle(revised_node.properties.effective_score_interaction)}}</strong>)
+          <div class="select-button" ng-click="$parent.showInteractions('effective')"
+            uib-popover-template="'views/Dashboard/Bullseye/popover.html'"
+            popover-title="Select Interaction"
+            popover-is-open="effectiveIsOpen">
+            select type
+          </div>
+        </label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group col-md-10">
+        <label class="for-radio">
+          <input type="radio" value="journey_importance" name="scoreType" ng-model="$ctrl.score_type" ng-change="$ctrl.changeScoreType()" required>
+          Importance scoring (using: <strong>{{getInteractionTitle(revised_node.properties.important_score_interaction)}}</strong>)
+          <div class="select-button" ng-click="$parent.showInteractions('important')"
+            uib-popover-template="'views/Dashboard/Bullseye/popover.html'"
+            popover-title="Select Interaction"
+            popover-is-open="importantIsOpen">
+            select type
+          </div>
+        </label>
+      </div>
+    </div>
+  </div> -->
+  </div>
+</div>

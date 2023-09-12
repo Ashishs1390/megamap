@@ -1,0 +1,7 @@
+<div class="Capability-dashboard">
+    <div class="content">
+        
+        <div ng-if='$root.Person.role == "tenant"' ng-controller='capabilityTenantCtrl' ng-include="'views/Dashboard/Capability/library.html'"></div>
+        <div ng-if='$root.Person.role == "admin"' ng-controller='capabilityAdminCtrl' ng-include="'views/Dashboard/Capability/library.html'"></div>
+    </div>
+</div>

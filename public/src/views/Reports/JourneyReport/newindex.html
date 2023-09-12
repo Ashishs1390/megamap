@@ -1,0 +1,147 @@
+<div ng-show="isLoading" class="page-loading"></div>
+
+<div class='c-report-journey' id="journey_report">
+  <screenshot is-open="isFullOpen" toolbox-options="screenshotConfig">
+
+    <div class='header'>
+      <div class="row" id="button_bar">
+        <div class="col-md-12">
+          <div ng-click="gotoPrevState(journey.uuid)" class="btn btn-default btn--back"> <i class="fa fa-chevron-left" aria-hidden="true"></i> Go back </div>
+        </div>
+      </div>
+
+      <div class="row persona">
+        <div class="col-md-7">
+          <br>
+          <div class="row topinteracations">
+            <div class="interactioncontainer selected" ng-class="{'selected':!UnSelectedInteractions.includes(interaction.uuid)}"
+              ng-repeat="interaction in journey.interactions | orderBy: 'order'" no-select ng-click="toggleInteraction(interaction)">
+              <span class="metric">{{usedInteractions[interaction.uuid] || 0}}</span>
+              <img ng-show="interaction.title" src="{{interaction.image_url || '/build/images/'+defaultImage.interaction}}">
+              <br/>
+              <span class="desc">{{interaction.title}}</span>
+            </div>
+            <div class="interactioncontainer" ng-class="{'selected':showPainLanes}" ng-show="journey.painpoints > 0" ng-click="togglePainLanes()">
+              <span class="metric">{{journey.painpoints}}</span>
+              <img src="{{painpoints.image_url || '/build/images/'+defaultImage.interaction}}">
+              <br/>
+              <span class="desc">Pain Points</span>
+            </div>
+          </div>
+
+          <div class="row personafilters">
+            <a ng-repeat="persona in journey.personas | orderBy:'order'"
+               class="filters--item btn large navyblue
+               {{UnSelectedPersonas.indexOf(persona.uuid) > -1 ? 'lighten': ''}}"
+               ng-click="togglePersona(persona);"
+               ng-init="$index != 0 ? togglePersona(persona) : ''">{{persona.title | titleCase}}
+            </a>
+            <br>
+          </div>
+
+          <input ng-model="search" class="form-control journey-map-filter" placeholder="Filter Notes"/>
+
+          <div class="input-group journey-map-filter">
+            <input readonly type="text" ng-model="journey.sentiment.text" id="all_comment_text" value="{{journey.sentiment.text}}" class="form-control" placeholder="All Comment Text">
+            <span class="input-group-addon" ngclipboard data-clipboard-target="#all_comment_text">
+              <i class="fa fa-clipboard" aria-hidden="true" title="Copy All Comment Text"></i>
+            </span>
+          </div>
+
+          <div class="note-counts-slider">
+            <div ng-show="cxiPriority">
+              <span>CXI Priority {{cxiPriority - 1}}</span>
+              <input type="range" min="2" max="4" value="2" class="range-slider" ng-model="cxiPriority">
+            </div>
+            <div ng-hide="cxiPriority">
+              <span>Note display count: {{noteCountToDisplay - 1}}</span>
+              <input ng-init="noteCountToDisplay = 4" type="range" min="2" max="6" value="3" class="range-slider" ng-model="noteCountToDisplay">
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <table class="table table-condensed table-bordered journey-info">
+            <tbody>
+              <tr>
+                <td>Journey Name:</td>
+                <td>{{journey.title}}</td>
+              </tr>
+              <tr>
+                <td>Journey Description:</td>
+                <td>{{journey.description}}</td>
+              </tr>
+              <tr>
+                <td>Journey Admins:</td>
+                <td><div ng-repeat="admin in journey.admin_objects" title="{{admin.email}}">
+                  <a ng-href="mailto:{{admin.email}}">{{admin.name}}</a>
+                </div></td>
+              </tr>
+              <tr>
+                <td>Generated:</td>
+                <td>{{todaysDate | date}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="col-md-2 row top-right">
+          <a class="filters--item btn large navyblue" ng-click="showNoteAuthors = !showNoteAuthors">
+            {{showNoteAuthors ? 'Hide' : 'Show'}} Note Authors
+          </a>
+          <br><br>
+          <a class="filters--item btn large navyblue" ng-click="showVoteCounts = !showVoteCounts">
+            {{showVoteCounts ? 'Hide' : 'Show'}} Vote Count
+          </a>
+          <br><br>
+          <a class="filters--item btn large navyblue" ng-click="showPrimaryKpi = !showPrimaryKpi">
+            {{showPrimaryKpi ? 'Hide' : 'Show'}} KPI
+          </a>
+          <br><br>
+          <a class="filters--item btn large navyblue" ng-click="cxiPriority ? cxiPriority = false : cxiPriority = 2">
+            {{cxiPriority ? 'Hide' : 'Show'}} CXI Priority
+          </a>
+          <br><br>
+          <a class="filters--item btn large navyblue" ng-click="showMotPlot = !showMotPlot">
+            {{showMotPlot ? 'Hide' : 'Show'}} MOT
+          </a>
+        </div>
+      </div>
+
+      <div class="show_hide_kpis" ng-click="showKpis = !showKpis">
+        {{showKpis ? 'Hide' : 'Show'}} Map
+      </div>
+      <div class="row overview" ng-show="showKpis">
+        <div class="col-md-1">
+          <div class="header">
+            <h2>{{journey.title}}</h2>
+            <p>Journey Overview</p>
+          </div>
+        </div>
+        <div ng-if="journey.stages.length > 0 && journey.stages.length < 9">
+          <div class="col-md-5">
+            <journey-overview stages="journey.stagesOnly" score="journey.sentiment.average"></journey-overview>
+          </div>
+          <div class="col-md-6 kpiContainer">
+            <kpi-component kpi="journey.kpis" full="false"></kpi-component>
+          </div>
+        </div>
+        <div ng-if="journey.stages.length < 1 || journey.stages.length > 8">
+          <div class="col-md-11 kpiContainer">
+            <kpi-component kpi="journey.kpis" full="true"></kpi-component>
+          </div>
+        </div>
+      </div>
+
+      <div class="swimlane">
+        <swimlane
+          touchpoints="touchpoints"
+          journey="journey"
+          effective-importance="effectiveImportanceInfo"
+          usedinteractions="usedInteractions"
+          usedpersonas="usedPersonas"
+          notecount="noteCountToDisplay"
+          cxipriority="cxiPriority - 1">
+        </swimlane>
+      </div>
+    </div>
+  </screenshot>
+</div>

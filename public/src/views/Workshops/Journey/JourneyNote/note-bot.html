@@ -1,0 +1,57 @@
+<uib-accordion close-others="oneAtATime" class="comments">
+
+    <!-- Drawing -->
+    <uib-accordion-group ng-if="note.image_url">
+        <uib-accordion-heading>
+            <div class='row'>
+                <div class='col-xs-10'>
+                    Drawing
+                    <i class="fa fa-chevron-down"></i>
+                </div>
+            </div>
+        </uib-accordion-heading>
+        <div class="row">
+            <div class="col-xs-10">
+                <img ng-src='{{note.image_url}}' style='width:100%;' />
+            </div>
+        </div>
+    </uib-accordion-group>
+
+    <!-- Comment -->
+    <uib-accordion-group>
+        <uib-accordion-heading>
+            <div class='row'>
+                <div class='col-xs-7 comments--text'>
+                    Comments ({{note.comments_count || 0}})
+                    <i class="fa fa-chevron-down" ng-click="getComments()"></i>
+                </div>
+            </div>
+        </uib-accordion-heading>
+        <div class="row">
+            <div class="social-talk col-xs-12" ng-repeat="comment in note.comments | orderBy : 'created_at'">
+                <div class="media social-profile clearfix">
+                    <a class="pull-left" title="{{comment.author.firstname}}"><img ng-src="{{comment.author.image_url|| '/build/images/user-default.png'}}" alt="profile-picture"/></a>
+                    <div class="media-body">
+                        <span>{{comment.firstname}}</span>
+                       <small class="text-muted">{{comment.created_at | date}}</small>
+                        <div class="social-content">
+                            {{comment.comment}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="input-group comments--form">
+            <textarea ng-model='$parent.$parent.$parent.$parent.reply' placeholder="Your comment..." type="text" class="form-control" />
+            <span class="checkbox u-float-left">
+                <!-- Todo: crazy parent loop up here. Should be optimized -->
+                <label><input type="checkbox" value="" ng-model="$parent.$parent.$parent.$parent.voice_of_customer"><b>Add voice of customer label</b></label>
+            </span>
+            <button ng-click="$parent.$parent.post_reply();"
+                    class="btn btn-primary btn-sm"
+                    data-style="expand-left">
+                    <span class="ladda-label">Reply!</span>
+            </button>
+        </div>
+    </uib-accordion-group>
+</uib-accordion>

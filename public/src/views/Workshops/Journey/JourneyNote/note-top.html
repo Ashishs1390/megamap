@@ -1,0 +1,22 @@
+<div class="posted {{note.Interaction.color}} lighten-4">
+  <div class="posted--category label col-xs-6 {{note.Interaction.color || 'orange'}} lighten-1">
+    <!-- note order -->
+    <span style="position:absolute;left:45px;">{{note.order_in_sequence}}</span>
+    <span title="Note interaction type">{{note.Interaction.title}}</span>
+    <!-- <span title="Total points for Importance and Pain piont">
+    [{{((journeySubGraph.incoming.vote[note.properties.uuid].length ||0 ))}}/{{journeySubGraph.incoming.pain[note.properties.uuid].length || 0}}]
+  </span> -->
+</div>
+
+<div class="posted--profile">
+  <div class="posted--profile__photo">
+    <img ng-src='{{note.Person.image_url || "/build/images/user-default.png"}}'  class='img-circle' />
+  </div>
+
+  <p class="posted--userName">
+    {{note.Person.firstname}}
+    <br>
+  </p>
+
+</div>
+</div>

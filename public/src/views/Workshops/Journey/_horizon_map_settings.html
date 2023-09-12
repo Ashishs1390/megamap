@@ -1,0 +1,149 @@
+<div>
+  <h4 class="is-blue">Horizon Map Settings</h4>
+  <div class="row no-gutters">
+    <div class="col-xs-6 col-md-4">
+      <div class="form-group">
+        <label>Competitive Differentiation</label>
+        <input type="number" class="form-control" ng-model="note.competitive_differentiation">
+      </div>
+    </div>
+    <div class="col-xs-6 col-md-4">
+      <div class="form-group">
+        <label>Economic Value</label>
+        <input type="number" class="form-control" ng-model="note.economic_value">
+      </div>
+    </div>
+    <div class="col-xs-6 col-md-4">
+      <div class="form-group">
+        <label>Profit Margin Growth</label>
+        <select class="form-control" ng-model="note.profit_margin_growth"
+          ng-options="growth.id as growth.label for growth in [
+            {
+              id: 0,
+              label: 'S'
+            },
+            {
+              id: 1,
+              label: 'M'
+            },
+            {
+              id: 2,
+              label: 'L'
+            },
+            {
+              id: 3,
+              label: 'XL'
+            }
+          ]">
+        </select>
+      </div>
+    </div>
+    <!-- <div class="col-xs-6 col-md-4">
+      <div class="form-group">
+        <label>H1
+          <div style="background:orange; padding:8px; margin-top:4px; border-radius:2px">
+            <input type="checkbox" ng-model="note.h1">
+          </div>
+        </label>
+        &nbsp;&nbsp;
+        <label>H2
+          <div style="background:blue; padding:8px; margin-top:4px; border-radius:2px">
+            <input type="checkbox" ng-model="note.h2">
+          </div>
+        </label>
+        &nbsp;&nbsp;
+        <label>H3
+          <div style="background:green; padding:8px; margin-top:4px; border-radius:2px">
+            <input type="checkbox" ng-model="note.h3">
+          </div>
+        </label>
+      </div>
+    </div> -->
+  </div>
+
+  <h4 class="text-muted">Timing</h4>
+  <div class="row no-gutters">
+    <div class="col-xs-6 col-md-4">
+      <div class="form-group">
+        <label>Shorter or Longer Term</label>
+        <input type="number" class="form-control" ng-model="note.timing_term">
+      </div>
+    </div>
+    <div class="col-xs-6 col-md-4">
+      <div class="form-group">
+        <label>Shorter or Longer Duration</label>
+        <input type="number" class="form-control" ng-model="note.timing_duration">
+      </div>
+    </div>
+  </div>
+
+  <h4 class="text-dark">Urgency</h4>
+  <div class="row no-gutters">
+    <div class="col-xs-6 col-md-4">
+      <div class="form-group">
+        <label>Threat Response</label>
+        <input type="number" class="form-control" ng-model="note.threat_response">
+      </div>
+    </div>
+    <div class="col-xs-6 col-md-4">
+      <div class="form-group">
+        <label>Bottleneck Dependency</label>
+        <input type="number" class="form-control" ng-model="note.bottleneck_dependency">
+      </div>
+    </div>
+  </div>
+
+  <h4 class="text-dark">Financial Considerations</h4>
+  <div class="row no-gutters">
+    <div class="col-xs-6 col-md-4">
+      <div class="form-group">
+        <label>Risk</label>
+        <input type="number" class="form-control" ng-model="note.risk">
+      </div>
+    </div>
+    <div class="col-xs-6 col-md-4">
+      <div class="form-group">
+        <label>Return / Economic Value Add</label>
+        <input type="number" class="form-control" ng-model="note.value_add">
+      </div>
+    </div>
+    <div class="col-xs-6 col-md-4">
+      <div class="form-group">
+        <label>Level of Investment</label>
+        <input type="number" class="form-control" ng-model="note.investment_level">
+      </div>
+    </div>
+  </div>
+
+  <h4 class="text-dark">Level of Effort/Challenge</h4>
+  <div class="row no-gutters">
+    <div class="col-xs-6 col-md-4">
+      <div class="form-group">
+        <label>Resource Constraints</label>
+        <input type="number" class="form-control" ng-model="note.resource_constraints">
+      </div>
+    </div>
+    <div class="col-xs-6 col-md-4">
+      <div class="form-group">
+        <label>Complexity</label>
+        <input type="number" class="form-control" ng-model="note.complexity">
+      </div>
+    </div>
+  </div>
+
+  <h4 class="text-dark">Technology Considerations</h4>
+  <div class="row no-gutters">
+    <div class="col-xs-6 col-md-4">
+      <div class="form-group">
+        <label>Competitive Advantage</label>
+        <input type="number" class="form-control" ng-model="note.competitive_advantage">
+      </div>
+    </div>
+    <div class="col-xs-6 col-md-4">
+      <div class="form-group">
+        <label>Technology Maturity</label>
+        <input type="number" class="form-control" ng-model="note.technology_maturity">
+      </div>
+    </div>
+  </div>
+</div>

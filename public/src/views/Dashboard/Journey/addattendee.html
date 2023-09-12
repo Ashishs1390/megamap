@@ -1,0 +1,11 @@
+<div class="modal-body" id="modal-body">
+  <h6 class="modal-title" id="modal-title">Add Existing Users to Attendee List</h6>
+  <p>Type each email of an existing user on a new line or paste a column from Excel</p>
+  <textarea required ng-model="users" class="form-control" rows="18"></textarea>
+  <br>
+</div>
+<div class="modal-footer">
+  <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+  <button class="btn btn-primary" type="button" ng-click="create()" ng-disabled="!users">Add Existing Users</button>
+  <button class="btn btn-primary" type="button" ng-click="inviteCreate()" ng-disabled="!users">Add Existing Users and Send Invite Email</button>
+</div>

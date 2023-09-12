@@ -1,0 +1,31 @@
+<div class="profile-picture">
+    <a ui-sref='account'>
+        <img src="{{$root.Person.properties.image_url}}" style='max-height:100px' class="img-circle img-small m-b" alt="logo"
+        onerror="this.onerror=null;this.src='/build/images/user-default.png';">
+
+    </a>
+    <div class="stats-label text-color">
+        <span class="font-bold user-profile--email">{{$root.Person.properties.firstname}}</span>
+        <div ng-hide="['admin', 'tenant'].includes($root.Person.role)">
+          <br>
+          <a ui-sref='account'><small><u>Edit Profile</u></small></a>
+        </div>
+
+        <div class="dropdown" uib-dropdown ng-if="$root.Person.role !== 'attendee' && $root.Person.role !== 'external'">
+            <a uib-dropdown-toggle href>
+                <p class="c-role-label"><span>{{$root.Person.role}}</span> <b class="caret"></b></p>
+            </a>
+            <ul class="animated flipInX m-t-xs" uib-dropdown-menu>
+                <li ui-sref='account'><a>Manage Account</a></li>
+                <li class="divider"></li>
+                <li ng-click='$root.SetRole("tenant")' ng-if='$root.Person.properties.tenant' class='{{$root.Person.role == "tenant" ? "green" : ""}}'><a>Tenant</a></li>
+                <li ng-if='!$root.Person.properties.tenant'><a class='grey lighten-3'>Tenant (Locked)</a></li>
+                <li ng-click='$root.SetRole("admin")' ng-if='$root.Person.properties.admin' class='{{$root.Person.role == "admin" ? "green" : ""}}'><a>Admin</a></li>
+                <li ng-if='!$root.Person.properties.admin'><a class='grey lighten-3'>Admin (Locked)</a></li>
+                <li ng-click='$root.SetRole("attendee")' class='{{$root.Person.role == "attendee" ? "green lighten-5" : ""}}'><a>Attendee</a></li>
+                <li ng-click='$root.SetRole("power_user")' class='{{$root.Person.role == "attendee" && $root.Person.properties.power_user ? "green lighten-5" : ""}}'><a>Power User</a></li>
+                <li ng-click='$root.SetRole("external")' class='{{$root.Person.role == "external" ? "green lighten-5" : ""}}'><a>External</a></li>
+            </ul>
+        </div>
+    </div>
+</div>

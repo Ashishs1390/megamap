@@ -1,0 +1,16 @@
+<div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 static-note-container" ng-if="journey.static_image_ref || stage.workshop_static_image_ref || hasInnerText(stage.workshop_static_text)" ng-init="note = {static: true}">
+  <div ng-include="'views/Workshops/Journey/_note.html'"></div>
+</div>
+<div ng-if="$root.Person.role !== 'external' && !note.connection" ng-repeat="note in filteredNotes = getFiltered(stage.notes) | orderBy: [noteCardOrder] | filter: searchFilter track by $index"
+     ng-show="UnSelectedInteractions.indexOf(note.rels.interaction.uuid) < 0 && UnSelectedPersonas.indexOf(note.rels.persona.uuid) < 0">
+  <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6" ng-if="!journeyConnectionFromUuids.includes(note.uuid)">
+    <div ng-include="'views/Workshops/Journey/_note.html'"></div>
+  </div>
+</div>
+<div ng-if="$root.Person.role === 'external' && !note.connection" ng-repeat="note in filteredNotes = getFiltered(stage.notes) | orderBy: [noteCardOrder] | filter: externalFilter | filter: searchFilter track by $index"
+     ng-show="UnSelectedInteractions.indexOf(note.rels.interaction.uuid) < 0 && UnSelectedPersonas.indexOf(note.rels.persona.uuid) < 0">
+
+  <div class="col-lg-3 col-md-4 col-sm-6">
+    <div ng-include="'views/Workshops/Journey/_external_note.html'"></div>
+  </div>
+</div>

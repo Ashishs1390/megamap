@@ -1,0 +1,12 @@
+<div ng-controller='profileReportCardCtrl' >
+    <div ng-init="ViewMode='table'">
+        <div class="c-profile-card" ng-if='editing'  ng-include='"views/Reports/ProfileReport/interaction-attribute-header.html"'></div>
+        <div class="c-profile-card" ng-if='ViewMode=="table"' ng-include='"views/Reports/ProfileReport/attribute-interaction-table.html"'></div>
+
+        <div class="c-profile-card" ng-if='ViewMode=="chart"' ng-include='"views/Reports/ProfileReport/attribute-interaction-chart.html"'></div>
+
+
+        <div class="c-profile-card" ng-if='ViewMode=="custom"' ng-include='"views/Reports/ProfileReport/attribute-interaction-custom.html"'></div>
+        <div class="c-profile-card" ng-if='ViewMode=="image"' ng-include='"views/Reports/ProfileReport/attribute-interaction-image.html"' ng-class="u-bg-cover" style="background-image: url({{image_url}})"></div>
+    </div>
+</div>

@@ -1,0 +1,31 @@
+<div class="c-profile-card__content">
+    <!-- <ul ng-if='SelectedInteraction'> -->
+    <ul>
+        <h4 title="Attribute">{{stage.title}}</h4>
+        <label ng-show="categoryHasNote[index].important">Important</label>
+        <!-- | limitTo:3 -->
+
+        <li ng-repeat="notes in stage.personaNotes">
+                <!-- ng-if="note.rels.votes_count > 0 && !note.connection" -->
+                <div ng-repeat="note in notes | orderBy: ['-rels.votes_count', 'description'] | limitTo:3 " class="u-table" ng-show="hideNotes(note.rels.interaction.uuid)">
+                    <div class="u-table-cell" ng-init="$parent.$parent.categoryHasNote[$parent.$parent.index].important = true">
+                        <div class="c-profile-card__title">{{note.description}}</div>
+                    </div>
+                </div>
+            
+        </li>
+        <br>
+        <div ng-show="$parent.$parent.$parent.$parent.showPainLists">
+          <label ng-show="categoryHasNote[index].painful">Painful</label>
+          <!-- | limitTo:3 -->
+          <li ng-repeat="note in stage.notes | orderBy: ['-rels.pains_count', 'description'] | limitTo:3" class="u-table" ng-if="note.rels.pains_count > 0">
+              <div class="u-table-cell" ng-init="$parent.$parent.categoryHasNote[$parent.$parent.index].painful = true">
+                  <div class="c-profile-card__title">{{note.description}}</div>
+              </div>
+          </li>
+        </div>
+    </ul>
+</div>
+           <!-- <div class="u-table-cell">
+                <div class="c-profile-card__index u-color-white lighten-2" style="background:#62cb31">{{note.rels.votes_count}}</div>
+            </div> -->

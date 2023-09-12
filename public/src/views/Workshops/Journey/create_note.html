@@ -1,0 +1,121 @@
+<div class="inmodal">
+  <div class="modal-header">
+    <div class="note-creator note-creator-interaction" ng-init="$root.Person.role === 'external' ? (note.external = true) : ''">
+      <h3 class="row">
+        <div class="col-sm-6">
+          Note Creator
+        </div>
+        <div class="col-sm-5">
+
+          <label class="switch">
+            <input class="toggleInput" type="checkbox" ng-model="isMultiselect">
+            <span class="slider round"></span>
+          </label>
+          <span>Multi Select</span>
+        </div>
+        <a href="" title="close" ng-click="cancel()" class="fa fa-times pull-right" style="color:#777"></a>
+      </h3>
+
+      <div class="form-group col-sm-12" ng-if="eventScope.journey.journeys">
+        <label>Select Journey</label>
+        <select class="form-control"
+          ng-model="eventScope.SelectedJourneyUuid" ng-options="j.uuid as j.title for j in eventScope.journey.journeys">
+        </select>
+      </div>
+
+      <div class='note-creator--step note-creator--step-persona'>
+        <h4 class="is-blue">1. Choose Note Type (single-select)</h4>
+        <div class="note-creator--flex">
+          <div class='note-creator--step-option interaction' ng-if="$index % 6 < 6 && $index < 6"
+            ng-click='eventScope.SelectedInteraction = interaction'
+            ng-repeat='interaction in eventScope.SelectedJourney.interactions | orderBy: "order"'>
+            <div class='note-creator--singleSelect {{interaction.color || "orange"}} {{(eventScope.SelectedInteraction.uuid == interaction.uuid) ? "lighten-2" :  "lighten-5"}}'></div>
+            <span>{{interaction.title}}</span>
+          </div>
+        </div>
+        <div class="note-creator--flex">
+          <div class='note-creator--step-option interaction' ng-if="!($index % 6 < 6 && $index < 6)"
+            ng-click='eventScope.SelectedInteraction = interaction'
+            ng-repeat='interaction in eventScope.SelectedJourney.interactions | orderBy: "order"'>
+            <div class='note-creator--singleSelect {{interaction.color || "orange"}} {{(eventScope.SelectedInteraction.uuid == interaction.uuid) ? "lighten-2" :  "lighten-5"}}'></div>
+            <span>{{interaction.title}}</span>
+          </div>
+        </div>
+      </div>
+      <div class="clearfix"></div>
+  <br>
+  <div class="note-creator--flex">
+    <div class='note-creator--step note-creator--step-interaction'>
+      <h4 class="is-blue">2. Choose Stages <span ng-show="isMultiselect">(multi)</span></h4>
+      <div class='note-creator--step-option'
+        ng-repeat='stage in eventScope.SelectedJourney.stages | orderBy: "order"'
+        ng-click="toggleMultiselect('SelectedStage', stage.uuid)">
+        <div ng-class="{'note-creator--singleSelect': !isMultiselect}"  class='grey {{(eventScope.SelectedStage.indexOf(stage.uuid) > -1) ? "" :  "lighten-5"}}'></div>
+        <span>{{eventScope.isBrainstormStage(stage) ? (stage.title.split('_')[1] | date) : (stage.title || titleCase) }}</span>
+      </div>
+    </div>
+    <div class='note-creator--step note-creator--step-interaction'>
+      <h4 class="is-blue">3. Choose Personas <span ng-show="isMultiselect">(multi)</span></h4>
+      <div class='note-creator--step-option'
+        ng-repeat='persona in eventScope.SelectedJourney.personas | orderBy: "order"'
+        ng-click="toggleMultiselect('SelectedPersona', persona.uuid)"
+        ng-hide="persona.system">
+        <div ng-class="{'note-creator--singleSelect': !isMultiselect}" class='grey {{(eventScope.SelectedPersona.indexOf(persona.uuid) > -1) ? "" :  "lighten-5"}}'></div>
+        <span>{{persona.title}}</span>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="clearfix"></div>
+<div class="modal-body">
+  <h4 class="is-blue">
+    4. Add text to your note
+    <span class="{{note.description.length ? 'green-text' : 'red-text'}}"> * </span>
+  </h4>
+  <div class="row">
+    <div class="col-lg-12">
+      <form name="simpleForm" novalidate id="simpleForm">
+        <div class="p-m {{eventScope.SelectedInteraction.color || 'orange'}} lighten-3">
+          <div class='row '>
+            <div class='col-xs-12'>
+              <div class="charcount"> {{note.description.length || 0}} / 200 MAX characters</div>
+              <textarea required placeholder="Add text to your note (max 200 characters)" type='text' class="col-xs-12" ng-model='note.description'
+                ng-maxlength='200' ng-keydown="preventTyping($event, note.description, 199)"/>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <h4 class="is-blue">5. Add URL link</h4>
+  <div class="row">
+    <div class="col-lg-12">
+      <form name="simpleForm" novalidate id="simpleForm">
+        <div class="col-lg-12">
+          <div class="row u-pt10 u-pb15">
+            <div class="form-group col-lg-12">
+              <input type="url" id="" name="" class="form-control" value="" placeholder="Add URL with http:// or https:// to your note" ng-model="note.external_url">
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<div class="modal-footer row">
+  <div class="text-right m-t-xs">
+    <button ng-disabled="posting" type="button" class="btn btn-default" ng-click="cancel()">Cancel</button>
+    <button ladda="posting"
+      ng-click="submit(false)"
+      ng-disabled='eventScope.SelectedStage.length < 1 || !eventScope.SelectedInteraction || note.description.length == 0 || note.description.length > 200'
+      class="btn green lighten-4">
+    Add and continue
+    </button>
+    <button ladda="posting"
+      ng-click="submit(true)"
+      ng-disabled='eventScope.SelectedStage.length < 1 || !eventScope.SelectedInteraction || note.description.length == 0 || note.description.length > 200'
+      class="btn green lighten-4">
+    Add note
+    </button>
+  </div>
+</div>

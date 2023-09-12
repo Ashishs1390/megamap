@@ -1,0 +1,18 @@
+<div class="bullseye-dashboard">
+    <div class="content">
+
+
+        <div class="hpanel Info">
+            <div class="panel-body">
+                <h2 class="c-section-title">Bullseye Maps</h2>
+            </div>
+        </div>
+    
+
+
+
+
+        <div ng-if='$root.Person.role == "tenant"' ng-controller='bullseyeTenantCtrl' ng-include="'views/Dashboard/Bullseye/library.html'"></div>
+        <div ng-if='$root.Person.role == "admin"' ng-controller='bullseyeAdminCtrl' ng-include="'views/Dashboard/Bullseye/library.html'"></div>
+    </div>
+</div>

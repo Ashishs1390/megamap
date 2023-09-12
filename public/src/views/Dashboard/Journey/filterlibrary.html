@@ -1,0 +1,29 @@
+<div ng-if='Getting' class="c-abs-loading"><img src="../../../../build/images/loading.gif" /></div>
+<div class=''>
+    <div class="col-xs-12">
+        <div class="c-flex c-flex--3 c-flex--stretch c-flex--wrap">
+            <div class="element c-flex__col u-mb40" ng-repeat='item in library.node_label_index.Journey' ng-show="$root.bullseyeJourneys.indexOf(item) >= 0">
+                <div class='library_card_wrapper'>
+                  <div ng-if="library.rels[library.outgoing.author[item][0]].to_id == $root.Person.properties.uuid" class="label gold gold--with-margin pull-right">Author</div>
+                    <journey-card-large node='library.nodes[item]' library='library'></journey-card-large>
+                    <div class='u-table library-card-groupBtns u-bg-grey'>
+                        <a ui-sref='workshop.journey({id:item})' class="u-table-cell">View Journey</a>
+                        <a ng-click="PopOverviewModal(item)" ng-if='PopOverviewModal' class="u-table-cell">Overview</a>
+                        <a ng-click='PopEditModal(item)' ng-if='PopEditModal' class=" u-table-cell ">Edit</a>
+                        <a ng-click="PopConnectModal(item)" ng-if='PopConnectModal' class="u-table-cell">Components</a>
+                    </div>
+
+                    <div class='u-table library-card-groupBtns u-bg-grey'>
+                            <a ng-click="PopAttendeeModal(item)" ng-if='PopAttendeeModal' class="u-table-cell">Attendees</a>
+                            <a ng-click="PopQuickReportModal(item)" ng-if='PopQuickReportModal' class="u-table-cell">Live Summary</a>
+                            <a ng-click="ViewReport(item)" ng-if='ViewReport' class="u-table-cell">Report</a>
+                        </div>
+
+                </div>
+            </div>
+            <!-- to fix flex alignement issue -->
+            <div class="c-flex__col"></div>
+            <div class="c-flex__col"></div>
+        </div>
+    </div>
+</div>

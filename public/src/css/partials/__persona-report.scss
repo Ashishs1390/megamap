@@ -1,0 +1,370 @@
+/* Profile report comopnents
+-------------------------------------------------------- */
+// Prevew and buttons
+
+.c-profile-editBtns {
+  float: right;
+  label {
+    padding-top: 7px;
+    padding-bottom: 7px;
+    border-radius: 5px;
+  }
+
+  @include breakpoint(small down) {
+      float: none;
+  }
+}
+
+// Layout
+.c-report-profile {
+
+  .c-report-profile__mainReportCol {
+    padding-left: rem-calc(100);
+
+    @include breakpoint(large down) {
+      padding-left: rem-calc(50);
+    }
+  }
+
+  .hpanel {
+    margin-bottom: 0;
+  }
+
+  .table {
+    border: 1px solid $border-grey-light;
+    td {
+      border-top: 0;
+      border-bottom: 1px solid $border-grey-light;
+    }
+  }
+
+  .u-table-cell {
+    vertical-align: middle;
+    text-transform: capitalize;
+  }
+
+  iframe, canvas {
+    @include breakpoint(medium down) {
+      width: 100% !important;
+    }
+  }
+
+
+  &__image {
+    min-height: 300px;
+  }
+  &__editor {
+    z-index: 10;
+    @media print {
+      display: none;
+    }
+  }
+  &__editorText {
+    text-align: center;
+    font-weight: 600;
+    color: #fff;
+    padding: 5px;
+  }
+
+  // live editor from profile report
+  .note-editor {
+    cursor: text;
+  }
+}
+
+// persona cols inside left column
+.c-profile-persona {
+  position: relative;
+
+  &__photo {
+    border-radius: 8px;
+    width: 100%;
+    @include simpleTransition(0.35s);
+
+    &--editMode {
+      border-radius: 0;
+    }
+
+    @include breakpoint(small only) {
+      width: 50%;
+    }
+    @include breakpoint(380px down) {
+      width: 100%;
+    }
+  }
+
+
+  &__name {
+    position: absolute;
+    right: -15px;
+    bottom: 0;
+
+    transform: rotate(90deg);
+    transform-origin: bottom right;
+
+    h2 {
+      white-space: nowrap;
+      display: inline-block;
+      font-size: rem-calc( 80 );
+      font-family: "Noe Text Book", "Minion Pro", "Times New Roman", serif;
+      border-bottom: 2px solid $gold1;
+    }
+    p {
+      margin-top: -7px;
+      color: $gold2;
+      padding-top: 0;
+      text-transform: uppercase;
+      font-size: rem-calc(24);
+      font-weight: $font-weight__bold;
+    }
+
+    @include breakpoint(large down) {
+      transform: none;
+      position: relative;
+      right: 0;
+      top: 100%;
+      max-width: 280px;
+
+      h2 {
+        font-size: rem-calc(60);
+        white-space: initial;
+        word-break: break-word;
+      }
+    }
+
+  }
+
+}
+
+.c-profile-bullseye {
+  position: relative;
+  img {
+    width: 100%;
+    max-height: 280px;
+    max-width: 280px;
+    display: inline-block;
+  }
+  @include breakpoint(large down) {
+    img {
+      margin-top: rem-calc(60);
+      margin-bottom: rem-calc(60);
+      display: block;
+      position: static;
+      max-width: 200px;
+    }
+  }
+}
+
+
+
+/* Profile cards
+-------------------------------------------------------- */
+.c-profile-card {
+
+  ul {
+    padding-left: 0;
+    list-style: none;
+    text-align: left;
+  }
+
+  &__content {
+    padding: 10px 0;
+    @include clearfix;
+
+    h4 {
+      font-size: 16px;
+      font-weight: $font-weight__strong;
+      padding-bottom: 5px;
+      border-bottom: 1px solid $gold1;
+      text-transform: uppercase;
+    }
+    .u-table-cell {
+      vertical-align: middle;
+      // color: $color-normal;
+
+      &:first-child {
+        width: 40px;
+        padding: 5px 0;
+      }
+    }
+  }
+
+  &__index {
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    border-radius: 50%;
+    text-align: center;
+    font-weight: 600;
+    font-size: 14px;
+  }
+
+  &__title {
+    position: relative;
+    font-size: 14px;
+    font-weight: 600;
+    color: $navyBlue1;
+  }
+
+}
+
+
+// Profile report cards style
+.c-profile-card-col {
+  flex-basis: 49%;
+  margin-top: 20px;
+
+  @include breakpoint(medium down) {
+    flex-basis: 100% !important;
+  }
+
+  &--editMode {
+    background-color: #fff;
+    border: 1px solid $border-grey;
+
+    .c-profile-card__content {
+      padding: 10px 20px;
+    }
+  }
+}
+
+
+
+/* quotes for reports
+-------------------------------------------------------- */
+.c-quote-container {
+  margin-top: -70px;
+
+  @include breakpoint(large only) {
+    margin-top: 20px;
+  }
+
+  p {
+    margin-top: 0;
+    margin-bottom: rem-calc( 130 );
+    color: $gold1;
+    font-family: "Noe Text Book", "Minion Pro", "Times New Roman", serif;
+    font-weight: 400;
+    font-size: 30px;
+    margin-left: -5px;
+    letter-spacing: -1;
+
+    &:before {
+      content:"\201C";
+      margin-left: -13px;
+    }
+    &:after {
+      content:"\201D";
+    }
+
+    @include breakpoint(medium down) {
+      margin-top: rem-calc( 100 );
+      margin-bottom: rem-calc( 100 );
+    }
+
+  }
+
+
+
+}
+
+
+
+/* General media blocks (left side has image or text with fixed width)
+-------------------------------------------------------- */
+.c-media {
+
+  &-block {
+    display: table;
+    width: 100%;
+    color: $color-normal;
+    @include breakpoint(medium down) {
+      margin-bottom: 10px;
+      height: 60px;
+      display: inline-block;
+    }
+
+    &__left {
+      display: table-cell;
+      vertical-align: middle;
+      text-align: center;
+    }
+
+    &__right {
+      display: table-cell;
+      vertical-align: middle;
+      @include breakpoint(medium) {
+        padding: 15px 15px 15px 0;
+      }
+    }
+  }
+
+  &--profileIconList {
+    margin-top: -10px;
+
+    @include breakpoint(small only) {
+        margin-top: 20px;
+    }
+
+    .c-flex__col {
+      padding-left: 5px;
+      padding-right: 5px;
+      margin-right: 10px;
+      flex-basis: 15.5%;
+      border-radius:10px;
+      background-color:rgba(0, 0, 0, 0.1);
+      border: 1px solid #cfcfcf;
+      &.notetype{
+        cursor: pointer;
+      }
+      &.pain {
+        cursor:pointer;
+      }
+      &.selected {
+        background-color: #fcfcfc;
+        border-color: #fff;
+      }
+    }
+
+    .c-media-block__left {
+      text-align: left;
+      width: 40px;
+      h2 {
+        margin-right: 10px;
+        font-size: 42px;
+        font-weight: $font-weight__normal;
+      }
+
+      @include breakpoint(medium only) {
+        width: 50px;
+        h2 {
+          font-size: 32px;
+        }
+      }
+      @include breakpoint(small only) {
+        width: 40px;
+        h2 {
+          font-size: 32px;
+        }
+      }
+    }
+
+    .c-media-block__right {
+      img {
+        width: 35px;
+        height: 35px;
+      }
+    }
+
+    p {
+      text-transform: uppercase;
+      color: $color-normal;
+      font-weight: $font-weight__bold;
+      font-size: rem-calc(20);;
+      margin-top: -6px;
+      margin-left: 3px;
+    }
+
+  }
+
+}

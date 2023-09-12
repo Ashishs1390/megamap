@@ -1,0 +1,141 @@
+body.register {
+  // background:#eee;
+}
+
+body.login {
+  background-color: #f5f5f5;
+  & .company-logo {
+    margin-bottom:50px;
+    width:150px;
+  }
+}
+
+.auth-loading {
+  background: white;
+  position: fixed;
+  top: 5px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10000;
+  opacity: 0.6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  & .fa {
+    font-size: 40px;
+  }
+}
+
+
+.login-container {
+  max-width: 525px;
+  margin: auto;
+  padding-top: 10%;
+
+  h6 {
+    text-align: center;
+    margin-bottom: 20px;
+    // font-weight: bold;
+    text-decoration: underline;
+    color: #777;
+  }
+
+  & .panel-body {
+    & .auth-options {
+      margin: 0px auto 30px auto;
+      display: flex;
+      flex-direction: row;
+      align-items: stretch;
+
+      & .local {
+        width: 50%;
+      }
+      & .divider {
+        margin: 40px 20px 0;
+        border-right: 1px solid #ccc;
+      }
+      & .sso {
+        width: 50%;
+        text-align: center;
+        position: relative;
+        &.hidesso {
+          background: white;
+        }
+
+        & .options {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-direction: column;
+          height: 200px;
+          width: 100%;
+
+          & .seperator {
+            width: 100%;
+            margin: 25px 0;
+          }
+        }
+        & .text {
+          position: absolute;
+          top: 50%;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          font-weight: bold;
+        }
+        & .btn-azure {
+          // margin-top: 20%;
+        }
+      }
+    }
+
+    & .legal-links {
+      background: #fff;
+      // border-top: 1px solid #eee;
+      position: relative;
+      margin: 0 -20px;
+      bottom: -20px;
+      padding: 15px 20px;
+    }
+  }
+}
+
+.register-container {
+    max-width: 720px;
+    margin: auto;
+    padding-top: 6%
+}
+
+
+.shadow {
+  box-shadow: 0 .5rem 2.5rem rgba(0,0,0,.04)!important;
+}
+
+.self-service-container {
+  text-align: center;
+  margin: 150px auto;
+  max-width: 600px;
+  // background: green;
+
+  & h3 {
+    margin: 25px 0 10px 0;
+    font-size: 18px;
+    color: #555;
+    font-weight: normal;
+    line-height: 24px;
+  }
+
+  & .self-auth {
+    margin: 25px 0;
+  }
+}
+
+
+.btn-azure {
+  background: #1baae2;
+  color: white;
+  border-radius: 1px;
+  padding: 8px 20px;
+}

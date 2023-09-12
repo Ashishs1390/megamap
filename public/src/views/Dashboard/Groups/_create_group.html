@@ -1,0 +1,31 @@
+<div class="inmodal">
+  <div class="modal-header">
+    <div class="note-creator">
+      <h3 class="row">
+        <div class="col-sm-6">
+          Create Group
+        </div>
+      </h3>
+    </div>
+  </div>
+
+  <div class="modal-body">
+    <label>Name this group</label>
+    <input type="text" class="form-control" ng-model="name" />
+    <br/>
+    <pre>
+      {{ group.members | json }}
+    </pre>
+  </div>
+
+  <div class="modal-footer row">
+    <button class="btn btn-secondary" ng-click="cancel()">
+      Cancel
+    </button>
+
+    <button class="btn btn-primary" ng-click="create()" ng-disabled="!(name && group.members && group.members.length > 0)">
+      Create Group
+    </button>
+  </div>
+  <br/>
+</div>

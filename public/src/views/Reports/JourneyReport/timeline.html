@@ -1,0 +1,29 @@
+<div ng-show="isLoading" class="page-loading"></div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div ui-sref="dashboard.journey" class="btn btn-default btn--back"> <i class="fa fa-chevron-left" aria-hidden="true"></i> Go back </div>
+        <div ng-click="timelineView = true" ng-hide="timelineView" class="btn btn-default btn--back"> Return to Timeline </div>
+    </div>
+</div>
+
+<section id=timeline>
+  <div class="" ng-hide="timelineView" ng-bind-html="currentReport.doc"></div>
+  <div ng-show="timelineView">
+  	<h1>Journey Report Timeline</h1>
+  	<div class="demo-card-wrapper">
+  		<div ng-click="showReport(report)" ng-repeat="report in reports" class="demo-card {{'demo-card--step'+($index+1)}}" ng-class="{'even-card':$odd, 'odd-card': $even, 'second-card':$index==1}">
+  			<div class="head">
+  				<div class="number-box">
+  					<span>{{$index+1}}</span>
+  				</div>
+  				<h2>{{report.time}}</h2>
+  			</div>
+  			<div class="body">
+  				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta reiciendis deserunt doloribus consequatur, laudantium odio dolorum laboriosam.</p>
+  				<img src="http://placehold.it/1000x500" alt="Graphic">
+  			</div>
+  		</div>
+  	</div>
+  </div>
+</section>

@@ -1,0 +1,125 @@
+<div id="header" ng-include="'views/Graphs/Journey/header.html'"></div>
+<aside id="menu" ng-include="'views/Graphs/Journey/navigation.html'"></aside>
+
+<div id="wrapper" class="journey-details">
+  <div class="content">
+    <div class="graphs">
+      <div class="hpanel Info">
+        <div class="panel-body">
+          <div class="header">
+            <h3 class="font-light graph-header">{{journey.title}}</h3>
+            <br>
+          </div>
+          <div class="graph-sidebar">
+            <!-- STAGE FILTER -->
+            <div class="btn-group">
+              <p>Stage</p>
+              <button data-toggle="dropdown" class="btn btn-default btn-sm dropdown-toggle">
+                {{graphData.stage.title}} <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu">
+                <li><a ng-click="graphData.stage = allStages; calculateDataPoints()">All Stages</a></li>
+                <li ng-repeat="stage in journey.stages">
+                  <a ng-click="graphData.stage = stage; calculateDataPoints()">{{stage.title}}</a>
+                </li>
+              </ul>
+            </div>
+            <!-- PERSONAS FILTER -->
+            <div class="btn-group">
+              <p>Persona</p>
+              <button data-toggle="dropdown" class="btn btn-default btn-sm dropdown-toggle">
+                {{graphData.persona.title}} <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu">
+                <li><a ng-click="graphData.persona = allPersonas; calculateDataPoints()">All Personas</a></li>
+                <li ng-repeat="persona in journey.personas">
+                  <a ng-click="graphData.persona = persona; calculateDataPoints()">{{persona.title}}</a>
+                </li>
+              </ul>
+            </div>
+            <!-- INTERACTION FILTER -->
+            <div class="btn-group">
+              <p>Interaction</p>
+              <button data-toggle="dropdown" class="btn btn-default btn-sm dropdown-toggle">
+                {{graphData.interaction.title}} <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu">
+                <li><a ng-click="graphData.interaction = allInteractions; calculateDataPoints()">All Interactions</a></li>
+                <li ng-repeat="interaction in journey.interactions">
+                  <a ng-click="graphData.interaction = interaction; calculateDataPoints()">{{interaction.title}}</a>
+                </li>
+              </ul>
+            </div>
+            <!-- X AXIS -->
+            <div class="btn-group">
+              <p>X Axis</p>
+              <button data-toggle="dropdown" class="btn btn-default btn-sm dropdown-toggle">
+                {{graphData.x.label}} <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu">
+                <li ng-repeat="prop in axisProperties">
+                  <a ng-click="graphData.x = prop; calculateDataPoints()">{{prop.label}}</a>
+                </li>
+              </ul>
+            </div>
+            <!-- Y PLUS AXIS -->
+            <div class="btn-group">
+              <p>Y+ Axis</p>
+              <button data-toggle="dropdown" class="btn btn-default btn-sm dropdown-toggle">
+                {{graphData.y_plus.label || 'Deselected'}} <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu">
+                <li><a ng-click="graphData.y_plus = null; calculateDataPoints()">Deselect</a></li>
+                <li ng-repeat="prop in axisProperties">
+                  <a ng-click="graphData.y_plus = prop; calculateDataPoints()">{{prop.label}}</a>
+                </li>
+              </ul>
+            </div>
+            <!-- Y MINUS AXIS -->
+            <div class="btn-group">
+              <p>Y- Axis</p>
+              <button data-toggle="dropdown" class="btn btn-default btn-sm dropdown-toggle">
+                {{graphData.y_minus.label || 'Deselected'}} <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu">
+                <li><a ng-click="graphData.y_minus = null; calculateDataPoints()">Deselect</a></li>
+                <li ng-repeat="prop in axisProperties">
+                  <a ng-click="graphData.y_minus = prop; calculateDataPoints()">{{prop.label}}</a>
+                </li>
+              </ul>
+            </div>
+
+            <!-- KPI FILTER -->
+            <div class="btn-group">
+              <p>KPI Filter</p>
+              <button data-toggle="dropdown" class="btn btn-default btn-sm dropdown-toggle">
+                {{graphData.kpi}} <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu">
+                <li><a ng-click="graphData.kpi = allKpis; calculateDataPoints()">All KPIs</a></li>
+                <li ng-repeat="kpi in journey.kpis">
+                  <a ng-click="graphData.kpi = (kpi.rel.label || kpi.title); calculateDataPoints()">{{kpi.rel.label || kpi.title}}</a>
+                </li>
+              </ul>
+            </div>
+
+            <div class="btn-group">
+              <p>Use Kano (Eff - Imp)</p>
+              <input type="checkbox" class="" ng-model="kano" ng-checked="kano" ng-change="calculateDataPoints()">
+            </div>
+
+
+          </div>
+          <div class="graph">
+            <canvas id="graph"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- <pre>
+      {{graphData | json}}
+    </pre> -->
+
+  </div>
+</div>

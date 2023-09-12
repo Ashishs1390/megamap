@@ -1,0 +1,27 @@
+<div class="inmodal">
+  <div class="modal-header">
+    <div class="note-creator">
+      <h3 class="row" style="margin:0">
+        MOT Settings <small ng-show="note.mot_solution"><span class="label yellow">Solution</span></small>
+        <a href="" title="close" ng-click="cancel()" class="fa fa-times pull-right" style="color:#777"></a>
+      </h3>
+    </div>
+  </div>
+
+  <div class="modal-body">
+    <h5 style="margin:0" ng-bind-html="note.description"></h5>
+    <br/>
+    <div ng-include="'views/Workshops/Journey/_mot_settings.html'"></div>
+  </div>
+
+  <div class="modal-footer row">
+    <button class="btn btn-secondary" ng-click="cancel()">
+      Cancel
+    </button>
+
+    <button class="btn btn-primary" ng-click="save()">
+      Update
+    </button>
+  </div>
+  <br/>
+</div>

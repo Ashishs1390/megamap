@@ -1,0 +1,12 @@
+<div>
+  <div id="header" ng-include="'views/Workshops/Bullseye/header.html'"></div>
+  <aside id="menu" ng-include="'views/Workshops/Bullseye/navigation.html'"></aside>
+  <div id="wrapper" class="bullseye-details">
+    <div ng-if='Getting' class="c-abs-loading"><img src="../../../../build/images/loading.gif"></div>
+
+    <div class="bullseyecontainer">
+      <bullseye-chart width="width" height="height" bullseyedata="data" bullseyetitle="title" displayscorepopuponclick="true" displayarccolor="true" on-update="callback(uservote,intersectionuuid)" on-arc-click="clickCallback(intersectionuuid)">
+      </bullseye-chart>
+    </div>
+  </div>
+</div>

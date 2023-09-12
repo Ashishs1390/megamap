@@ -1,0 +1,47 @@
+<div class="col-sm-12">
+    <div ng-repeat='stage in JourneyStages' class="clearfix c-report-journey__propsTable">
+        <div class="hpanel clearfix">
+
+            <h4>{{stage.properties.title}}</h4>
+            <div class="panel-body">
+                <div class="c-flex c-flex--2 c-flex--stretch c-flex--wrap">
+                    <div ng-repeat='interaction in stage.Interactions' class="c-flex__col">
+                        <h5 class="panel-heading {{interaction.properties.color || 'orange'}} lighten-1 u-color-white u-mb0"><b>{{interaction.properties.title}}</b></h5>
+
+                        <div class="">
+                            <table class="table">
+                                <tbody>
+                                    <tr class="c-modal--report__trHeader c-modal--report__importantRow green lighten-5">
+                                        <td>Top rated</td>
+                                        <td># of votes</td>
+                                        <td>Ranked Painful</td>
+                                    </tr>
+
+                                    <tr ng-repeat='note_uuid in interaction.ImportantNotes ' ng-if='subgraph.nodes[note_uuid].properties.Importance > 0'>
+                                        <td>{{subgraph.nodes[note_uuid].properties.description}}</td>
+                                        <td>{{subgraph.nodes[note_uuid].properties.Importance}}</td>
+                                        <td>#{{ interaction.PainfulNotes.indexOf(note_uuid) + 1 }}</td>
+                                    </tr>
+
+                                    <tr class="c-modal--report__trHeader c-modal--report__painRow red lighten-5">
+                                        <td>Note</td>
+                                        <td># of votes</td>
+                                        <td>Ranked Importance</td>
+                                    </tr>
+
+                                    <tr class="" ng-repeat='note_uuid in interaction.PainfulNotes | limitTo:3' ng-if="subgraph.nodes[note_uuid].properties.Pain > 0">
+                                        <td>{{subgraph.nodes[note_uuid].properties.description}}</td>
+                                        <td>{{subgraph.nodes[note_uuid].properties.Pain}}</td>
+                                        <td> #{{ interaction.ImportantNotes.indexOf(note_uuid) + 1 }} </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

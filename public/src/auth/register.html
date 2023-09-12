@@ -1,0 +1,88 @@
+<div class="color-line"></div>
+
+<!-- <div class="back-link">
+  <a ui-sref="dashboard" class="btn btn-primary">Back to Dashboard</a>
+</div> -->
+
+<form name="reg" class="login-container" ng-submit="authenticate(user)" novalidate ng-init="user.authType='register'">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="text-center m-b-md">
+        <h3>REGISTER FOR RUPTIVE</h3>
+      </div>
+      <div class="hpanel">
+        <div class="panel-body">
+          <div class="error" ng-show="error">
+            {{error}}
+          </div>
+          <div>
+            <div class="row">
+              <div class="form-group col-sm-6">
+                <label class="control-label" for="firstname">First Name</label>
+                <input type="text"
+                     name="firstname"
+                     id="email"
+                     ng-model="user.properties.firstname"
+                     placeholder="First Name"
+                     autofocus="true"
+                     class="form-control"
+                     required/>
+              </div>
+              <div class="form-group col-sm-6">
+                <label class="control-label" for="lastname">Last Name</label>
+                <input type="text"
+                     name="lastname"
+                     id="email"
+                     ng-model="user.properties.lastname"
+                     placeholder="Last Name"
+                     autofocus="true"
+                     class="form-control"
+                     required/>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label" for="email">Email</label>
+              <input type="email"
+                   name="email"
+                   id="email"
+                   ng-model="user.properties.email"
+                   placeholder="Email Address"
+                   autofocus="true"
+                   class="form-control"
+                   required/>
+            </div>
+            <div class="form-group">
+              <label class="control-label" for="password">Choose Password</label>
+              <input type="password"
+                   name="password"
+                   id="password"
+                   ng-model="user.password"
+                   placeholder="Choose Password"
+                   class="form-control"
+                   required/>
+            </div>
+            <div class="form-group">
+              <label class="control-label" for="password">Confirm Password</label>
+              <input type="password"
+                   name="password_confirmation"
+                   id="password_confirmation"
+                   ng-model="user.password_confirmation"
+                   placeholder="Confirm Password"
+                   class="form-control"
+                   required/>
+            </div>
+            <input type="submit" class="btn btn-success btn-block" value="Register"></a>
+          </div>
+          <div class="other-links">
+            <a ui-sref="login">Don't have an account? Login here</a>
+          </div>
+          <div class="legal-links">
+            <a href="https://ruptivefiles.blob.core.windows.net/files/privacy.pdf" target="_blank">Privacy Policy</a>
+            <a class="pull-right" href="https://ruptivefiles.blob.core.windows.net/files/terms-of-use.pdf" target="_blank">Terms of use</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</form>

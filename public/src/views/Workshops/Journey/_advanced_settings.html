@@ -1,0 +1,155 @@
+<div>
+  <label class="pull-left" ng-if="$root.Person.role !== 'external'">
+    External
+    <input type="checkbox" ng-model="note.external" ng-change="">
+  </label>
+
+  <div class="clearfix"></div>
+
+  <h4 class="is-blue" title="">Add a direct video link to a source file</h4>
+  <div class="u-pb15">
+    <input type="url" class="form-control" value="" placeholder="https://mywebsite/videos/myvideo.mp4" ng-model="note.video_url" title="">
+  </div>
+
+  <hr/>
+
+  <h4 class="is-blue">Add Qual Data</h4>
+  <div class="row">
+    <div class="col-xs-6 col-md-4">
+      <div class="form-group">
+        <label>Qual Date</label>
+        <input type="date" id="" class="form-control" ng-model="note.qual_date" date-object>
+      </div>
+    </div>
+    <div class="col-xs-6 col-md-4">
+      <div class="form-group">
+        <label>Number of interviews</label>
+        <input type="number" value="0" id="" class="form-control" ng-model="note.number_of_interview" placeholder="">
+      </div>
+    </div>
+  </div>
+
+  <hr/>
+
+  <h4 class="is-blue">Add Quant Data</h4>
+  <div class="row">
+    <div class="col-xs-6 col-md-4">
+      <div class="form-group">
+        <label>Quant Date</label>
+        <input type="date" id="" class="form-control" ng-model="note.quant_date" date-object>
+      </div>
+    </div>
+    <div class="col-xs-6 col-md-4">
+      <div class="form-group">
+        <label>Sample Size</label>
+        <input type="number" value="0" id="" class="form-control" ng-model="note.sample_size" placeholder="{{eventScope.sampleSize}}">
+      </div>
+    </div>
+    <div class="col-xs-6 col-md-4">
+      <div class="form-group">
+        <label>Stated Importance/Impact</label>
+        <input type="number" value="0" id="" ng-keyup="calculateGap()" class="form-control" ng-model="note.average_importance" placeholder='{{eventScope.ranking}}'>
+      </div>
+    </div>
+    <div class="col-xs-6 col-md-4">
+      <div class="form-group">
+        <label>Stated Effectiveness/Effort</label>
+        <input type="number" value="0" id="" ng-keyup="calculateGap()" class="form-control" ng-model="note.average_effectiveness" placeholder='{{eventScope.rating}}'>
+      </div>
+    </div>
+    <div class="col-xs-6 col-md-4">
+      <div class="form-group">
+        <label>Gap To Goal (Imp - Goal)</label>
+        <input type="number" value="0" disabled class="form-control" ng-model="note.gap_a" placeholder="">
+      </div>
+    </div>
+    <div class="col-xs-6 col-md-4">
+      <div class="form-group">
+        <label>Gap To Goal (Eff - Goal)</label>
+        <input type="number" value="0" disabled class="form-control" ng-model="note.gap_b" placeholder="">
+      </div>
+    </div>
+    <div class="col-xs-6 col-md-4" ng-repeat="letter in ['a', 'b', 'c', 'd', 'e', 'f']">
+      <div class="form-group">
+        <label>
+          {{eventScope.journey['correlation_'+letter].label || 'Correlation ' + letter | titleCase}}
+        </label>
+        <input type="number" value="0" class="form-control" ng-model="note['correlation_'+letter]" placeholder="">
+      </div>
+    </div>
+
+    <div class="col-xs-6 col-md-4">
+      <div class="form-group">
+        <label>
+          Primary KPI
+        </label>
+        <select class="form-control" ng-model="note.primary_kpi"
+          ng-options="kpi.uuid as (kpi.rel.label || kpi.title) for kpi in kpis">
+         </select>
+      </div>
+    </div>
+    <div class="col-xs-6 col-md-4">
+      <div class="form-group">
+        <label>
+          Secondary KPI
+        </label>
+        <select class="form-control" ng-model="note.secondary_kpi"
+          ng-options="kpi.uuid as (kpi.rel.label || kpi.title) for kpi in kpis">
+         </select>
+      </div>
+    </div>
+    <div class="col-xs-6 col-md-4">
+      <div class="form-group">
+        <label>Kano Gap (Eff - Imp)</label>
+        <input type="number" type="number" disabled value="0" id="" class="form-control" ng-model="note.gap_c" placeholder="">
+      </div>
+    </div>
+    <div class="col-xs-6 col-md-4">
+      <div class="form-group">
+        <label>Trend</label>
+        <select class="form-control" ng-model="note.trend"
+          ng-options="trend.id as trend.label for trend in [
+            {
+              id: 0,
+              label: 'Declining'
+            },
+            {
+              id: 1,
+              label: 'Unchanged'
+            },
+            {
+              id: 2,
+              label: 'Going Up'
+            }
+          ]">
+        </select>
+      </div>
+    </div>
+    <div class="col-xs-6 col-md-4">
+      <div class="form-group">
+        <label>CXI Priority</label>
+        <input type="number" value="0" id="" class="form-control" ng-model="note.cxi_priority" placeholder="">
+      </div>
+    </div>
+    <div class="col-xs-6 col-md-4">
+      <div class="form-group">
+        <label>Kano Quadrant</label>
+        <div class="dropdown" uib-dropdown>
+          <a uib-dropdown-toggle href>
+            <p class="c-role-label" ng-show='!note.kano_quadrant'><span>None</span><b class="caret"></b></p>
+            <p class="c-role-label" ng-show='note.kano_quadrant'><span>{{note.kano_quadrant}}</span><b class="caret"></b></p>
+          </a>
+          <ul class="animated flipInX m-t-xs" uib-dropdown-menu>
+            <li class="u-p5 u-pl20">Select</li>
+            <li class="divider"></li>
+            <li ng-click='note.kano_quadrant="Basic"'><a>Basic</a></li>
+            <li ng-click='note.kano_quadrant="Excitement"'><a>Excitement</a></li>
+            <li ng-click='note.kano_quadrant="Performance: Key Driver"'><a>Performance: Key Driver</a></li>
+            <li ng-click='note.kano_quadrant="Performance: Secondary"'><a>Performance: Secondary</a></li>
+            <li ng-click='note.kano_quadrant=""'><a> None</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
